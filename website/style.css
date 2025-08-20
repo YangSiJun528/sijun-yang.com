@@ -1,0 +1,134 @@
+:root {
+    /* Size variables (for font-size, padding, margin, etc.) */
+    --size-xs: 0.25rem; /* 4px */
+    --size-sm: 0.5rem; /* 8px */
+    --size-md: 0.75rem; /* 12px */
+    --size-lg: 1rem; /* 16px */
+    --size-xl: 1.25rem; /* 20px */
+    --size-2xl: 1.5rem; /* 24px */
+    --size-3xl: 2rem; /* 32px */
+    --size-4xl: 2.5rem; /* 40px */
+    --size-5xl: 3rem; /* 48px */
+    --size-6xl: 4rem; /* 64px */
+
+    /* Font-specific sizes */
+    --font-size-xs: 0.75rem; /* 12px */
+    --font-size-sm: 0.875rem; /* 14px */
+    --font-size-md: 1rem; /* 16px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --font-size-xl: 1.3125rem; /* 21px */
+    --font-size-2xl: 1.5rem; /* 24px */
+    --font-size-3xl: 2.625rem; /* 42px */
+    --font-size-4xl: 4rem; /* 64px */
+
+    /* Font weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
+
+    /* Colors */
+    --color-primary: #0070f3;
+    --color-text: #222;
+    --color-background: #fff;
+    --color-header-background: #fafafa;
+    --color-border: #eee;
+    --color-print-text: black;
+    --color-print-background: white;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+    color: var(--color-text);
+    background: var(--color-background);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: var(--size-5xl) 0 var(--size-4xl);
+    border-bottom: 2px solid var(--color-border);
+    background-color: var(--color-header-background);
+}
+
+header nav,
+header h1,
+header p {
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--size-xl);
+    padding-right: var(--size-xl);
+}
+
+header nav {
+    position: relative;
+    text-align: right;
+    font-size: var(--font-size-sm);
+    top: var(--size-lg);
+    right: var(--size-lg);
+}
+
+header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--size-xs);
+}
+
+header p {
+    font-size: var(--font-size-md);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+main {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 var(--size-xl);
+}
+
+main section {
+    padding: var(--size-6xl) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+main section:last-child {
+    border: none;
+}
+
+h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--size-lg);
+    font-weight: var(--font-weight-semibold);
+}
+
+h3 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+p, li {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--size-sm);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--font-size-md);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Print */
+@media print {
+    /* TODO: size adjust */
+}
