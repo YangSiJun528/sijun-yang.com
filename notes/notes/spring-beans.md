@@ -40,7 +40,7 @@
 - 내부 코드 설명하는 글
     - [[Spring] ApplicationContext refresh 과정 | Blog](https://pplenty.tistory.com/6)
     - [Instantiating the Spring Container by Using AnnotationConfigApplicationContext| Spring Framework Docs](https://docs.spring.io/spring-framework/reference/core/beans/java/instantiating-container.html#beans-java-instantiating-container-scan)
-        - 우리가 쓰는 방식은 이렇게 동작한다.
+        - 우리가 일반적으로 쓰는 어노테이션 기반 방식은 이렇게 동작한다.
 
 ---
 
