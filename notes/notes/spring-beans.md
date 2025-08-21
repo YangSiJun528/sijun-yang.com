@@ -33,7 +33,7 @@
 - ClassPathBeanDefinitionScanner 가 하는 일
     - 컴포넌트 스캔을 하는데, .class(바이트코드) 파일을 읽어서 적절한 것만 BeanDefinition에 등록해둔다.
     - MetadataReader가 ASM 라이브러리로 바이트코드를 직접 읽어서 정보를 제공해준다.
-    - 실제로 쓸 때 클래스 로드가 발생하여 효율적으로 동작할 수 있게 해준다.
+    - 빈 등록 시에 내부적으로 Class.forName(리플렉션)를 호출해서 클래스 로드가 발생함.
 
 ---
 
