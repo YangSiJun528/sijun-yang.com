@@ -11,7 +11,7 @@
     - 부모, 자식 관계로 생성한다. 자식은 여럿이 될 수 있고, 자식끼리는 의존이 없다.
     - 웹 관련은 서블릿 컨테이너, 나머지는 루트 컨테이너에서 관리하는 식.
     - Spring Initializr는 요청별로 임시 컨텍스트를 생성하여 특정 작업 수행 후 폐기한다.
-        - ProjectGenerationInvoker#createProjectGenerator 호출 시 외부에서 Context를 전달하는게 아니면 매 요청 시마다 ProjectGenerationContext를 만든다.
+        - ProjectGenerationInvoker의 static 메서드 createProjectGenerator 호출 시 외부에서 Context를 전달하는게 아니면 매 요청 시마다 ProjectGenerationContext를 만든다.
         - ProjectGenerator#defaultContextFactory 참고
         - 각 프로젝트 생성 요청이 서로 영향을 주지 않도록 완전히 격리한다. (설정이나 컨트리뷰터(Gradle, Java, Kotlin에 Build, Code 추가 같은거)가 요청마다 다를 수 있어서)
         - 실제로 이 해당 경우가 얼마나 있을지는 모르겠음. Spring Initializr에서나 봄.
@@ -32,6 +32,7 @@
 
 - ClassPathBeanDefinitionScanner 가 하는 일
     - 컴포넌트 스캔을 하는데, .class(바이트코드) 파일을 읽어서 적절한 것만 BeanDefinition에 등록해둔다.
+    - MetadataReader가 ASM 라이브러리로 바이트코드를 직접 읽어서 정보를 제공해준다.
     - 실제로 쓸 때 클래스 로드가 발생하여 효율적으로 동작할 수 있게 해준다.
 
 ---
@@ -57,8 +58,8 @@
 
 ---
 
-- 스프링 컨테이너가 꼭 필요한가? (런타임 시점 DI)
-    - Rust로 만들어진 Axum은 컴파일 DI, Jetbrains에서 만드는 Ktor은 기본적으로 DI가 없고 추가해서 씀.
+- 스프링 컨테이너가 꼭 필요한가?
+    - Rust로 만들어진 Axum은 DI가 없음 (정확히는 모르지만 컴파일 시점에 정해지는건 확실), Jetbrains에서 만드는 Ktor은 기본적으로 DI가 없고 선택해서 씀 (주로 쓰는건 라이브러리는 컴파일 DI임).
     - 컴파일 시점에 되면 런타임 시점에 스캔이 필요없고, 불필요한건 지울 수 있으니까 좋을거 같은데
     - 테스트 쉽게 하는것도, 외부 구성의 장점이지 런타임 시점 DI의 장점이 아닌 거 같음.
     - setter도 복잡한 구성이 필요한 내부 코드에서나 쓴다는 걸 보면 컴파일 시점으로 대체 가능하므로 런타임 시점의 장점이 크게 없어보임.
