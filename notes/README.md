@@ -20,6 +20,7 @@
 - 📝 [Rust 예외처리 전략 자료](./notes/rust-exception-handling.md)
 
 ### Database
+- 📝 [도커로 PostgreSQL 띄우기 (로컬 개발용)](./notes/init-postgresql-in-docker.md)
 - 🔗 [What I Wish Someone Told Me About Postgres](https://challahscript.com/what_i_wish_someone_told_me_about_postgres) 저자가 PostgreSQL 쓰면서 미리 알았으면 좋았을 것들 
 
 ### OS
