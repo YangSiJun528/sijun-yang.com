@@ -4,6 +4,7 @@
 
 ### 개발 방법론
 - 🔗 [The Grug Brained Developer - A layman's guide to thinking like the self-aware smol brained](https://grugbrain.dev/)
+- 🔗 [The Architecture of Open Source Applications](https://aosabook.org/en/index.html/): 오픈 소스 프로젝트의 저자가 직접 프로젝트의 아키텍처나 교훈을 작성함 - 여기 있는게 맞나?
 
 ### 지도 관련 프로로그래밍
 - 📝 [지도 관련 프로그래밍 자료](./notes/geographic-bookmarks.md)
