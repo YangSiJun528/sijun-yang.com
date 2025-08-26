@@ -25,7 +25,6 @@
 
 ### OS
 - 🔗 [Understanding the Memory Layout of Linux Executables | Github](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)
-- 🔗 [Understanding the Memory Layout of Linux Executables | Github](https://gist.github.com/CMCDragonkai/10ab53654b2aa6ce55c11cfc5b2432a4)
 
 ### 프로그래밍 언어 개발
 - 🔗 [Writing that changed how I think about PL](https://bernsteinbear.com/blog/pl-writing/)
