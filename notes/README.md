@@ -8,6 +8,9 @@
 ### 아키텍처 / 디자인 패턴
 - 🔗 [The Architecture of Open Source Applications](https://aosabook.org/en/index.html/): 오픈 소스 프로젝트의 저자가 직접 프로젝트의 아키텍처나 교훈을 작성함
 
+### 프로그래밍 패러다임
+- 🔗 [Object oriented design patterns in the Linux kernel | Gist로 관련 링크 정리](https://gist.github.com/YangSiJun528/1fe53c62e14e1653c87cd74bf24884db): Linux 커널의 객체 지향 디자인 패턴 
+
 ### 지도 관련 프로로그래밍
 - 📝 [지도 관련 프로그래밍 자료](./notes/geographic-bookmarks.md)
 
