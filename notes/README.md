@@ -10,6 +10,7 @@
 
 ### 프로그래밍 패러다임
 - 🔗 [Object oriented design patterns in the Linux kernel | Gist로 관련 링크 정리](https://gist.github.com/YangSiJun528/1fe53c62e14e1653c87cd74bf24884db): Linux 커널의 객체 지향 디자인 패턴 
+- 🔗 [선언적 프로그래밍에 대한 착각과 오해 | 문동욱 블로그](https://evan-moon.github.io/2025/09/07/declarative-programming-misconceptions-and-essence/): 선언적 프로그래밍의 본질은 도구 사용이 아니라 “관계를 중심으로 사고하는 방식 전환”이다.
 
 ### 지도 관련 프로로그래밍
 - 📝 [지도 관련 프로그래밍 자료](./notes/geographic-bookmarks.md)
