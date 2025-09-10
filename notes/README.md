@@ -1,6 +1,8 @@
 ### Frontend
 - 🔗 [toss/frontend-fundamentals: Essential principles for frontend development | Gitub](https://github.com/toss/frontend-fundamentals): 토스에서 관리하는 FE 관련 정보들
 - 🔗 [The Surprising Truth About Pixels and Accessibility: should I use pixels or rems? • Josh W. Comeau](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/): 언제 px, em, rem을 사용해야 하나?
+- 🔗 [You no longer need JavaScript — Lyra blog](https://lyra.horse/blog/2025/08/you-dont-need-js/): 최신 HTML과 CSS로 할 수 있는 일. (작성자가 현업 개발자는 아님)
+- 🔗 [컴포넌트 스터디 1](https://yozm.wishket.com/magazine/detail/1272/), [2 - 김태희(요즘 IT)](https://yozm.wishket.com/magazine/detail/1292/): 팝업, 바텀시트, 스낵바, 바, 툴팁, 칩. 우아한형제들 프로덕트 디자이너가 소개하는 컴포넌트와 역할.
 
 ### 개발 방법론
 - 🔗 [The Grug Brained Developer - A layman's guide to thinking like the self-aware smol brained](https://grugbrain.dev/)
