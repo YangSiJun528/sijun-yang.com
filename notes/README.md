@@ -26,6 +26,7 @@
 
 ### Rust
 - 📝 [Rust 예외처리 전략 자료](./notes/rust-exception-handling.md)
+- 📝 [Be Simple | corrode Rust Consulting](https://corrode.dev/blog/simple/)[(한국어)](https://rosettalens.com/s/ko/simple): 읽기 쉽고 유지보수 가능한 단순함이 중요하다. Rust 언어와 별개로 좋은 내용.
 
 ### Database
 - 📝 [도커로 PostgreSQL 띄우기 (로컬 개발용)](./notes/init-postgresql-in-docker.md)
