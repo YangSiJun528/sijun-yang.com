@@ -46,3 +46,6 @@
 - 🔗 [The Absolute Minimum Every Software Developer Must Know About Unicode in 2023](https://tonsky.me/blog/unicode/) - 모든 개발자가 알아야 하는 유니코드에 대한 최소한의 지식.
 - 🔗 [아�니 이 글자 왜 들어간 거예요? | 요즘IT](https://yozm.wishket.com/magazine/detail/2836/) - 유니코드, 특히 한글과 관련한 이야기.
 - 🔗 [UTF-8 Everywhere](https://utf8everywhere.org/) - UTF-16 대신 UTF-8을 사용해야 한다고 주장하는 글. 주장과 별개로 설명 잘함.
+
+## 숫자 & 부동소수점 표현
+- 📝 [부동소수점 & IEEE 754 정리 (미완성)](./notes/floating-point-numbers.md)
