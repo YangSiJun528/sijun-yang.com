@@ -192,6 +192,7 @@ Wobble과 별개로 진법 차이로 인한 십진 <-> 이진 정확 표현 불�
 이 점 때문에, 수가 커질수록 유효하게 표현 가능한 가장 작은 수 단위(아마 ULP?라고 불렀던거 같음)도 증가함.
 
 > 시각적인 자료로 보고 싶다면, [^2]이 자료의 숫자 선(number line) 부분을 참고하자.
+> ![example-img-02](https://docs.google.com/drawings/d/1SLPTvaetR6aulgQ-lW2ZQEOSkyEEOZbEC4yNFWkYETA/pub?w=625&h=148)
 
 ### 그래서 정확한 정밀도 값이 무엇인가? - 보완 조금만? 여기는 이해보다는 사실 요약에 가까워서
 
