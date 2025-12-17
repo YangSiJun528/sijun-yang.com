@@ -4,6 +4,7 @@ base_url = "https://sijun-yang.com/"
 title = "Sijun Yang"
 description = "Sijun Yang의 블로그"
 default_language = "ko"
+author = "Sijun Yang"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
