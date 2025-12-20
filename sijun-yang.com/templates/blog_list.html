@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section-header">
+    <h1>{{ section.title }}</h1>
+    {{ section.content | safe }}
+</section>
+
+<section class="posts-list">
+    <ul>
+        {% for page in section.pages %}
+        <li>
+            <article>
+                <a href="{{ page.permalink }}" class="post-title">{{ page.title }}</a>
+                <p class="post-description">{{ page.description }}</p>
+                <time class="post-time" datetime="{{ page.date }}">{{ page.date | date(format="%Y년 %m월 %d일") }}</time>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock content %}

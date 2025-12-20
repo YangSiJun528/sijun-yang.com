@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="page">
+    {#
+        article 안의 header(최상위가 아닌)의 경우 landmark로 간주되지 않는다고 함
+        TODO: ARIA나 Landmark 같은 웹 접근성 관련 내용 찾아보고 태그 적절하게 바꾸기
+          참고: https://developer.mozilla.org/ko/docs/Web/Accessibility
+    #}
+    <header class="page-header">
+        <h1>{{ page.title }}</h1>
+        <p class="page-description">{{ page.description }}</p>
+        <div class="page-meta">
+            <time datetime="{{ page.date }}">{{ page.date | date(format="%Y년 %m월 %d일") }}</time>
+        </div>
+    </header>
+
+    <div class="page-content">
+        {{ page.content | safe }}
+    </div>
+</article>
+{% endblock content %}
