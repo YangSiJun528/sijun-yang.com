@@ -15,33 +15,38 @@
 </head>
 <body>
     <header>
-        <nav aria-label="Primary navigation links">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/blog/">Blog</a></li>
-                <li><a href="/resume">Resume</a></li>
-            </ul>
-        </nav>
+        <div class="width-wrapper">
+            <nav aria-label="Primary navigation links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/resume">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     {# extra.page_style(필수임) 값을 읽어서 main 하위의 스타일을 특정 섹션이나 페이지에 맞게 커스텀할 수 있게 함 #}
     <main class="{% if section %}{{ section.extra.page_style }}{% else %}{{ page.extra.page_style }}{% endif %}">
-        {% block content %} {% endblock content %}
+        <div class="width-wrapper">
+            {% block content %} {% endblock content %}
+        </div>
     </main>
 
     <footer>
-        <p>Sijun Yang</p>
-        <ul>
-            <li>Built with <a href="https://www.getzola.org/">Zola</a></li>
-            <li><a href="https://github.com/YangSiJun528/sijun-yang.com">Source</a></li>
-        </ul>
-
-        <nav aria-label="Footer links">
-            <ul>
-                <li><a href="/rss.xml">RSS</a></li>
-                <li><a href="/sitemap.xml">Sitemap</a></li>
-                <li><a href="/robots.txt">robots.txt</a></li>
-            </ul>
-        </nav>
+        <div class="width-wrapper">
+            <p>Sijun Yang</p>
+            <p>
+                Built with <a href="https://www.getzola.org/">Zola</a> -
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source</a>
+            </p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="/rss.xml">RSS</a></li>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/robots.txt">robots.txt</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>

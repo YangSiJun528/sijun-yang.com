@@ -1,5 +1,9 @@
 :root {
-    /* Size variables (for font-size, padding, margin, etc.) */
+    /* ===========================================
+       Boilerplate attr
+       =========================================== */
+
+    /* Size variables (for padding, margin, etc.) */
     --size-xs: 0.25rem; /* 4px */
     --size-sm: 0.5rem; /* 8px */
     --size-md: 0.75rem; /* 12px */
@@ -31,11 +35,72 @@
     --font-weight-black: 900;
 
     /* Colors */
-    --color-primary: #0070f3;
-    --color-text: #222;
-    --color-background: #fff;
-    --color-header-background: #fafafa;
-    --color-border: #eee;
-    --color-print-text: black;
-    --color-print-background: white;
+    --color-primary: #4f6b8f;
+    --color-primary-activation: #3d5a80;
+    --color-primary-disabled: #a7bed4;
+
+    --color-text: #1e293b;
+    --color-text-secondary: #475569;
+    --color-text-tertiary: #94a3b8;
+    --color-text-disabled: #cbd5e1;
+
+    --color-background: #ffffff;
+    --color-border: #e2e8f0;
+
+
+    /* ===========================================
+       Custom attr
+       =========================================== */
+
+    /* Layout */
+    --max-width: 50rem;;
+
+    /* Fonts */
+    /* 이거 https://portfolio.sionly.one/ 이 사이트 보고 AI한테 뜯어와달라 한건데, 어떻게 되는건진 잘 모름 */
+    --font-sans:
+            pretendard,
+            "pretendard Fallback",
+            ui-sans-serif,
+            system-ui,
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
+
+    @font-face {
+        font-family: "pretendard Fallback";
+        src:
+                local("Apple SD Gothic Neo"),
+                local("Noto Sans KR"),
+                local("Malgun Gothic"),
+                local("Segoe UI"),
+                local("Arial");
+    }
+}
+
+
+/* ===========================================
+   Base
+   =========================================== */
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+}
+
+main {
+    /* modern css reset에서 설정된 값이 있어서 flex 설정으로만 sticky footer 가능 */
+    flex: 1 0 auto;
+}
+
+/* 참고한 여러 사이트에서 최대 가로 길이 고정을 위해 쓰는 방식 */
+.width-wrapper {
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--size-xl);
 }
