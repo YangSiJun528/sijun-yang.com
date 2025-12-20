@@ -104,3 +104,130 @@ main {
     margin: 0 auto;
     padding: 0 var(--size-xl);
 }
+
+/* ===========================================
+   Global Typography
+   Based on: https://github.com/paceaux/typography-baseline
+   이 부분은 AI가 위 기반 css랑 내 보일러플레이트 css 보고 짜준거라 잘 모름.
+   =========================================== */
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    margin-bottom: var(--size-md);
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: var(--font-size-3xl);
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+}
+
+h4 {
+    font-size: var(--font-size-lg);
+}
+
+h5,
+h6 {
+    font-size: var(--font-size-md);
+}
+
+/* Paragraphs */
+p {
+    line-height: 1.618;
+    margin-bottom: var(--size-lg);
+}
+
+/* Links */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-primary);
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-primary-activation);
+    border-bottom-style: solid;
+    outline: none;
+}
+
+/* Lists */
+ul,
+ol {
+    padding: var(--size-lg) var(--size-xl);
+    line-height: 1.618;
+}
+
+li {
+    list-style-position: inside;
+    text-indent: -0.9em;
+    margin: 0 0 0 var(--size-xl);
+    line-height: 1.618;
+}
+
+/* Blockquote */
+blockquote {
+    padding: var(--size-lg) var(--size-xl);
+    border-left: 10px solid var(--color-border);
+    background: rgba(148, 163, 184, 0.15);
+    margin: var(--size-2xl) var(--size-xl);
+    line-height: 1.618;
+}
+
+blockquote::before {
+    content: open-quote;
+    color: var(--color-text-tertiary);
+    vertical-align: -0.5em;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: var(--size-xl);
+}
+
+/* Horizontal rule */
+hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--size-2xl) var(--size-xl);
+}
+
+/* Inline elements */
+em,
+i {
+    font-style: italic;
+}
+
+strong,
+b {
+    font-weight: var(--font-weight-bold);
+}
+
+small {
+    font-size: var(--font-size-sm);
+}
+
+/* Code */
+code {
+    font-family: monospace;
+    font-size: var(--font-size-sm);
+}
+
+/* Abbreviation */
+abbr[title] {
+    text-decoration: dotted underline;
+    cursor: help;
+}
