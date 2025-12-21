@@ -81,82 +81,6 @@
 
 
 /* ===========================================
-   Base Layout
-   =========================================== */
-
-body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    font-family: var(--font-sans);
-    color: var(--color-text);
-}
-
-main {
-    /* modern css reset에서 설정된 값이 있어서 flex 설정으로만 sticky footer 가능 */
-    flex: 1 0 auto;
-}
-
-/* 참고한 여러 사이트에서 최대 가로 길이 고정을 위해 쓰는 방식 */
-.width-wrapper {
-    max-width: var(--max-width);
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 var(--size-xl);
-}
-
-header {
-    border-bottom: 1px solid var(--color-border);
-    padding: var(--size-xl) 0;
-
-    & nav {
-        & ul {
-            display: flex;
-            justify-content: flex-end;
-            gap: var(--size-2xl);
-            list-style: none;
-            margin: 0;
-            padding: 0;
-
-            & li {
-                margin: 0;
-                text-indent: 0;
-            }
-        }
-    }
-}
-
-footer {
-    border-top: 1px solid var(--color-border);
-    padding: var(--size-xl) 0;
-    margin-top: var(--size-2xl);
-    color: var(--color-text-secondary);
-
-    & p {
-        margin: var(--size-xs) 0;
-        font-size: var(--font-size-sm);
-    }
-
-    & nav {
-        margin-top: var(--size-sm);
-
-        & ul {
-            display: flex;
-            gap: var(--size-xl);
-            list-style: none;
-            margin: 0;
-            padding: 0;
-
-            & li {
-                margin: 0;
-                text-indent: 0;
-                font-size: var(--font-size-xs);
-            }
-        }
-    }
-}
-
-/* ===========================================
    Global Typography
    Based on: https://github.com/paceaux/typography-baseline
    이 부분은 AI가 위 기반 css랑 내 보일러플레이트 css 보고 짜준거라 잘 모름.
@@ -281,4 +205,80 @@ code {
 abbr[title] {
     text-decoration: dotted underline;
     cursor: help;
+}
+
+/* ===========================================
+   Base Layout
+   =========================================== */
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+}
+
+main {
+    /* modern css reset에서 설정된 값이 있어서 flex 설정으로만 sticky footer 가능 */
+    flex: 1 0 auto;
+}
+
+/* 참고한 여러 사이트에서 최대 가로 길이 고정을 위해 쓰는 방식 */
+.width-wrapper {
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--size-xl);
+}
+
+header {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--size-xl) 0;
+
+    & nav {
+        & ul {
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--size-2xl);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            & li {
+                margin: 0;
+                text-indent: 0;
+            }
+        }
+    }
+}
+
+footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--size-xl) 0;
+    margin-top: var(--size-2xl);
+    color: var(--color-text-secondary);
+
+    & p {
+        margin: var(--size-xs) 0;
+        font-size: var(--font-size-sm);
+    }
+
+    & nav {
+        margin-top: var(--size-sm);
+
+        & ul {
+            display: flex;
+            gap: var(--size-xl);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            & li {
+                margin: 0;
+                text-indent: 0;
+                font-size: var(--font-size-xs);
+            }
+        }
+    }
 }
