@@ -280,3 +280,95 @@ footer {
         }
     }
 }
+
+/* ===========================================
+   Blog List Section Layout
+   =========================================== */
+
+main.blog-list {
+    & .section-header {
+        margin-bottom: var(--size-4xl);
+    }
+
+    & .posts-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        & li {
+            padding: var(--size-2xl) 0;
+            border-bottom: 1px solid var(--color-border);
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    & .posts-list article {
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-md);
+    }
+
+    & .post-title {
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-semibold);
+        text-decoration: none;
+        border-bottom: none;
+        line-height: var(--size-lg);
+
+        &:hover {
+            color: var(--color-primary-activation);
+        }
+    }
+
+    & .post-description {
+        color: var(--color-text-secondary);
+        margin: 0;
+    }
+
+    & .post-time {
+        color: var(--color-text-tertiary);
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ===========================================
+   Blog Post Section Layout
+   =========================================== */
+
+main.blog-post {
+    & .page-header {
+        margin-bottom: var(--size-5xl);
+        padding-bottom: var(--size-2xl);
+        border-bottom: 1px solid var(--color-border);
+
+        & h1 {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--size-lg);
+        }
+
+        & .page-description {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--size-xl);
+        }
+
+        & .page-meta {
+            display: flex;
+            gap: var(--size-lg);
+            flex-wrap: wrap;
+
+            & time,
+            & span {
+                color: var(--color-text-tertiary);
+                font-size: var(--font-size-sm);
+            }
+        }
+    }
+}
