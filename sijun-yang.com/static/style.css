@@ -244,6 +244,7 @@ header {
 
             & li {
                 margin: 0;
+                padding: 0;
                 text-indent: 0;
             }
         }
