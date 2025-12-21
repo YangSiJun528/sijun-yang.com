@@ -144,15 +144,12 @@ a:focus {
 /* Lists */
 ul,
 ol {
-    padding: var(--size-lg) var(--size-xl);
     line-height: 1.618;
 }
 
 li {
-    list-style-position: inside;
-    text-indent: -0.9em;
-    margin: 0 0 0 var(--size-xl);
-    line-height: 1.618;
+    list-style-position: outside;
+    padding-bottom: var(--size-sm);
 }
 
 /* Blockquote */
