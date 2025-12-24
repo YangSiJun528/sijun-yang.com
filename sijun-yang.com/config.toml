@@ -44,3 +44,5 @@ github_alerts = true
 
 [extra]
 # Put all your custom variables here
+author_email = "yangsijun5528@gmail.com"
+author_github_url = "https://github.com/YangSiJun528"
