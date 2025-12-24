@@ -8,5 +8,3 @@ page_template = "blog_page.html"
 [extra]
 page_style = "blog-list"
 +++
-
-기술 블로그입니다. 개발하면서 배운 것들과 경험을 공유합니다.
