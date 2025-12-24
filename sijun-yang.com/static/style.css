@@ -161,14 +161,6 @@ blockquote {
     line-height: 1.618;
 }
 
-blockquote::before {
-    content: open-quote;
-    color: var(--color-text-tertiary);
-    vertical-align: -0.5em;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: var(--size-xl);
-}
 
 /* Horizontal rule */
 hr {
@@ -196,6 +188,17 @@ small {
 code {
     font-family: monospace;
     font-size: var(--font-size-sm);
+}
+
+/* Code Block */
+pre {
+    overflow-x: auto;
+    white-space: pre;
+    border-radius: var(--size-xs);
+    code {
+        display: block;
+        padding: var(--size-2xl) var(--size-xl);
+    }
 }
 
 /* Abbreviation */
