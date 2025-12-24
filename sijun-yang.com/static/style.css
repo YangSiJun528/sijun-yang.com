@@ -315,7 +315,6 @@ main.blog-list {
     & .posts-list article {
         display: flex;
         flex-direction: column;
-        gap: var(--size-md);
     }
 
     & .post-title {
@@ -323,7 +322,6 @@ main.blog-list {
         font-weight: var(--font-weight-semibold);
         text-decoration: none;
         border-bottom: none;
-        line-height: var(--size-lg);
 
         &:hover {
             color: var(--color-primary-activation);
