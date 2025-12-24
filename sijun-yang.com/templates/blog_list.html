@@ -12,8 +12,8 @@
         <li>
             <article>
                 <a href="{{ page.permalink }}" class="post-title">{{ page.title }}</a>
-                {% if page.description %} <p class="post-description">{{ page.description }}</p> {% endif %}
-                <time class="post-time" datetime="{{ page.date }}">{{ page.date | date(format="%Y년 %m월 %d일") }}</time>
+                {% if page.description %}<span class="post-description">{{ page.description }}</span>{% endif %}
+                <time class="post-time" datetime="{{ page.date }}">{{ page.date | date(format="%Y.%m.%d") }}</time>
             </article>
         </li>
         {% endfor %}

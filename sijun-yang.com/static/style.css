@@ -290,7 +290,7 @@ footer {
 
 main.blog-list {
     & .section-header {
-        margin-bottom: var(--size-4xl);
+        margin-bottom: var(--size-3xl);
     }
 
     & .posts-list ul {
@@ -299,28 +299,17 @@ main.blog-list {
         margin: 0;
 
         & li {
-            padding: var(--size-2xl) 0;
-            border-bottom: 1px solid var(--color-border);
+            padding: var(--size-sm) 0;
 
             &:first-child {
                 padding-top: 0;
             }
-
-            &:last-child {
-                border-bottom: none;
-            }
         }
     }
 
-    & .posts-list article {
-        display: flex;
-        flex-direction: column;
-    }
-
     & .post-title {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-md);
         font-weight: var(--font-weight-semibold);
-        text-decoration: none;
         border-bottom: none;
 
         &:hover {
@@ -330,12 +319,14 @@ main.blog-list {
 
     & .post-description {
         color: var(--color-text-secondary);
-        margin: 0;
+        font-size: var(--font-size-sm);
     }
 
     & .post-time {
         color: var(--color-text-tertiary);
         font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-normal);
+        white-space: nowrap;
     }
 }
 
