@@ -4,7 +4,7 @@ description = "소프트웨어 개발자 Sijun Yang의 개인 웹사이트"
 template = "default.html"
 
 [extra]
-page_style = "home"
+page_style = "about-me"
 +++
 
 소프트웨어 개발자 양시준입니다.   
