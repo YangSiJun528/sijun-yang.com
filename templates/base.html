@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ config.default_language }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {#
+        zola 규칙 상 section과 page을 구분하므로 공통 처리를 원하면 조건문이 필요
+        의도적으로 필수인 값(title, description 등)은 없으면 템플릿 빌드 단계에서 에러나게 작성
+    #}
+    <title>{% if page %}{{ page.title }} - {% elif section %}{{ section.title }} - {% endif %}{{ config.title }}</title>
+    <meta name="description" content="{% if page %}{{ page.description }}{% elif section %}{{ section.description }}{% endif %}">
+    <meta name="author" content="{{ config.author }}">
+    <link rel="stylesheet" href="/modern-css-reset.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="width-wrapper">
+            <nav aria-label="Primary navigation links">
+                <ul>
+                    <li><a href="/">About Me</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/resume">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    {# extra.page_style(필수임) 값을 읽어서 main 하위의 스타일을 특정 섹션이나 페이지에 맞게 커스텀할 수 있게 함 #}
+    <main class="{% if section %}{{ section.extra.page_style }}{% else %}{{ page.extra.page_style }}{% endif %}">
+        <div class="width-wrapper">
+            {% block content %} {% endblock content %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="width-wrapper">
+            <p>
+                Built with <a href="https://www.getzola.org/">Zola</a> -
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source Code</a>
+            </p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="/rss.xml">RSS</a></li>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/robots.txt">robots.txt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

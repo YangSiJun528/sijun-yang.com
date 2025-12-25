@@ -15,21 +15,21 @@
 - 🔗 [선언적 프로그래밍에 대한 착각과 오해 | 문동욱 블로그](https://evan-moon.github.io/2025/09/07/declarative-programming-misconceptions-and-essence/): 선언적 프로그래밍의 본질은 도구 사용이 아니라 “관계를 중심으로 사고하는 방식 전환”이다.
 
 ### 지도 관련 프로로그래밍
-- 📝 [지도 관련 프로그래밍 자료](./notes/geographic-bookmarks.md)
+- 📝 [지도 관련 프로그래밍 자료](notes/geographic-bookmarks.md)
 
 ### JVM
 - 🔗 [Java 컴파일에서 실행까지 | HomoEfficio 블로그](https://homoefficio.github.io/2019/01/31/Back-to-the-Essence-Java-%EC%BB%B4%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%EA%B9%8C%EC%A7%80-1/)
-- 📝 [자바 로깅 관련 정리](./notes/jvm-logging.md)
+- 📝 [자바 로깅 관련 정리](notes/jvm-logging.md)
 
 ### Spring
-- 📝 [스프링 빈과 컨테이너 잡소리](./notes/spring-beans.md)
+- 📝 [스프링 빈과 컨테이너 잡소리](notes/spring-beans.md)
 
 ### Rust
-- 📝 [Rust 예외처리 전략 자료](./notes/rust-exception-handling.md)
+- 📝 [Rust 예외처리 전략 자료](notes/rust-exception-handling.md)
 - 📝 [Be Simple | corrode Rust Consulting](https://corrode.dev/blog/simple/)[(한국어)](https://rosettalens.com/s/ko/simple): 읽기 쉽고 유지보수 가능한 단순함이 중요하다. Rust 언어와 별개로 좋은 내용.
 
 ### Database
-- 📝 [도커로 PostgreSQL 띄우기 (로컬 개발용)](./notes/init-postgresql-in-docker.md)
+- 📝 [도커로 PostgreSQL 띄우기 (로컬 개발용)](notes/init-postgresql-in-docker.md)
 - 🔗 [What I Wish Someone Told Me About Postgres](https://challahscript.com/what_i_wish_someone_told_me_about_postgres) 저자가 PostgreSQL 쓰면서 미리 알았으면 좋았을 것들 
 
 ### OS
@@ -48,4 +48,4 @@
 - 🔗 [UTF-8 Everywhere](https://utf8everywhere.org/) - UTF-16 대신 UTF-8을 사용해야 한다고 주장하는 글. 주장과 별개로 설명 잘함.
 
 ## 숫자 & 부동소수점 표현
-- 📝 [부동소수점 & IEEE 754 정리 (미완성)](./notes/floating-point-numbers.md)
+- 📝 [부동소수점 & IEEE 754 정리 (미완성)](notes/floating-point-numbers.md)

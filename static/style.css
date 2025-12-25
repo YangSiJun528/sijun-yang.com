@@ -1,0 +1,399 @@
+:root {
+    /* ===========================================
+       Boilerplate attr
+       =========================================== */
+
+    /* Size variables (for padding, margin, etc.) */
+    --size-xs: 0.25rem; /* 4px */
+    --size-sm: 0.5rem; /* 8px */
+    --size-md: 0.75rem; /* 12px */
+    --size-lg: 1rem; /* 16px */
+    --size-xl: 1.25rem; /* 20px */
+    --size-2xl: 1.5rem; /* 24px */
+    --size-3xl: 2rem; /* 32px */
+    --size-4xl: 2.5rem; /* 40px */
+    --size-5xl: 3rem; /* 48px */
+    --size-6xl: 4rem; /* 64px */
+
+    /* Font-specific sizes */
+    --font-size-xs: 0.75rem; /* 12px */
+    --font-size-sm: 0.875rem; /* 14px */
+    --font-size-md: 1rem; /* 16px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --font-size-xl: 1.3125rem; /* 21px */
+    --font-size-2xl: 1.5rem; /* 24px */
+    --font-size-3xl: 2.625rem; /* 42px */
+    --font-size-4xl: 4rem; /* 64px */
+
+    /* Font weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
+
+    /* Colors */
+    --color-primary: #4f6b8f;
+    --color-primary-activation: #3d5a80;
+    --color-primary-disabled: #a7bed4;
+
+    --color-text: #1e293b;
+    --color-text-secondary: #475569;
+    --color-text-tertiary: #94a3b8;
+    --color-text-disabled: #cbd5e1;
+
+    --color-background: #ffffff;
+    --color-border: #e2e8f0;
+
+
+    /* ===========================================
+       Custom attr
+       =========================================== */
+
+    /* Layout */
+    --max-width: 50rem;;
+
+    /* Fonts */
+    /* 이거 https://portfolio.sionly.one/ 이 사이트 보고 AI한테 뜯어와달라 한건데, 어떻게 되는건진 잘 모름 */
+    --font-sans:
+            pretendard,
+            "pretendard Fallback",
+            ui-sans-serif,
+            system-ui,
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
+
+    @font-face {
+        font-family: "pretendard Fallback";
+        src:
+                local("Apple SD Gothic Neo"),
+                local("Noto Sans KR"),
+                local("Malgun Gothic"),
+                local("Segoe UI"),
+                local("Arial");
+    }
+}
+
+
+/* ===========================================
+   Global Typography
+   Based on: https://github.com/paceaux/typography-baseline
+   이 부분은 AI가 위 기반 css랑 내 보일러플레이트 css 보고 짜준거라 잘 모름.
+   =========================================== */
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    margin-bottom: var(--size-md);
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: var(--font-size-3xl);
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+}
+
+h4 {
+    font-size: var(--font-size-lg);
+}
+
+h5,
+h6 {
+    font-size: var(--font-size-md);
+}
+
+/* Paragraphs */
+p {
+    line-height: 1.618;
+}
+
+/* Links */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-primary);
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-primary-activation);
+    border-bottom-style: solid;
+    outline: none;
+}
+
+/* Lists */
+ul,
+ol {
+    line-height: 1.618;
+}
+
+li {
+    list-style-position: outside;
+}
+
+/* Blockquote */
+blockquote {
+    padding: var(--size-lg) var(--size-xl);
+    border-left: 10px solid var(--color-border);
+    background: rgba(148, 163, 184, 0.15);
+    margin: var(--size-2xl) var(--size-xl);
+    line-height: 1.618;
+
+    & p {
+        margin: 0;
+    }
+}
+
+
+/* Horizontal rule */
+hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--size-2xl) var(--size-xl);
+}
+
+/* Inline elements */
+em,
+i {
+    font-style: italic;
+}
+
+strong,
+b {
+    font-weight: var(--font-weight-bold);
+}
+
+small {
+    font-size: var(--font-size-sm);
+}
+
+/* Code */
+code {
+    font-family: monospace;
+    font-size: var(--font-size-sm);
+}
+
+/* Code Block */
+pre {
+    overflow-x: auto;
+    white-space: pre;
+    border-radius: var(--size-xs);
+    code {
+        display: block;
+        padding: var(--size-2xl) var(--size-xl);
+    }
+}
+
+/* Abbreviation */
+abbr[title] {
+    text-decoration: dotted underline;
+    cursor: help;
+}
+
+/* ===========================================
+   Base Layout
+   =========================================== */
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+}
+
+main {
+    /* modern css reset에서 설정된 값이 있어서 flex 설정으로만 sticky footer 가능 */
+    flex: 1 0 auto;
+}
+
+/* 참고한 여러 사이트에서 최대 가로 길이 고정을 위해 쓰는 방식 */
+.width-wrapper {
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--size-xl);
+}
+
+header {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--size-xl) 0;
+
+    & nav {
+        & ul {
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--size-2xl);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            & li {
+                margin: 0;
+                padding: 0;
+                text-indent: 0;
+            }
+        }
+    }
+}
+
+footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--size-xl) 0;
+    margin-top: var(--size-2xl);
+    color: var(--color-text-secondary);
+
+    & p {
+        margin: var(--size-xs) 0;
+        font-size: var(--font-size-sm);
+    }
+
+    & nav {
+        margin-top: var(--size-sm);
+
+        & ul {
+            display: flex;
+            gap: var(--size-xl);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            & li {
+                margin: 0;
+                text-indent: 0;
+                font-size: var(--font-size-xs);
+            }
+        }
+    }
+}
+
+/* ===========================================
+   Blog List Section Layout
+   =========================================== */
+
+main.blog-list {
+    & .section-header {
+        margin-bottom: var(--size-3xl);
+    }
+
+    & .posts-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        & li {
+            padding: var(--size-sm) 0;
+
+            &:first-child {
+                padding-top: 0;
+            }
+        }
+    }
+
+    & .post-title {
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-semibold);
+        border-bottom: none;
+
+        &:hover {
+            color: var(--color-primary-activation);
+        }
+    }
+
+    & .post-description {
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-sm);
+    }
+
+    & .post-time {
+        color: var(--color-text-tertiary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-normal);
+        white-space: nowrap;
+    }
+}
+
+/* ===========================================
+   Blog Post Section Layout
+   =========================================== */
+
+main.blog-post {
+    & .page-header {
+        margin-bottom: var(--size-5xl);
+        padding-bottom: var(--size-2xl);
+        border-bottom: 1px solid var(--color-border);
+
+        & h1 {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--size-lg);
+        }
+
+        & .page-description {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--size-xl);
+        }
+
+        & .page-meta {
+            display: flex;
+            gap: var(--size-lg);
+            flex-wrap: wrap;
+
+            & time,
+            & span {
+                color: var(--color-text-tertiary);
+                font-size: var(--font-size-sm);
+            }
+        }
+    }
+
+    /* for zola bottom_footnotes configuration */
+    & .footnote-reference {
+        font-size: var(--font-size-sm);
+        & a {
+            border-bottom: none;
+        }
+
+        &::before {
+            content: "[";
+        }
+
+        &::after {
+            content: "]";
+        }
+    }
+
+    & .footnotes {
+        & p {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+/* ===========================================
+   Home Section Layout
+   =========================================== */
+
+main.about-me {
+
+}
