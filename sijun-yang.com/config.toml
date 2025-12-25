@@ -42,6 +42,8 @@ highlight_code = true
 # Visual appearance depends on theme-level support; refer to your theme's documentation for more information.
 github_alerts = true
 
+bottom_footnotes = true
+
 [extra]
 # Put all your custom variables here
 author_email = "yangsijun5528@gmail.com"
