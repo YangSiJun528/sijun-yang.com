@@ -1,3 +1,6 @@
+# Zola static site build outputs
+/public/**
+
 # External content that may contain copyrighted material - not for redistribution.
 /external-sources
 
