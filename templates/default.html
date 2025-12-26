@@ -2,10 +2,10 @@
 
 {% block content %}
 {% if section %}
-<h1>{{ section.title }}</h1>
+<h1 class="main-title">{{ section.title }}</h1>
 {{ section.content | safe }}
 {% else %}
-<h1>{{ page.title }}</h1>
+<h1 class="main-title">{{ page.title }}</h1>
 {{ page.content | safe }}
 {% endif %}
 {% endblock content %}

@@ -252,6 +252,9 @@ body {
 main {
     /* modern css reset에서 설정된 값이 있어서 flex 설정으로만 sticky footer 가능 */
     flex: 1 0 auto;
+    .main-title {
+        color: var(--color-primary);
+    }
 }
 
 /* 참고한 여러 사이트에서 최대 가로 길이 고정을 위해 쓰는 방식 */
