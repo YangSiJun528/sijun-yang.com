@@ -1,7 +1,7 @@
 +++
 title = "동기/비동기, 블로킹/논블로킹 개념은 어디서부터 잘못되었나"
 description = "Blocking + Async는 존재하지 않는다"
-date = 2025-12-24
+date = 2025-12-11
 
 [extra]
 page_style = "blog-post"
