@@ -1,6 +1,6 @@
 +++
 title = "About Me"
-description = "소프트웨어 개발자 Sijun Yang의 개인 웹사이트"
+description = "개발자 양시준의 소개 패이지"
 template = "default.html"
 
 [extra]
