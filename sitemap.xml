@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://sijun-yang.com/</loc>
+    </url>
+    <url>
+        <loc>https://sijun-yang.com/blogs/</loc>
+    </url>
+    <url>
+        <loc>https://sijun-yang.com/blogs/blocking-nonblocking-sync-async-misconceptions/</loc>
+        <lastmod>2025-12-11</lastmod>
+    </url>
+    <url>
+        <loc>https://sijun-yang.com/blogs/nand-to-tetris/</loc>
+        <lastmod>2024-06-11</lastmod>
+    </url>
+    <url>
+        <loc>https://sijun-yang.com/blogs/start-my-website-with-zola/</loc>
+        <lastmod>2025-12-26</lastmod>
+    </url>
+    <url>
+        <loc>https://sijun-yang.com/projects/</loc>
+    </url>
+</urlset>

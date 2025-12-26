@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Sijun Yang</title>
+      <link>https://sijun-yang.com/</link>
+      <description>Sijun Yang의 블로그</description>
+      <generator>Zola</generator>
+      <language>ko</language>
+      <atom:link href="https://sijun-yang.com/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 26 Dec 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Zola로 개인 사이트를 시작하며</title>
+          <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+          <author>Sijun Yang</author>
+          <link>https://sijun-yang.com/blogs/start-my-website-with-zola/</link>
+          <guid>https://sijun-yang.com/blogs/start-my-website-with-zola/</guid>
+          <description xml:base="https://sijun-yang.com/blogs/start-my-website-with-zola/">&lt;p&gt;취업 이후 개인 사이트나 블로그를 운영하고 싶다는 생각은 계속 있었다.
+내 이름으로 된 도메인도 구매했지만, 문제는 사이트를 구현하는것에서 발생하였다.
+도무지 내가 원하는 테마가 존재하지 않았다.&lt;&#x2F;p&gt;
+&lt;p&gt;여러 정적 사이트 생성기와 테마를 오가거나 바이브 코딩으로 정적 사이트를 직접 만들어본 적도 있었지만, 하지만 대부분 초기 설정 단계에서 멈췄다.
+어떤 때는 스타일이 마음에 들지 않았고, 어떤 때는 구조가 만족스럽지 않았다.&lt;&#x2F;p&gt;
+&lt;p&gt;결국 한동안은 HTML과 CSS로 만든 단일 페이지로 개인 사이트를 유지했다. 오히려 직접 코드를 작성하는 방식이 내 성향 상 맞는다는 생각이 들었다.
+그래서 정적 사이트 생성기를 제대로 배워서 직접 운영해야만 개인 사이트를 잘 유지할 수 있겠다는 결론에 도달했다.&lt;&#x2F;p&gt;
+&lt;p&gt;그 결과 선택한 도구가 Zola였고, 현재 이 사이트는 Zola로 호스팅 및 관리하고 있다.
+Zola를 선택한 이유는 필수적인 기능들이 내장되어 있으면서도 공식 문서가 비교적 짧아 빠르게 전체 구조를 파악할 수 있었기 때문이다. Rust로 작성되었다는 점도 마음에 들었다.&lt;br &#x2F;&gt;
+Hugo는 더 대중적이고 자료도 풍부하지만, 개인 사이트 용도로 사용하기에는 기능과 문서 규모가 다소 부담스럽게 느껴졌다.&lt;&#x2F;p&gt;
+&lt;p&gt;2주정도 남는 시간을 들여서 사이트를 완성했다. 솔직히 결과물이 마음에 들지는 않는다. 하지만 내가 작성한 만큼, 충분히 시간을 들이면 좋게 바꿀 수 있다는 자신이 있다.&lt;&#x2F;p&gt;
+&lt;p&gt;어느정도 zola를 사용한 입장에서 평가해보면, 현재까지는 만족스럽다.&lt;br &#x2F;&gt;
+비교군인 Hugo나 Jekyll을 깊게 사용해본 경험이 없어 직접적인 비교는 어렵지만, 내가 원하는 기능은 모두 제공하고 있고 문서도 잘 정리되어 있어 부족함은 느끼지 못했다.
+특히 shortcodes가 유용해보이는데, 여러 페이지에서 공유되는 작은 컴포넌트를 재사용할 수 있다.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;jeongjeog-saiteureul-mandeul-ddae-alaya-hal-geos&quot;&gt;정적 사이트를 만들 때 알아야 할 것&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;jeongjeog-saiteuneun-eoddeohge-dongjaghaneunga&quot;&gt;정적 사이트는 어떻게 동작하는가?&lt;&#x2F;h2&gt;
+&lt;p&gt;AI를 활용해 개념 정리를 먼저 했다. 이 내용을 이해하고 나선, 공식 문서를 이해하는데 큰 어려움은 없었다.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;gist.github.com&#x2F;YangSiJun528&#x2F;7b756876d09bc9ede2b584ac00236f79&quot;&gt;GIST에 AI가 정리한 내용을 저장해두었다.&lt;&#x2F;a&gt; (이것까지는 정리하고 싶지 않있다.)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gaeinjeogin-gijungwa-weoncig&quot;&gt;개인적인 기준과 원칙&lt;&#x2F;h2&gt;
+&lt;p&gt;여러 번의 실패로 알게 된 원칙을 정리해보았다.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML &#x2F; CSS &#x2F; Markdown 간의 결합도를 낮춘다
+&lt;ul&gt;
+&lt;li&gt;HTML은 순수하게 구조 표현, CSS는 스타일, Markdown은 SSG 특성 상 긴 본문의 내용을 표시하는데만 집중한다.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;JS는 사용하지 않는다. 정적 생성기에서 JS는 너무 과하고 복잡해진다.&lt;&#x2F;li&gt;
+&lt;li&gt;코드와 기능은 최대한 단순하게 유지한다&lt;&#x2F;li&gt;
+&lt;li&gt;AI는 보조 도구로만 사용한다
+&lt;ul&gt;
+&lt;li&gt;최소한 내가 이해하고 AI 없이도 수정 가능할 정도의 복잡도를 유지해야 한다&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;peureimweokeuyi-gineungeul-sayonghagi&quot;&gt;프레임워크의 기능을 사용하기&lt;&#x2F;h2&gt;
+&lt;p&gt;제공하는 기능을 최대한 활용한다. AI나 인터넷 글만 참고하면 이러한 부분을 놓치기 쉬우므로 공식문서를 꼭 보는걸 추천한다.&lt;&#x2F;p&gt;
+&lt;p&gt;또한 컴파일 단계의 검증을 적극적으로 사용하는 편이 좋다고 생각한다.
+필요한 frontmatter나 설정 값이 없을 경우 경고를 발생시키거나 빌드를 실패하게 만들 수 있는데, AI는 이런 경우를 대부분 예외 처리하려는 경향이 있다.&lt;&#x2F;p&gt;
+&lt;p&gt;나는 의도적으로 이러한 예외 처리를 하지 않고, 컴파일 단계에서 실패하도록 두는 방식을 선호한다.
+예를 들어 사이트 제목이나 설명 같은 메타 정보, CSS 구분을 위한 식별자 등은 항상 존재해야 하는 값이다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;html-tempeulris-enjineul-sayonghagi&quot;&gt;HTML &amp;amp; 템플릿 엔진을 사용하기&lt;&#x2F;h2&gt;
+&lt;p&gt;가능하면 HTML 기능을 살리고 접근성을 높이려고 한다.
+아직 부족한 부분이 많지만, &lt;a href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;ko&#x2F;docs&#x2F;Web&#x2F;Accessibility&quot;&gt;접근성 - MDN&lt;&#x2F;a&gt;이나 &lt;a href=&quot;https:&#x2F;&#x2F;frontend-fundamentals.com&#x2F;a11y&#x2F;overview.html&quot;&gt;A11y Fundamentals - Toss&lt;&#x2F;a&gt;를 참고하고 있다.&lt;&#x2F;p&gt;
+&lt;p&gt;템플릿 엔진은 정적 사이트 생성기의 핵심적인 부분은 아니지만, 기본적인 문법을 익히고 사용할 필요는 있다. HTML 주석 대신 템플릿 엔진을 사용하면 빌드 이후에 보이지 않아서 자주 사용한다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;css-sayonghagi&quot;&gt;CSS 사용하기&lt;&#x2F;h2&gt;
+&lt;p&gt;Zola는 Sass를 지원하지만, 개인적으로는 순수 CSS만으로도 충분하다고 판단했다.
+공부해야 할 포인트를 불필요하게 늘리고 싶지 않았다. 대신 최신 CSS 기능을 적극적으로 활용하는 방향을 택했다. (관련된 글 &lt;a href=&quot;https:&#x2F;&#x2F;lyra.horse&#x2F;blog&#x2F;2025&#x2F;08&#x2F;you-dont-need-js&#x2F;&quot;&gt;You no longer need JavaScript&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;markdown-sayonghagi&quot;&gt;Markdown 사용하기&lt;&#x2F;h2&gt;
+&lt;p&gt;Markdown은 블로그 본문처럼 텍스트 콘텐츠를 표현하는 영역에만 사용하는 것이 좋다고 생각한다.&lt;br &#x2F;&gt;
+특정 레이아웃이나 스타일을 강제하기 위한 용도로 사용하는 것은 지양하고 있다.&lt;&#x2F;p&gt;
+&lt;p&gt;따라서 공유되거나 구조화된 데이터가 필요하다면 Markdown보다는 frontmatter에 두는 편이 더 적절하다. shortcodes를 사용하는 것도 좋은 방법이다.&lt;&#x2F;p&gt;
+&lt;p&gt;예를 들어, 프로젝트 페이지에 프로젝트 소개 카드와 클릭 시 상세 활동 내역을 보여주는 구조라면 다음과 같이 역할을 분리할 수 있다.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;frontmatter: 사이트 제목, 부연 설명, 메타데이터, 페이지 전역 데이터&lt;&#x2F;li&gt;
+&lt;li&gt;shortcodes: 제목, 로고, 짧은 소개, 참여 기간을 받아 구조화된 HTML 반환&lt;&#x2F;li&gt;
+&lt;li&gt;Markdown 본문: 상세 활동 내역과 설명&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;이처럼 역할을 명확히 나누는 편이 전체 구조를 이해하고 유지보수하는 데 도움이 된다.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>동기&#x2F;비동기, 블로킹&#x2F;논블로킹 개념은 어디서부터 잘못되었나</title>
+          <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+          <author>Sijun Yang</author>
+          <link>https://sijun-yang.com/blogs/blocking-nonblocking-sync-async-misconceptions/</link>
+          <guid>https://sijun-yang.com/blogs/blocking-nonblocking-sync-async-misconceptions/</guid>
+          <description xml:base="https://sijun-yang.com/blogs/blocking-nonblocking-sync-async-misconceptions/">&lt;p&gt;여러 개발 관련 글에서 Blocking&#x2F;Non-blocking과 Sync&#x2F;Async를 설명할 때면 항상 등장하는 2x2 매트릭스가 있다. 4개의 조합으로 나누어 설명하는 이 표를 한 번쯤은 보았을 것이다.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;blog&#x2F;sync-async-matrix.png&quot; alt=&quot;Blocking&#x2F;Non-blocking, Sync&#x2F;Async 비교 매트릭스&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;이 매트릭스에서 가장 이해하기 어려운 부분은 Blocking + Async 조합이다. 많은 블로그에서 이 조합을 설명하려고 시도하지만, 나는 대부분 억지스러운 설명이라는 인상을 받았다.&lt;&#x2F;p&gt;
+&lt;p&gt;최근 이 개념을 다시 공부하다가 이러한 설명은 올바르지 않다는 사실을 알게 되었다. 우리가 그동안 별 의심없이 받아들였던 이 설명이 잘못된 이유를 말해보고자 한다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jalmosdoen-seolmyeongyi-culceo&quot;&gt;잘못된 설명의 출처&lt;&#x2F;h2&gt;
+&lt;p&gt;이러한 매트릭스 기반의 설명의 시작은 IBM Developer의 2006년 글 &quot;Boost application performance using asynchronous I&#x2F;O&quot;인 것으로 보인다.&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-1-1&quot;&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;blog&#x2F;ibm-io-comparison.png&quot; alt=&quot;원래 글의 비교&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;IBM의 글은 리눅스 커널의 AIO(Asynchronous I&#x2F;O) API를 소개하면서 sync&#x2F;async와 blocking&#x2F;non-blocking을 조합해 4가지로 구분했다.&lt;&#x2F;p&gt;
+&lt;p&gt;그러나 이 글의 구분은 POSIX 표준 정의와는 다르다. 이 글에선 &lt;code&gt;select&lt;&#x2F;code&gt;&#x2F;&lt;code&gt;poll&lt;&#x2F;code&gt;를 blocking + async의 조합으로 소개하지만, POSIX 표준 정의에는 이런 조합이 등장할 수 없다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;posix-pyojunyi-silje-jeongyi&quot;&gt;POSIX 표준의 실제 정의&lt;&#x2F;h2&gt;
+&lt;p&gt;POSIX 표준&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-2-1&quot;&gt;&lt;a href=&quot;#fn-2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-3-1&quot;&gt;&lt;a href=&quot;#fn-3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;과 리처드 스티븐스(W. Richard Stevens)의 책 Unix Network Programming&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-4-1&quot;&gt;&lt;a href=&quot;#fn-4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;을 살펴보면 명확한 정의를 찾을 수 있다.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Synchronous I&#x2F;O: I&#x2F;O 작업이 완료될 때까지 요청 프로세스가 blocked&lt;&#x2F;li&gt;
+&lt;li&gt;Asynchronous I&#x2F;O: 요청 프로세스가 blocked되지 않음&lt;&#x2F;li&gt;
+&lt;li&gt;Blocking: 요청한 동작이 완료될 때까지 함수 호출이 대기&lt;&#x2F;li&gt;
+&lt;li&gt;Non-blocking: 요청한 동작을 즉시 완료할 수 없으면 지연 없이 반환&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;여기서 중요한 점은 I&#x2F;O 작업 완료의 의미다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;unix-i-o-modelyi-du-dangye&quot;&gt;Unix I&#x2F;O 모델의 두 단계&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x2F;O 작업은 일반적으로 두 단계로 이루어진다:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;데이터 준비 단계 - 디스크에서 데이터를 읽거나 네트워크에서 패킷이 도착하기를 기다린다. 데이터가 준비되면 커널 버퍼로 복사된다.&lt;&#x2F;li&gt;
+&lt;li&gt;데이터 복사 단계 - 커널 버퍼에서 애플리케이션 버퍼로 데이터를 복사한다.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;스티븐스는 Unix에서 사용 가능한 5가지 I&#x2F;O 모델을 다음과 같이 구분한다.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;1-blocking-i-o&quot;&gt;1. Blocking I&#x2F;O&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;blog&#x2F;blocking-io-model.png&quot; alt=&quot;Blocking I&#x2F;O 모델의 Flow&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;가장 흔한 I&#x2F;O 모델이다. &lt;code&gt;read()&lt;&#x2F;code&gt; 시스템 콜을 호출하면 데이터가 준비되고 복사가 완료될 때까지 프로세스가 block된다.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;2-non-blocking-i-o&quot;&gt;2. Non-blocking I&#x2F;O&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;blog&#x2F;nonblocking-io-model.png&quot; alt=&quot;Non-blocking I&#x2F;O 모델의 Flow&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;O_NONBLOCK&lt;&#x2F;code&gt; 플래그를 설정하면 데이터가 준비되지 않았을 때 &lt;code&gt;EAGAIN&lt;&#x2F;code&gt; 에러와 함께 즉시 반환한다. 하지만 데이터가 준비되면 복사하는 동안은 여전히 block된다.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;3-i-o-multiplexing&quot;&gt;3. I&#x2F;O Multiplexing&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;blog&#x2F;io-multiplexing-model.png&quot; alt=&quot;I&#x2F;O Multiplexing 모델의 Flow&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;select()&lt;&#x2F;code&gt;나 &lt;code&gt;poll()&lt;&#x2F;code&gt;을 사용해 여러 file descriptor를 동시에 감시한다. 준비된 fd에 대해 &lt;code&gt;read()&lt;&#x2F;code&gt;를 호출할 때 여전히 block된다.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;4-signal-driven-i-o&quot;&gt;4. Signal-Driven I&#x2F;O&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;blog&#x2F;signal-driven-io-model.png&quot; alt=&quot;Signal-Driven I&#x2F;O 모델의 Flow&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;SIGIO&lt;&#x2F;code&gt; 신호를 등록하고 데이터가 준비되면 신호를 받는다. 신호를 받은 후 &lt;code&gt;read()&lt;&#x2F;code&gt;를 호출하면 여전히 block된다.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;5-asynchronous-i-o&quot;&gt;5. Asynchronous I&#x2F;O&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;blog&#x2F;async-io-model.png&quot; alt=&quot;Asynchronous I&#x2F;O 모델의 Flow&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;진정한 비동기 I&#x2F;O다. &lt;code&gt;aio_read()&lt;&#x2F;code&gt;&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-1&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;는 즉시 반환되고, 커널이 백그라운드에서 두 단계를 모두 처리한 후 완료를 통지한다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;synchronous-vs-asynchronousyi-haegsim&quot;&gt;Synchronous vs Asynchronous의 핵심&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;blog&#x2F;io-models-comparison.png&quot; alt=&quot;5가지 I&#x2F;O 모델의 비교표&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;스티븐스는 Unix Network Programming에서 이 모델들의 동기&#x2F;비동기 여부를 명확하게 구분한다.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;POSIX defines these two terms as follows:&lt;&#x2F;p&gt;
+&lt;p&gt;A synchronous I&#x2F;O operation causes the requesting process to be blocked until that I&#x2F;O operation completes.&lt;br &#x2F;&gt;
+An asynchronous I&#x2F;O operation does not cause the requesting process to be blocked.&lt;br &#x2F;&gt;
+Using these definitions, the first four I&#x2F;O models (blocking, nonblocking, I&#x2F;O multiplexing, and signal-driven I&#x2F;O) are all synchronous because the actual I&#x2F;O operation (recvfrom) blocks the process. Only the asynchronous I&#x2F;O model matches the asynchronous I&#x2F;O definition.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;다음과 같이 번역할 수 있다.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;POSIX는 이 두 용어를 다음과 같이 정의한다:&lt;&#x2F;p&gt;
+&lt;p&gt;동기 I&#x2F;O(synchronous I&#x2F;O) 작업은 해당 I&#x2F;O 작업이 완료될 때까지 요청한 프로세스를 블로킹한다.&lt;br &#x2F;&gt;
+비동기 I&#x2F;O(asynchronous I&#x2F;O) 작업은 요청한 프로세스를 블로킹하지 않는다.&lt;br &#x2F;&gt;
+이 정의에 따르면, 처음 네 가지 I&#x2F;O 모델(블로킹 I&#x2F;O, 논블로킹 I&#x2F;O, I&#x2F;O 멀티플렉싱, 시그널 기반 I&#x2F;O)은 모두 동기 I&#x2F;O에 해당한다. 실제 I&#x2F;O 연산인 &lt;code&gt;recvfrom&lt;&#x2F;code&gt; 호출이 프로세스를 블로킹하기 때문이다.
+오직 비동기 I&#x2F;O 모델만이 POSIX에서 정의한 비동기 I&#x2F;O에 해당한다.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;5gaji-modelyi-silje-bunryu&quot;&gt;5가지 모델의 실제 분류&lt;&#x2F;h3&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;I&#x2F;O 모델&lt;&#x2F;th&gt;&lt;th&gt;Blocking&#x2F;Non-blocking&lt;&#x2F;th&gt;&lt;th&gt;Sync&#x2F;Async&lt;&#x2F;th&gt;&lt;th&gt;1단계 Block&lt;&#x2F;th&gt;&lt;th&gt;2단계 Block&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Blocking I&#x2F;O&lt;&#x2F;td&gt;&lt;td&gt;Blocking&lt;&#x2F;td&gt;&lt;td&gt;Synchronous&lt;&#x2F;td&gt;&lt;td&gt;Yes&lt;&#x2F;td&gt;&lt;td&gt;Yes&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Non-blocking I&#x2F;O&lt;&#x2F;td&gt;&lt;td&gt;Non-blocking&lt;&#x2F;td&gt;&lt;td&gt;Synchronous&lt;&#x2F;td&gt;&lt;td&gt;No (폴링)&lt;&#x2F;td&gt;&lt;td&gt;Yes&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;I&#x2F;O Multiplexing&lt;&#x2F;td&gt;&lt;td&gt;Blocking&lt;&#x2F;td&gt;&lt;td&gt;Synchronous&lt;&#x2F;td&gt;&lt;td&gt;Yes&lt;&#x2F;td&gt;&lt;td&gt;Yes&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Signal-driven I&#x2F;O&lt;&#x2F;td&gt;&lt;td&gt;Non-blocking&lt;&#x2F;td&gt;&lt;td&gt;Synchronous&lt;&#x2F;td&gt;&lt;td&gt;No (신호)&lt;&#x2F;td&gt;&lt;td&gt;Yes&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Asynchronous I&#x2F;O&lt;&#x2F;td&gt;&lt;td&gt;Non-blocking&lt;&#x2F;td&gt;&lt;td&gt;Asynchronous&lt;&#x2F;td&gt;&lt;td&gt;No&lt;&#x2F;td&gt;&lt;td&gt;No&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;앞의 네 가지 모델은 모두 데이터 복사 단계(2단계)에서 block된다. 따라서 POSIX 정의상 모두 synchronous다. 오직 asynchronous I&#x2F;O만이 두 단계 모두에서 block되지 않는다.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;wae-select-neun-synchronousinga&quot;&gt;왜 &lt;code&gt;select()&lt;&#x2F;code&gt;는 synchronous인가?&lt;&#x2F;h3&gt;
+&lt;p&gt;자료조사 과정에서 본 여러 자료에서 &lt;code&gt;select()&lt;&#x2F;code&gt;를 asynchronous로 설명하는 경우를 많이 보았다.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;select()&lt;&#x2F;code&gt;는 여러 I&#x2F;O를 동시에 처리할 수 있어서 비동기처럼 보이지만, 실제로는 다음과 같이 동작한다:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;프로세스가 감시할 파일 디스크립터 집합을 준비한다.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;select()&lt;&#x2F;code&gt;는 각 파일 디스크립터가 I&#x2F;O를 수행해도 블로킹되지 않을 상태인지를 알려준다.&lt;&#x2F;li&gt;
+&lt;li&gt;준비된 파일 디스크립터에 대해 애플리케이션이 &lt;code&gt;read()&lt;&#x2F;code&gt;를 직접 호출한다.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;이때 &lt;code&gt;read()&lt;&#x2F;code&gt; 호출은 시스템 콜이 완료될 때까지 호출자를 반환하지 않으며, POSIX 정의상 요청한 프로세스를 블로킹하므로 synchronous가 된다.&lt;&#x2F;p&gt;
+&lt;p&gt;Linux man page도 &lt;code&gt;select&lt;&#x2F;code&gt;를 &quot;synchronous I&#x2F;O multiplexing&quot;으로 명시하고 있다.&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-5-1&quot;&gt;&lt;a href=&quot;#fn-5&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 반면 &lt;code&gt;io_uring&lt;&#x2F;code&gt;&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-7-1&quot;&gt;&lt;a href=&quot;#fn-7&quot;&gt;7&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;이나 POSIX &lt;code&gt;aio_&lt;&#x2F;code&gt;&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-6-2&quot;&gt;&lt;a href=&quot;#fn-6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; 함수들은 &quot;Asynchronous I&#x2F;O&quot;로 구분한다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;keoneol-i-o-gaenyeomgwa-peurogeuraeming-modelyi-hondong&quot;&gt;커널 I&#x2F;O 개념과 프로그래밍 모델의 혼동&lt;&#x2F;h2&gt;
+&lt;p&gt;IBM의 글은 OS 레벨 I&#x2F;O를 다루는 기술 문서로, 리눅스 시스템 프로그래밍을 나름의 맥락 안에서 설명한다.&lt;&#x2F;p&gt;
+&lt;p&gt;그러나 이 글이 널리 인용되면서 두 가지 문제가 발생했다.
+첫째, IBM 글에서 사용한 구분 방식은 POSIX 표준의 정의와 정확히 일치하지 않았다. 그럼에도 불구하고 해당 글이 반복적으로 인용되면서, 표준과 다른 설명이 사실처럼 확산되었다.
+둘째, 이후 수많은 블로그와 기술 문서들이 이 2×2 매트릭스를 인용하는 과정에서 원래의 맥락을 잃었다. OS 커널 레벨의 I&#x2F;O 용어가 프로그래밍 모델이나 애플리케이션 아키텍처 설명에까지 무분별하게 적용되었다.&lt;&#x2F;p&gt;
+&lt;p&gt;대표적인 오해는 Node.js + MySQL 드라이버의 예시다.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Node.js + MySQL은 Blocking + Async의 예시다. Node.js는 비동기인데 MySQL 드라이버가 블로킹이라서…”&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;이 설명은 서로 다른 레벨의 개념을 혼합한 것이다.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Node.js의 비동기: 이벤트 루프 기반의 프로그래밍 모델&lt;&#x2F;li&gt;
+&lt;li&gt;MySQL 드라이버의 블로킹: 라이브러리 차원의 API 구현 방식&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;이는 커널 레벨의 I&#x2F;O 동작과는 직접적인 관련이 없으며, 애초에 IBM 문서가 다루던 맥락과도 다르다.
+이처럼 추상화 레벨이 다른 개념들을 구분 없이 동일한 용어로 설명하다 보니, 개념적 혼란이 발생할 수밖에 없다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;peurogeuraeming-modelroseoyi-bidonggigwa-naebu-guhyeon&quot;&gt;프로그래밍 모델로서의 비동기과 내부 구현&lt;&#x2F;h2&gt;
+&lt;p&gt;많은 비동기 프로그래밍 모델을 제공하는 프레임워크들이 내부 구현에선 동기 시스템 콜을 사용한다.&lt;&#x2F;p&gt;
+&lt;p&gt;Netty는 &quot;asynchronous event-driven&quot; 프레임워크를 표방하지만&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-9-1&quot;&gt;&lt;a href=&quot;#fn-9&quot;&gt;8&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, 실제로는 &lt;code&gt;epoll()&lt;&#x2F;code&gt;이나 &lt;code&gt;kqueue&lt;&#x2F;code&gt; 같은 I&#x2F;O multiplexing을 사용한다. 이들은 POSIX 정의상 synchronous다.&lt;br &#x2F;&gt;
+Node.js도 마찬가지다. libuv를 통해 플랫폼별로 최적화된 I&#x2F;O multiplexing을 사용하거나, 파일 시스템 작업의 경우 별도 스레드 풀에서 blocking I&#x2F;O를 수행한다.&lt;sup class=&quot;footnote-reference&quot; id=&quot;fr-8-1&quot;&gt;&lt;a href=&quot;#fn-8&quot;&gt;9&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;br &#x2F;&gt;
+이것이 잘못된 설명이나 구현은 아니다. 애플리케이션 개발자 입장에서는 비동기 프로그래밍 모델을 제공받는 것이 중요하지, 내부적으로 어떤 시스템 콜을 사용하는지는 중요하지 않다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gyeolron&quot;&gt;결론&lt;&#x2F;h2&gt;
+&lt;p&gt;POSIX 표준에 따르면 I&#x2F;O 모델은 본질적으로 세 가지로 구분할 수 있다.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Blocking Synchronous - 전통적인 blocking I&#x2F;O와 I&#x2F;O multiplexing&lt;&#x2F;li&gt;
+&lt;li&gt;Non-blocking Synchronous - non-blocking I&#x2F;O와 signal-driven I&#x2F;O&lt;&#x2F;li&gt;
+&lt;li&gt;Asynchronous - 진정한 비동기 I&#x2F;O (POSIX aio, io_uring)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;따라서 Blocking + Async라는 조합은 정의상 존재할 수 없다. Asynchronous는 정의상 어떤 단계에서도 block되지 않기 때문이다.&lt;&#x2F;p&gt;
+&lt;p&gt;물론 애플리케이션 레벨에서는 이 구분이 덜 엄격하다. 프로그래밍 모델로서의 비동기와 시스템 콜 레벨의 비동기는 다른 개념이며, 이를 명확히 구분해야 한다.
+Netty나 Node.js 같은 프레임워크가 비동기를 표방하는 것은 애플리케이션 개발자에게 제공하는 프로그래밍 모델을 지칭하는 것이지, POSIX I&#x2F;O 모델의 정의를 따르는 것이 아니다.&lt;&#x2F;p&gt;
+&lt;p&gt;중요한 것은 맥락이다. OS나 커널 레벨의 I&#x2F;O를 논할 때와 애플리케이션 레벨의 프로그래밍 패턴을 논할 때, 같은 용어가 다른 의미를 가질 수 있다. 이러한 차이를 인지하고 명확히 구분해서 사용해야 불필요한 혼란을 피할 수 있다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;naneun-eoddeohge-gubunhaneunga&quot;&gt;나는 어떻게 구분하는가&lt;&#x2F;h2&gt;
+&lt;p&gt;나는 커널 I&#x2F;O 레벨에선 표준의 정의를 따르고, 어플리케이션 레벨에선 다음 기준으로 구분한다.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;동기 &#x2F; 비동기: 애플리케이션 레벨에서의 프로그래밍 모델, 전체 실행 흐름&lt;&#x2F;li&gt;
+&lt;li&gt;블로킹 &#x2F; 논블로킹: 함수 호출이나 개별 작업 단위에서의 동작&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;이렇게 구분하면 아키텍처를 설명하거나 문제를 분석할 때 명확하게 생각할 수 있다.&lt;&#x2F;p&gt;
+&lt;p&gt;예를 들어, “비동기 모델 환경에서 블로킹 호출을 사용해 전체 실행 흐름에 영향을 주었다.”, “동기 환경이더라도 오래 걸리는 I&#x2F;O를 논블로킹으로 처리해 효율을 높일 수 있다.” 와 같이 모델과 동작을 분리해서 생각할 수 있다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;burog&quot;&gt;부록&lt;&#x2F;h2&gt;
+&lt;p&gt;&quot;Boost application performance using asynchronous I&#x2F;O&quot; 글은 아카이브되어 원래 작성 시점을 알 수 없었는데, &lt;a href=&quot;https:&#x2F;&#x2F;www.cyberciti.biz&#x2F;tips&#x2F;linux-boost-application-performance-using-asynchronous-io.html&quot;&gt;저자의 사이트&lt;&#x2F;a&gt;를 보고 2006년 즈음 작성되었다고 추정했다.&lt;&#x2F;p&gt;
+&lt;p&gt;IBM의 설명이 한국에만 퍼진 이야기는 아닌 듯 하다. 영어, 중국어나 일본어로 작성된 자료에서도 2x2 매트릭스를 사용해 구분하는 글을 찾아볼 수 있었다.&lt;&#x2F;p&gt;
+&lt;p&gt;조사 과정에서 참고했었던 자료들이다.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.linuxquestions.org&#x2F;questions&#x2F;programming-9&#x2F;asynchronized-i-o-%3D%3D-multiplexing-i-o-467044&#x2F;&quot;&gt;Asynchronized I&#x2F;O vs Multiplexing I&#x2F;O 토론 - Linux Questions&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.artima.com&#x2F;articles&#x2F;comparing-two-high-performance-io-design-patterns&quot;&gt;Comparing Two High-Performance I&#x2F;O Design Patterns&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;EJNBLD3X2yg&quot;&gt;비동기 프로그래밍, 비동기 I&#x2F;O, 비동기 커뮤니케이션 - 쉬운코드 (YouTube)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;homoefficio.github.io&#x2F;2017&#x2F;02&#x2F;19&#x2F;Blocking-NonBlocking-Synchronous-Asynchronous&#x2F;&quot;&gt;Blocking-NonBlocking-Synchronous-Asynchronous - 뒤태지존의 끄적거림&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;rust&#x2F;comments&#x2F;1pn6010&#x2F;compio_instead_of_tokio_what_are_the_implications&#x2F;&quot;&gt;Tokio와 Compio의 차이: 비동기 모델(epoll vs io_uring) - Reddit&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;&#x2F;h2&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;M. Tim Jones, &quot;Boost application performance using asynchronous I&#x2F;O&quot;, IBM Developer, 2006. &lt;a href=&quot;#fr-1-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;IEEE Std 1003.1-2024, &quot;The Open Group Base Specifications Issue 8&quot;, IEEE and The Open Group, 2024. https:&#x2F;&#x2F;pubs.opengroup.org&#x2F;onlinepubs&#x2F;9799919799&#x2F; &lt;a href=&quot;#fr-2-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;IEEE Std 1003.1-2004, &quot;The Open Group Base Specifications Issue 6&quot;, IEEE and The Open Group, 2004. https:&#x2F;&#x2F;pubs.opengroup.org&#x2F;onlinepubs&#x2F;009695399&#x2F; &lt;a href=&quot;#fr-3-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;W. Richard Stevens, Bill Fenner, Andrew M. Rudoff, &quot;Unix Network Programming, Volume 1: The Sockets Networking API&quot;, 3rd Edition, Addison-Wesley, 2003. &lt;a href=&quot;#fr-4-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-6&quot;&gt;
+&lt;p&gt;Linux man pages, &quot;aio(7) - POSIX asynchronous I&#x2F;O overview&quot;, https:&#x2F;&#x2F;man7.org&#x2F;linux&#x2F;man-pages&#x2F;man7&#x2F;aio.7.html &lt;a href=&quot;#fr-6-1&quot;&gt;↩&lt;&#x2F;a&gt; &lt;a href=&quot;#fr-6-2&quot;&gt;↩2&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-5&quot;&gt;
+&lt;p&gt;Linux man pages, &quot;select(2) - synchronous I&#x2F;O multiplexing&quot;, https:&#x2F;&#x2F;man7.org&#x2F;linux&#x2F;man-pages&#x2F;man2&#x2F;select.2.html &lt;a href=&quot;#fr-5-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-7&quot;&gt;
+&lt;p&gt;Linux man pages, &quot;io_uring(7) - Asynchronous I&#x2F;O facility&quot;, https:&#x2F;&#x2F;man7.org&#x2F;linux&#x2F;man-pages&#x2F;man7&#x2F;io_uring.7.html &lt;a href=&quot;#fr-7-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-9&quot;&gt;
+&lt;p&gt;Netty Project, &quot;Netty v4.2 README&quot;, GitHub, https:&#x2F;&#x2F;github.com&#x2F;netty&#x2F;netty&#x2F;blob&#x2F;4.2&#x2F;README.md &lt;a href=&quot;#fr-9-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li id=&quot;fn-8&quot;&gt;
+&lt;p&gt;libuv documentation, &quot;Design overview&quot;, https:&#x2F;&#x2F;docs.libuv.org&#x2F;en&#x2F;v1.x&#x2F;design.html &lt;a href=&quot;#fr-8-1&quot;&gt;↩&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;section&gt;
+</description>
+      </item>
+      <item>
+          <title>Nand to Tetris 강의 수강 후기: 컴퓨터의 근본 원리 이해하기</title>
+          <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+          <author>Sijun Yang</author>
+          <link>https://sijun-yang.com/blogs/nand-to-tetris/</link>
+          <guid>https://sijun-yang.com/blogs/nand-to-tetris/</guid>
+          <description xml:base="https://sijun-yang.com/blogs/nand-to-tetris/">&lt;p&gt;몇 달 전에, Nand to Tetris 라는 강의를 &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;chijoon-study&#x2F;cs-study&#x2F;wiki&#x2F;Nand2Tetris-%EC%96%91%EC%8B%9C%EC%A4%80&quot;&gt;수강&lt;&#x2F;a&gt; 완료했다. 간단한 소개와 느낀점에 대해 공유해보고자 한다.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;teachyourselfcs.com&#x2F;&quot;&gt;Teach Yourself Computer Science&lt;&#x2F;a&gt;라는 인터넷에서 혼자서 CS를 학습하기 위한 커리큘럼을 소개해주는 사이트에 추천해줘서 수강하게 되었다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;nand-to-tetris-sogae&quot;&gt;Nand to Tetris 소개&lt;&#x2F;h2&gt;
+&lt;p&gt;시몬 쇼켄(Simon Schocken) 및 노암 니산(Noam Nisan)이 만들었다.
+컴퓨터의 작동원리를 실습을 통해 이해할 수 있는 프로젝트이다.
+간단한 논리 연산자인 Nand부터 시작해서 GUI 프로그램을 동작시킬 수 있는 범용 컴퓨터를 만든다.
+하드웨어 및 소프트웨어를 순서대로 만들어 보면서 컴퓨터 과학의 주요 지식을 이해할 수 있다.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;jinhaeng-junbimul&quot;&gt;진행 준비물&lt;&#x2F;h3&gt;
+&lt;p&gt;The Elements of Computing Systems(한국어 번역본: 밑바닥부터 만드는 컴퓨팅 시스템)이라는 도서와 &lt;a href=&quot;https:&#x2F;&#x2F;www.coursera.org&#x2F;courses?query=from%20nand%20to%20tetris&quot;&gt;Coursera&lt;&#x2F;a&gt;에 있는 강의를 함께 들어가면서 진행했다.
+나는 &lt;em&gt;밑바닥부터 만드는 컴퓨팅 시스템&lt;&#x2F;em&gt; 과  Coursera 강의를 함꼐 수강하였다.
+Coursera에서 실습 과제를 제출하고 평가받을 수 있어 학습에 도움을 준다.
+강의나 책 중 하나만 보아도 문제는 없어 보이지만, 둘 다 함께 보는 것을 추천한다.
+( Coursera의 강의를 전부 수료하면 &lt;a href=&quot;https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;%EC%8B%9C%EC%A4%80-%EC%96%91-31a91827b&#x2F;details&#x2F;certifications&#x2F;&quot;&gt;수료증&lt;&#x2F;a&gt;도 준다. )&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;neugginjeom&quot;&gt;느낀점&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;keompyuteoyi-gibon-weonri-ihae&quot;&gt;컴퓨터의 기본 원리 이해&lt;&#x2F;h4&gt;
+&lt;p&gt;강의를 통해 고수준 언어를 컴파일하면서 C++이나 Java에서 다루는 객체지향이 내부적으로 함수와 구조체로 구성된다는 것을 깨달았다.
+저수준 언어에서는 명령어를 위에서부터 아래로 순차적으로 실행하며, 가끔 Jump하면서 함수나 분기, 반복문을 구현한다.
+CPU와 RAM은 논리 게이트의 집합으로 구성되며, (기본적인) CPU는 생각보다 단순한 역할을 수행한다.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;peurogeuraeminge-daehan-deo-yeolrin-sago&quot;&gt;프로그래밍에 대한 더 열린 사고&lt;&#x2F;h4&gt;
+&lt;p&gt;모든 프로그래밍 언어는 결국 기계어로 수행된다는 사실을 깨달았다.
+각 언어는 해결하고자 하는 문제나 특화된 부분이 다를 수 있지만, 결국 기계어 입장에서는 동일하게 수행된다.
+이 사실을 알고 나서, 새로운 것을 받아들이는 데 더 열린 자세를 갖게 되었다.
+나는 잘 모르는 분야나 한 번도 해본 적 없는 것들에 대한 묘한 두려움이 있었다.
+특히 나에게 익숙한 Java와 Spring을 주로 사용하고, 다른 기술에 대해서는 폐쇄적인 태도를 가지고 있었다.
+하지만 열린 사고를 가진 지금은 NodeJS 기반의 서버 개발이나 프론트엔드 개발에도 관심을 가지고 있고,
+기존에 사용해보지 않는 기술 스택을 사용해서 토이 프로젝트 개발을 기획하고 있다.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;silseubyi-jungyoseong&quot;&gt;실습의 중요성&lt;&#x2F;h4&gt;
+&lt;p&gt;강의에서 다루는 많은 내용을 알고는 있었지만, 실제로 이해하지 못하고 있었다는 것을 깨달았다.
+단순히 아는 것과 이해하는 것은 다르며, 직접 결과물을 만들어보는 것을 통해 더 잘 이해할 수 있었다.&lt;&#x2F;p&gt;
+&lt;p&gt;그래서 자료구조를 더 이해하기 위해 C 언어를 배워서 직접 자료구조를 구현해보고 있다.
+이후에는 소켓 네트워크 구현과 같이 CS의 기초적인 부분을 실습해보고 싶다.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;aswiun-jeom&quot;&gt;아쉬운 점&lt;&#x2F;h2&gt;
+&lt;p&gt;개인적으로 프로젝트를 진행하면서 아쉬운 점은 다음과 같다.
+특히 프로젝트의 구현과 실제 구현이 차이가 있는건 납득 가능한 부분이지만, 실제 구현과 비교하지 않는 것은 아쉽다.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;inteoreobteue-daehan-seolmyeong-bujae&quot;&gt;인터럽트에 대한 설명 부재&lt;&#x2F;h4&gt;
+&lt;p&gt;프로젝트에서 만드는 CPU에서 인터럽트 자체가 없어서 실제 OS나 컴퓨터를 이해하는데 중요한 인터럽트의 설명이 누락되어 있다.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ose-daehan-seolmyeong-bujog&quot;&gt;OS에 대한 설명 부족&lt;&#x2F;h4&gt;
+&lt;p&gt;강의는 컴퓨팅 시스템에 대한 이해를 중점으로 한다.
+리눅스처럼 현대 OS의 동작을 기대했다면 실망할 수 있다.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;2bu-silseub-nanido-yeoryeoum&quot;&gt;2부 실습 난이도 여려움&lt;&#x2F;h4&gt;
+&lt;p&gt;강의의 2부로 넘어가면서 난이도가 급격히 올라갔다는 느낌을 받았다.
+1부까지는 외부 자료를 거의 참고하지 않고 구현할 수 있었는데, 2부 넘어가고부터 내 실력으론 구글링 없이는 문제 해결이 불가능했다.
+복잡한 요구사항을 구현해본 경험이 적은 사람에게는 어려울 수 있을 것 같다.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;silje-guhyeone-daehan-bigyo-bujog&quot;&gt;실제 구현에 대한 비교 부족&lt;&#x2F;h4&gt;
+&lt;p&gt;강의에서 다룬 내용이 실제 구현과 어떤 차이가 있는지 설명해주지 않아 아쉬웠다.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;hangugeo-beonyeog-munje&quot;&gt;한국어 번역 문제&lt;&#x2F;h4&gt;
+&lt;p&gt;심각한 부분은 아니지만, 종종 오타&#x2F;오역이 보인다. 원서를 무리없이 읽을 수 있다면, 원서를 보고 진행하는 걸 추천한다. (여타 책들이 다 그렇겠지만)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mamuri&quot;&gt;마무리&lt;&#x2F;h2&gt;
+&lt;p&gt;Nand to Tetris 강의를 통해 컴퓨터 시스템, 특히 컴퓨터와 프로그래밍 언어의 동작 원리를 이해할 수 있는 귀중한 경험이였다.
+실습을 통해 이론적 지식을 실제로 구현해 보면서 얻은 인사이트는 다른 학습 방법으로 대체할 수 없다고 생각한다.
+특히, 새로운 기술에 대한 열린 자세와 프로그래밍에 대한 더 넓은 시각을 얻은게 된 것이 나에게 중요한 성취 중 하나였다.
+앞으로는 다양한 분야와 기술에 도전하며, 배운 내용을 바탕으로 더욱 성장해 나갈 것이다.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
