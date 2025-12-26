@@ -124,6 +124,8 @@ h6 {
 /* Paragraphs */
 p {
     line-height: 1.618;
+    text-align: left;
+    word-break: keep-all;
 }
 
 /* Links */
