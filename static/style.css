@@ -156,7 +156,7 @@ blockquote {
     padding: var(--size-lg) var(--size-xl);
     border-left: 10px solid var(--color-border);
     background: rgba(148, 163, 184, 0.15);
-    margin: var(--size-2xl) var(--size-xl);
+    margin: var(--size-lg) 0;
     line-height: 1.618;
 
     & p {
