@@ -320,10 +320,10 @@ footer {
 }
 
 /* ===========================================
-   Blog List Section Layout
+   Blog Section Layout
    =========================================== */
 
-main.blog-list {
+main.blog {
     & .section-header {
         margin-bottom: var(--size-3xl);
     }
@@ -366,10 +366,10 @@ main.blog-list {
 }
 
 /* ===========================================
-   Blog Post Section Layout
+   Post Section Layout
    =========================================== */
 
-main.blog-post {
+main.post {
     & .page-header {
         margin-bottom: var(--size-5xl);
         padding-bottom: var(--size-2xl);
@@ -424,9 +424,9 @@ main.blog-post {
 }
 
 /* ===========================================
-   Home Section Layout
+   About Section Layout
    =========================================== */
 
-main.about-me {
+main.about {
 
 }

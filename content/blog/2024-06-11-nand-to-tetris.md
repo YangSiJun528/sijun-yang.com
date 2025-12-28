@@ -3,7 +3,7 @@ title = "Nand to Tetris 강의 수강 후기: 컴퓨터의 근본 원리 이해�
 date = 2024-06-11
 
 [extra]
-page_style = "blog-post"
+page_style = "post"
 +++
 
 몇 달 전에, Nand to Tetris 라는 강의를 [수강](https://github.com/chijoon-study/cs-study/wiki/Nand2Tetris-%EC%96%91%EC%8B%9C%EC%A4%80) 완료했다. 간단한 소개와 느낀점에 대해 공유해보고자 한다.

@@ -4,7 +4,7 @@ description = "개발자 양시준의 소개 패이지"
 template = "default.html"
 
 [extra]
-page_style = "about-me"
+page_style = "about"
 +++
 
 소프트웨어 개발자 양시준입니다.   

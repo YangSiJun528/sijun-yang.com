@@ -4,7 +4,7 @@ description = "정적 사이트 생성기를 사용할 때 알아야 할 것"
 date = 2025-12-26
 
 [extra]
-page_style = "blog-post"
+page_style = "post"
 +++
 
 취업 이후 개인 사이트나 블로그를 운영하고 싶다는 생각은 계속 있었다.
