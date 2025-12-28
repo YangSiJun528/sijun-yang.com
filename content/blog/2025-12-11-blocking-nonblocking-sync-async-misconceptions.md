@@ -43,7 +43,7 @@ I/O 작업은 일반적으로 두 단계로 이루어진다:
 1. 데이터 준비 단계 - 디스크에서 데이터를 읽거나 네트워크에서 패킷이 도착하기를 기다린다. 데이터가 준비되면 커널 버퍼로 복사된다.
 2. 데이터 복사 단계 - 커널 버퍼에서 애플리케이션 버퍼로 데이터를 복사한다.
 
-스티븐스는 Unix에서 사용 가능한 5가지 I/O 모델을 다음과 같이 구분한다.
+스티븐스는 Unix에서 사용 가능한 5가지 I/O 모델을 다음과 같이 구분한다. 이 모델은 커널이 I/O 준비와 수행을 어떻게 관여하느냐에 따른 대표적인 분류이다. 상호 배타적인 조합표를 의미하지 않는다.[^5]
 
 ### 1. Blocking I/O
 
@@ -73,7 +73,7 @@ I/O 작업은 일반적으로 두 단계로 이루어진다:
 
 ![Asynchronous I/O 모델의 Flow](/blog/async-io-model.png)
 
-진정한 비동기 I/O다. `aio_read()`[^6]는 즉시 반환되고, 커널이 백그라운드에서 두 단계를 모두 처리한 후 완료를 통지한다.
+진정한 비동기 I/O다. `aio_read()`[^7]는 즉시 반환되고, 커널이 백그라운드에서 두 단계를 모두 처리한 후 완료를 통지한다.
 
 ## Synchronous vs Asynchronous의 핵심
 
@@ -96,7 +96,7 @@ I/O 작업은 일반적으로 두 단계로 이루어진다:
 > 이 정의에 따르면, 처음 네 가지 I/O 모델(블로킹 I/O, 논블로킹 I/O, I/O 멀티플렉싱, 시그널 기반 I/O)은 모두 동기 I/O에 해당한다. 실제 I/O 연산인 `recvfrom` 호출이 프로세스를 블로킹하기 때문이다.
 > 오직 비동기 I/O 모델만이 POSIX에서 정의한 비동기 I/O에 해당한다.
 
-### 5가지 모델의 실제 분류
+### 5가지 I/O 모델의 동기/비동기 분류
 
 | I/O 모델 | Blocking/Non-blocking | Sync/Async | 1단계 Block | 2단계 Block |
 |---------|---------------------|------------|------------|------------|
@@ -119,7 +119,7 @@ I/O 작업은 일반적으로 두 단계로 이루어진다:
 
 이때 `read()` 호출은 시스템 콜이 완료될 때까지 호출자를 반환하지 않으며, POSIX 정의상 요청한 프로세스를 블로킹하므로 synchronous가 된다.
 
-Linux man page도 `select`를 "synchronous I/O multiplexing"으로 명시하고 있다.[^5] 반면 `io_uring`[^7]이나 POSIX `aio_`[^6] 함수들은 "Asynchronous I/O"로 구분한다.
+Linux man page도 `select`를 "synchronous I/O multiplexing"으로 명시하고 있다.[^6] 반면 `io_uring`[^8]이나 POSIX `aio_`[^7] 함수들은 "Asynchronous I/O"로 구분한다.
 
 ## 커널 I/O 개념과 프로그래밍 모델의 혼동
 
@@ -145,8 +145,8 @@ IBM의 글은 OS 레벨 I/O를 다루는 기술 문서로, 리눅스 시스템 �
 
 많은 비동기 프로그래밍 모델을 제공하는 프레임워크들이 내부 구현에선 동기 시스템 콜을 사용한다.
 
-Netty는 "asynchronous event-driven" 프레임워크를 표방하지만[^9], 실제로는 `epoll()`이나 `kqueue` 같은 I/O multiplexing을 사용한다. 이들은 POSIX 정의상 synchronous다.  
-Node.js도 마찬가지다. libuv를 통해 플랫폼별로 최적화된 I/O multiplexing을 사용하거나, 파일 시스템 작업의 경우 별도 스레드 풀에서 blocking I/O를 수행한다.[^8]  
+Netty는 "asynchronous event-driven" 프레임워크를 표방하지만[^10], 실제로는 `epoll()`이나 `kqueue` 같은 I/O multiplexing을 사용한다. 이들은 POSIX 정의상 synchronous다.  
+Node.js도 마찬가지다. libuv를 통해 플랫폼별로 최적화된 I/O multiplexing을 사용하거나, 파일 시스템 작업의 경우 별도 스레드 풀에서 blocking I/O를 수행한다.[^9]  
 이것이 잘못된 설명이나 구현은 아니다. 애플리케이션 개발자 입장에서는 비동기 프로그래밍 모델을 제공받는 것이 중요하지, 내부적으로 어떤 시스템 콜을 사용하는지는 중요하지 않다.
 
 ## 결론
@@ -193,8 +193,9 @@ IBM의 설명이 한국에만 퍼진 이야기는 아닌 듯 하다. 영어, 중
 [^2]: IEEE Std 1003.1-2024, "The Open Group Base Specifications Issue 8", IEEE and The Open Group, 2024. https://pubs.opengroup.org/onlinepubs/9799919799/
 [^3]: IEEE Std 1003.1-2004, "The Open Group Base Specifications Issue 6", IEEE and The Open Group, 2004. https://pubs.opengroup.org/onlinepubs/009695399/
 [^4]: W. Richard Stevens, Bill Fenner, Andrew M. Rudoff, "Unix Network Programming, Volume 1: The Sockets Networking API", 3rd Edition, Addison-Wesley, 2003.
-[^5]: Linux man pages, "select(2) - synchronous I/O multiplexing", https://man7.org/linux/man-pages/man2/select.2.html
-[^6]: Linux man pages, "aio(7) - POSIX asynchronous I/O overview", https://man7.org/linux/man-pages/man7/aio.7.html
-[^7]: Linux man pages, "io_uring(7) - Asynchronous I/O facility", https://man7.org/linux/man-pages/man7/io_uring.7.html
-[^8]: libuv documentation, "Design overview", https://docs.libuv.org/en/v1.x/design.html
-[^9]: Netty Project, "Netty v4.2 README", GitHub, https://github.com/netty/netty/blob/4.2/README.md
+[^5]: 예를 들면, I/O Multiplexing과 Non-blocking I/O 모델을 함께 사용할 수도 있다. `select()` 함수는 기본적으로 이벤트가 올때까지 wait하는 blocking 함수인데, fb에 `O_NONBLOCK` 플래그를 활성화 해서 Non-blocking 함수로 동작하게 할 수 있다. 이 경우, 여러 fb를 동시에 감시하면서 데이터의 준비 여부와 무관하게 즉시 반환된다.
+[^6]: Linux man pages, "select(2) - synchronous I/O multiplexing", https://man7.org/linux/man-pages/man2/select.2.html
+[^7]: Linux man pages, "aio(7) - POSIX asynchronous I/O overview", https://man7.org/linux/man-pages/man7/aio.7.html
+[^8]: Linux man pages, "io_uring(7) - Asynchronous I/O facility", https://man7.org/linux/man-pages/man7/io_uring.7.html
+[^9]: libuv documentation, "Design overview", https://docs.libuv.org/en/v1.x/design.html
+[^10]: Netty Project, "Netty v4.2 README", GitHub, https://github.com/netty/netty/blob/4.2/README.md
