@@ -401,17 +401,19 @@ main.post {
 
     /* for zola bottom_footnotes configuration */
     & .footnote-reference {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-xs);
+        line-height: 0;
+
         & a {
             border-bottom: none;
-        }
 
-        &::before {
-            content: "[";
-        }
+            &::before {
+                content: "[";
+            }
 
-        &::after {
-            content: "]";
+            &::after {
+                content: "]";
+            }
         }
     }
 
