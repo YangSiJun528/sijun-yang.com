@@ -189,13 +189,13 @@ IBM의 설명이 한국에만 퍼진 이야기는 아닌 듯 하다. 영어, 중
 
 ## References
 
-[^1]: M. Tim Jones, "Boost application performance using asynchronous I/O", IBM Developer, 2006.
-[^2]: IEEE Std 1003.1-2024, "The Open Group Base Specifications Issue 8", IEEE and The Open Group, 2024. https://pubs.opengroup.org/onlinepubs/9799919799/
-[^3]: IEEE Std 1003.1-2004, "The Open Group Base Specifications Issue 6", IEEE and The Open Group, 2004. https://pubs.opengroup.org/onlinepubs/009695399/
+[^1]: M. Tim Jones, ["Boost application performance using asynchronous I/O"](https://developer.ibm.com/articles/l-async/), IBM Developer, 2006.
+[^2]: IEEE Std 1003.1-2024, ["The Open Group Base Specifications Issue 8"](https://pubs.opengroup.org/onlinepubs/9799919799/), IEEE and The Open Group, 2024.
+[^3]: IEEE Std 1003.1-2004, ["The Open Group Base Specifications Issue 6"](https://pubs.opengroup.org/onlinepubs/009695399/), IEEE and The Open Group, 2004.
 [^4]: W. Richard Stevens, Bill Fenner, Andrew M. Rudoff, "Unix Network Programming, Volume 1: The Sockets Networking API", 3rd Edition, Addison-Wesley, 2003.
 [^5]: 예를 들면, I/O Multiplexing과 Non-blocking I/O 모델을 함께 사용할 수도 있다. `select()` 함수는 기본적으로 이벤트가 올때까지 wait하는 blocking 함수인데, fb에 `O_NONBLOCK` 플래그를 활성화 해서 Non-blocking 함수로 동작하게 할 수 있다. 이 경우, 여러 fb를 동시에 감시하면서 데이터의 준비 여부와 무관하게 즉시 반환된다.
-[^6]: Linux man pages, "select(2) - synchronous I/O multiplexing", https://man7.org/linux/man-pages/man2/select.2.html
-[^7]: Linux man pages, "aio(7) - POSIX asynchronous I/O overview", https://man7.org/linux/man-pages/man7/aio.7.html
-[^8]: Linux man pages, "io_uring(7) - Asynchronous I/O facility", https://man7.org/linux/man-pages/man7/io_uring.7.html
-[^9]: libuv documentation, "Design overview", https://docs.libuv.org/en/v1.x/design.html
-[^10]: Netty Project, "Netty v4.2 README", GitHub, https://github.com/netty/netty/blob/4.2/README.md
+[^6]: Linux man pages, ["select(2) - synchronous I/O multiplexing"](https://man7.org/linux/man-pages/man2/select.2.html)
+[^7]: Linux man pages, ["aio(7) - POSIX asynchronous I/O overview"](https://man7.org/linux/man-pages/man7/aio.7.html)
+[^8]: Linux man pages, ["io_uring(7) - Asynchronous I/O facility"](https://man7.org/linux/man-pages/man7/io_uring.7.html)
+[^9]: libuv documentation, ["Design overview"](https://docs.libuv.org/en/v1.x/design.html)
+[^10]: Netty Project, ["Netty v4.2 README"](https://github.com/netty/netty/blob/4.2/README.md), GitHub

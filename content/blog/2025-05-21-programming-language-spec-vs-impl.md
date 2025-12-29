@@ -114,12 +114,12 @@ Java의 GraalVM Native Image를 사용하면 JVM 없이 네이티브 바이너�
 ## References
 
 
-[^1]: Oracle, "JLS 15.10.3 - Array Access Expressions", Java Language Specification SE 25, https://docs.oracle.com/javase/specs/jls/se25/html/jls-15.html#jls-15.10.3
-[^2]: 전체 코드는 Gist에 올려두었다. https://gist.github.com/YangSiJun528/3c4210f0709e19ac72070c62a6b7333c
-[^3]: Oracle, "JVMS 2.5 - Run-Time Data Areas", Java Virtual Machine Specification SE 25, https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-2.html#jvms-2.5
-[^4]: Oracle, "JVMS 6.5 - Instructions", Java Virtual Machine Specification SE 25, https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-6.html#jvms-6.5
-[^5]: OpenJDK, "objArrayOop.hpp", GitHub, https://github.com/openjdk/jdk/blob/master/src/hotspot/share/oops/objArrayOop.hpp 및 OpenJDK, "objArrayOop.inline.hpp", GitHub, https://github.com/openjdk/jdk/blob/master/src/hotspot/share/oops/objArrayOop.inline.hpp
-[^6]: 코드에서 `oop`는 Ordinary Object Pointer의 약자로, "일반적인 객체를 가리키는 포인터"라는 뜻이다. OpenJDK 코드에는 이 설명이 없어서 OpenJDK 개발자였던 Aleksey Shipilëv의 블로그에서 의미를 확인했다. Aleksey Shipilëv, "JVM Anatomy Quarks #23: Compressed References", https://shipilev.net/jvm/anatomy-quarks/23-compressed-references/#_compressed_references 및 Aleksey Shipilëv, "Java Objects Inside Out", https://shipilev.net/jvm/objects-inside-out/
-[^7]: InfoQ, "Netflix Adopts Java 17", InfoQ Presentations, https://www.infoq.com/presentations/netflix-java/
-[^8]: Stack Overflow, "Undefined, unspecified and implementation-defined behavior", https://stackoverflow.com/questions/2397984/undefined-unspecified-and-implementation-defined-behavior
-[^9]: Oracle, "GraalVM Native Image", GraalVM Documentation, https://www.graalvm.org/latest/reference-manual/native-image/
+[^1]: Oracle, ["JLS 15.10.3 - Array Access Expressions"](https://docs.oracle.com/javase/specs/jls/se25/html/jls-15.html#jls-15.10.3), Java Language Specification SE 25
+[^2]: 전체 코드는 [Gist에 올려두었다](https://gist.github.com/YangSiJun528/3c4210f0709e19ac72070c62a6b7333c).
+[^3]: Oracle, ["JVMS 2.5 - Run-Time Data Areas"](https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-2.html#jvms-2.5), Java Virtual Machine Specification SE 25
+[^4]: Oracle, ["JVMS 6.5 - Instructions"](https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-6.html#jvms-6.5), Java Virtual Machine Specification SE 25
+[^5]: OpenJDK, ["objArrayOop.hpp"](https://github.com/openjdk/jdk/blob/master/src/hotspot/share/oops/objArrayOop.hpp) 및 ["objArrayOop.inline.hpp"](https://github.com/openjdk/jdk/blob/master/src/hotspot/share/oops/objArrayOop.inline.hpp), GitHub
+[^6]: 코드에서 `oop`는 Ordinary Object Pointer의 약자로, "일반적인 객체를 가리키는 포인터"라는 뜻이다. OpenJDK 코드에는 이 설명이 없어서 OpenJDK 개발자였던 Aleksey Shipilëv의 블로그에서 의미를 확인했다. Aleksey Shipilëv, ["JVM Anatomy Quarks #23: Compressed References"](https://shipilev.net/jvm/anatomy-quarks/23-compressed-references/#_compressed_references) 및 ["Java Objects Inside Out"](https://shipilev.net/jvm/objects-inside-out/)
+[^7]: InfoQ, ["Netflix Adopts Java 17"](https://www.infoq.com/presentations/netflix-java/), InfoQ Presentations
+[^8]: Stack Overflow, ["Undefined, unspecified and implementation-defined behavior"](https://stackoverflow.com/questions/2397984/undefined-unspecified-and-implementation-defined-behavior)
+[^9]: Oracle, ["GraalVM Native Image"](https://www.graalvm.org/latest/reference-manual/native-image/), GraalVM Documentation
