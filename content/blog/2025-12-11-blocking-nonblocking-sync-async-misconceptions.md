@@ -176,7 +176,7 @@ Netty나 Node.js 같은 프레임워크가 비동기를 표방하는 것은 애�
 
 ## 부록
 
-"Boost application performance using asynchronous I/O" 글은 아카이브되어 원래 작성 시점을 알 수 없었는데, [저자의 사이트](https://www.cyberciti.biz/tips/linux-boost-application-performance-using-asynchronous-io.html)를 보고 2006년 즈음 작성되었다고 추정했다.
+"Boost application performance using asynchronous I/O" 를 포함한 IBM Developer의 오래된 글이 아카이브되어 원래 작성 시점을 알 수 없었는데, [저자의 사이트에서 원본 자료가 링크된 글](https://www.cyberciti.biz/tips/linux-boost-application-performance-using-asynchronous-io.html)을 보고 2006년 작성되었다고 추정했다.
 
 IBM의 설명이 한국에만 퍼진 이야기는 아닌 듯 하다. 영어, 중국어나 일본어로 작성된 자료에서도 2x2 매트릭스를 사용해 구분하는 글을 찾아볼 수 있었다.  
 
