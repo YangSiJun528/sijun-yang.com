@@ -101,19 +101,19 @@ h6 {
 }
 
 h1 {
-    font-size: var(--font-size-3xl);
-}
-
-h2 {
     font-size: var(--font-size-2xl);
 }
 
-h3 {
+h2 {
     font-size: var(--font-size-xl);
 }
 
-h4 {
+h3 {
     font-size: var(--font-size-lg);
+}
+
+h4 {
+    font-size: var(--font-size-md);
 }
 
 h5,
@@ -325,7 +325,7 @@ footer {
 
 main.blog {
     & .section-header {
-        margin-bottom: var(--size-3xl);
+        margin-bottom: var(--size-xl);
     }
 
     & .posts-list ul {
@@ -371,19 +371,17 @@ main.blog {
 
 main.post {
     & .page-header {
-        margin-bottom: var(--size-5xl);
-        padding-bottom: var(--size-2xl);
+        margin-bottom: var(--size-3xl);
         border-bottom: 1px solid var(--color-border);
 
         & h1 {
-            font-size: var(--font-size-2xl);
-            margin-bottom: var(--size-lg);
+            margin-bottom: 0;
         }
 
         & .page-description {
+            margin-top: 0;
             font-size: var(--font-size-xl);
             color: var(--color-text-secondary);
-            margin-bottom: var(--size-xl);
         }
 
         & .page-meta {
