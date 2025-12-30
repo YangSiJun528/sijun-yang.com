@@ -22,6 +22,7 @@
 
 <!-- For Utterances -->
 <section class="comments">
+    {# Utterances는 JS에 의존해서 JS 끈 사람을 위한 대체 표현을 추가 #}
     <noscript>
         댓글을 보려면 JavaScript를 활성화해주세요.
     </noscript>
@@ -33,7 +34,7 @@
             crossorigin="anonymous"
             async>
     </script>
-    <!-- Utterances div will be inserted here when loaded -->
+    {# 위 script가 로딩되면 div.utterances > iframe.utterances-frame 으로 바뀜 #}
 
     <div class="comments-skeleton"></div>
 
