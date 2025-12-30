@@ -22,12 +22,36 @@
 
 <!-- For Utterances -->
 <section class="comments">
+    <noscript>
+        댓글을 보려면 JavaScript를 활성화해주세요.
+    </noscript>
+
     <script src="https://utteranc.es/client.js"
             repo="yangsijun528/sijun-yang.com"
             issue-term="pathname"
             theme="github-light"
             crossorigin="anonymous"
             async>
+    </script>
+    <!-- Utterances div will be inserted here when loaded -->
+
+    <div class="comments-skeleton"></div>
+
+    <script>
+        const observer = new MutationObserver(_ => {
+            const utterances = document.querySelector('.utterances');
+            if (utterances) {
+                const height = utterances.offsetHeight;
+                if (height > 200) {
+                    document.querySelector('.comments').classList.add('comments-loaded');
+                    observer.disconnect();
+                }
+            }
+        });
+
+        observer.observe(document.querySelector('.comments'), {
+            childList: true, subtree: true, attributes: true, attributeFilter: ['style']
+        });
     </script>
 </section>
 {% endblock content %}
