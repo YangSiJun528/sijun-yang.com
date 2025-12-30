@@ -319,6 +319,12 @@ footer {
     }
 }
 
+.comments {
+    margin-top: var(--size-5xl);
+    padding-top: var(--size-3xl);
+    border-top: 1px solid var(--color-border);
+}
+
 /* ===========================================
    Blog Section Layout
    =========================================== */
