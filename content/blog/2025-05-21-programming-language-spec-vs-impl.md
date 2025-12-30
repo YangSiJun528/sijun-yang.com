@@ -31,17 +31,19 @@ public static void array() {
 
 자바에서 배열이나 사칙연산 같은 기본 기능은 자바 코드 레벨에서 내부 동작을 확인할 수 없다. 
 `java.util.ArrayList` 같이 자바 언어로 구현된 표준 라이브러리와 달리, 언어 사양에 의해 동작이 정의되는 더 저수준의 영역이기 때문이다. 
-그렇다면 무엇을 봐야 할까?
+그렇다면 배열의 동작을 확인하기 위해선 무엇을 봐야 할까?
 
 먼저 자바 언어 명세(JLS)의 배열 접근 문서[^1]를 확인했다. 배열을 어떻게 사용할 수 있는지만 서술하고 있다. 
-구체적인 구현 방식이나 시간복잡도에 관한 요구사항은 없다. 다음으로 JVM 명세(JVMS)를 확인했다. 
-JVMS에서는 배열 인덱스 접근 시 어떤 바이트코드가 사용되는지 명시한다. 
-위 코드를 컴파일하면 배열 인덱스 접근은 다음과 같은 바이트코드로 변환된다.[^2]
+구체적인 구현 방식이나 시간복잡도에 관한 요구사항은 없다. 
 
-그 전에 JVM과 바이트코드에 대해서 간단하게 설명하고 넘어가겠다. 
-Java는 컴파일 될 때 바이트코드로 변환되고, JVM은 이 바이트코드를 읽어서 프로그램을 동작시킨다. 
-따라서 실제 동작을 더 확실하게 알기 위해선 바이트코드를 보아야 한다. 
-JVM은 스택 기반 가상 머신이다.[^3] 연산에 필요한 값들을 스택에 쌓아두고, 명령어가 스택에서 값을 꺼내 연산한 뒤 결과를 다시 스택에 푸시하는 방식으로 동작한다. 
+다음으로 JVM 명세(JVMS)를 확인했다.
+JVMS에서는 배열 인덱스 접근 시 어떤 바이트코드가 사용되는지 명시한다. 실제로 사용되는지 확인해보자.
+
+잠깐 바이트코드에 대해 설명하면, Java는 컴파일 시 바이트코드로 변환되고 JVM이 이를 실행한다.
+JVM은 스택 기반 가상 머신으로[^2], 값을 스택에 쌓고 명령어가 꺼내 연산하는 방식이다.
+따라서 자바 프로그램의 실제 동작을 더 확실하게 알기 위해선 바이트코드를 보아야 한다.
+
+위 자바 코드를 컴파일하면 배열 인덱스 접근은 다음과 같은 바이트코드로 변환된다.[^3]
 
 ```
 // intArr[0] 접근
@@ -55,11 +57,11 @@ BIPUSH 9     // 정수 9를 스택에 푸시 (인덱스)
 IALOAD       // 스택에서 배열과 인덱스를 꺼내 해당 요소를 읽음
 ```
 
-
-
 JVMS의 명령어 문서[^4]를 보면, `IALOAD` 명령어는 스택에서 배열 참조와 인덱스를 꺼내 해당 요소를 읽어 스택에 푸시한다고 설명한다. 
 어떤 스택 조작을 하는지만 서술되어 있다. 어떻게 접근해야 하는지, 시간복잡도가 어떠해야 하는지는 명시하지 않는다. 
+
 따라서 JLS와 JVMS 어디에도 "배열 인덱스 접근은 O(1)이어야 한다"는 요구사항은 없다. 이제 남은 건 실제 JVM 구현체를 확인하는 것이다. 
+
 OpenJDK를 선택했다. Java SE의 공식 레퍼런스 구현체이며, 대부분의 JVM 구현이 이를 기반으로 하기 때문이다. 
 OpenJDK는 C++로 구현되어 있다. `objArrayOop.hpp`와 `objArrayOop.inline.hpp`[^5][^6]를 보면 배열 인덱스 접근의 내부 동작을 알 수 있다.
 
@@ -88,7 +90,7 @@ Java의 명세는 JLS(Java Language Specification), JVMS(Java Virtual Machine Sp
 대부분의 성능과 관련된 부분은 명세가 아닌 구현이 결정한다. 흔히 알고리즘 문제에서의 시간 복잡도, 공간 복잡도와 같은 것들은 구현이 결정하게 된다.
 
 프로그래밍 언어의 이러한 점은 Database의 질의형 언어(Query Language)와도 비슷한 점이라고 생각하는데, 내부 구현을 명세에 숨김으로써 자유롭게 기존 동작을 유지하면서 런타임의 최적화를 할 수 있기 때문이다. 
-Java는 GC 알고리즘이 계속 발전하고 있으며, Netflix는 Java의 버전을 8에서 17로 업그레이드하면서 약 20%의 CPU 사용률을 향상할 수 있었다.[^7] 또한 언어 명세의 수정 없이 Virtual Thread가 도입되기도 했다.
+예시로 Java는 GC 알고리즘이 계속 발전하고 있으며, Netflix는 Java의 버전을 8에서 17로 업그레이드하면서 약 20%의 CPU 사용률을 향상할 수 있었다.[^7] 또한 언어 명세의 수정 없이 Virtual Thread가 도입되기도 했다.
 
 ### 그럼에도 알아야 하는 이유
 "(OpenJDK의) Java 배열 인덱스 접근이 O(1)이다" 라는 말에서 OpenJDK나 다른 구현체의 이름이 빠진다면 정확하지 않은 말이다. 
@@ -120,8 +122,8 @@ Java의 GraalVM Native Image를 사용하면 JVM 없이 네이티브 바이너�
 
 
 [^1]: Oracle, ["JLS 15.10.3 - Array Access Expressions"](https://docs.oracle.com/javase/specs/jls/se25/html/jls-15.html#jls-15.10.3), Java Language Specification SE 25
-[^2]: 전체 코드는 [Gist에 올려두었다](https://gist.github.com/YangSiJun528/3c4210f0709e19ac72070c62a6b7333c).
-[^3]: Oracle, ["JVMS 2.5 - Run-Time Data Areas"](https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-2.html#jvms-2.5), Java Virtual Machine Specification SE 25
+[^2]: Oracle, ["JVMS 2.5 - Run-Time Data Areas"](https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-2.html#jvms-2.5), Java Virtual Machine Specification SE 25
+[^3]: 전체 코드는 [Gist에 올려두었다](https://gist.github.com/YangSiJun528/3c4210f0709e19ac72070c62a6b7333c).
 [^4]: Oracle, ["JVMS 6.5 - Instructions"](https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-6.html#jvms-6.5), Java Virtual Machine Specification SE 25
 [^5]: OpenJDK, ["objArrayOop.hpp"](https://github.com/openjdk/jdk/blob/master/src/hotspot/share/oops/objArrayOop.hpp) 및 ["objArrayOop.inline.hpp"](https://github.com/openjdk/jdk/blob/master/src/hotspot/share/oops/objArrayOop.inline.hpp), GitHub
 [^6]: 코드에서 `oop`는 Ordinary Object Pointer의 약자로, "일반적인 객체를 가리키는 포인터"라는 뜻이다. OpenJDK 코드에는 이 설명이 없어서 OpenJDK 개발자였던 Aleksey Shipilëv의 블로그에서 의미를 확인했다. Aleksey Shipilëv, ["JVM Anatomy Quarks #23: Compressed References"](https://shipilev.net/jvm/anatomy-quarks/23-compressed-references/#_compressed_references) 및 ["Java Objects Inside Out"](https://shipilev.net/jvm/objects-inside-out/)
