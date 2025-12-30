@@ -114,7 +114,7 @@ Python도 비슷하다. PyPy는 CPython과 달리 JIT 컴파일을 제공해 CPU
 심지어 JVM 위에서 실행되는 Jython이라는 런타임도 있다. 이러한 차이는 Python 명세가 실행 환경을 규정하지 않기 때문에 가능하다. 
 Java의 GraalVM Native Image를 사용하면 JVM 없이 네이티브 바이너리로 컴파일할 수 있다.[^9] 이 경우 JVM의 동작을 전제로 한 코드(리플렉션 등)가 제한될 수 있다는 점을 예측할 수 있고, 실제로도 그렇다.
 
-또한 어느 OS에서 어떤 버전의 런타임을 동작하는지에 따라 동작이 달라질 수 있는데, 보안 취약점 문서나 버그 리포트 등에서는 이러한 구분이 필수적이다.  
+또한 프로그래밍 언어의 구현체는 OS와 런타임 버전에 따라 동작이 달라질 수 있다.[^10] 보안 취약점 문서나 버그 리포트에서 환경 명시가 필수인 이유다. 
 
 이처럼 명세와 구현은 다르다. 프로그래밍 언어와 런타임의 성능/특징을 올바르게 논하기 위해서는 이를 이해하는 것이 필요하다.
 
@@ -130,3 +130,4 @@ Java의 GraalVM Native Image를 사용하면 JVM 없이 네이티브 바이너�
 [^7]: InfoQ, ["Netflix Adopts Java 17"](https://www.infoq.com/presentations/netflix-java/), InfoQ Presentations
 [^8]: Stack Overflow, ["Undefined, unspecified and implementation-defined behavior"](https://stackoverflow.com/questions/2397984/undefined-unspecified-and-implementation-defined-behavior)
 [^9]: Oracle, ["GraalVM Native Image"](https://www.graalvm.org/latest/reference-manual/native-image/), GraalVM Documentation
+[^10]: 같은 소스코드라도 컴파일러, OS, 런타임에 따라 다른 결과물이 만들어진다. 그리고 컴파일러와 OS 자체도 프로그래밍 언어로 작성된 프로그램이므로 환경마다 구현이 다를 수 있다. 
