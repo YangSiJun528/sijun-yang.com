@@ -119,6 +119,9 @@ I/O 작업은 일반적으로 두 단계로 이루어진다:
 
 이때 `read()` 호출은 시스템 콜이 완료될 때까지 호출자를 반환하지 않으며, POSIX 정의상 요청한 프로세스를 블로킹하므로 synchronous가 된다.
 
+멀티스레드 환경에서도 마찬가지다. I/O를 수행하는 스레드는 시스템 콜이 완료될 때까지 블로킹되며, POSIX 정의에 따르면 이는 동기 I/O다. 
+스레드 분리는 애플리케이션 레벨의 동시성 전략일 뿐이다. 커널의 I/O 모델을 바꿀 수는 없다. 
+
 Linux man page도 `select`를 "synchronous I/O multiplexing"으로 명시하고 있다.[^6] 반면 `io_uring`[^8]이나 POSIX `aio_`[^7] 함수들은 "Asynchronous I/O"로 구분한다.
 
 ## 커널 I/O 개념과 프로그래밍 모델의 혼동
@@ -166,26 +169,33 @@ Netty나 Node.js 같은 프레임워크가 비동기를 표방하는 것은 애�
 
 ## 나는 어떻게 구분하는가
 
-나는 커널 I/O 레벨에선 표준의 정의를 따르고, 어플리케이션 레벨에선 다음 기준으로 구분한다.
+커널 I/O 레벨에선 표준의 정의를 따른다.
+- 동기 / 비동기: I/O 작업이 완료될 때까지 요청 프로세스가 블로킹되는지 여부
+- 블로킹 / 논블로킹: 요청한 동작을 즉시 완료할 수 없을 때 함수 호출이 대기하는지 여부
+  
+다만 시스템 레벨 개발을 주로 하지 않기 때문에, 이 용어를 쓸 일은 많지 않다. 
+이 레벨에서는 추상적인 용어보다 select, epoll, io_uring 같은 구체적인 시스템 콜 이름으로 대화하는 것이 더 명확하다고 생각한다.
+
+어플리케이션 레벨에선 다음 기준으로 구분한다.
 - 동기 / 비동기: 애플리케이션 레벨에서의 프로그래밍 모델, 전체 실행 흐름
 - 블로킹 / 논블로킹: 함수 호출이나 개별 작업 단위에서의 동작
 
-이렇게 구분하면 아키텍처를 설명하거나 문제를 분석할 때 명확하게 생각할 수 있다.
-
+일반적으로 이 관점에서 이야기한다. 이렇게 구분하면 아키텍처를 설명하거나 문제를 분석할 때 명확하게 생각할 수 있다.   
 예를 들어, “비동기 모델 환경에서 블로킹 호출을 사용해 전체 실행 흐름에 영향을 주었다.”, “동기 환경이더라도 오래 걸리는 I/O를 논블로킹으로 처리해 효율을 높일 수 있다.” 와 같이 모델과 동작을 분리해서 생각할 수 있다.  
 
 ## 부록
 
 "Boost application performance using asynchronous I/O" 를 포함한 IBM Developer의 오래된 글이 아카이브되어 원래 작성 시점을 알 수 없었는데, [저자의 사이트에서 원본 자료가 링크된 글](https://www.cyberciti.biz/tips/linux-boost-application-performance-using-asynchronous-io.html)을 보고 2006년 작성되었다고 추정했다.
 
-IBM의 설명이 한국에만 퍼진 이야기는 아닌 듯 하다. 영어, 중국어나 일본어로 작성된 자료에서도 2x2 매트릭스를 사용해 구분하는 글을 찾아볼 수 있었다.  
+IBM의 설명이 한국에만 퍼진 이야기는 아닌 듯 하다. 영어, 중국어나 일본어로 작성된 자료에서도 2x2 매트릭스를 사용해 구분하는 글을 찾아볼 수 있었다.
 
-조사 과정에서 참고했었던 자료들이다. 
+조사 과정에서 참고한 자료들이다. 높은 신뢰성을 가지는 문서는 아니지만 개념을 이해하는 데 도움이 되어 남겨두었다.  
 - [Asynchronized I/O vs Multiplexing I/O 토론 - Linux Questions](https://www.linuxquestions.org/questions/programming-9/asynchronized-i-o-%3D%3D-multiplexing-i-o-467044/)
 - [Comparing Two High-Performance I/O Design Patterns](https://www.artima.com/articles/comparing-two-high-performance-io-design-patterns)
 - [비동기 프로그래밍, 비동기 I/O, 비동기 커뮤니케이션 - 쉬운코드 (YouTube)](https://youtu.be/EJNBLD3X2yg)
 - [Blocking-NonBlocking-Synchronous-Asynchronous - 뒤태지존의 끄적거림](https://homoefficio.github.io/2017/02/19/Blocking-NonBlocking-Synchronous-Asynchronous/)
 - [Tokio와 Compio의 차이: 비동기 모델(epoll vs io_uring) - Reddit](https://www.reddit.com/r/rust/comments/1pn6010/compio_instead_of_tokio_what_are_the_implications/)
+- [기초 탄탄! 독하게 시작하는 Java Part 3(하) : 소켓과 파일 I/O 강의 | 널널한 개발자 - 인프런](https://www.inflearn.com/course/%EA%B8%B0%EC%B4%88%ED%83%84%ED%83%84-%EB%8F%85%ED%95%98%EA%B2%8C-java-part3-2)
 
 ## References
 
