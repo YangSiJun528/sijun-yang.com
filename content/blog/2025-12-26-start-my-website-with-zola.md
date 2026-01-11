@@ -1,6 +1,5 @@
 +++
-title = "Zola로 개인 사이트를 시작하며"
-description = "정적 사이트 생성기를 사용할 때 알아야 할 것"
+title = "Zola 기반 개인 사이트 구축기"
 date = 2025-12-26
 
 [extra]
