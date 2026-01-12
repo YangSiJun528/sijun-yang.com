@@ -57,7 +57,7 @@ MSA 서비스라면 LB, DB, Redis, 모니터링 등 서버만 수십 개가 넘�
 
 `DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE`[^4]은 기본적으로 true로 설정되어 있는데,
 이 옵션이 활성화되어 있으면 `ZonedDateTime`이나 `OffsetDateTime`을 역직렬화할 때 원본 타임존을 컨텍스트 타임존(기본값 UTC)으로 변환한다.
-이 과정에서 시점 정보는 유지되지만, 원래 타임존 정보를 잃어버린다 (이 옵션은 Jackson 3버전 이후에는 `DateTimeFeature` 객체로 이관될 예정이다[^5]).
+이 과정에서 시점 정보는 유지되지만, 원래 타임존 정보를 잃어버린다 (이 옵션은 Jackson 3버전 부터 `DateTimeFeature` 객체로 이관되었다[^5]).
 
 #### ANSI SQL의 TIMESTAMP WITH TIME ZONE
 
@@ -213,7 +213,7 @@ Temporal은 Plain 타입에서 Exact 타입으로 변환할 때 발생하는 모
 [^2]: 여기서 다루는 내용과 별개지만, 시간 데이터의 정확성 자체도 완벽하지 않다. 분산 시스템에서 "정확한 시간"을 정의하는 것 자체가 매우 어려운 문제다. 이와 관련해서는 ["Designing Data-Intensive Applications"](https://dataintensive.net/), Chapter 8: 'Unreliable Clocks'를 읽어보는 것을 추천한다.
 [^3]: OpenJDK, ["LocalDateTime.java source code"](https://github.com/openjdk/jdk/blob/jdk-27%2B3/src/java.base/share/classes/java/time/LocalDateTime.java#L213), GitHub.
 [^4]: Jackson, ["DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE"](https://fasterxml.github.io/jackson-databind/javadoc/2.6/com/fasterxml/jackson/databind/DeserializationFeature.html), JavaDoc.
-[^5]: Jackson 3.0, ["DateTimeFeature"](https://www.javadoc.io/doc/tools.jackson.core/jackson-databind/3.0.0-rc8/tools.jackson.databind/tools/jackson/databind/cfg/DateTimeFeature.html), JavaDoc.
+[^5]: Jackson 3.0.3, ["DateTimeFeature"](https://javadoc.io/doc/tools.jackson.core/jackson-databind/latest/tools.jackson.databind/tools/jackson/databind/cfg/DateTimeFeature.html), JavaDoc.
 [^6]: SQL-92 Standard, Section 4.5 "Datetimes and intervals" - [Modern SQL](https://modern-sql.com/standard), [Full Draft](https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt).
 [^7]: PostgreSQL Wiki, ["Don't Do This"](https://wiki.postgresql.org/wiki/Don't_Do_This#Don't_use_timestamp_(without_time_zone)_to_store_UTC_times).
 [^8]: Hibernate ORM Discussion, ["Support timestamp with timezone/offset"](https://github.com/hibernate/hibernate-orm/discussions/4201#discussioncomment-1291666), GitHub.
