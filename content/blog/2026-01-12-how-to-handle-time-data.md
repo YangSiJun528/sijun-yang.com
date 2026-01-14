@@ -69,6 +69,21 @@ PostgreSQL을 자세하게 설명해보자면,
 Exact Time을 저장하려면 `timestamptz`(`timestamp with time zone`)를 사용해야 하는데, UTC로 변환되어 저장되고 타임존 정보는 유지되지 않는다.
 또한 조회 시 세션의 타임존에 의존하여 시간 결과를 반환한다.
 
+#### JPA와 Hibernate
+
+Hibernate는 7.2 버전 기준으로 `LocalDateTime`은 `TIMESTAMP`, `Instant`는 `TIMESTAMP_UTC`로 매핑된다[^8].
+`TIMESTAMP_UTC`는 저장 시 값을 UTC로 정규화하지만, `TIMESTAMP`는 변환 없이 그대로 저장된다.
+즉, 두 타입을 Exact Time 표현용과 Wall-clock Time 표현용으로 구분하고 있다.
+
+Hibernate는 `LocalDateTime`을 DB에 저장할 때 JVM 기본 타임존을 기준으로 `java.sql.Timestamp`로 변환한 뒤 UTC로 정규화한다.
+이 과정에서 원본 타임존 정보가 사라진다.
+여러 DB 접근 라이브러리를 함께 사용하는 환경에서는 각 라이브러리의 타임존 설정 차이로 인해 시간 오차가 발생할 수 있다[^9].
+
+Spring Data 개발자 Jens Schauder 역시 `LocalDateTime`은 타임라인 상의 특정 순간을 표현할 수 없으므로 `Instant`를 사용하는 것이 바람직하다고 설명한다[^10].
+
+그럼에도 불구하고 많은 코드에서 여전히 Exact Time 데이터를 `LocalDateTime`으로 선언해 사용하고 있다
+(예: [spring-boot-java-template BaseEntity의 createdAt, updatedAt](https://github.com/team-dodn/spring-boot-java-template/blob/750675f8bb7bc97b644e18576a5b26148ac65e17/storage/db-core/src/main/java/io/dodn/springboot/storage/db/core/BaseEntity.java)).
+
 ## 시간 데이터를 다루는 2가지 원칙
 
 나는 시간 데이터를 다룰 때 두 가지 원칙을 기준으로 삼고 있다.
@@ -124,7 +139,7 @@ Exact Time 데이터는 저장, 직렬화/역직렬화, 송수신 등 모든 과
 내부적으로는 UTC(Unix timestamp)로 저장하고, 사용자에게 보여줄 때만 해당 타임존으로 변환한다.
 
 이렇게 하면 시간 비교나 집계 등의 계산이 편리해진다. 저장된 값 자체가 바뀌지 않기 때문이다.
-앞서 말했듯 타임존 타입의 지원이 아직 완전하지 않거나 주의해야 하는 시스템이 존재하기 때문에[^8],
+앞서 말했듯 타임존 타입의 지원이 아직 완전하지 않거나 주의해야 하는 시스템이 존재하기 때문에[^11],
 모든 곳에서 타임존을 UTC로 고정하거나 타임존 정보가 없는 Exact Time인 Unix timestamp 형태로 관리하는 것이 안전하다.
 
 #### 전송/저장 시점 주의사항
@@ -143,7 +158,7 @@ Unix timestamp는 숫자 자체가 절대 시각이므로 해석 오류 여지�
 #### DST와 정책 변경 대응
 
 타임존과 시간대 정보가 포함된 데이터를 다루는 경우, 여러 가지 모호한 상황(Ambiguity)이 발생할 수 있다.
-이와 관련된 구체적인 예시는 ["Temporal Time Zones and Resolving Ambiguity - Temporal Proposal Documentation"](https://tc39.es/proposal-temporal/docs/timezone.html)에서 찾을 수 있다[^9].
+이와 관련된 구체적인 예시는 ["Temporal Time Zones and Resolving Ambiguity - Temporal Proposal Documentation"](https://tc39.es/proposal-temporal/docs/timezone.html)에서 찾을 수 있다[^12].
 
 - DST 시작/종료 같은 일시적 Offset 이동으로 인해서 동일한 벽시계 시간이 두 번 발생(fall back)하거나 존재하지 않는 시간(spring forward)이 생길 수 있다.
 - 정책 변경으로 TimeZone 정의가 변경되어 기존에 저장된 미래 시점의 값과 새로운 규칙 간 충돌이 발생할 수 있다.
@@ -158,13 +173,13 @@ Unix timestamp는 숫자 자체가 절대 시각이므로 해석 오류 여지�
 ### 역사적 배경
 
 1996년 Java 1.0에서 `java.util.Date`가 도입됐다.
-이는 많은 문제가 있는 구현이였는데, 월이 0부터 시작하고 연도는 1900을 빼서 저장하고 객체가 mutable해서 언제든 값이 바뀔 수 있었다[^10].
+이는 많은 문제가 있는 구현이였는데, 월이 0부터 시작하고 연도는 1900을 빼서 저장하고 객체가 mutable해서 언제든 값이 바뀔 수 있었다[^13].
 
-JavaScript가 만들어질 때, Java의 Date 구현을 거의 그대로 가져왔다[^11].
+JavaScript가 만들어질 때, Java의 Date 구현을 거의 그대로 가져왔다[^14].
 Java는 이후 개선을 시도한 반면, Date는 거의 30년이 지난 지금까지 사용되고 있다. (그래서 프로덕션 환경에선 별도의 시간 라이브러리를 많이 쓴다.)
 
 2002년 Stephen Colebourne이 Java Date의 문제를 보완한 Joda-Time 라이브러리를 만들었다.
-Joda-Time은 큰 성공을 거뒀고, 2014년 Java 8의 공식 `java.time` 패키지(JSR-310)로 이어졌다[^12].
+Joda-Time은 큰 성공을 거뒀고, 2014년 Java 8의 공식 `java.time` 패키지(JSR-310)로 이어졌다[^15].
 
 JavaScript에서는 Date의 문제를 해결하기 위해 Temporal API 제안이 진행되었고,
 TC39(ECMAScript 기술위원회)에서 이 제안은 Stage 3(명세가 확정되어 구현을 진행) 상태에 있다.
@@ -191,7 +206,7 @@ Temporal은 Exact Time과 Wall-clock Time의 구분을 타입 시스템에서 �
 ### Plain vs Local
 
 여기서 "Plain"이라는 네이밍이 중요하다. java.time의 "Local"은 이름에서 위치를 암시하지만, "Plain"은 타임존에 대한 어떤 가정도 없다는 것을 명확히 보여준다.
-단순하게 날짜와 시간 값 자체만을 표현한다는 의미가 더 직관적으로 드러난다. Temporal의 설계자들 역시 이러한 의도를 가지고 Plain이라는 이름을 선택했다[^13][^14].
+단순하게 날짜와 시간 값 자체만을 표현한다는 의미가 더 직관적으로 드러난다. Temporal의 설계자들 역시 이러한 의도를 가지고 Plain이라는 이름을 선택했다[^16][^17].
 
 ### Temporal.Now의 분리
 
@@ -202,7 +217,7 @@ Temporal은 "now"를 다루는 방식이 기존의 일반적인 라이브러리�
 
 ### 애매모호한 상황 처리
 
-Temporal은 Plain 타입에서 Exact 타입으로 변환할 때 발생하는 모호함을 다루는 방법을 개발자가 선택할 수 있게 한다[^9].
+Temporal은 Plain 타입에서 Exact 타입으로 변환할 때 발생하는 모호함을 다루는 방법을 개발자가 선택할 수 있게 한다[^12].
 
 앞서 제시한 원칙을 따르면 이런 기능이 필요한 상황 자체가 드물어진다.
 다만 레거시 데이터 마이그레이션이나 사용자 입력 처리 같은 예외 상황에서는 유용하므로, 어떤 옵션을 제공하는지 알아두면 좋다.
@@ -216,10 +231,13 @@ Temporal은 Plain 타입에서 Exact 타입으로 변환할 때 발생하는 모
 [^5]: Jackson 3.0.3, ["DateTimeFeature"](https://javadoc.io/doc/tools.jackson.core/jackson-databind/latest/tools.jackson.databind/tools/jackson/databind/cfg/DateTimeFeature.html), JavaDoc.
 [^6]: SQL-92 Standard, Section 4.5 "Datetimes and intervals" - [Modern SQL](https://modern-sql.com/standard), [Full Draft](https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt).
 [^7]: PostgreSQL Wiki, ["Don't Do This"](https://wiki.postgresql.org/wiki/Don't_Do_This#Don't_use_timestamp_(without_time_zone)_to_store_UTC_times).
-[^8]: Hibernate ORM Discussion, ["Support timestamp with timezone/offset"](https://github.com/hibernate/hibernate-orm/discussions/4201#discussioncomment-1291666), GitHub.
-[^9]: TC39, ["Temporal Time Zones and Resolving Ambiguity"](https://tc39.es/proposal-temporal/docs/timezone.html), Temporal Proposal Documentation.
-[^10]: Oracle, ["Legacy Date-Time Code"](https://docs.oracle.com/javase/tutorial/datetime/iso/legacy.html), The Java Tutorials.
-[^11]: Allen Wirfs-Brock, Brendan Eich, ["JavaScript: The First 20 Years"](https://dl.acm.org/doi/10.1145/3386327), Proceedings of the ACM on Programming Languages, Volume 4, June 2020 ([비공식 한국어 번역](https://js-history.vercel.app/)).
-[^12]: Oracle, ["Java Date Time APIs"](https://docs.oracle.com/javase/8/docs/technotes/guides/datetime/index.html), Java Platform, Standard Edition 8; JSR 310 Expert Group, ["JSR 310: Date and Time API"](https://jcp.org/en/jsr/detail?id=310), Java Community Process.
-[^13]: TC39 Temporal Proposal, ["What should be the long-term name of LocalDateTime?"](https://github.com/tc39/proposal-temporal/issues/707), GitHub Issue #707.
-[^14]: 여러 시간 라이브러리에서 사용되는 `Local-` 네이밍은 C언어의 [`localtime()`](https://en.cppreference.com/w/c/chrono/localtime.html) 함수에서 유래했을 것으로 추측한다. 표준처럼 굳어진 용어를 바꾸자는 주장에 마냥 동의하지는 않지만, `Local-`의 의미가 명확하지 않은 것은 사실이라 이 경우에는 이름을 바꾸는 결정이 합리적이라고 본다.
+[^8]: Hibernate ORM 7.2, ["Handling temporal data"](https://docs.hibernate.org/orm/7.2/userguide/html_single/#basic-temporal), User Guide.
+[^9]: jOOQ GitHub, ["LocalDateTime param binding handled differently by hibernate"](https://github.com/jOOQ/jOOQ/issues/11753), Issue #11753, 2021.
+[^10]: Jens Schauder, ["Don't use LocalDateTime"](https://blog.schauderhaft.de/2018/03/14/dont-use-localdatetime/), Schauderhaft Blog, 2018.
+[^11]: Hibernate ORM Discussion, ["Support timestamp with timezone/offset"](https://github.com/hibernate/hibernate-orm/discussions/4201#discussioncomment-1291666), GitHub.
+[^12]: TC39, ["Temporal Time Zones and Resolving Ambiguity"](https://tc39.es/proposal-temporal/docs/timezone.html), Temporal Proposal Documentation.
+[^13]: Oracle, ["Legacy Date-Time Code"](https://docs.oracle.com/javase/tutorial/datetime/iso/legacy.html), The Java Tutorials.
+[^14]: Allen Wirfs-Brock, Brendan Eich, ["JavaScript: The First 20 Years"](https://dl.acm.org/doi/10.1145/3386327), Proceedings of the ACM on Programming Languages, Volume 4, June 2020 ([비공식 한국어 번역](https://js-history.vercel.app/)).
+[^15]: Oracle, ["Java Date Time APIs"](https://docs.oracle.com/javase/8/docs/technotes/guides/datetime/index.html), Java Platform, Standard Edition 8; JSR 310 Expert Group, ["JSR 310: Date and Time API"](https://jcp.org/en/jsr/detail?id=310), Java Community Process.
+[^16]: TC39 Temporal Proposal, ["What should be the long-term name of LocalDateTime?"](https://github.com/tc39/proposal-temporal/issues/707), GitHub Issue #707.
+[^17]: 여러 시간 라이브러리에서 사용되는 `Local-` 네이밍은 C언어의 [`localtime()`](https://en.cppreference.com/w/c/chrono/localtime.html) 함수에서 유래했을 것으로 추측한다. 표준처럼 굳어진 용어를 바꾸자는 주장에 마냥 동의하지는 않지만, `Local-`의 의미가 명확하지 않은 것은 사실이라 이 경우에는 이름을 바꾸는 결정이 합리적이라고 본다.
