@@ -71,7 +71,7 @@ Exact Time을 저장하려면 `timestamptz`(`timestamp with time zone`)를 사�
 
 #### JPA와 Hibernate
 
-Hibernate는 7.2 버전 기준으로 `LocalDateTime`은 `TIMESTAMP`, `Instant`는 `TIMESTAMP_UTC`로 매핑된다[^8].
+Hibernate는 6.0 이후부터 `LocalDateTime`은 `TIMESTAMP`, `Instant`는 `TIMESTAMP_UTC`로 매핑된다[^8]. 
 `TIMESTAMP_UTC`는 저장 시 값을 UTC로 정규화하지만, `TIMESTAMP`는 변환 없이 그대로 저장된다.
 즉, 두 타입을 Exact Time 표현용과 Wall-clock Time 표현용으로 구분하고 있다.
 
@@ -231,7 +231,7 @@ Temporal은 Plain 타입에서 Exact 타입으로 변환할 때 발생하는 모
 [^5]: Jackson 3.0.3, ["DateTimeFeature"](https://javadoc.io/doc/tools.jackson.core/jackson-databind/latest/tools.jackson.databind/tools/jackson/databind/cfg/DateTimeFeature.html), JavaDoc.
 [^6]: SQL-92 Standard, Section 4.5 "Datetimes and intervals" - [Modern SQL](https://modern-sql.com/standard), [Full Draft](https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt).
 [^7]: PostgreSQL Wiki, ["Don't Do This"](https://wiki.postgresql.org/wiki/Don't_Do_This#Don't_use_timestamp_(without_time_zone)_to_store_UTC_times).
-[^8]: Hibernate ORM 7.2, ["Handling temporal data"](https://docs.hibernate.org/orm/7.2/userguide/html_single/#basic-temporal), User Guide.
+[^8]: Hibernate ORM, ["Instant mapping changes"](https://github.com/hibernate/hibernate-orm/blob/6.0/migration-guide.adoc#instant-mapping-changes), Migration Guide, Version 6.0.
 [^9]: jOOQ GitHub, ["LocalDateTime param binding handled differently by hibernate"](https://github.com/jOOQ/jOOQ/issues/11753), Issue #11753, 2021.
 [^10]: Jens Schauder, ["Don't use LocalDateTime"](https://blog.schauderhaft.de/2018/03/14/dont-use-localdatetime/), Schauderhaft Blog, 2018.
 [^11]: Hibernate ORM Discussion, ["Support timestamp with timezone/offset"](https://github.com/hibernate/hibernate-orm/discussions/4201#discussioncomment-1291666), GitHub.
@@ -240,4 +240,4 @@ Temporal은 Plain 타입에서 Exact 타입으로 변환할 때 발생하는 모
 [^14]: Allen Wirfs-Brock, Brendan Eich, ["JavaScript: The First 20 Years"](https://dl.acm.org/doi/10.1145/3386327), Proceedings of the ACM on Programming Languages, Volume 4, June 2020 ([비공식 한국어 번역](https://js-history.vercel.app/)).
 [^15]: Oracle, ["Java Date Time APIs"](https://docs.oracle.com/javase/8/docs/technotes/guides/datetime/index.html), Java Platform, Standard Edition 8; JSR 310 Expert Group, ["JSR 310: Date and Time API"](https://jcp.org/en/jsr/detail?id=310), Java Community Process.
 [^16]: TC39 Temporal Proposal, ["What should be the long-term name of LocalDateTime?"](https://github.com/tc39/proposal-temporal/issues/707), GitHub Issue #707.
-[^17]: 여러 시간 라이브러리에서 사용되는 `Local-` 네이밍은 C언어의 [`localtime()`](https://en.cppreference.com/w/c/chrono/localtime.html) 함수에서 유래했을 것으로 추측한다. 표준처럼 굳어진 용어를 바꾸자는 주장에 마냥 동의하지는 않지만, `Local-`의 의미가 명확하지 않은 것은 사실이라 이 경우에는 이름을 바꾸는 결정이 합리적이라고 본다.
+[^17]: 여러 시간 라이브러리에서 사용되는 `Local-` 네이밍은 C언어의 [`localtime()`](https://en.cppreference.com/w/c/chrono/localtime.html) 함수에서 유래했을 것으로 추측한다. 표준처럼 굳어진 용어를 바꾸자는 주장에 마냥 동의하지는 않지만, `Local-`의 의미가 명확하지 않은 것은 사실이라 이 경우에는 이름을 바꾸는 결정이 합리적이라고 본다. 
