@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="log">
+    <article>
+        <header class="page-header">
+            <h1>{{ page.title }}</h1>
+            {% if page.description %}
+            <p class="page-description">{{ page.description }}</p>
+            {% endif %}
+            <div class="page-meta">
+                <time datetime="{{ page.date }}">
+                    {{ page.date | date(format="%Y년 %m월 %d일") }}
+                </time>
+            </div>
+        </header>
+
+        <div class="content">
+            {{ page.content | safe }}
+        </div>
+
+        {% set year_month = page.slug | split(pat="-monthly-log") | first %}
+        {% set notes_path = "notes/" ~ year_month ~ "/_index.md" %}
+
+        {% set notes_section = get_section(path=notes_path, metadata_only=false) %}
+
+        {% if notes_section and notes_section.pages %}
+        <section class="monthly-notes notes-list">
+            <h2>이번 달의 노트</h2>
+            <ul>
+                {% for note in notes_section.pages %}
+                <li>
+                    <a href="{{ note.permalink | safe }}" class="note-link">{{ note.title }}</a>
+                    {% if note.description %}
+                    <p class="note-description">{{ note.description }}</p>
+                    {% endif %}
+                    <time class="note-date" datetime="{{ note.date }}">
+                        {{ note.date | date(format="%m월 %d일") }}
+                    </time>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        <section class="comments">
+            <script src="https://utteranc.es/client.js"
+                    repo="YangSiJun528/sijun-yang.com"
+                    issue-term="pathname"
+                    label="Comment"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </section>
+    </article>
+</main>
+{% endblock content %}

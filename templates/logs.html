@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="logs">
+    <section class="section-header">
+        <h1>{{ section.title }}</h1>
+        {% if section.description %}
+        <p>{{ section.description }}</p>
+        {% endif %}
+    </section>
+
+    <section class="logs-list">
+        <ul>
+            {% for page in section.pages %}
+            <li>
+                <article class="log-item">
+                    <a href="{{ page.permalink | safe }}" class="log-title">{{ page.title }}</a>
+                    {% if page.description %}
+                    <p class="log-description">{{ page.description }}</p>
+                    {% endif %}
+                    <time class="log-date" datetime="{{ page.date }}">
+                        {{ page.date | date(format="%Y년 %m월") }}
+                    </time>
+                </article>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="notes">
+    <section class="section-header">
+        <h1>{{ section.title }}</h1>
+        {% if section.description %}
+        <p>{{ section.description }}</p>
+        {% endif %}
+    </section>
+
+    <section class="notes-list">
+        {% if section.pages %}
+        <ul>
+            {% for page in section.pages %}
+            <li>
+                <a href="{{ page.permalink | safe }}" class="note-title note-link">{{ page.title }}</a>
+                {% if page.description %}
+                <p class="note-description">{{ page.description }}</p>
+                {% endif %}
+                <time class="note-date" datetime="{{ page.date }}">
+                    {{ page.date | date(format="%Y년 %m월 %d일") }}
+                </time>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>아직 작성된 노트가 없습니다.</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock content %}

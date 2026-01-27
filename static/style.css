@@ -123,6 +123,7 @@ h6 {
 
 /* Paragraphs */
 p {
+    margin-top: 0.5rem;;
     line-height: 1.618;
     text-align: left;
     word-break: keep-all;
@@ -460,4 +461,180 @@ main.post {
 
 main.about {
 
+}
+
+/* ===========================================
+   Logs Section Layout
+   =========================================== */
+
+main.logs {
+    & .section-header {
+        margin-bottom: var(--size-xl);
+    }
+
+    & .logs-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        & li {
+            padding: var(--size-sm) 0;
+
+            &:first-child {
+                padding-top: 0;
+            }
+        }
+    }
+
+    & .log-title {
+        font-weight: var(--font-weight-semibold);
+        border-bottom: none;
+    }
+
+    & .log-description {
+        margin-top: 0;
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-sm);
+    }
+
+    & .log-date {
+        color: var(--color-text-tertiary);
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ===========================================
+   Log Section Layout
+   =========================================== */
+
+main.log {
+    & .page-header {
+        & h1 {
+            margin-bottom: 0;
+        }
+
+        & .page-description {
+            margin-top: 0;
+            color: var(--color-text-secondary);
+        }
+
+        & time {
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-sm);
+        }
+    }
+
+    & .monthly-notes {
+        margin-top: var(--size-3xl);
+        padding-top: var(--size-2xl);
+        border-top: 1px solid var(--color-border);
+    }
+
+    & .notes-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        & li {
+            padding: var(--size-sm) 0;
+
+            &:first-child {
+                padding-top: 0;
+            }
+        }
+    }
+
+    & .content {
+        & h2 {
+            margin-top: var(--size-2xl);
+            font-size: var(--font-size-2xl);
+        }
+        & h3 {
+            margin-top: var(--size-xl);
+            font-size: var(--font-size-md);
+        }
+    }
+
+    & .note-description {
+        margin-top: 0;
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-sm);
+    }
+
+    & .note-date {
+        color: var(--color-text-tertiary);
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ===========================================
+   Notes Section Layout
+   =========================================== */
+
+main.notes {
+    & .section-header {
+        margin-bottom: var(--size-xl);
+    }
+
+    & .notes-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        & li {
+            padding: var(--size-xs) 0;
+
+            &:first-child {
+                padding-top: 0;
+            }
+        }
+    }
+
+    & .note-link {
+        border-bottom: none;
+    }
+
+    & .note-description {
+        display: none;
+    }
+
+    & .note-date {
+        display: inline;
+        margin-left: var(--size-sm);
+
+        &::before {
+            content: "·";
+            margin-right: var(--size-sm);
+            color: var(--color-text-tertiary);
+        }
+    }
+}
+
+/* ===========================================
+   Note Section Layout
+   =========================================== */
+
+main.note {
+    & .page-header {
+        margin-bottom: var(--size-3xl);
+        border-bottom: 1px solid var(--color-border);
+
+        & h1 {
+            margin-bottom: 0;
+        }
+
+        & .page-description {
+            color: var(--color-text-secondary);
+        }
+
+        & time {
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-sm);
+        }
+    }
+
+    & .back-link {
+        font-size: var(--font-size-sm);
+        border-bottom: none;
+    }
 }
