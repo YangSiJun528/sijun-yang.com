@@ -6,17 +6,38 @@
     {{ section.content | safe }}
 </section>
 
+{# 일반 블로그 글 #}
 <section class="posts-list">
     <ul>
         {% for page in section.pages %}
-        <li>
-            <article>
-                <a href="{{ page.permalink }}" class="post-title">{{ page.title }}</a>
-                {% if page.description %}<span class="post-description">{{ page.description }}</span>{% endif %}
-                <time class="post-time" datetime="{{ page.date }}">{{ page.date | date(format="%Y.%m.%d") }}</time>
-            </article>
-        </li>
+            {% if not page.extra.series or page.extra.series != "monthly-log" %}
+            <li>
+                <article>
+                    <a href="{{ page.permalink }}" class="post-title">{{ page.title }}</a>
+                    {% if page.description %}<span class="post-description">{{ page.description }}</span>{% endif %}
+                    <time class="post-time" datetime="{{ page.date }}">{{ page.date | date(format="%Y.%m.%d") }}</time>
+                </article>
+            </li>
+            {% endif %}
         {% endfor %}
     </ul>
+
+    {# 월간 기록 #}
+    <div class="monthly-log">
+        <h3 class="ml-title">Monthly Log</h3>
+        <ul>
+            {% for page in section.pages %}
+            {% if page.extra.series and page.extra.series == "monthly-log" %}
+            <li>
+                <article>
+                    <a href="{{ page.permalink }}" class="post-title">{{ page.title }}</a>
+                    {% if page.description %}<span class="post-description">{{ page.description }}</span>{% endif %}
+                    <time class="post-time" datetime="{{ page.date }}">{{ page.date | date(format="%Y.%m.%d") }}</time>
+                </article>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
 </section>
 {% endblock content %}
