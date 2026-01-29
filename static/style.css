@@ -401,7 +401,7 @@ main.blog {
 
         & .ml-title {
             color: var(--color-primary);
-            margin-bottom: var(--size-xl);
+            margin-bottom: var(--size-lg);
         }
 
         & ul {
