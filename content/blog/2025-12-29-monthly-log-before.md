@@ -175,6 +175,15 @@ px, em, rem 단위를 언제 어떻게 사용해야 하는지에 대한 실용�
 
 지금 이 글을 보여주는 개인 블로그를 만들 때 사용한 css 작성 스타일에도 영향을 주었다.
 
+### [Hypermedia Systems](https://hypermedia.systems/)
+
+htmx 제작자 Carson Gross가 쓴 책이다. 
+REST 아키텍처의 원래 의도를 설명하고, SPA 프레임워크 없이 hypermedia(HTML) 기반으로 웹 애플리케이션을 구축하는 방법을 다룬다.
+
+무료로 온라인에서 읽을 수 있다.
+
+관련해서 잘 정리된 글: [웹은 왜 복잡해졌나? -모던 웹의 복잡성과 하이퍼미디어 시스템](https://parksb.github.io/article/43.html)
+
 ## 작업
 
 {{ section_desc(desc="학습, 개발, 실험 등 직접 손댄 것들") }}
