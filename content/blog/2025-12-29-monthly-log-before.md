@@ -180,7 +180,9 @@ px, em, rem 단위를 언제 어떻게 사용해야 하는지에 대한 실용�
 htmx 제작자 Carson Gross가 쓴 책이다. 
 REST 아키텍처의 원래 의도를 설명하고, SPA 프레임워크 없이 hypermedia(HTML) 기반으로 웹 애플리케이션을 구축하는 방법을 다룬다.
 
-무료로 온라인에서 읽을 수 있다.
+무료로 온라인에서 읽을 수 있다. 
+
+추가: [Single HTML로 만드는 코드 - Gist](https://gist.github.com/YangSiJun528/4682b1346fa3eb6316e78f2f37554873) 
 
 관련해서 잘 정리된 글: [웹은 왜 복잡해졌나? -모던 웹의 복잡성과 하이퍼미디어 시스템](https://parksb.github.io/article/43.html)
 
