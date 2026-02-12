@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Nand to Tetris 강의 수강 후기: 컴퓨터의 근본 원리 이해하기 - Sijun Yang</title>
+    <meta name="description" content="">
+    <meta name="author" content="Sijun Yang">
+    <link rel="stylesheet" href="/modern-css-reset.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="width-wrapper">
+            <nav aria-label="Primary navigation links">
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="post">
+        <div class="width-wrapper">
+            
+<article class="page">
+    
+    <header class="page-header">
+        <h1>Nand to Tetris 강의 수강 후기: 컴퓨터의 근본 원리 이해하기</h1>
+        
+        <div class="page-meta">
+            <time datetime="2024-06-11">2024년 06월 11일</time>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <p>몇 달 전에, Nand to Tetris 라는 강의를 <a rel="external" href="https://github.com/chijoon-study/cs-study/wiki/Nand2Tetris-%EC%96%91%EC%8B%9C%EC%A4%80">수강</a> 완료했다. 간단한 소개와 느낀점에 대해 공유해보고자 한다.</p>
+<p><a rel="external" href="https://teachyourselfcs.com/">Teach Yourself Computer Science</a>라는 인터넷에서 혼자서 CS를 학습하기 위한 커리큘럼을 소개해주는 사이트에 추천해줘서 수강하게 되었다.</p>
+<h2 id="nand-to-tetris-sogae">Nand to Tetris 소개</h2>
+<p>시몬 쇼켄(Simon Schocken) 및 노암 니산(Noam Nisan)이 만들었다.
+컴퓨터의 작동원리를 실습을 통해 이해할 수 있는 프로젝트이다.
+간단한 논리 연산자인 Nand부터 시작해서 GUI 프로그램을 동작시킬 수 있는 범용 컴퓨터를 만든다.
+하드웨어 및 소프트웨어를 순서대로 만들어 보면서 컴퓨터 과학의 주요 지식을 이해할 수 있다.</p>
+<h3 id="jinhaeng-junbimul">진행 준비물</h3>
+<p>The Elements of Computing Systems(한국어 번역본: 밑바닥부터 만드는 컴퓨팅 시스템)이라는 도서와 <a rel="external" href="https://www.coursera.org/courses?query=from%20nand%20to%20tetris">Coursera</a>에 있는 강의를 함께 들어가면서 진행했다.
+나는 <em>밑바닥부터 만드는 컴퓨팅 시스템</em> 과  Coursera 강의를 함꼐 수강하였다.
+Coursera에서 실습 과제를 제출하고 평가받을 수 있어 학습에 도움을 준다.
+강의나 책 중 하나만 보아도 문제는 없어 보이지만, 둘 다 함께 보는 것을 추천한다.
+( Coursera의 강의를 전부 수료하면 <a rel="external" href="https://www.linkedin.com/in/%EC%8B%9C%EC%A4%80-%EC%96%91-31a91827b/details/certifications/">수료증</a>도 준다. )</p>
+<h2 id="neugginjeom">느낀점</h2>
+<h4 id="keompyuteoyi-gibon-weonri-ihae">컴퓨터의 기본 원리 이해</h4>
+<p>강의를 통해 고수준 언어를 컴파일하면서 C++이나 Java에서 다루는 객체지향이 내부적으로 함수와 구조체로 구성된다는 것을 깨달았다.
+저수준 언어에서는 명령어를 위에서부터 아래로 순차적으로 실행하며, 가끔 Jump하면서 함수나 분기, 반복문을 구현한다.
+CPU와 RAM은 논리 게이트의 집합으로 구성되며, (기본적인) CPU는 생각보다 단순한 역할을 수행한다.</p>
+<h4 id="peurogeuraeminge-daehan-deo-yeolrin-sago">프로그래밍에 대한 더 열린 사고</h4>
+<p>모든 프로그래밍 언어는 결국 기계어로 수행된다는 사실을 깨달았다.
+각 언어는 해결하고자 하는 문제나 특화된 부분이 다를 수 있지만, 결국 기계어 입장에서는 동일하게 수행된다.
+이 사실을 알고 나서, 새로운 것을 받아들이는 데 더 열린 자세를 갖게 되었다.
+나는 잘 모르는 분야나 한 번도 해본 적 없는 것들에 대한 묘한 두려움이 있었다.
+특히 나에게 익숙한 Java와 Spring을 주로 사용하고, 다른 기술에 대해서는 폐쇄적인 태도를 가지고 있었다.
+하지만 열린 사고를 가진 지금은 NodeJS 기반의 서버 개발이나 프론트엔드 개발에도 관심을 가지고 있고,
+기존에 사용해보지 않는 기술 스택을 사용해서 토이 프로젝트 개발을 기획하고 있다.</p>
+<h4 id="silseubyi-jungyoseong">실습의 중요성</h4>
+<p>강의에서 다루는 많은 내용을 알고는 있었지만, 실제로 이해하지 못하고 있었다는 것을 깨달았다.
+단순히 아는 것과 이해하는 것은 다르며, 직접 결과물을 만들어보는 것을 통해 더 잘 이해할 수 있었다.</p>
+<p>그래서 자료구조를 더 이해하기 위해 C 언어를 배워서 직접 자료구조를 구현해보고 있다.
+이후에는 소켓 네트워크 구현과 같이 CS의 기초적인 부분을 실습해보고 싶다.</p>
+<h2 id="aswiun-jeom">아쉬운 점</h2>
+<p>개인적으로 프로젝트를 진행하면서 아쉬운 점은 다음과 같다.
+특히 프로젝트의 구현과 실제 구현이 차이가 있는건 납득 가능한 부분이지만, 실제 구현과 비교하지 않는 것은 아쉽다.</p>
+<h4 id="inteoreobteue-daehan-seolmyeong-bujae">인터럽트에 대한 설명 부재</h4>
+<p>프로젝트에서 만드는 CPU에서 인터럽트 자체가 없어서 실제 OS나 컴퓨터를 이해하는데 중요한 인터럽트의 설명이 누락되어 있다.</p>
+<h4 id="ose-daehan-seolmyeong-bujog">OS에 대한 설명 부족</h4>
+<p>강의는 컴퓨팅 시스템에 대한 이해를 중점으로 한다.
+리눅스처럼 현대 OS의 동작을 기대했다면 실망할 수 있다.</p>
+<h4 id="2bu-silseub-nanido-yeoryeoum">2부 실습 난이도 여려움</h4>
+<p>강의의 2부로 넘어가면서 난이도가 급격히 올라갔다는 느낌을 받았다.
+1부까지는 외부 자료를 거의 참고하지 않고 구현할 수 있었는데, 2부 넘어가고부터 내 실력으론 구글링 없이는 문제 해결이 불가능했다.
+복잡한 요구사항을 구현해본 경험이 적은 사람에게는 어려울 수 있을 것 같다.</p>
+<h4 id="silje-guhyeone-daehan-bigyo-bujog">실제 구현에 대한 비교 부족</h4>
+<p>강의에서 다룬 내용이 실제 구현과 어떤 차이가 있는지 설명해주지 않아 아쉬웠다.</p>
+<h4 id="hangugeo-beonyeog-munje">한국어 번역 문제</h4>
+<p>심각한 부분은 아니지만, 종종 오타/오역이 보인다. 원서를 무리없이 읽을 수 있다면, 원서를 보고 진행하는 걸 추천한다. (여타 책들이 다 그렇겠지만)</p>
+<h2 id="mamuri">마무리</h2>
+<p>Nand to Tetris 강의를 통해 컴퓨터 시스템, 특히 컴퓨터와 프로그래밍 언어의 동작 원리를 이해할 수 있는 귀중한 경험이였다.
+실습을 통해 이론적 지식을 실제로 구현해 보면서 얻은 인사이트는 다른 학습 방법으로 대체할 수 없다고 생각한다.
+특히, 새로운 기술에 대한 열린 자세와 프로그래밍에 대한 더 넓은 시각을 얻은게 된 것이 나에게 중요한 성취 중 하나였다.
+앞으로는 다양한 분야와 기술에 도전하며, 배운 내용을 바탕으로 더욱 성장해 나갈 것이다.</p>
+
+    </div>
+</article>
+
+<!-- For Utterances -->
+<section class="comments">
+    
+    <noscript>댓글을 보려면 JavaScript를 활성화해주세요.</noscript>
+
+    <script src="https://utteranc.es/client.js"
+            repo="yangsijun528/sijun-yang.com"
+            issue-term="pathname"
+            label="utterances-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+    <div class="comments-skeleton"></div>
+
+    <script>
+        const observer = new MutationObserver(_ => {
+            const utterances = document.querySelector('.utterances');
+            if (utterances) {
+                const height = utterances.offsetHeight;
+                if (height > 200) {
+                    document.querySelector('.comments').classList.add('comments-loaded');
+                    observer.disconnect();
+                }
+            }
+        });
+
+        observer.observe(document.querySelector('.comments'), {
+            childList: true, subtree: true, attributes: true, attributeFilter: ['style']
+        });
+    </script>
+</section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="width-wrapper">
+            <p>
+                Built with <a href="https://www.getzola.org/">Zola</a> -
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source Code</a>
+            </p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="/rss.xml">RSS</a></li>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/robots.txt">robots.txt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
