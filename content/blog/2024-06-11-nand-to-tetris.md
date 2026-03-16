@@ -19,7 +19,7 @@ page_style = "post"
 
 ### 진행 준비물
 
-The Elements of Computing Systems(한국어 번역본: 밑바닥부터 만드는 컴퓨팅 시스템)이라는 도서와 [Coursera](https://www.coursera.org/courses?query=from%20nand%20to%20tetris)에 있는 강의를 함께 들어가면서 진행했다.
+The Elements of Computing Systems(한국어 번역본: 밑바닥부터 만드는 컴퓨팅 시스템)이라는 도서와 [Coursera](https://www.coursera.org/courses?query=from%20nand%20to%20tetris)에 있는 강의를 함께 들어가면서 진행했다. ([강의는 유튜브로도 공개되어 있다.](https://www.youtube.com/@MakkuZjAileron/playlists))
 나는 _밑바닥부터 만드는 컴퓨팅 시스템_ 과  Coursera 강의를 함꼐 수강하였다.
 Coursera에서 실습 과제를 제출하고 평가받을 수 있어 학습에 도움을 준다.
 강의나 책 중 하나만 보아도 문제는 없어 보이지만, 둘 다 함께 보는 것을 추천한다.
