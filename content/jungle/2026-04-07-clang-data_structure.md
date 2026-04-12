@@ -356,16 +356,46 @@ struct _GList
 
 ### GLib - `GHashTable`
 
-TODO
+`GHashTable`는 open addressing 기반으로 구성되어 contiguous한 container(여기선 slot이라고 더 많이 부름)를 가진다.   
+이런 구조가 가능한 이유는 각 slot이 key/value 객체 본체가 아니라 pointer 표현을 저장하기 때문이다. 따라서 내부 저장소는 고정 크기 slot들의 배열로 관리된다.
 
-### Collections-C - `sized array`
+즉, `GHashTable`은 pointer 기반 container이며, key/value가 가리키는 실제 객체의 생명주기는 별도로 관리된다.    
+필요하면 `g_hash_table_new_full()` 등으로 destroy callback을 등록해 remove/destroy 시 pointee 정리를 연결할 수 있다.
 
-TODO
+[`_GHashTable`](https://github.com/GNOME/glib/blob/2.88.0/glib/ghash.c#L212-L240) 정의를 보면, `keys`, `values`, `hashes` 배열로 구성된다.    
+`hashes[i]`는 해당 slot의 상태 또는 hash 값(또는 UNUSED/TOMBSTONE 상태)을 저장하고, `keys[i]`와 `values[i]`는 그 slot의 key/value 표현을 저장한다.
+
+keys/values의 경우 포인터 크기(`gpointer`)를 가지므로, 포인터 크기 이내의 값은 slot에 직접 저장하는 식으로 최적화 할 수 있다. [`GINT_TO_POINTER`](https://docs.gtk.org/glib/conversion-macros.html#gint-to-pointer) 매크로를 사용한다. (이 때는 value에선 값이 저장된다고 볼 수도 있겠다.)
+
+아래는 메모리와 별개지만 내부 해시 충돌 처리 로직이 궁금해서 찾아봄.
+
+[`g_hash_table_lookup_node()`](https://github.com/GNOME/glib/blob/2.88.0/glib/ghash.c#L418-L475) 
+
+위에서 open addressing + tombstone 방식으로 구현되어있다고 말했다.
+
+따라서 probe(충돌로 다음 버킷을 구하는 과정)이 여러 번 발생할 수 있다.
+
+충돌나면 넘기다가 첫 tombstone을 만나면 기록해두고, key에 맞는 node를 못 찾으면 할당한다. 
+
+- `UNUSED`: 한 번도 안 쓴 빈 칸
+- `TOMBSTONE`: 예전에 썼다가 삭제된 칸
+- `REAL HASH`: 현재 원소가 들어 있는 칸
+
+리사이즈 판단에는 `noccupied`를 쓰는데, 이는 `nnodes`(REAL HASH 엔트리 수) + `tombstone` 수이다.    
+(사이즈 확장 기준은 0.94 이상 일 때인데, Separate Chaining 방식 대비 더 작음. 이건 1 이상도 가능)
 
 ### Collections-C - `list` / `hash table`
 
-TODO
+(Glib만 봐도 충분히 공통점이 보여서 다음 내용은 AI 답변을 정리하고 대충 확인만 했다.)
+
+Collections-C도 전반적으로 pointer container 중심이다. [`CC_List`](https://github.com/srdja/Collections-C/blob/master/src/cc_list.c)는 node 기반 리스트이고, [`CC_HashTable`](https://github.com/srdja/Collections-C/blob/master/src/cc_hashtable.c)도 key/value 포인터를 저장하는 형태라 원소 수명 관리는 호출자가 의식해야 한다.    
+대신 `destroy_free`, `remove_all_free` 같은 free-all 계열 API와 memory pool 활용 여지가 있다.
+
 
 ### c-algorithms - `list` / `avl` / `hash`
 
-TODO
+(Glib만 봐도 충분히 공통점이 보여서 다음 내용은 AI 답변을 정리하고 대충 확인만 했다.)
+
+c-algorithms는 라이브러리 전반이 `void *` 기반 pointer container다. [`list`](https://github.com/fragglet/c-algorithms/blob/master/src/list.c)와 [`avl`](https://github.com/fragglet/c-algorithms/blob/master/src/avl-tree.c)은 node 기반 자료구조이고, [`hash`](https://github.com/fragglet/c-algorithms/blob/master/src/hash-table.c)도 key/value 포인터 저장형이며 일부 구조에서는 free callback으로 정리 동작을 연결할 수 있다.
+
+[`arraylist`](https://github.com/fragglet/c-algorithms/blob/master/src/arraylist.c)도 있는데, 이건 Glib의 `GPtrArray`와 비슷하게 포인터를 저장하는 배열이다.
