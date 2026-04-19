@@ -16,10 +16,6 @@ series = "monthly-log"
 
 {{ section_desc(desc="흥미롭거나 유용했던 자료들") }}
 
-### [Computer Networks: A Systems Approach (무료 원서)](https://book.systemsapproach.org/index.html)
-
-나는 한글 번역본을 책으로 가지고 있는데, 영어 원서는 무료로 공개되어 있다. 네트워크를 제대로 공부하고 싶을 때 참고하면 좋을 듯.
-
 ### [Interactive SICP JS](https://sourceacademy.org/sicpjs/index)
 
 SICP의 설명을 Scheme 대신 기능이 제한된 JS로 대체한 에디션이다. 인터넷에서 무료로 볼 수 있고 실행 환경을 구축할 필요 없이 웹사이트에서 실습할 수 있다.
