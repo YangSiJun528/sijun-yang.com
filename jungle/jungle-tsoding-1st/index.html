@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Tsoding 유튜브의 C관련 내용 정리 - Sijun Yang</title>
+    <meta name="description" content="C언어 관련 자잘한 정보들">
+    <meta name="author" content="Sijun Yang">
+    <link rel="stylesheet" href="/modern-css-reset.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="width-wrapper">
+            <nav aria-label="Primary navigation links">
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/jungle">Jungle</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="post">
+        <div class="width-wrapper">
+            
+<article class="page">
+    
+    <header class="page-header">
+        <h1>Tsoding 유튜브의 C관련 내용 정리</h1>
+         <p class="page-description">C언어 관련 자잘한 정보들</p> 
+        <div class="page-meta">
+            <time datetime="2026-04-06">2026년 04월 06일</time>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <p>C 자료구조 공부를 하려고 자료를 찾아보다가, 예전부터 이름만 알고 있던 Tsoding 영상을 몇 개 보게 됐다.</p>
+<p>C를 쓰다보면 필요한 유용한 정보들이 많아서 메모해두려고 한다.</p>
+<p>항상 아쉬운점은 Tsoding Daily 채널의 영상의 자막은 트위치 댓글을 보여주는 자막이라서, 자동 생성 자막을 봐야할 때가 있다.</p>
+<p>영어권 사용자에게는 큰 문제가 아닐 수 있지만, 영어를 못하는 사람에게는 꽤나 불편함;;</p>
+<h2 id="jeongrineun-anhago-ringkeuman-jeogeulgeo">정리는 안하고 링크만 적을거</h2>
+<ol>
+<li><a rel="external" href="https://youtu.be/sFYFuBzu9Ow?si=dUHLVEkJvBLUAGL3">Why Linux Has This Syscall?!</a>: mmap 시스템 콜에 대한 사용 영상</li>
+<li><a rel="external" href="https://youtu.be/sZ8GJ1TiMdk?si=TKc46RBQc5PDPi5t">Writing My Own Malloc in C</a>: 직접 Malloc 구현하는 영상</li>
+</ol>
+<p>thread 생성이나, gblic의 malloc에서도 mmap를 사용하니까 봐두면 좋지 않을까... (관련 자료: <a rel="external" href="https://nullprogram.com/blog/2023/03/23/">Practical libc-free threading on Linux</a> )</p>
+<h2 id="1-dynamic-arrays-in-c">1. <a rel="external" href="https://youtu.be/95M6V3mZgrI?si=Hl2A0gCh8QeK3TZC">Dynamic Arrays in C</a></h2>
+<p>Dynamic Arrays를 사용하는 방법을 소개한다.</p>
+<p>count와 capacity를 구조체로 묶어두면 동적 배열의 상태를 한 번에 관리할 수 있다. 이런 식으로 <code>items</code>, <code>count</code>, <code>capacity</code> 패턴을 공통화해두면, 필요할 경우 매크로나 별도 래퍼를 이용해 다른 타입에도 같은 방식으로 확장할 수 있다.</p>
+<p>구조 자체는 <code>count</code>와 <code>capacity</code>를 비교해서 확장하는 연산으로 평범함.</p>
+<p>예를 들어 int 대신 float를 저장하는 구조체를 따로 만들고 같은 로직을 적용(매크로를 사용해서 재사용)하면, 동일한 방식의 동적 배열을 다른 타입에도 사용할 수 있다.</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="plain"><span class="giallo-l"><span>#include &lt;stdio.h&gt;</span></span>
+<span class="giallo-l"><span>#include &lt;stdlib.h&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>typedef struct {</span></span>
+<span class="giallo-l"><span>    int *items;</span></span>
+<span class="giallo-l"><span>    size_t count;</span></span>
+<span class="giallo-l"><span>    size_t capacity;</span></span>
+<span class="giallo-l"><span>} Numbers;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>int main(void)</span></span>
+<span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span>    Numbers xs = {0};</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    for (int x = 0; x &lt; 10; ++x) {</span></span>
+<span class="giallo-l"><span>        if (xs.count == xs.capacity) {</span></span>
+<span class="giallo-l"><span>            xs.capacity = (xs.capacity == 0) ? 4 : xs.capacity * 2;</span></span>
+<span class="giallo-l"><span>            xs.items = realloc(xs.items, xs.capacity * sizeof(*xs.items));</span></span>
+<span class="giallo-l"><span>        }</span></span>
+<span class="giallo-l"><span>        xs.items[xs.count++] = x;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    for (size_t i = 0; i &lt; xs.count; ++i) {</span></span>
+<span class="giallo-l"><span>        printf(&quot;%d\n&quot;, xs.items[i]);</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    free(xs.items);</span></span>
+<span class="giallo-l"><span>    return 0;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h2 id="2-libraries-that-quietly-revolutionized-c">2. <a rel="external" href="https://youtu.be/kS_GqDp6IT4?si=7yUhiCaoXcy0UhWo">Libraries That Quietly Revolutionized C</a></h2>
+<p><a rel="external" href="https://github.com/nothings/stb">STB</a> 스타일의 <strong>single-file library</strong> 를 소개하는데, C의 불편함을 정면으로 부정하는 대신 오히려 <strong>C의 전처리기와 번역 단위 모델을 이용해서 단순한 배포 형식</strong>을 만든 사례를 설명한다.</p>
+<p>라이브러리를 헤더/소스 여러 파일로 쪼개지 않고 <strong>하나의 헤더 파일로 배포</strong>한다. 그리고 특정 <code>.c</code> 파일 한 곳에서만 <code>STB_IMAGE_IMPLEMENTATION</code> 같은 매크로를 정의해 실제 구현을 끌어오고, 나머지 곳에서는 선언만 보이게 만든다. 이 방식은 C의 <code>#include</code> 가 사실상 텍스트 복사라는 점, 선언과 정의를 분리해야 하는 컴파일 모델을 정확히 이용한 패턴이다.</p>
+<p>STB 스타일 single-file 라이브러리는 C를 더 편한 언어로 바꾼 것이 아니라, C의 전처리기와 번역 단위 모델을 활용해 배포를 단순화한 패턴이다. 사용자는 헤더 하나만 포함해 쉽게 시작할 수 있고, 필요하면 구현을 별도 번역 단위에서 컴파일해 정적 라이브러리처럼 연결할 수도 있다.</p>
+<p>또 하나 인상적인 지점은 “single-file”이 꼭 작은 코드라는 뜻은 아니라는 점이다. 영상에서는 MiniAudio 같은 큰 라이브러리도 예시로 언급되는데, 이건 단일 파일 배포가 단순히 취미성 트릭이 아니라 <strong>배포와 통합 비용을 최소화하는 실용적 설계</strong>라는 걸 보여준다.<br />
+npm 같은 무거운 의존성 생태계와 대비해서 보면, C 진영이 아직도 특정 종류의 단순함에서는 매우 강하다는 얘기이기도 하다.</p>
+<h2 id="3-how-to-prevent-all-memory-leaks">3. <a rel="external" href="https://youtu.be/bzBU7iF2Rms?si=04HzKRkX5fAb-UW6">How to Prevent All Memory Leaks</a></h2>
+<p>메모리 할당/해제는 추상화된 개념임. 따라서 메모리 Leak을 정의하기 어렵고 잡기도 어려움.</p>
+<p>free를 안하고 프로그램이 끝나면서 지워지는게 문제는 아님. 의도하지 않게 free가 안되는게 Leak임.</p>
+<p>GC가 있다고 해도 이런 문제는 생길 수 있음(reference cycle). 특히 C같은 시스템 언어에선 포인터 연산이 가능해서 unreachable memory 모델이 유효하지 않을 때도 있음.</p>
+<h3 id="ai-yoyag">AI 요약</h3>
+<p><strong>1. Valgrind와 ASan은 둘 다 쓴다</strong><br />
+Tsoding은 메모리 릭을 잡을 때 둘 다 쓴다고 말한다. 다만 Valgrind로 메모리 릭을 잡는 건 어렵다고 본다. 이유는 “메모리 릭” 자체의 정의가 흐리기 때문이라고 한다.</p>
+<p><strong>2. “종료 전까지 free 안 된 메모리”라는 정의는 별로 유용하지 않다</strong><br />
+프로그램이 실행 내내 일정한 메모리를 잡고 있다가 종료 시점까지 해제하지 않는 경우가 흔하고, 이런 건 기술적으로는 릭처럼 보일 수 있어도 실제 문제를 일으키지 않을 수 있다고 말한다. 그래서 이 정의는 실질적으로 쓸모없다고 본다.</p>
+<p><strong>3. “도달 불가능한 메모리”라는 정의가 더 낫지만, 이것도 완전하지 않다</strong><br />
+GC 관점에서 unreachable memory라는 정의가 더 낫다고 말한다. 하지만 시스템 언어처럼 포인터를 직접 다루는 경우에는 이것도 문제가 있다. 포인터를 변형하거나 특이한 방식으로 다루면 GC가 참조를 제대로 인식하지 못할 수 있기 때문이다.</p>
+<p><strong>4. D 언어의 GC 예시</strong><br />
+D는 GC가 있지만 시스템 프로그래밍 언어라 포인터를 직접 다룰 수 있다. 그래서 메모리를 스캔하면서 포인터처럼 보이는 정수를 참조로 간주하는데, 포인터를 비정상적인 방식으로 조작하면 GC가 실제로는 살아 있는 객체를 unreachable하다고 오판해서 정리할 수 있다고 설명한다.</p>
+<p><strong>5. XOR linked list 예시</strong><br />
+XOR linked list처럼 두 포인터를 XOR해서 저장하면, 그 값은 정상적인 포인터처럼 보이지 않는다. 그래서 D의 GC는 이런 구조를 제대로 추적하지 못하고, 실제로 필요한 객체를 없애버릴 수 있다고 말한다. 그래서 D 개발자들은 이런 식의 트릭을 쓰지 말라고 권장한다고 한다.</p>
+<p><strong>6. JavaScript에서도 메모리 문제는 생긴다</strong><br />
+JavaScript처럼 GC가 있는 언어에서도 콜백 정리를 잊으면 객체가 계속 reachable 상태로 남을 수 있다고 말한다. 즉, GC가 있어도 원래는 사라져야 할 객체가 계속 살아남아 메모리 사용량이 늘어날 수 있다는 것이다.</p>
+<p><strong>7. 결론: 메모리 릭은 객관적으로 딱 잘라 정의하기 어렵다</strong><br />
+화자는 메모리 릭이 매우 주관적이고, 깊게 생각해 보면 단순히 “free를 안 했다” 수준의 문제가 아니라고 말한다. 오히려 의도와 맥락이 섞인 애매한 개념에 가깝다고 본다.</p>
+<p><strong>8. 메모리 할당 자체가 인공적 구성물이라는 주장</strong><br />
+후반부에서는 메모리 할당/해제가 계산 모델의 본질적인 개념이라기보다, 실제 프로그래밍을 쉽게 하려고 위에 덧씌운 인공적 구조라고 말한다. 그래서 지금의 메모리 문제들은 우리가 만든 추상화 위에서 생기는 문제라고 설명한다.</p>
+<h2 id="4-stop-telling-me-about-generic">4. <a rel="external" href="https://youtu.be/oEL9x6pP4FM?si=k_tPtLztFP4kuOj_">Stop telling me about _Generic</a></h2>
+<p>근데 그렇게 따지면 Java의 제네릭도 제네릭이 아니라고 보는건가? 아니면 AI가 잘못 평가한건가? Java도 따지면 오버로딩 느낌인데.</p>
+<h3 id="ai-yoyag-1">AI 요약</h3>
+<p><strong>1. <code>_Generic</code>은 generics가 아니라 타입 기반 선택기다</strong><br />
+Tsoding은 C의 <code>_Generic</code>을 generics라고 부르는 건 잘못됐다고 본다. 이 기능은 전통적인 의미의 제네릭이 아니라, <strong>타입에 따라 이미 만들어져 있는 표현식이나 함수를 골라주는 장치</strong>에 가깝다고 말한다.</p>
+<p><strong>2. 함수 오버로딩과 비교</strong><br />
+C는 같은 이름에 다른 시그니처를 가진 함수를 둘 수 없지만, C++은 가능하다. 다만 내부적으로는 같은 이름을 그대로 쓰는 게 아니라, 컴파일러가 타입 정보를 이름에 섞어 넣는 <strong>name mangling</strong>으로 서로 다른 심볼로 구분한다고 설명한다.</p>
+<p><strong>3. <code>_Generic</code>는 오버로딩과 비슷한 구조</strong><br />
+Tsoding은 <code>_Generic</code>이 하는 일도 본질적으로는 비슷하다고 말한다. 예를 들어 <code>foo_int</code>, <code>foo_float</code>처럼 타입별 함수를 따로 만들어 두고, <code>_Generic</code>이 인자의 타입을 보고 그중 하나를 선택하게 하면 된다. 그래서 이 기능은 <strong>수동으로 mangling한 함수들 사이에서 골라주는 오버로딩 흉내</strong>일 뿐이라고 본다.</p>
+<p><strong>4. 핵심 차이는 dispatch와 generate의 차이다</strong><br />
+여기서 Tsoding은 중요한 구분을 한다. <strong>함수 오버로딩은 이미 존재하는 코드 중에서 어떤 것을 호출할지 결정하는 dispatch</strong>이고, <strong>generics는 타입에 맞는 코드를 새로 만들어내는 generate</strong>라는 것이다. 즉, 선택과 생성은 전혀 다른 문제라고 본다.</p>
+<p><strong>5. C++ 템플릿과 Rust generics와의 비교</strong><br />
+이 차이를 설명하기 위해 C++ 템플릿과 Rust generics를 예로 든다. 둘 다 같은 함수 형태를 여러 타입으로 호출하면, 컴파일러가 타입별 버전을 실제로 따로 만들어낸다고 설명한다. 특히 Rust는 trait bound 같은 제약도 줄 수 있어서, Tsoding은 이를 더 전형적인 generics의 예로 본다.</p>
+<p><strong>6. 결론: <code>_Generic</code>은 진짜 generics라고 보기 어렵다</strong><br />
+Tsoding의 결론은 단순하다. C의 <code>_Generic</code>은 <strong>타입별 코드를 생성하지 않고, 기존 코드 중 하나를 고르는 기능만 제공한다.</strong> 그래서 “C에는 이미 generics가 있다”, “<code>_Generic</code> 쓰면 된다” 같은 말은 부정확하다고 비판한다.</p>
+<h2 id="5-you-should-read-open-source-code">5. <a rel="external" href="https://youtu.be/tBApLbmAZ6Y?si=CAP6ikHPbMZJP-yT">You should read Open Source code</a></h2>
+<p>동적 라이브러리를 어떻게 사용하는데 궁금했는데, 우연히 알게 됨. 근데 이게 어떻게 접근 가능한건지는 모르곘음. 그냥 read only로 OS가 강제하고 읽어서 쓰나?<br />
+그건 뭐... 나중에 알아보기</p>
+<h3 id="ai-yoyag-2">AI 요약</h3>
+<p><strong>1. 결론: 구현 아이디어는 오픈소스를 읽으면서 배울 수 있다</strong> (결론을 먼저 나오게 위치 변경. 영상에서는 맨 뒤에 나옴.)<br />
+Tsoding은 이런 저수준 테크닉을 어디서 배우냐는 질문에, 특별한 비법서나 강의보다 <strong>오픈소스 코드를 직접 읽고 디버깅하는 과정</strong>이 가장 큰 학습원이라고 말한다. 문서만 보면 지나치기 쉬운 구현상의 트릭이나 설계 의도를 실제 코드에서 더 잘 볼 수 있다는 것이다.</p>
+<p><strong>2. 이번 예시는 SDL 소스코드를 읽다가 발견한 아이디어다</strong><br />
+그가 소개하는 사례는 SDL2 코드를 보다가 알게 된 것이다. SDL2가 동적 라이브러리와 심볼을 다루는 방식을 따라가다 보니, <code>dlopen</code>과 <code>dlsym</code>을 이용해 꽤 흥미로운 일을 할 수 있다는 점을 발견했다고 설명한다. 즉, 이번 내용은 추상적인 개념 설명이 아니라, <strong>오픈소스를 읽다가 실제 구현 아이디어를 포착한 사례</strong>로 제시된다.</p>
+<p><strong>3. 기본 개념: <code>dlopen</code>은 런타임에 공유 라이브러리를 여는 기능이다</strong><br />
+먼저 Linux의 <code>dlopen</code>은 동적 라이브러리를 실행 중에 로드하는 기능이라고 설명한다. 보통은 <code>.so</code> 파일 경로를 넘겨 라이브러리를 열고, 그 결과로 핸들을 얻는다. 그리고 <code>dlsym</code>을 통해 그 라이브러리 안의 함수 심볼을 찾아 사용할 수 있다.</p>
+<p><strong>4. <code>dlsym</code>으로 찾은 함수는 함수 포인터로 바로 호출할 수 있다</strong><br />
+예를 들어 <code>raylib</code>를 <code>dlopen</code>으로 연 다음, <code>InitWindow</code> 같은 심볼을 <code>dlsym</code>으로 찾으면 그 주소를 함수 포인터로 받아 실행할 수 있다고 설명한다. 즉, 정적으로 링크하지 않았더라도, 런타임에 라이브러리를 열고 함수 주소를 찾아 실제 기능을 호출할 수 있다는 것이다.</p>
+<p><strong>5. 이런 방식은 런타임에 환경을 보고 백엔드를 고르는 데 유용하다</strong><br />
+Tsoding은 이 메커니즘이 동적인 애플리케이션에서 유용하다고 본다. 실행 환경에 <code>raylib</code>가 있으면 <code>raylib</code>를 쓰고, 없으면 <code>SDL</code>을 쓰는 식으로, <strong>실행 시점에 무엇이 가능한지 확인한 뒤 그에 맞춰 동작을 바꿀 수 있기 때문</strong>이다.</p>
+<p><strong>6. 여기서 재미있는 포인트는 <code>dlopen(NULL, ...)</code>이다</strong><br />
+그가 특히 흥미롭게 본 것은, <code>dlopen</code>에 라이브러리 경로 대신 <code>NULL</code>을 넣을 수 있다는 점이다. 이렇게 하면 외부 라이브러리가 아니라 <strong>현재 실행 중인 프로그램 자신</strong>을 열게 된다고 설명한다. 처음에는 이상하게 들리지만, 실행 파일과 공유 객체가 모두 ELF 포맷이라는 점을 생각하면 그렇게 놀랄 일은 아니라는 것이다.</p>
+<p><strong>7. 그러면 프로그램이 링크한 라이브러리의 심볼을 자기 자신을 통해 찾을 수 있다</strong><br />
+프로그램 자신을 연 뒤 <code>dlsym</code>을 쓰면, 현재 실행 파일이 의존하고 있는 라이브러리들의 심볼도 조회할 수 있다고 설명한다. 예를 들어 <code>malloc</code>을 찾아 보면, 헤더를 통해 접근한 <code>malloc</code>과 <code>dlsym</code>으로 얻은 주소가 같다는 점을 확인할 수 있다. 즉, 자기 자신을 열어도 결국 현재 프로세스가 가진 심볼 공간을 탐색하게 된다.</p>
+<p><strong>8. 하지만 자기 프로그램 안의 함수는 기본적으로 바로 찾을 수는 없다</strong><br />
+Tsoding은 여기서 한 걸음 더 나아가 <code>main</code>도 찾을 수 있는지 시험한다. 기본 상태에서는 되지 않는다고 설명한다. 이유는 실행 파일의 자체 심볼들이 기본적으로 동적 심볼 테이블에 모두 들어가지는 않기 때문이라고 본다.</p>
+<p><strong>9. <code>-rdynamic</code>을 쓰면 자기 함수도 노출된다</strong><br />
+이 문제는 링크 옵션 <code>-rdynamic</code>으로 해결할 수 있다고 설명한다. 이 옵션을 주면 실행 파일의 심볼도 동적 심볼 테이블에 포함되므로, <code>dlsym</code>으로 <code>main</code> 같은 자기 프로그램의 함수까지 찾을 수 있다. 그리고 이렇게 얻은 주소가 실제 <code>main</code>의 주소와 일치한다는 점도 보여준다.</p>
+<p><strong>10. 심지어 <code>main</code>을 다시 호출할 수도 있다</strong><br />
+찾아낸 <code>main</code>을 함수 포인터처럼 호출하는 것도 가능하다고 말한다. 물론 그렇게 하면 <code>main</code>이 다시 자기 자신을 부르며 재귀로 들어가게 되므로 실용적이진 않다. 그래도 실행 파일도 ELF 객체라는 점을 생각하면, 기술적으로는 가능한 동작이라는 것이다.</p>
+<p><strong>11. SDL도 이런 기법을 실제로 활용한다</strong><br />
+이게 단순히 장난 같은 실험으로 끝나는 건 아니라고 설명한다. SDL2는 실제로 글로벌 심볼이나 연결된 라이브러리의 특정 심볼을 조회해서, 어떤 환경이나 드라이버가 있는지, 혹은 특정 프로그램에 대한 quirks가 필요한지 판단하는 데 이런 방식을 사용한다고 말한다.</p>
+<p><strong>12. 더 확장하면 libffi 같은 도구로 모르는 함수도 호출할 수 있다</strong><br />
+후반부에서는 <code>libffi</code>도 언급한다. 이 라이브러리를 쓰면 동적 라이브러리에서 찾은 함수의 시그니처를 데이터로 기술해서, 컴파일 시점에 타입을 몰라도 런타임에 올바르게 호출할 수 있다고 설명한다. Tsoding은 이를 이용해 동적 라이브러리를 불러와 함수들을 호출하는 REPL 비슷한 도구도 만들었다고 말한다.</p>
+
+    </div>
+</article>
+
+<!-- For Utterances -->
+<section class="comments">
+    
+    <noscript>댓글을 보려면 JavaScript를 활성화해주세요.</noscript>
+
+    <script src="https://utteranc.es/client.js"
+            repo="yangsijun528/sijun-yang.com"
+            issue-term="pathname"
+            label="utterances-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+    <div class="comments-skeleton"></div>
+
+    <script>
+        const observer = new MutationObserver(_ => {
+            const utterances = document.querySelector('.utterances');
+            if (utterances) {
+                const height = utterances.offsetHeight;
+                if (height > 200) {
+                    document.querySelector('.comments').classList.add('comments-loaded');
+                    observer.disconnect();
+                }
+            }
+        });
+
+        observer.observe(document.querySelector('.comments'), {
+            childList: true, subtree: true, attributes: true, attributeFilter: ['style']
+        });
+    </script>
+</section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="width-wrapper">
+            <p>
+                Built with <a href="https://www.getzola.org/">Zola</a> -
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source Code</a>
+            </p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="/rss.xml">RSS</a></li>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/robots.txt">robots.txt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

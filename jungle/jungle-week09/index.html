@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Week 09: 정글 끝까지(Pintos) - Threads - Sijun Yang</title>
+    <meta name="description" content="Pintos 시작, GitHub 기반 협업 시도">
+    <meta name="author" content="Sijun Yang">
+    <link rel="stylesheet" href="/modern-css-reset.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="width-wrapper">
+            <nav aria-label="Primary navigation links">
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/jungle">Jungle</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="post">
+        <div class="width-wrapper">
+            
+<article class="page">
+    
+    <header class="page-header">
+        <h1>Week 09: 정글 끝까지(Pintos) - Threads</h1>
+         <p class="page-description">Pintos 시작, GitHub 기반 협업 시도</p> 
+        <div class="page-meta">
+            <time datetime="2026-04-30">2026년 04월 30일</time>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <h2 id="haegsim-yeogryang-mogpyo">핵심 역량 목표</h2>
+<p><small style="color: #777;">정글 과정을 통해 길러야 할 10가지 핵심 역량(문제해결, 설계, 구현, 품질, 유지보수, 협업, 태도, 비즈니스 이해, AI 활용, 학습 민첩성)을 기준으로 이번
+주의 목표를 설정하고, 실제 과정과 결과를 돌아봅니다.</small></p>
+<h3 id="mogpyo-1-pintos-gwaje-jinhaenge-jibjunghagi">목표 1. Pintos 과제 진행에 집중하기</h3>
+<p><small>관련 역량: 문제해결, 구현, 학습 민첩성</small></p>
+<h4 id="gyehoeg">계획</h4>
+<p>이번 주에는 가능하면 다음 과제까지 미리 진행해 보려고 한다.</p>
+<p>정글 커리큘럼과 별개로 Pintos를 파일 시스템까지 끝까지 따라가는 것이 개인적인 목표라서 더 많은 시간을 써야 한다.</p>
+<p>Jungle Bell 같은 사이드 작업을 완전히 멈추지는 않겠지만, 최대한 Pintos에 집중할 예정이다.</p>
+<h4 id="gwajeong">과정</h4>
+<p>팀 프로젝트와 별개로, 모든 내용을 직접 구현하는 레포를 따로 만들어 병행하고 있다.</p>
+<p>이렇게 개인 작업을 병행하는게 협업 측면에서 좋지 않을 수 있다는 점은 알고 있지만, 정글에 들어왔을 때부터 해보고 싶었던 목표인 만큼 계속 이어갈 생각이다.</p>
+<p>구현 과정의 사고 흐름 등은 프로젝트 내부에 <a rel="external" href="https://github.com/YangSiJun528/jungle_pintos_lab/tree/main/docs/daily">마크다운 파일을 만들어 메모</a>해두고
+있다.</p>
+<h4 id="gyeolgwa-mic-pideubaeg">결과 및 피드백</h4>
+<p>이번 주차 과제 구현은 모두 마쳤다. 다만 목표를 위해선 더 진도를 많이 빼야 하지만, 앞선 과제까지 진행하기에는 시간이 부족했다.</p>
+<p>코치님의 피드백을 들으며, 적절한 부분에서는 AI를 적극적으로 사용해 시간을 아끼는 편이 좋겠다고 느꼈다. 이 부분은 회고에서 다시 정리한다.</p>
+<h3 id="mogpyo-2-github-giban-hyeobeob-bangsigeul-gaeseonhagi">목표 2. GitHub 기반 협업 방식을 개선하기</h3>
+<p><small>관련 역량: 협업, 품질, 유지보수</small></p>
+<h4 id="gyehoeg-1">계획</h4>
+<p>이번 주부터 팀 프로젝트가 시작되고, GitHub 기반 협업 방식(이슈, PR, 리뷰 등)을 본격적으로 적용해야 한다.</p>
+<p>나는 오픈소스 기여와 팀 프로젝트 경험이 있어, 이를 바탕으로 팀원들의 협업 능력을 높이는 데 기여해볼 계획이다.</p>
+<p>개별적인 피드백은 투자 대비 노력이 적고 팀원이 매번 바뀌므로 시스템을 구성하는 식으로 진행하려고 한다.<br />
+(PR/코드 리뷰 방식을 공유, 템플릿 설정, AI 기반 평가 도구 도입 등)</p>
+<p>평가 시에는 도입 여부보단 실제로 개선되었는지를 중점적으로 볼 것 같다.</p>
+<h4 id="gwajeong-1">과정</h4>
+<p>Gemini 기반 AI 피드백을 추가했다.</p>
+<p>Style Guide 체크리스트를 프롬프트로 제공해, 기준에 맞춰 리뷰하도록 구성했다.</p>
+<h4 id="gyeolgwa-mic-pideubaeg-1">결과 및 피드백</h4>
+<p>그 외의 협업 개선 작업은 구현에만 집중하기에도 시간이 부족해 많은 시간을 할당하지 못했다.</p>
+<p>이번에는 GitHub 기반의 협업이나 분업이 잘 되지 않아, 개선 효과를 평가하기 어려웠던 것 같다.</p>
+<h2 id="geu-oe-jageob">그 외 작업</h2>
+<p><small style="color: #777;">핵심 역량 목표와 직접 연결되지는 않지만, 이번 주에 따로 진행했거나 정리할 만한 활동을 작성합니다.</small></p>
+<h3 id="undong">운동</h3>
+<p>지난 주차에 갑자기 3km 러닝을 해서인지 4일 정도 몸이 아팠다. 그래서 운동을 거의 하지 못했다.</p>
+<p>또, 작업을 하다 보니 흐름을 끊고 혼자 운동하러 나가기가 어려워 잘 하지 못했다.</p>
+<p>그래도 팀원들이 같이 러닝하러 갈 때 함께 나가서 두 번 정도 뛰었다.</p>
+<h4 id="ceseongbun-byeonhwa">체성분 변화</h4>
+<p><strong>4월 23일</strong></p>
+<ul>
+<li>체중: 62.8kg</li>
+<li>골격근량: 26.7kg</li>
+<li>체지방율: 23.1%</li>
+</ul>
+<p><strong>4월 30일</strong></p>
+<ul>
+<li>체중: 63.3kg (+0.5kg)</li>
+<li>골격근량: 26.9kg (+0.2kg)</li>
+<li>체지방율: 23.4% (+0.3%)</li>
+</ul>
+<h3 id="jungle-bell-jageob">Jungle Bell 작업</h3>
+<p>홍보를 통해 사용자를 한 번 늘려보고 싶은데, 같은 반 팀원들이 사용하는 모습을 보니 설치나 첫 사용법 이해를 어려워하는 경우가 많았다.</p>
+<p>그래서 홍보 전에 온보딩 기능을 추가하고, 커맨드 기반 설치를 지원해 편의성을 개선하는 작업을 진행하고 있다.</p>
+<h3 id="jaryo-gongyu">자료 공유</h3>
+<ul>
+<li><a rel="external" href="https://gist.github.com/YangSiJun528/100238e20778f6ec8b02f6e19a85c9c2">[Jungle My Note | W09] Condition Variable의 동작 원리와 Pintos 구현 분석.md</a></li>
+<li><a rel="external" href="https://gist.github.com/YangSiJun528/36b3bef3f1a466b55da94522bd681d5f">[Jungle My Note | W09] 협업을 위한 코드 작성 &amp; PR과 커밋 작성법 추천 자료.md</a></li>
+<li><a rel="external" href="https://github.com/YangSiJun528/jungle_pintos_lab/blob/main/docs/ai/003_pintos_ASSERT_%EB%B0%9C%ED%91%9C.pdf">목요일 발표 주제로 ASSERT 사용법 소개</a></li>
+</ul>
+<h2 id="wil-what-i-learned">WIL (What I Learned)</h2>
+<h3 id="04-28-jangbyeonggyu-yijangnim-q-a">04/28 장병규 의장님 Q&amp;A</h3>
+<blockquote>
+<p>TODO: 이거 나중에 다듬을 예정. 시간 관계 상 기억나는 핵심만 적음. 결국 아래 3가지가 핵심 주제였던거 같음.</p>
+</blockquote>
+<ul>
+<li>AI는 기반기술이다.
+<ul>
+<li>모든 산업/사회가 영향을 받을 수 있다.</li>
+<li>이전의 기반기술이 그랬던 것 처럼, 지금의 팀 구조, 협업, 일하는 방식, 공부 방식 등등이 다 바뀔 수 있음.</li>
+<li>그래서 여러 시행착오를 겪을 수 밖에 없음.</li>
+</ul>
+</li>
+<li>본인이 하는 의사결정(AI-First)에도 확인은 없음.
+<ul>
+<li>기반기술이고, 구조가 바뀔 것이라고 생각하기 때문에, 여려 시행착오를 미리 겪어보려는 것.</li>
+</ul>
+</li>
+<li>자기 정체성 찾기 - AI시대에 변하지 않는 것
+<ul>
+<li>위의 배경 때문에, 앞으로 사회나 구조가 변화하고 이로 인해 개개인의 혼란이 심해질 것이다.</li>
+<li>이 상황에서 흔들리지 않으려면 자기 정체성이 중요하다.</li>
+<li>내가 누구고, 뭘 선택하고, 뭘 잃지 않아야 하는지 등.</li>
+<li>한국 사회가 특히 피어 프레셔, 즉 또래 압력과 비교 압력이 강한 사회이다. 인간은 사회적인 동물이라 이런 것에서 압박을 느끼는건 당연하지만.</li>
+<li>앞으로 많은 변화에서 휘둘리지 않으려면 자기 정체성을 찾아가고 정의하는 것이 중요하다.</li>
+</ul>
+</li>
+</ul>
+<p>느낀점: 말을 되게 잘하신다. 말하고자 하는 주장을 벗어나지 않으면서 필요한 이야기만 말하신다고 느낌. AI가 기반기술이라는 건 되게 인상깊었음. 이 인식을 하면서 두려움이 좀 줄어들었고, AI 관련 이슈(특히
+기업이나 사회의 변화)를 접할 때도 다르게 보이는거 같음.</p>
+<h2 id="hoego">회고</h2>
+<h3 id="pintos-hugi">Pintos 후기</h3>
+<p>너무 어렵다. 그래도 재미있긴 하다.<br />
+<del>사실 정글 전에서도 시간만 많으면 나가서 하루종일 이런 활동을 하고 싶긴 했다.</del></p>
+<p>최대한 Pintos에만 집중하며 진행하려고 한다.</p>
+<p>효율을 위해서 AI를 아예 쓰지 않을 수는 없다.</p>
+<p><code>요구사항/공부 -&gt; 구현 -&gt; 피드백</code></p>
+<p>이 흐름에서 구현 단계에서는 거의 쓰지 않고, 요구사항 분석과 공부에는 적극적으로 활용할 계획이다. 피드백은 마무리 단계에서 주로 받고, 구현 도중에는 최소한으로만 사용할 생각이다.</p>
+<h3 id="koeotaim-hyeobeob-hoego">코어타임 / 협업 회고</h3>
+<p>잘 안 된 것 같다. 다들 생소한 구현을 다루고 있어, 요구사항을 이해하고 구현하는 것만으로도 벅찼다.</p>
+<p>개념을 설명하거나 코드 리뷰를 많이 하기도 했지만, 협업이 잘 되었다고 느끼지는 못했다.
+구현을 포기하면 협업에 더 신경 쓸 수 있겠지만, 내 목표와 맞지 않다 보니 구현을 버릴 수는 없다.</p>
+<p>이 상황에서 어떻게 협업을 더 잘 진행할 수 있을지는 팀원들과 의견을 나눠봐야 할 것 같다.
+그래도 팀원들에게 내 목표를 솔직하게 말했을 때 이해해줘서 감사했다.</p>
+<h3 id="haegsim-yeogryang-mogpyo-hoego">핵심 역량 목표 회고</h3>
+<p>Pintos는 확실히 매우 빡세서, 목표를 여러 개 두기 어려울 것 같다.</p>
+<p>이번 주차 목표 중 협업 관련 내용은 거의 잘 진행하지 못했다.</p>
+<p>다음 주차에는 구현과 이를 잘 해내도록 돕는 AI 하네스 구축에 목표를 집중해야 할 것 같다.</p>
+<h3 id="daeum-jucae-sidohal-geos">다음 주차에 시도할 것</h3>
+<p>AI 하네스를 작성해 최대한 과제 기반으로 답변하고, AI가 코드를 보여주거나 직접 작성하지 않게 하기.</p>
+<p>테스트와 요구사항 분석처럼 내 목표에 부가적으로 필요한 요소는 시간 관계상 AI를 활용해, 핵심 목표에 더 집중할 수 있게 하기.</p>
+
+    </div>
+</article>
+
+<!-- For Utterances -->
+<section class="comments">
+    
+    <noscript>댓글을 보려면 JavaScript를 활성화해주세요.</noscript>
+
+    <script src="https://utteranc.es/client.js"
+            repo="yangsijun528/sijun-yang.com"
+            issue-term="pathname"
+            label="utterances-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+    <div class="comments-skeleton"></div>
+
+    <script>
+        const observer = new MutationObserver(_ => {
+            const utterances = document.querySelector('.utterances');
+            if (utterances) {
+                const height = utterances.offsetHeight;
+                if (height > 200) {
+                    document.querySelector('.comments').classList.add('comments-loaded');
+                    observer.disconnect();
+                }
+            }
+        });
+
+        observer.observe(document.querySelector('.comments'), {
+            childList: true, subtree: true, attributes: true, attributeFilter: ['style']
+        });
+    </script>
+</section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="width-wrapper">
+            <p>
+                Built with <a href="https://www.getzola.org/">Zola</a> -
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source Code</a>
+            </p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="/rss.xml">RSS</a></li>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/robots.txt">robots.txt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
