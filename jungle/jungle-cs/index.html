@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>CS 공부 내용 정리 - Sijun Yang</title>
+    <meta name="description" content="CSAPP, OSTEP 보면서 궁금한 내용 정리">
+    <meta name="author" content="Sijun Yang">
+    <link rel="stylesheet" href="/modern-css-reset.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="width-wrapper">
+            <nav aria-label="Primary navigation links">
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/jungle">Jungle</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="post">
+        <div class="width-wrapper">
+            
+<article class="page">
+    
+    <header class="page-header">
+        <h1>CS 공부 내용 정리</h1>
+         <p class="page-description">CSAPP, OSTEP 보면서 궁금한 내용 정리</p> 
+        <div class="page-meta">
+            <time datetime="2026-03-16">2026년 03월 16일</time>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <p>CSAPP, OSTEP를 읽으면서 이론적 지식을 공부하는 것도 좋지만, 실제 세계에서 어떤 식으로 동작하는가... 도 많이 궁금해하는 편이라 같이 메모하려고 함.</p>
+<h1 id="csapp">CSAPP</h1>
+<h3 id="1-2-mogjeogpaileun-eoddeohge-yeongyeoldoeneunga-ringkeoneun-eoddeohge-dongjaghaneunga">1.2 - 목적파일은 어떻게 연결되는가? 링커는 어떻게 동작하는가?</h3>
+<p>근데 이거 7장에 나오는 듯? 너무 딥하게 팔 필요는 없고 이런 이미지 정도로만 생각하고 있어도 충분해보임.</p>
+<p><img src="https://cass-kul.github.io/exercises/3-functions-stack/calling-conventions-solution.png" alt="img" />
+<a rel="external" href="https://cass-kul.github.io/exercises/3-functions-stack/">출처: CASS</a></p>
+<p>관련 자료</p>
+<ul>
+<li><a rel="external" href="https://just-live.tistory.com/entry/CSAPP-7%EC%9E%A5-%EC%99%84%EC%A0%84-%EC%A0%95%EB%B3%B5-712713-%EA%B3%B5%EC%9C%A0-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98-%ED%95%B5%EC%8B%AC-%EA%B8%B0%EC%88%A0-PIC-GOT-PLT">[CSAPP 7장 완전 정복] 7.12 공유 라이브러리의 핵심 기술 - PIC, GOT, PLT</a></li>
+<li><a rel="external" href="https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries">Position Independent Code (PIC) in shared libraries - Eli Bendersky's website</a></li>
+<li><a rel="external" href="https://eli.thegreenplace.net/2013/07/09/library-order-in-static-linking">Library order in static linking - Eli Bendersky's website</a></li>
+</ul>
+<h3 id="1-4-keompyuteo-cpuneun-siljero-eoddeohge-saenggyeossneunga">1.4 - 컴퓨터/CPU는 실제로 어떻게 생겼는가?</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/koktlzz/ImgBed@master/20220811214041.png" alt="img" /></p>
+<p>이런 구조는 많이 보는데, 그래서 실제로 어떻게 생겼나?</p>
+<h4 id="keompyuteo">컴퓨터</h4>
+<p>I/O Bridge가 나온 모델은 상대적으로 현대적인 모델이라 볼 수는 없었고, 단순한 Ben Eater를 보면 도움이 된다.</p>
+<p>실제 구현해보려면 하드웨어를 만지는 것보다는 코드로 구현하는 Nand2Tetris를 하는게 좋을 듯 하다.</p>
+<p><img src="https://austinmorlan.com/posts/8bit_breadboard/media/third_build_1.jpg" alt="img" />
+<a rel="external" href="https://austinmorlan.com/posts/8bit_breadboard/">출처</a></p>
+<p>Word 크기가 CPU의 처리 단위에 의해 결정된다는 점이 실물에서도 그대로 드러난다.
+8-bit CPU이므로 한 번에 8-bit만 처리할 수 있고, 메모리 주소 공간도 그에 맞게 제한된다.</p>
+<p>명령어 역시 8-bit로 구성되어 있다. "ben eater 8 bit computer instruction set"으로 검색하면 확인할 수 있다.</p>
+<p>한 클럭에 하나의 신호만 전송하므로, 위 이미지의 버스 배선도 실제로 8개의 선으로 이루어져 있다. 이 원리 자체는 현대 프로세서에서도 동일하다(버스 폭이 넓어졌을 뿐이다).</p>
+<p>관련 자료</p>
+<ul>
+<li><a rel="external" href="https://youtu.be/HyznrdDSSGM?si=t2DG6zrMPjV9eYiR">Ben Eater의 8-bit 컴퓨터 영상.</a></li>
+<li>다른 사람이 구현한 Ben Eater 컴퓨터의 simulation도 있다. <a rel="external" href="https://youtube.com/playlist?list=PLm-Y-XGnluLx03nwuHnrcUPWYckpLSYwv&amp;si=xNTAcSINmkUUfRGM">영상</a>, <a rel="external" href="https://www.instructables.com/8BIT-COMPUTER/">LOGISIM 시뮬레이터 파일 소개</a></li>
+<li><a rel="external" href="https://github.com/chijoon-study/B-major-study/wiki/Nand2Tetris-%EC%96%91%EC%8B%9C%EC%A4%80">Nand2Tetris 개인적으로 정리한 자료</a></li>
+<li>Nand2Tetris ALU 회로 예시 <img src="https://preview.redd.it/nand2tetris-alu-in-digital-sim-v0-6tkacrgbdqa91.jpg?width=1970&amp;format=pjpg&amp;auto=webp&amp;s=09996646183df034d3adc4f991e5350f4ba02886" alt="img" /> <a rel="external" href="https://www.reddit.com/r/beneater/comments/vvouna/nand2tetris_alu_in_digital_sim/">출처</a></li>
+</ul>
+<p>컴퓨터는 아주 간단하게 보면 정해진대로 전기 회로를 보내면, 클럭마다 메모리(레지스터,RAM)에 값을 쓰는걸 반복할 뿐인 기계이다.</p>
+<h4 id="cpu">CPU</h4>
+<p>실제 8bit의 CPU는 이렇게 생겼다. 버스도 8개 사용하는거 볼 수 있음.</p>
+<p><img src="https://davidmjc.github.io/6502/cd.svg" alt="img" /></p>
+<p><img src="https://davidmjc.github.io/6502/bcd.svg" alt="img" />
+<a rel="external" href="https://davidmjc.github.io/6502/">출처</a></p>
+<p><a rel="external" href="http://www.visual6502.org/">visual6502.org</a>에서 JS로 시뮬레이션도 가능하다.</p>
+<h4 id="beoseu-i-o-bridge">버스, I/O Bridge</h4>
+<p>CPU의 내부 데이터 경로는 기본적으로 워드 크기(32-bit, 64-bit 등)에 맞춰져 있지만, 외부 I/O 버스(PCIe, USB, SPI 등)는 독자적인 데이터 폭과 프로토콜을 가진다.<br />
+I/O Bridge(버스 컨트롤러)가 이 차이를 변환한다. 복잡한 버스 컨트롤러는 펌웨어가 있는 경우도 있음.</p>
+<h4 id="keompyuteoneun-wae-2jinsuinga-hadeuweeowa-gwanryeonhaeseo">컴퓨터는 왜 2진수인가? 하드웨어와 관련해서</h4>
+<p>최근 CSAPP를 읽다가 하드웨어 관련 내용을 보면서 예전에 봤던 영상이 떠올랐다.</p>
+<p><a rel="external" href="https://www.youtube.com/watch?v=H-jxTzFrnpg">CD가 어떤 방식으로 동작하는지 간단하게 설명하는 영상이다.</a>
+CD 표면에는 pit(홈)과 land(평면) 구조가 있는데, 레이저가 이를 지나가면 반사되는 빛의 세기가 달라진다. 이 차이를 센서가 감지해 전기 신호로 변환한다.</p>
+<p>CD가 대부분 일회용인 이유도 여기에 있다. 기록할 때 물리적으로 구조를 바꿔버리기 때문이다.
+HDD도 비슷하게 물리적 상태를 이용하지만 방식은 다르다. 디스크 표면에 자기장을 부여해 그 방향으로 0과 1을 구분하고, 이를 다시 바꿀 수 있기 때문에 여러 번 읽고 쓰기가 가능하다.</p>
+<p>이 이야기는 결국 왜 컴퓨터가 2진수를 사용하는가를 설명하는 현실적인 비유로도 볼 수 있다.
+컴퓨터가 다루는 수학은 이진수지만, 실제 물리 세계의 신호는 연속적인 값이다.</p>
+<p>문제는 현실 세계의 하드웨어(전압, 물리적 디스크 등)에는 항상 노이즈(noise)가 존재한다는 점이다. 그래서 이를 안정적으로 처리하기 위해 여유 구간(noise margin)을 두고 신호를 구분한다. 이때 상태 수가 많아질수록 구분이 어려워지기 때문에, 두 상태로 나누는 방식이 가장 안정적이고 단순한 설계가 된다.</p>
+<p>즉 다른 방식이 물리적으로 불가능한 것은 아니지만, 공학적으로 효율이 떨어지기 때문에 대부분의 컴퓨터가 2진 시스템을 사용한다고 볼 수 있다.</p>
+<h3 id="1-7-unyeongcejeneun-hadeuweeoreul-gwanrihanda">1.7 - 운영체제는 하드웨어를 관리한다.</h3>
+<h4 id="cusanghwa-reieo">추상화 레이어</h4>
+<p><img src="https://velog.velcdn.com/images/bgshin13/post/5c5f0298-4eda-49a3-882d-150a324e6d64/image.png" alt="img" /></p>
+<p>기존에는 그림 1.10처럼 단순한 구조로만 이해하고 있었는데, 그림 1.11의 관점이 더 인상적이었다.</p>
+<p>운영체제는</p>
+<ul>
+<li>I/O 장치를 파일(file)로,</li>
+<li>가상 메모리를 파일(I/O 장치) + 물리 메모리로,</li>
+<li>프로세스(process)는 프로세서와 가상 메모리(메모리 + I/O)로 추상화한다.</li>
+</ul>
+<p>이걸 단순한 계층 구조로도 볼 수 있지만, 추상화 레이어로 해석할 수도 있다.</p>
+<p>가상 메모리는 파일과 메모리를 합쳐서 메모리가 무한한 것처럼 추상화하고,
+프로세스는 프로세서와 가상 메모리를 사용하여 무한한 독립된 공간인 것처럼 추상화된다.</p>
+<p>이런 적으로 생각해본 적 없었는데 이게 인상 깊었다.</p>
+<h4 id="jangci-pail">장치 파일</h4>
+<p>커널이 하드웨어와 유저레벨 중간에서 추상화를 제공해준다는 것의 좋은 예시.</p>
+<p>라즈베리파이는 GPIO, I2C, SPI 같은 하드웨어에 <code>/sys</code>, <code>/dev</code> 같은 값을 쓰면,<br />
+바로 LED가 켜지고 꺼지는 등의 반응을 볼 수 있다.</p>
+<h4 id="boan-gwanjeom">보안 관점</h4>
+<p>운영체제는 유저 레벨과 커널 레벨을 분리하여 역할을 나눈다.
+이는 시스템 안정성과 보안을 확보하기 위한 구조이다.</p>
+<p>이러한 구조의 중요성을 보여주는 사례로 2024년 CrowdStrike 장애가 있다.</p>
+<p>해당 사건은 커널 모드에서 동작하는 보안 드라이버가 자동 업데이트 과정에서 오류를 포함하게 되면서 발생하였다.
+그 결과 해당 소프트웨어를 사용하는 다수의 Windows 시스템이 동시에 다운되며 전산망이 마비되었다.</p>
+<p>이 사례는 커널 레벨 코드에 문제가 발생할 경우 시스템 전체에 치명적인 영향을 줄 수 있음을 보여주며,
+따라서 일반 프로그램이 커널에 직접 접근하지 못하도록 분리하는 것이 왜 중요한지 설명해준다.</p>
+<h1 id="ostep">OSTEP</h1>
+<h3 id="posix-glibc-alabogi">POSIX, glibc 알아보기</h3>
+<ol>
+<li>UNIX는 Bell Labs에서 시작됨</li>
+<li>이후 여러 회사/기관이 각자 UNIX 변형을 만듦 → 호환성 문제 발생</li>
+<li>이를 해결하려고 IEEE가 POSIX라는 표준을 정의</li>
+<li>Linux는 UNIX가 아니라 Unix-like OS이며 POSIX를 따르는 방향으로 설계됨
+<ul>
+<li>Linux는 POSIX를 완전히 준수하지 않지만, glibc 등을 통해 POSIX 호환 환경을 제공한다.</li>
+</ul>
+</li>
+<li>POSIX는 API, 동작 방식, 규칙을 명세한다. (정확한 명세를 위한 용어 정의도 있다.)</li>
+</ol>
+<ul>
+<li>
+<p>glibc(글립씨, GNU C Library)는 C 표준 라이브러리이면서 POSIX API를 구현하고 GNU 확장 기능까지 포함한다.</p>
+</li>
+<li>
+<p>거의 대부분의 GNU/Linux 배포판에서 glibc를 사용한다.</p>
+</li>
+<li>
+<p>macOS는 Unix 계열(OS X/Darwin 기반)이며 POSIX를 상당 부분 준수하지만 완전한 호환은 아니다. 따라서 glibc를 사용하지 않고, 자체 libc(libSystem)를 사용한다.</p>
+</li>
+<li>
+<p>그래서 glibc는 유저레벨의 구현이고, pthread_create 같은 함수는 시스템 콜이 아니다.</p>
+</li>
+<li>
+<p>pthread_create는 내부적으로 clone() 시스템 콜을 사용하여 스레드를 생성하고, 필요 시 mmap() 등을 이용해 스택 메모리를 할당한다.</p>
+</li>
+</ul>
+<h3 id="weonjayeonsan-seupinrag-myutegseu-semapo-alabogi">원자연산, 스핀락, 뮤텍스, 세마포 알아보기</h3>
+<blockquote>
+<p>AI로 정리된 내용임. 시간 관계상 다듬지는 못했는데, 나중에 시간나면 다듬기.</p>
+</blockquote>
+<hr />
+<h4 id="atomic-instruction">atomic instruction</h4>
+<p>atomic instruction: 하드웨어가 제공하는 원자적 연산. 실행 도중 다른 코어가 끼어들 수 없음을 하드웨어 레벨에서 보장한다.</p>
+<p>대표적인 것들:</p>
+<ul>
+<li><strong>test-and-set (TAS)</strong>: 메모리 값을 1로 세팅하면서 이전 값을 리턴. x86의 <code>xchg</code>가 이에 해당.</li>
+<li><strong>compare-and-swap (CAS)</strong>: 메모리 값이 expected와 같을 때만 new로 교체. x86의 <code>lock cmpxchg</code>.</li>
+<li><strong>load-linked / store-conditional (LL/SC)</strong>: ARM, RISC-V 계열. 두 명령어 쌍으로 atomicity를 보장.</li>
+<li><strong>fetch-and-add (FAA)</strong>: 값을 atomic하게 증가. x86의 <code>lock xadd</code>.</li>
+</ul>
+<p>전부 결국 이 하드웨어 atomic instruction 위에 쌓여 있다. OSTEP이 여러 가지를 나열하는 이유는 각각의 <strong>표현력</strong>(expressive power)과 성능 특성이 다르기 때문이다.</p>
+<p>예를 들어 TAS로 스핀락은 쉽게 만들지만, lock-free 큐 같은 건 CAS 없이는 사실상 못 만든다. CAS가 TAS보다 표현력이 강하다. 그리고 LL/SC는 ABA 문제에서 CAS보다 유리하다.</p>
+<p>OSTEP이 이걸 다 보여주는 건 "종류가 많아서"가 아니라, 각각이 풀 수 있는 문제의 범위가 다르기 때문이다.</p>
+<p><strong>Lock-based vs Lock-free에서의 차이:</strong></p>
+<ul>
+<li>Lock-based: TAS든 CAS든 뭘 쓰든 상관없다. 어차피 lock 잡고 → critical section → unlock 패턴이니까, TAS 하나로 충분하다.</li>
+<li>Lock-free: CAS가 사실상 필수다. 이유는 lock-free의 핵심 패턴이 "현재 상태를 읽고, 새 상태를 계산하고, 바뀌지 않았을 때만 반영"이기 때문이다. 이 조건부 쓰기가 CAS다. TAS는 조건 없이 무조건 덮어쓰니까 이 패턴을 표현할 수 없다.</li>
+</ul>
+<p>전형적인 lock-free 패턴:</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">do</span><span> {</span></span>
+<span class="giallo-l"><span>    old </span><span style="color: #A626A4;">=</span><span style="color: #4078F2;"> load</span><span>(ptr);</span></span>
+<span class="giallo-l"><span>    new </span><span style="color: #A626A4;">=</span><span style="color: #4078F2;"> compute</span><span>(old);</span></span>
+<span class="giallo-l"><span>}</span><span style="color: #A626A4;"> while</span><span> (</span><span style="color: #A626A4;">!</span><span style="color: #4078F2;">CAS</span><span>(ptr, old, new));</span><span style="color: #A0A1A7;font-style: italic;">  // 실패하면 재시도</span></span></code></pre>
+<p>TAS로는 이 "old가 아직 유효한지 확인"하는 부분을 표현할 방법이 없다.</p>
+<p>이론적 근거는 Herlihy (1991)의 consensus number 개념이다. TAS의 consensus number는 2로, 2개 스레드까지만 wait-free consensus를 풀 수 있다. CAS는 consensus number가 ∞여서 임의의 N개 스레드에 대해 lock-free/wait-free 자료구조를 구현할 수 있다. 이게 CAS가 근본적으로 더 강력한 연산인 이유다.</p>
+<blockquote>
+<p>참고: Herlihy, M. (1991). "Wait-free synchronization." <em>ACM Transactions on Programming Languages and Systems</em>, 13(1), 124–149.</p>
+</blockquote>
+<hr />
+<h4 id="seupinrag-myutegseu-semapo">스핀락, 뮤텍스, 세마포</h4>
+<p>계층 구조:</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="plain"><span class="giallo-l"><span>하드웨어 atomic instructions  (TAS, CAS, LL/SC, FAA)</span></span>
+<span class="giallo-l"><span>        ↓ 이걸로 구현</span></span>
+<span class="giallo-l"><span>      스핀락</span></span>
+<span class="giallo-l"><span>        ↓ 이걸로 구현 (+ OS sleep/wakeup 메커니즘)</span></span>
+<span class="giallo-l"><span>    뮤텍스 / 세마포어</span></span>
+<span class="giallo-l"><span>        ↓ 이걸로 구현</span></span>
+<span class="giallo-l"><span>고수준 동기화 (condition variable, barrier, rwlock 등)</span></span></code></pre>
+<hr />
+<h5 id="1-seupinrag-spinlock">1. 스핀락 (Spinlock)</h5>
+<p>가장 기본적인 lock. atomic instruction 하나로 구현 가능하다. lock을 못 잡으면 <strong>busy-wait</strong>(무한루프)하면서 계속 시도한다.</p>
+<p><strong>TAS 기반 스핀락 (가장 단순한 형태):</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">typedef struct</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    int</span><span> flag;</span><span style="color: #A0A1A7;font-style: italic;">  // 0 = 사용 가능, 1 = 잠김</span></span>
+<span class="giallo-l"><span>}</span><span style="color: #0184BC;"> spinlock_t</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> spin_lock</span><span>(</span><span style="color: #0184BC;">spinlock_t</span><span style="color: #A626A4;"> *</span><span>lock) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    while</span><span> (</span><span style="color: #4078F2;">test_and_set</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">lock</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span>)</span><span style="color: #A626A4;"> ==</span><span style="color: #986801;"> 1</span><span>)</span></span>
+<span class="giallo-l"><span>        ;</span><span style="color: #A0A1A7;font-style: italic;">  // 이전 값이 1이면 누가 잡고 있는 것 → 재시도</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> spin_unlock</span><span>(</span><span style="color: #0184BC;">spinlock_t</span><span style="color: #A626A4;"> *</span><span>lock) {</span></span>
+<span class="giallo-l"><span style="color: #E45649;">    lock</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 0</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">  // store만 하면 됨 (atomic store)</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p><code>test_and_set(&amp;flag)</code>은 flag를 1로 세팅하고 이전 값을 리턴한다. 이전 값이 0이었으면 내가 lock을 잡은 것이고, 1이었으면 누군가 이미 잡고 있는 것이다.</p>
+<p><strong>x86 실제 구현 (GCC inline asm):</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> spin_lock</span><span>(</span><span style="color: #0184BC;">spinlock_t</span><span style="color: #A626A4;"> *</span><span>lock) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    while</span><span> (</span><span style="color: #4078F2;">__sync_lock_test_and_set</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">lock</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span>,</span><span style="color: #986801;"> 1</span><span>))</span></span>
+<span class="giallo-l"><span>        ;</span><span style="color: #A0A1A7;font-style: italic;">  // GCC built-in: xchg 명령어로 컴파일됨</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> spin_unlock</span><span>(</span><span style="color: #0184BC;">spinlock_t</span><span style="color: #A626A4;"> *</span><span>lock) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    __sync_lock_release</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">lock</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span>);</span><span style="color: #A0A1A7;font-style: italic;">  // flag = 0 + memory barrier</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p><strong>CAS 기반 스핀락:</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> spin_lock</span><span>(</span><span style="color: #0184BC;">spinlock_t</span><span style="color: #A626A4;"> *</span><span>lock) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    while</span><span> (</span><span style="color: #A626A4;">!</span><span style="color: #4078F2;">__sync_bool_compare_and_swap</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">lock</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span>,</span><span style="color: #986801;"> 0</span><span>,</span><span style="color: #986801;"> 1</span><span>))</span></span>
+<span class="giallo-l"><span>        ;</span><span style="color: #A0A1A7;font-style: italic;">  // flag가 0일 때만 1로 바꾸기 시도</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> spin_unlock</span><span>(</span><span style="color: #0184BC;">spinlock_t</span><span style="color: #A626A4;"> *</span><span>lock) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    __sync_lock_release</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">lock</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span>);</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>CAS로도 스핀락을 만들 수 있지만, TAS로 충분하다. CAS를 쓴다고 스핀락이 더 좋아지지 않는다.</p>
+<p><strong>스핀락의 문제점:</strong></p>
+<ol>
+<li><strong>CPU 낭비</strong>: lock을 못 잡으면 while 루프를 돌면서 CPU 사이클을 소모한다.</li>
+<li><strong>단일 코어에서 최악</strong>: lock을 잡은 스레드가 스케줄링되어야 unlock할 수 있는데, 대기 스레드가 CPU를 점유하고 있으면 그게 안 된다.</li>
+<li><strong>공정성 없음</strong>: 어떤 스레드가 먼저 lock을 잡을지 보장이 없다. starvation 가능.</li>
+</ol>
+<p><strong>그럼 언제 쓰나?</strong></p>
+<ul>
+<li>critical section이 매우 짧을 때 (수십~수백 나노초)</li>
+<li>멀티코어 환경에서 context switch 비용보다 spinning이 싼 경우</li>
+<li>인터럽트 핸들러 등 sleep할 수 없는 컨텍스트 (커널 내부)</li>
+</ul>
+<blockquote>
+<p>Linux 커널은 스핀락을 광범위하게 사용한다. <code>spin_lock()</code> / <code>spin_unlock()</code> 함수가 그것.<br />
+참고: Love, R. <em>Linux Kernel Development</em>, 3rd ed. Chapter 10.</p>
+</blockquote>
+<p><strong>개선: ticket lock</strong></p>
+<p>기본 스핀락의 공정성 문제를 해결한 변형. 은행 번호표 시스템과 동일하다.</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">typedef struct</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    int</span><span> next_ticket;</span><span style="color: #A0A1A7;font-style: italic;">  // 다음 번호표</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    int</span><span> now_serving;</span><span style="color: #A0A1A7;font-style: italic;">  // 현재 서비스 중인 번호</span></span>
+<span class="giallo-l"><span>}</span><span style="color: #0184BC;"> ticket_lock_t</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> ticket_lock</span><span>(</span><span style="color: #0184BC;">ticket_lock_t</span><span style="color: #A626A4;"> *</span><span>lock) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    int</span><span> my_ticket </span><span style="color: #A626A4;">=</span><span style="color: #4078F2;"> fetch_and_add</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">lock</span><span>-&gt;</span><span style="color: #E45649;">next_ticket</span><span>,</span><span style="color: #986801;"> 1</span><span>);</span><span style="color: #A0A1A7;font-style: italic;">  // 번호표 뽑기</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    while</span><span> (</span><span style="color: #E45649;">lock</span><span>-&gt;</span><span style="color: #E45649;">now_serving</span><span style="color: #A626A4;"> !=</span><span> my_ticket)</span></span>
+<span class="giallo-l"><span>        ;</span><span style="color: #A0A1A7;font-style: italic;">  // 내 차례 올 때까지 대기</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> ticket_unlock</span><span>(</span><span style="color: #0184BC;">ticket_lock_t</span><span style="color: #A626A4;"> *</span><span>lock) {</span></span>
+<span class="giallo-l"><span style="color: #E45649;">    lock</span><span>-&gt;</span><span style="color: #E45649;">now_serving</span><span style="color: #A626A4;">++</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">  // 다음 번호 호출</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>FIFO 순서가 보장되므로 starvation이 없다.</p>
+<hr />
+<h5 id="2-myutegseu-mutex">2. 뮤텍스 (Mutex)</h5>
+<p>스핀락 + OS의 sleep/wakeup 메커니즘. lock을 못 잡으면 busy-wait 대신 <strong>스레드를 재운다</strong> (sleep queue에 넣는다). lock이 풀리면 OS가 대기 스레드를 깨운다.</p>
+<p>핵심: 뮤텍스 내부에서도 sleep queue를 조작하는 부분은 임계 영역이다. 이 부분은 짧은 스핀락으로 보호한다. 즉, <strong>뮤텍스 내부에 스핀락이 있다.</strong></p>
+<p><strong>개념적 구현:</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">typedef struct</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    int</span><span> flag;</span><span style="color: #A0A1A7;font-style: italic;">             // 0 = 사용 가능, 1 = 잠김</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    int</span><span> guard;</span><span style="color: #A0A1A7;font-style: italic;">            // 내부 스핀락 (flag와 queue 조작 보호용)</span></span>
+<span class="giallo-l"><span style="color: #0184BC;">    queue_t</span><span> wait_queue;</span><span style="color: #A0A1A7;font-style: italic;">   // 대기 스레드 큐</span></span>
+<span class="giallo-l"><span>}</span><span style="color: #0184BC;"> mutex_t</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> mutex_lock</span><span>(</span><span style="color: #0184BC;">mutex_t</span><span style="color: #A626A4;"> *</span><span>m) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    while</span><span> (</span><span style="color: #4078F2;">test_and_set</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span>))</span><span style="color: #A0A1A7;font-style: italic;">  // 내부 스핀락 획득</span></span>
+<span class="giallo-l"><span>        ;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">    if</span><span> (</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span style="color: #A626A4;"> ==</span><span style="color: #986801;"> 0</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #E45649;">        m</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 1</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">       // lock 획득 성공</span></span>
+<span class="giallo-l"><span style="color: #E45649;">        m</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 0</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">      // 내부 스핀락 해제</span></span>
+<span class="giallo-l"><span>    }</span><span style="color: #A626A4;"> else</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        queue_push</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">wait_queue</span><span>, current_thread);</span></span>
+<span class="giallo-l"><span style="color: #E45649;">        m</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 0</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">      // 내부 스핀락 해제</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        park</span><span>();</span><span style="color: #A0A1A7;font-style: italic;">            // OS 호출: 현재 스레드를 재움</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> mutex_unlock</span><span>(</span><span style="color: #0184BC;">mutex_t</span><span style="color: #A626A4;"> *</span><span>m) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    while</span><span> (</span><span style="color: #4078F2;">test_and_set</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span>))</span></span>
+<span class="giallo-l"><span>        ;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">    if</span><span> (</span><span style="color: #4078F2;">queue_empty</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">wait_queue</span><span>)) {</span></span>
+<span class="giallo-l"><span style="color: #E45649;">        m</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 0</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">       // 대기자 없으면 그냥 해제</span></span>
+<span class="giallo-l"><span>    }</span><span style="color: #A626A4;"> else</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        unpark</span><span>(</span><span style="color: #4078F2;">queue_pop</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">wait_queue</span><span>));</span><span style="color: #A0A1A7;font-style: italic;">  // 대기자 깨움</span></span>
+<span class="giallo-l"><span style="color: #A0A1A7;font-style: italic;">        // flag는 1 유지 — 깨어난 스레드가 lock을 이어받음</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span style="color: #E45649;">    m</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 0</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>이 구조가 OSTEP Chapter 28에서 설명하는 <code>park()</code>/<code>unpark()</code> 기반 lock이다. Solaris의 실제 메커니즘을 단순화한 것.</p>
+<p><strong>왜 내부 스핀락(guard)이 필요한가?</strong></p>
+<p>"sleep하면 되지, 왜 안에 스핀락이 또 있나?"라는 의문이 생길 수 있다. 이유는 뮤텍스 자체의 상태(flag, wait_queue)를 조작하는 코드가 <strong>그 자체로 임계 영역</strong>이기 때문이다. guard 없이 구현하면 어떤 일이 벌어지는지 보자.</p>
+<p><strong>guard 없는 잘못된 구현:</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> mutex_lock_broken</span><span>(</span><span style="color: #0184BC;">mutex_t</span><span style="color: #A626A4;"> *</span><span>m) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    if</span><span> (</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span style="color: #A626A4;"> ==</span><span style="color: #986801;"> 0</span><span>) {</span><span style="color: #A0A1A7;font-style: italic;">          // ① flag 확인</span></span>
+<span class="giallo-l"><span style="color: #E45649;">        m</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 1</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">             // ② flag 세팅</span></span>
+<span class="giallo-l"><span>    }</span><span style="color: #A626A4;"> else</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        queue_push</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">wait_queue</span><span>, current_thread);</span><span style="color: #A0A1A7;font-style: italic;">  // ③ 대기 큐에 등록</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        park</span><span>();</span><span style="color: #A0A1A7;font-style: italic;">                                       // ④ sleep</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p><strong>Race 1: flag 확인과 세팅 사이에 끼어들기 (두 스레드가 동시에 lock 획득)</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="plain"><span class="giallo-l"><span>스레드 A                        스레드 B</span></span>
+<span class="giallo-l"><span>─────────                      ─────────</span></span>
+<span class="giallo-l"><span>① flag == 0 확인 (true)</span></span>
+<span class="giallo-l"><span>    ← 여기서 컨텍스트 스위치 →</span></span>
+<span class="giallo-l"><span>                                ① flag == 0 확인 (true)</span></span>
+<span class="giallo-l"><span>                                ② flag = 1 (lock 획득)</span></span>
+<span class="giallo-l"><span>② flag = 1 (lock 획득)</span></span></code></pre>
+<p>둘 다 flag가 0인 것을 보고 둘 다 lock을 잡는다. 상호 배제 실패.</p>
+<p>"그러면 flag를 CAS로 바꾸면 되지 않나?" → flag 자체는 해결되지만, 그다음 문제가 있다.</p>
+<p><strong>Race 2: lost wakeup — 깨우기 신호가 허공으로 날아간다</strong></p>
+<p>Race 1은 CAS로 해결했다. 하지만 CAS가 실패한 후 "큐에 등록하고 잠드는" 과정에 또 다른 틈이 있다.</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> mutex_lock_still_broken</span><span>(</span><span style="color: #0184BC;">mutex_t</span><span style="color: #A626A4;"> *</span><span>m) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    if</span><span> (</span><span style="color: #4078F2;">CAS</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">flag</span><span>,</span><span style="color: #986801;"> 0</span><span>,</span><span style="color: #986801;"> 1</span><span>)) {</span><span style="color: #A0A1A7;font-style: italic;">  // flag는 atomic하게 처리</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">        return</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">  // lock 획득</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span style="color: #A0A1A7;font-style: italic;">    // CAS 실패 — 누군가 lock을 잡고 있으므로 잠들어야 한다</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    queue_push</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">m</span><span>-&gt;</span><span style="color: #E45649;">wait_queue</span><span>, current_thread);</span><span style="color: #A0A1A7;font-style: italic;">  // ③ 큐에 등록</span></span>
+<span class="giallo-l"><span style="color: #A0A1A7;font-style: italic;">    // ← 아직 잠들지 않았다! 이 틈이 문제다</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    park</span><span>();</span><span style="color: #A0A1A7;font-style: italic;">                                       // ④ 실제로 잠듦</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>핵심은 ③과 ④ 사이의 틈이다. 큐에 이름을 올렸지만 아직 <code>park()</code>는 호출하지 않은 순간이 존재한다.</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="plain"><span class="giallo-l"><span>스레드 A (lock 시도)              스레드 B (unlock)</span></span>
+<span class="giallo-l"><span>─────────────────               ──────────────</span></span>
+<span class="giallo-l"><span>CAS 실패 (flag == 1)</span></span>
+<span class="giallo-l"><span>queue_push(A)  ← 큐에 등록됨</span></span>
+<span class="giallo-l"><span>    ← 여기서 컨텍스트 스위치 →</span></span>
+<span class="giallo-l"><span>                                queue에서 A를 pop</span></span>
+<span class="giallo-l"><span>                                unpark(A)  ← 깨우기 신호 전송!</span></span>
+<span class="giallo-l"><span>                                  하지만 A는 아직 안 잠들었다.</span></span>
+<span class="giallo-l"><span>                                  신호는 허공으로 사라진다.</span></span>
+<span class="giallo-l"><span>                                flag = 0</span></span>
+<span class="giallo-l"><span>park()  ← A가 이제야 잠듦</span></span>
+<span class="giallo-l"><span>          깨워줄 스레드는 이미 지나갔다.</span></span>
+<span class="giallo-l"><span>          → A는 영원히 잠든다</span></span></code></pre>
+<p>B가 <code>unpark(A)</code>를 호출한 시점에 A는 아직 <code>park()</code>를 호출하지 않은 상태다. <code>unpark()</code>는 잠들어 있지 않은 스레드에게는 효과가 없으므로 신호가 유실된다. 이후 A가 <code>park()</code>를 호출하면 다시 깨워줄 스레드가 없으므로 영원히 블록된다. 이것이 lost wakeup 문제다.</p>
+<p>"CAS 실패 확인 → 큐 등록 → sleep" 이 세 단계 사이에 다른 스레드가 끼어들 수 있기 때문에 발생한다. 그래서 이 세 단계를 하나의 원자적 구간으로 묶어야 하고, 그 역할을 하는 것이 guard 스핀락이다.</p>
+<p><strong>guard가 하는 일을 정리하면:</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="plain"><span class="giallo-l"><span>guard가 보호하는 구간 (mutex_lock):</span></span>
+<span class="giallo-l"><span>    ┌─ flag 확인</span></span>
+<span class="giallo-l"><span>    │  flag 세팅 또는</span></span>
+<span class="giallo-l"><span>    │  queue에 현재 스레드 추가</span></span>
+<span class="giallo-l"><span>    └─ guard 해제 (→ 이후 park)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>guard가 보호하는 구간 (mutex_unlock):</span></span>
+<span class="giallo-l"><span>    ┌─ queue 확인</span></span>
+<span class="giallo-l"><span>    │  queue에서 스레드 pop + unpark 또는</span></span>
+<span class="giallo-l"><span>    │  flag = 0</span></span>
+<span class="giallo-l"><span>    └─ guard 해제</span></span></code></pre>
+<p>lock과 unlock 양쪽 모두에서 guard를 잡으므로, lock 측의 "flag 확인 + queue 추가"와 unlock 측의 "queue pop + unpark"가 겹칠 수 없다. Race 1과 Race 2가 모두 차단된다.</p>
+<p><strong>guard 스핀락은 왜 문제가 안 되나?</strong></p>
+<p>guard가 보호하는 구간은 flag 확인 + queue 조작뿐이라 매우 짧다 (수십 나노초). 이 짧은 구간에서만 spinning하니까 CPU 낭비가 사실상 없다. 실제 critical section(사용자 코드)에서는 sleep한다. 즉 뮤텍스의 spinning은 "사용자의 critical section"에 대한 것이 아니라, "뮤텍스 자체의 내부 상태 조작"에 대한 것이다. 이 구간은 고정적으로 짧으므로 스핀락의 단점(CPU 낭비)이 사실상 발생하지 않는다.</p>
+<p><strong>Linux의 futex 기반 뮤텍스:</strong></p>
+<p>실제 Linux에서 <code>pthread_mutex_lock()</code>은 futex (fast userspace mutex) 위에 구현된다. fast path는 유저스페이스에서 CAS 한 번으로 끝나고, contention이 있을 때만 커널로 진입해서 sleep한다.</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="plain"><span class="giallo-l"><span>pthread_mutex_lock() 동작:</span></span>
+<span class="giallo-l"><span>1. CAS(&amp;mutex-&gt;state, 0, 1) 시도  ← 유저스페이스, 시스템콜 없음</span></span>
+<span class="giallo-l"><span>2. 성공 → lock 획득. 끝.</span></span>
+<span class="giallo-l"><span>3. 실패 → futex(FUTEX_WAIT) 시스템콜 → 커널이 스레드를 재움</span></span>
+<span class="giallo-l"><span>4. 나중에 unlock에서 futex(FUTEX_WAKE) → 커널이 깨움</span></span></code></pre>
+<p>contention이 없으면 시스템콜이 아예 발생하지 않는다. 이것이 futex가 빠른 이유.</p>
+<blockquote>
+<p>참고: Franke, H., Russell, R., &amp; Kirkwood, M. (2002). "Fuss, Futexes and Furwocks: Fast Userlevel Locking in Linux." Ottawa Linux Symposium.</p>
+</blockquote>
+<p><strong>POSIX pthread 뮤텍스 사용 예시:</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">#include</span><span style="color: #50A14F;"> &lt;pthread.h&gt;</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">#include</span><span style="color: #50A14F;"> &lt;stdio.h&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">pthread_mutex_t</span><span> lock </span><span style="color: #A626A4;">=</span><span> PTHREAD_MUTEX_INITIALIZER;</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">int</span><span> shared_counter </span><span style="color: #A626A4;">=</span><span style="color: #986801;"> 0</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void *</span><span style="color: #4078F2;">worker</span><span>(</span><span style="color: #A626A4;">void *</span><span>arg) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    for</span><span> (</span><span style="color: #A626A4;">int</span><span> i </span><span style="color: #A626A4;">=</span><span style="color: #986801;"> 0</span><span>; i </span><span style="color: #A626A4;">&lt;</span><span style="color: #986801;"> 100000</span><span>; i</span><span style="color: #A626A4;">++</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        pthread_mutex_lock</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>lock);</span></span>
+<span class="giallo-l"><span>        shared_counter</span><span style="color: #A626A4;">++</span><span>;</span><span style="color: #A0A1A7;font-style: italic;">          // critical section</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        pthread_mutex_unlock</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>lock);</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    return</span><span style="color: #986801;"> NULL</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">int</span><span style="color: #4078F2;"> main</span><span>() {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    pthread_t</span><span> t1, t2;</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    pthread_create</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>t1,</span><span style="color: #986801;"> NULL</span><span>, worker,</span><span style="color: #986801;"> NULL</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    pthread_create</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>t2,</span><span style="color: #986801;"> NULL</span><span>, worker,</span><span style="color: #986801;"> NULL</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    pthread_join</span><span>(t1,</span><span style="color: #986801;"> NULL</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    pthread_join</span><span>(t2,</span><span style="color: #986801;"> NULL</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    printf</span><span>(</span><span style="color: #50A14F;">&quot;counter = </span><span style="color: #986801;">%d</span><span style="color: #0184BC;">\n</span><span style="color: #50A14F;">&quot;</span><span>, shared_counter);</span><span style="color: #A0A1A7;font-style: italic;">  // 항상 200000</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    return</span><span style="color: #986801;"> 0</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>뮤텍스 없이 <code>shared_counter++</code>를 하면 race condition으로 200000보다 작은 값이 나온다. <code>counter++</code>는 load → add → store 3단계이므로 원자적이지 않다.</p>
+<hr />
+<h5 id="3-semapoeo-semaphore">3. 세마포어 (Semaphore)</h5>
+<p>뮤텍스의 일반화. 내부에 <strong>정수 카운터</strong>를 가지고, 이 값이 0 이하면 대기한다.</p>
+<ul>
+<li><code>sem_wait()</code> (= P 연산, down): 카운터 감소. 0 이하면 sleep.</li>
+<li><code>sem_post()</code> (= V 연산, up): 카운터 증가. 대기 스레드가 있으면 깨움.</li>
+</ul>
+<p><strong>뮤텍스와의 핵심 차이:</strong></p>
+<table><thead><tr><th>특성</th><th>뮤텍스</th><th>세마포어</th></tr></thead><tbody>
+<tr><td>내부 값</td><td>0 또는 1</td><td>임의의 정수 N</td></tr>
+<tr><td>소유권</td><td>lock한 스레드만 unlock 가능</td><td>아무 스레드나 post 가능</td></tr>
+<tr><td>용도</td><td>상호 배제</td><td>상호 배제 + 순서 제어 + 리소스 카운팅</td></tr>
+</tbody></table>
+<p>소유권 차이가 중요하다. 뮤텍스는 lock한 스레드가 반드시 unlock해야 한다. 세마포어는 스레드 A가 wait하고 스레드 B가 post할 수 있다. 이 특성 때문에 <strong>스레드 간 순서 제어</strong>(signaling)가 가능하다.</p>
+<p><strong>개념적 구현:</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A626A4;">typedef struct</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    int</span><span> value;</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    int</span><span> guard;</span><span style="color: #A0A1A7;font-style: italic;">            // 내부 스핀락</span></span>
+<span class="giallo-l"><span style="color: #0184BC;">    queue_t</span><span> wait_queue;</span></span>
+<span class="giallo-l"><span>}</span><span style="color: #0184BC;"> sem_t</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> sem_wait</span><span>(</span><span style="color: #0184BC;">sem_t</span><span style="color: #A626A4;"> *</span><span>s) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    while</span><span> (</span><span style="color: #4078F2;">test_and_set</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">s</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span>))</span></span>
+<span class="giallo-l"><span>        ;</span></span>
+<span class="giallo-l"><span style="color: #E45649;">    s</span><span>-&gt;</span><span style="color: #E45649;">value</span><span style="color: #A626A4;">--</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    if</span><span> (</span><span style="color: #E45649;">s</span><span>-&gt;</span><span style="color: #E45649;">value</span><span style="color: #A626A4;"> &lt;</span><span style="color: #986801;"> 0</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        queue_push</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">s</span><span>-&gt;</span><span style="color: #E45649;">wait_queue</span><span>, current_thread);</span></span>
+<span class="giallo-l"><span style="color: #E45649;">        s</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 0</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        park</span><span>();</span><span style="color: #A0A1A7;font-style: italic;">           // sleep</span></span>
+<span class="giallo-l"><span>    }</span><span style="color: #A626A4;"> else</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #E45649;">        s</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 0</span><span>;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> sem_post</span><span>(</span><span style="color: #0184BC;">sem_t</span><span style="color: #A626A4;"> *</span><span>s) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    while</span><span> (</span><span style="color: #4078F2;">test_and_set</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">s</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span>))</span></span>
+<span class="giallo-l"><span>        ;</span></span>
+<span class="giallo-l"><span style="color: #E45649;">    s</span><span>-&gt;</span><span style="color: #E45649;">value</span><span style="color: #A626A4;">++</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    if</span><span> (</span><span style="color: #E45649;">s</span><span>-&gt;</span><span style="color: #E45649;">value</span><span style="color: #A626A4;"> &lt;=</span><span style="color: #986801;"> 0</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        unpark</span><span>(</span><span style="color: #4078F2;">queue_pop</span><span>(</span><span style="color: #A626A4;">&amp;</span><span style="color: #E45649;">s</span><span>-&gt;</span><span style="color: #E45649;">wait_queue</span><span>));</span><span style="color: #A0A1A7;font-style: italic;">  // 대기자 깨움</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span style="color: #E45649;">    s</span><span>-&gt;</span><span style="color: #E45649;">guard</span><span style="color: #A626A4;"> =</span><span style="color: #986801;"> 0</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<blockquote>
+<p>이 구현은 OSTEP Chapter 31의 Zemaphore를 기반으로 단순화한 것.</p>
+</blockquote>
+<p><strong>용도 1: 이진 세마포어 = 뮤텍스처럼 사용 (초기값 1)</strong></p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #0184BC;">sem_t</span><span> mutex;</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">sem_init</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>mutex,</span><span style="color: #986801;"> 0</span><span>,</span><span style="color: #986801;"> 1</span><span>);</span><span style="color: #A0A1A7;font-style: italic;">  // 초기값 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #4078F2;">sem_wait</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>mutex);</span><span style="color: #A0A1A7;font-style: italic;">     // lock</span></span>
+<span class="giallo-l"><span style="color: #A0A1A7;font-style: italic;">// critical section</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">sem_post</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>mutex);</span><span style="color: #A0A1A7;font-style: italic;">     // unlock</span></span></code></pre>
+<p>초기값이 1이므로 한 스레드만 진입 가능. 기능적으로 뮤텍스와 동일하지만, 소유권 검사가 없으므로 다른 스레드가 post할 수도 있다 (이건 보통 버그).</p>
+<p><strong>용도 2: 순서 제어 (초기값 0)</strong></p>
+<p>스레드 간 실행 순서를 강제할 때 사용. 뮤텍스로는 이걸 직접 할 수 없다.</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #0184BC;">sem_t</span><span> order;</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">sem_init</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>order,</span><span style="color: #986801;"> 0</span><span>,</span><span style="color: #986801;"> 0</span><span>);</span><span style="color: #A0A1A7;font-style: italic;">  // 초기값 0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A0A1A7;font-style: italic;">// 스레드 A (먼저 실행되어야 할 작업)</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">void *</span><span style="color: #4078F2;">thread_a</span><span>(</span><span style="color: #A626A4;">void *</span><span>arg) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    printf</span><span>(</span><span style="color: #50A14F;">&quot;A: 작업 완료</span><span style="color: #0184BC;">\n</span><span style="color: #50A14F;">&quot;</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    sem_post</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>order);</span><span style="color: #A0A1A7;font-style: italic;">     // &quot;나 끝났어&quot; 시그널</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    return</span><span style="color: #986801;"> NULL</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A0A1A7;font-style: italic;">// 스레드 B (A가 끝난 후 실행되어야 할 작업)</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">void *</span><span style="color: #4078F2;">thread_b</span><span>(</span><span style="color: #A626A4;">void *</span><span>arg) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    sem_wait</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>order);</span><span style="color: #A0A1A7;font-style: italic;">     // A가 post할 때까지 여기서 대기</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    printf</span><span>(</span><span style="color: #50A14F;">&quot;B: A 이후 작업 시작</span><span style="color: #0184BC;">\n</span><span style="color: #50A14F;">&quot;</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    return</span><span style="color: #986801;"> NULL</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>B가 먼저 실행되더라도 <code>sem_wait()</code>에서 블록된다. A가 <code>sem_post()</code>를 호출해야 B가 진행된다. 이것이 "외부에서 값 반환이 가능하므로 순서 보장 시 사용"이라고 했던 것의 정확한 의미다.</p>
+<p><strong>용도 3: 리소스 카운팅 (초기값 N)</strong></p>
+<p>동시에 N개까지 접근을 허용. 대표적 예: 커넥션 풀, bounded buffer.</p>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="c"><span class="giallo-l"><span style="color: #A0A1A7;font-style: italic;">// bounded buffer (생산자-소비자 문제)</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">#define</span><span style="color: #4078F2;"> BUFFER_SIZE</span><span style="color: #986801;"> 10</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #0184BC;">sem_t</span><span> empty;</span><span style="color: #A0A1A7;font-style: italic;">   // 빈 슬롯 수</span></span>
+<span class="giallo-l"><span style="color: #0184BC;">sem_t</span><span> full;</span><span style="color: #A0A1A7;font-style: italic;">    // 찬 슬롯 수</span></span>
+<span class="giallo-l"><span style="color: #0184BC;">sem_t</span><span> mutex;</span><span style="color: #A0A1A7;font-style: italic;">   // 버퍼 접근 보호</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">int</span><span style="color: #E45649;"> buffer</span><span>[BUFFER_SIZE];</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">int</span><span> fill </span><span style="color: #A626A4;">=</span><span style="color: #986801;"> 0</span><span>, use </span><span style="color: #A626A4;">=</span><span style="color: #986801;"> 0</span><span>;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void</span><span style="color: #4078F2;"> init</span><span>() {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    sem_init</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>empty,</span><span style="color: #986801;"> 0</span><span>, BUFFER_SIZE);</span><span style="color: #A0A1A7;font-style: italic;">  // 처음엔 전부 비어있음</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    sem_init</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>full,</span><span style="color: #986801;"> 0</span><span>,</span><span style="color: #986801;"> 0</span><span>);</span><span style="color: #A0A1A7;font-style: italic;">             // 처음엔 아무것도 없음</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">    sem_init</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>mutex,</span><span style="color: #986801;"> 0</span><span>,</span><span style="color: #986801;"> 1</span><span>);</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void *</span><span style="color: #4078F2;">producer</span><span>(</span><span style="color: #A626A4;">void *</span><span>arg) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    for</span><span> (</span><span style="color: #A626A4;">int</span><span> i </span><span style="color: #A626A4;">=</span><span style="color: #986801;"> 0</span><span>; i </span><span style="color: #A626A4;">&lt;</span><span style="color: #986801;"> 100</span><span>; i</span><span style="color: #A626A4;">++</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        sem_wait</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>empty);</span><span style="color: #A0A1A7;font-style: italic;">              // 빈 슬롯 하나 확보</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        sem_wait</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>mutex);</span><span style="color: #A0A1A7;font-style: italic;">              // 버퍼 접근 lock</span></span>
+<span class="giallo-l"><span style="color: #E45649;">        buffer</span><span>[fill]</span><span style="color: #A626A4;"> =</span><span> i;</span></span>
+<span class="giallo-l"><span>        fill </span><span style="color: #A626A4;">=</span><span> (fill </span><span style="color: #A626A4;">+</span><span style="color: #986801;"> 1</span><span>)</span><span style="color: #A626A4;"> %</span><span> BUFFER_SIZE;</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        sem_post</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>mutex);</span><span style="color: #A0A1A7;font-style: italic;">              // 버퍼 접근 unlock</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        sem_post</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>full);</span><span style="color: #A0A1A7;font-style: italic;">               // 찬 슬롯 하나 증가</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    return</span><span style="color: #986801;"> NULL</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #A626A4;">void *</span><span style="color: #4078F2;">consumer</span><span>(</span><span style="color: #A626A4;">void *</span><span>arg) {</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    for</span><span> (</span><span style="color: #A626A4;">int</span><span> i </span><span style="color: #A626A4;">=</span><span style="color: #986801;"> 0</span><span>; i </span><span style="color: #A626A4;">&lt;</span><span style="color: #986801;"> 100</span><span>; i</span><span style="color: #A626A4;">++</span><span>) {</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        sem_wait</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>full);</span><span style="color: #A0A1A7;font-style: italic;">               // 찬 슬롯 하나 확보</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        sem_wait</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>mutex);</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">        int</span><span> val </span><span style="color: #A626A4;">=</span><span style="color: #E45649;"> buffer</span><span>[use];</span></span>
+<span class="giallo-l"><span>        use </span><span style="color: #A626A4;">=</span><span> (use </span><span style="color: #A626A4;">+</span><span style="color: #986801;"> 1</span><span>)</span><span style="color: #A626A4;"> %</span><span> BUFFER_SIZE;</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        sem_post</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>mutex);</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        sem_post</span><span>(</span><span style="color: #A626A4;">&amp;</span><span>empty);</span><span style="color: #A0A1A7;font-style: italic;">              // 빈 슬롯 하나 증가</span></span>
+<span class="giallo-l"><span style="color: #4078F2;">        printf</span><span>(</span><span style="color: #50A14F;">&quot;consumed: </span><span style="color: #986801;">%d</span><span style="color: #0184BC;">\n</span><span style="color: #50A14F;">&quot;</span><span>, val);</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span style="color: #A626A4;">    return</span><span style="color: #986801;"> NULL</span><span>;</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p><code>empty</code>와 <code>full</code> 세마포어가 생산자와 소비자 간 흐름 제어를 담당한다. 버퍼가 꽉 차면 생산자가 블록되고, 비면 소비자가 블록된다.</p>
+<blockquote>
+<p>이 패턴은 Dijkstra(1965)가 세마포어를 처음 제안할 때의 핵심 예제이며, OSTEP Chapter 31에서도 동일하게 다룬다.</p>
+</blockquote>
+<hr />
+<h4 id="jeongri">정리</h4>
+<pre class="giallo" style="color: #383A42; background-color: #FAFAFA;"><code data-lang="plain"><span class="giallo-l"><span>스핀락:</span></span>
+<span class="giallo-l"><span>  - 구현: atomic instruction + busy-wait loop</span></span>
+<span class="giallo-l"><span>  - 대기 방식: CPU를 소모하며 반복 확인 (spinning)</span></span>
+<span class="giallo-l"><span>  - 사용처: 커널 내부, 짧은 critical section, sleep 불가능한 컨텍스트</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>뮤텍스:</span></span>
+<span class="giallo-l"><span>  - 구현: 내부 스핀락 + OS sleep/wakeup (futex 등)</span></span>
+<span class="giallo-l"><span>  - 대기 방식: lock 못 잡으면 sleep → unlock 시 wakeup</span></span>
+<span class="giallo-l"><span>  - 소유권: lock한 스레드만 unlock</span></span>
+<span class="giallo-l"><span>  - 사용처: 유저스페이스 상호 배제의 기본</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>세마포어:</span></span>
+<span class="giallo-l"><span>  - 구현: 정수 카운터 + 내부 스핀락 + OS sleep/wakeup</span></span>
+<span class="giallo-l"><span>  - 대기 방식: 카운터 ≤ 0이면 sleep</span></span>
+<span class="giallo-l"><span>  - 소유권: 없음 (아무나 post 가능)</span></span>
+<span class="giallo-l"><span>  - 사용처: 상호 배제, 순서 제어, 리소스 카운팅</span></span></code></pre>
+<blockquote>
+<p>참고 문헌:</p>
+<ul>
+<li>Arpaci-Dusseau, R. &amp; Arpaci-Dusseau, A. <em>Operating Systems: Three Easy Pieces (OSTEP)</em>. Chapters 28–31.</li>
+<li>Herlihy, M. (1991). "Wait-free synchronization." <em>ACM TOPLAS</em>, 13(1).</li>
+<li>Dijkstra, E. W. (1965). "Cooperating Sequential Processes." Technical Report EWD-123.</li>
+<li>Love, R. (2010). <em>Linux Kernel Development</em>, 3rd ed. Addison-Wesley.</li>
+</ul>
+</blockquote>
+
+    </div>
+</article>
+
+<!-- For Utterances -->
+<section class="comments">
+    
+    <noscript>댓글을 보려면 JavaScript를 활성화해주세요.</noscript>
+
+    <script src="https://utteranc.es/client.js"
+            repo="yangsijun528/sijun-yang.com"
+            issue-term="pathname"
+            label="utterances-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+    <div class="comments-skeleton"></div>
+
+    <script>
+        const observer = new MutationObserver(_ => {
+            const utterances = document.querySelector('.utterances');
+            if (utterances) {
+                const height = utterances.offsetHeight;
+                if (height > 200) {
+                    document.querySelector('.comments').classList.add('comments-loaded');
+                    observer.disconnect();
+                }
+            }
+        });
+
+        observer.observe(document.querySelector('.comments'), {
+            childList: true, subtree: true, attributes: true, attributeFilter: ['style']
+        });
+    </script>
+</section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="width-wrapper">
+            <p>
+                Built with <a href="https://www.getzola.org/">Zola</a> -
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source Code</a>
+            </p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="/rss.xml">RSS</a></li>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/robots.txt">robots.txt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

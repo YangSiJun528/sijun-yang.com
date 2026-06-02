@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Week 10: 정글 끝까지(Pintos) - User Programs - Sijun Yang</title>
+    <meta name="description" content="Pintos User Programs 진행">
+    <meta name="author" content="Sijun Yang">
+    <link rel="stylesheet" href="/modern-css-reset.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="width-wrapper">
+            <nav aria-label="Primary navigation links">
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/jungle">Jungle</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="post">
+        <div class="width-wrapper">
+            
+<article class="page">
+    
+    <header class="page-header">
+        <h1>Week 10: 정글 끝까지(Pintos) - User Programs</h1>
+         <p class="page-description">Pintos User Programs 진행</p> 
+        <div class="page-meta">
+            <time datetime="2026-05-07">2026년 05월 07일</time>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <p>이번 주차는 거의 Pintos에만 몰입해서 진행했다.</p>
+<h2 id="haegsim-yeogryang-mogpyo">핵심 역량 목표</h2>
+<p><small style="color: #777;">정글 과정을 통해 길러야 할 10가지 핵심 역량(문제해결, 설계, 구현, 품질, 유지보수, 협업, 태도, 비즈니스 이해, AI 활용, 학습 민첩성)을 기준으로 이번 주의 목표를 설정하고, 실제 과정과 결과를 돌아봅니다.</small></p>
+<h3 id="mogpyo-1-ai-eijeonteureul-hwalyonghae-pintos-user-programsreul-jigjeob-guhyeonhagi">목표 1. AI 에이전트를 활용해 Pintos User Programs를 직접 구현하기</h3>
+<p><small>관련 역량: 문제해결, 구현, 품질, AI 활용, 학습 민첩성</small></p>
+<h4 id="gyehoeg">계획</h4>
+<p>이번 주에는 Pintos User Programs 과제 구현에 집중한다.</p>
+<p>개인적으로는 User Programs를 전부 직접 구현해 보는 것이 목표였다.<br />
+AI는 요구사항 분석, 테스트 해석, 피드백을 받는 보조 도구로 쓰고, 구현 단계에서는 최대한 직접 작성하려고 했다.</p>
+<h4 id="gwajeong">과정</h4>
+<p>이를 위해 과제 파일을 프로젝트에 넣고, <code>AGENTS.md</code>를 만들어 AI가 코드나 의사코드를 바로 제안하지 않도록 제한했다.</p>
+<p>또, 팀 프로젝트와 별개로 개인 Pintos 레포를 병행하면서 진행했다.</p>
+<p>다만 실제로는 목표만큼 지키지는 못했다. 팀원들과 함께 AI에게 작업을 역할 단위로 나눠 달라고 하고, 각자 맡은 파트를 구현하는 식으로 진행했다.</p>
+<p>내가 맡은 부분은 비교적 직접 구현하고 디버깅했지만, 다른 팀원이 맡은 부분을 이해하거나 맞춰 갈 때는 AI와 팀원의 구현을 많이 참고했다.</p>
+<h4 id="gyeolgwa-mic-pideubaeg">결과 및 피드백</h4>
+<p>대부분의 요구사항은 구현했지만, 모든 요구사항을 내가 직접 분석하고 검증했다고 말하기는 어렵다.</p>
+<p>AI는 내가 이해한 내용이 맞는지 확인하거나, 테스트 실패가 어떤 요구사항과 연결되는지 볼 때는 도움이 됐다.</p>
+<p>반대로 요구사항 분석과 디버깅을 AI에게 너무 많이 넘기면 학습 효과가 줄어든다는 것도 느꼈다. 구현은 내가 하더라도, 판단과 설계를 AI가 하고 있으면 내가 AI의 실행자가 되는 느낌이 들었다.<br />
+(AI와 내 역할이 반대로 된 느낌)</p>
+<p>이번에 가장 많이 남은 부분은 내가 직접 요구사항을 읽고, 직접 printf를 찍어보고, 테스트 실패를 따라간 부분이었다.</p>
+<p>AI를 사용했던 방법을 주제로 발표하기도 했다.<br />
+<a rel="external" href="https://github.com/YangSiJun528/jungle_pintos_lab/blob/main/docs/ai/024_AI%EC%99%80_AGENTS_%ED%95%99%EC%8A%B5_%EB%B3%B4%EC%A1%B0_%EB%B0%9C%ED%91%9C.marp.md">AI와 AGENTS 학습 보조 발표 자료</a></p>
+<h2 id="geu-oe-jageob">그 외 작업</h2>
+<p><small style="color: #777;">핵심 역량 목표와 직접 연결되지는 않지만, 이번 주에 따로 진행했거나 정리할 만한 활동을 작성합니다.</small></p>
+<h3 id="undong">운동</h3>
+<p>바쁘고 생활 패턴이 뒤죽박죽이라 자주 못했다.<br />
+그래도 같은 교육실 사람들과 3km 러닝을 세 번 정도 했다.</p>
+<h3 id="jungle-bell-jageob">Jungle Bell 작업</h3>
+<p>기능은 어느 정도 만들고 외부 홍보를 시작했다.</p>
+<p>홍보 출력물을 사람들이 많이 오가는 정수기 앞이나 흡연실 등에 붙였고, 홍보 글을 슬랙에 올리기도 했다.
+다른 코스 사람들과는 슬랙으로 소통할 수 있는 방법이 없었는데, 게임랩에 아는 사람이 있는 이시원님과 송영진님의 도움을 받아서 홍보했다.</p>
+<p>아직 사용자 증가는 크지 않다. 확실히 우리 교육실 내부에서 한 것처럼 직접 1대1로 설명하는 방식이 더 확실한 것 같다. 아니면 시기가 너무 늦었을 수도 있고.</p>
+<h3 id="opeunsoseu-giyeo-junbi">오픈소스 기여 준비</h3>
+<p>다시 오픈소스 기여를 해볼까 생각 중이다.</p>
+<p>여전히 자신감이 크지는 않지만, 정글에서 다 완료하기 어려운 커리큘럼을 소화하려고 노력하고, 특히 Pintos를 하면서, 정말 낮선 언어와 분야의 코드에 적응하는 감각이 조금 늘었다고 느낀다.</p>
+<p>이를 위해 각 레포마다 AI 관련 파일을 흩어 관리하지 않고, 한곳에서 관리하기 위한 프로젝트도 구상했다.</p>
+<p><a rel="external" href="https://github.com/YangSiJun528/contribution-overlays">contribution-overlays</a></p>
+<h2 id="wil-what-i-learned">WIL (What I Learned)</h2>
+<h3 id="10juca-pideubaeg">10주차 피드백</h3>
+<p>전체 피드백에서 가장 크게 남은 내용은 AI 시대에도 요구사항 분석과 직접 설명할 수 있는 구현 경험이 중요하다는 점이었다.</p>
+<p><strong>장윤호 코치님</strong></p>
+<ul>
+<li>발표 시간이 정해져 있다. 준비 기간 등으로 엄격하게 보지는 않지만 지켜주었으면 좋겠다.</li>
+<li>AI 시대에는 요구사항 분석이 더 중요한 역량이 되는데, 특히 Pintos를 하면서, 그 연습을 하고 있는지 확인해봤으면 좋겠다.</li>
+</ul>
+<p><strong>김현수 코치님</strong></p>
+<ul>
+<li>AI를 사용하지 않을 수는 없겠지만, 의존하지 않고 설명 가능한 구현이 있는지 확인해야 한다.</li>
+<li>면접에서 Pintos 구현 과정을 5~10분 정도 설명할 수 있는지 되돌아보라, 실제로 그런 경험을 좋게 본 면접관이 많았다.</li>
+</ul>
+<p><strong>이동욱 코치님</strong></p>
+<ul>
+<li>회고가 사람에 대한 평가가 되면 blame하게 되고, 이건 전혀 도움이 되지 않는다.</li>
+<li>회고의 목적은 다음 주차에 더 잘하기 위한 것이고, 팀 레벨의 시스템을 평가해야 한다.</li>
+<li>개인의 문제를 지적하려면 단기간에 해결 가능한 명확한 개선책이 있거나, 진행에 큰 영향을 주는 경우여야 한다.</li>
+<li>추가적으로 Facilitation 기반의 구체적인 회고 방식을 설명해주었다. 핵심은 의견을 모으고 해서 객관적인 평가가 가능하게 하는 것이다.</li>
+</ul>
+<h3 id="inpeureon-cto-idongugnim-keorieo-teuggang">인프런 CTO 이동욱님 커리어 특강</h3>
+<h4 id="teuggang-naeyong-yoyag">특강 내용 요약</h4>
+<p>그 순간에는 최적처럼 보이는 선택을 계속해도, 전체 커리어에서 최적이라는 보장은 없다.<br />
+반대로 당시에는 별로라고 생각했던 경험이 나중에 중요한 기반이 되기도 한다.</p>
+<p>결국 좋은 경험과 나쁜 경험이 따로 있다기보다는, 주어진 경험을 어떤 태도로 대하는지가 더 중요하다.</p>
+<h4 id="boninyi-keorieowa-gyeongheom">본인의 커리어와 경험</h4>
+<ol>
+<li>취준생 때, 남을 가르치며 공부했던 경험이 블로그로 이어졌고, 블로그가 이후 커리어 기회로 연결됐다.</li>
+<li>ZUM에서 시니어가 없는 환경에서 신입들을 이끌어야 했던 경험이 리더십의 기반이 됐다.</li>
+<li>배민에 백엔드 개발자로 갔지만 인프라와 DB 운영을 많이 했고, 그 경험이 나중에 CTO 역할을 할 때 도움이 됐다.</li>
+</ol>
+<h4 id="jilyi-eungdab">질의 응답</h4>
+<ol>
+<li><strong>CS 기초와 특정 기술 숙련도 중 무엇을 우선해야 할까?</strong>
+<ul>
+<li>둘 중 하나만 고를 필요는 없다. AI를 활용하면 둘 다 더 빠르게 학습할 수 있는 시대가 됐다.</li>
+</ul>
+</li>
+<li><strong>새로운 주제를 빠르게 공부할 때 AI를 어떻게 쓰는가?</strong>
+<ul>
+<li>피드백 대상이 사람에서 AI로 바뀌었을 뿐, 방법은 이전과 동일하다.</li>
+<li>먼저 직접 자료를 찾고 정리한 뒤, AI에게 피드백을 받는 방식이 좋다.</li>
+<li>이후 AI가 꼬리 질문을 던지게 하고, 답하면서 이해도를 점검할 수 있다.</li>
+</ul>
+</li>
+<li><strong>인상 깊은 신입은 어떤 사람인가?</strong>
+<ul>
+<li>모르는 질문에도 바로 포기하지 않고, 아는 지식과 힌트를 바탕으로 끝까지 추론하는 사람이다.</li>
+<li>면접에서는 정답보다 사고 과정을 보여주는 태도가 중요하다.</li>
+</ul>
+</li>
+<li><strong>어떤 회사를 선택하는 것이 좋을까?</strong>
+<ul>
+<li>개발 생산성이 비즈니스 성장으로 이어지는 회사가 개발자에게 더 많은 기회를 줄 수 있다.</li>
+<li>신입에게는 좋은 시니어와 사수를 만나는 경험도 중요하다.</li>
+</ul>
+</li>
+<li><strong>레거시 환경에 적응하는 훈련은 어떻게 하면 좋을까?</strong>
+<ul>
+<li>오픈소스 기여를 통해서 이슈를 보고, 남이 만든 코드를 읽고, PR을 올려보는 경험을 추천한다.</li>
+<li>익숙하지 않은 코드를 읽고 수정하는 과정이 실제 레거시 환경과 비슷하다.</li>
+</ul>
+</li>
+<li><strong>공개 블로그와 프라이빗 노트는 어떤 차이가 있을까?</strong>
+<ul>
+<li>공개 블로그는 남을 이해시키기 위한 글쓰기라 학습 효과가 다르다.</li>
+<li>틀릴 수 있다는 부담을 감수하고 공개하는 과정 자체가 공부가 된다.</li>
+<li>공개하는 것은 누군가 읽을 수 있는게 아니라, 실제로 읽어야 함.</li>
+</ul>
+</li>
+</ol>
+<h4 id="neugginjeom">느낀점</h4>
+<p>이전부터 블로그, 유튜브, X 등을 통해서 여러 정보를 얻고 있었는데, 실제로 보는건 처음이였음. (함께 사진도 찍었다.)</p>
+<p>이전부터 불편함을 해결하려는 오픈소스 기여나 토이 프로젝트 개발 등 사소한 작업을 많이 하곤 했는데, 이런 접근을 좋게 봐주는걸 보고 자신감을 얻었다.</p>
+<h2 id="hoego">회고</h2>
+<h3 id="pintos-hugi">Pintos 후기</h3>
+<p>요구사항 분석에 AI를 많이 썼는데, 이 방식이 맞는지 계속 의문이 들었다.</p>
+<p>AI가 과제 문서와 테스트를 읽고 설계 방향을 정리해주면 구현하는 방식이였는데, 내가 고민하는 부분이 없이 단순히 구현하는 기계가 된 느낌이였다.</p>
+<p>차라리 구현 마무리나 스타일 정리, 반복적인 디버깅 보조는 AI에게 맡기고, 그러한 분석과 공부를 내가 해야하는게 맞는 것 같다.</p>
+<p>생각해보면 직접 삽질하고 디버깅한 부분은 기억에 오래 남지만, AI를 써서 구현에 도움을 받은 부분은 크게 기억나지 않는다.</p>
+<h3 id="koeotaim-hyeobeob-hoego">코어타임 / 협업 회고</h3>
+<p>AI에게 작업을 역할 단위로 나누고, 각자 맡은 부분을 구현한 뒤 PR로 공유했다.</p>
+<p>이전보다 분업은 잘 되었지만, 병목 문제나 작업 배정이 잘 되지 않았다.</p>
+<p>PR 리뷰를 충분히 잘 수행하지 못한 점도 아쉬웠다.
+요구사항을 제대로 이해하지 못한 상태에서 PR을 리뷰하다 보니, 핵심 로직에 대해 의미 있는 피드백을 주기 어려웠다.</p>
+<p>예를 들어 파일 디스크립터 테이블을 <code>thread</code> 구조체 안에서 배열로 관리하고 있었는데,
+배열을 사용할 경우 요구사항과 스택 크기를 고려했을 때 구조체가 지나치게 커질 수 있다는 문제가 있었다.</p>
+<p>이러한 문제는 이후 복습하면서 인지하게 되었고, 당시 PR 리뷰에서는 짚고 넘어가지 못했다. 돌이켜보면 이처럼 놓친 부분이 꽤 많았다.</p>
+<h3 id="ai-hwalyong-bangsig-hoego">AI 활용 방식 회고</h3>
+<p>다음부터는 AI에게 역할 단위로 나누게 하기보다, 작은 티켓 단위로 작업을 나누게 하는 편이 좋을 것 같다.</p>
+<p>그리고 요구사항 이해를 AI가 수행하는 것은 학습에 도움이 되지 않는 것 같아 직접 하려고 한다.</p>
+<p>코드 작성을 피하기만 하는것도 별로인거 같고, 반복되는 디버깅 코드 추가 정도에는 속도를 높이기 위해 쓸 수 있을 것 같다.</p>
+<h3 id="daeum-jucae-sidohal-geos">다음 주차에 시도할 것</h3>
+<p>다음 주차에는 AI 사용 제약을 더 명확히 두고, 티켓 단위 분업을 적용해보려고 한다. 팀원들과 이러한 부분을 이야기 할 예정이다.</p>
+
+    </div>
+</article>
+
+<!-- For Utterances -->
+<section class="comments">
+    
+    <noscript>댓글을 보려면 JavaScript를 활성화해주세요.</noscript>
+
+    <script src="https://utteranc.es/client.js"
+            repo="yangsijun528/sijun-yang.com"
+            issue-term="pathname"
+            label="utterances-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+    <div class="comments-skeleton"></div>
+
+    <script>
+        const observer = new MutationObserver(_ => {
+            const utterances = document.querySelector('.utterances');
+            if (utterances) {
+                const height = utterances.offsetHeight;
+                if (height > 200) {
+                    document.querySelector('.comments').classList.add('comments-loaded');
+                    observer.disconnect();
+                }
+            }
+        });
+
+        observer.observe(document.querySelector('.comments'), {
+            childList: true, subtree: true, attributes: true, attributeFilter: ['style']
+        });
+    </script>
+</section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="width-wrapper">
+            <p>
+                Built with <a href="https://www.getzola.org/">Zola</a> -
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source Code</a>
+            </p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="/rss.xml">RSS</a></li>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/robots.txt">robots.txt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

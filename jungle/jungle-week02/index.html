@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Week 02: 컴퓨팅 사고로의 전환 - Sijun Yang</title>
+    <meta name="description" content="문자열, 완전 탐색, 재귀, 백트랙킹, 정수론">
+    <meta name="author" content="Sijun Yang">
+    <link rel="stylesheet" href="/modern-css-reset.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="width-wrapper">
+            <nav aria-label="Primary navigation links">
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/jungle">Jungle</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="post">
+        <div class="width-wrapper">
+            
+<article class="page">
+    
+    <header class="page-header">
+        <h1>Week 02: 컴퓨팅 사고로의 전환</h1>
+         <p class="page-description">문자열, 완전 탐색, 재귀, 백트랙킹, 정수론</p> 
+        <div class="page-meta">
+            <time datetime="2026-03-12">2026년 03월 12일</time>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <h2 id="haegsim-yeogryang-mogpyo">핵심 역량 목표</h2>
+<ol>
+<li><strong>문제해결: 주어진 문제를 정의하고 논리적으로 해결하는 능력</strong>
+<ul>
+<li>알고리즘 문제의 입력/출력/제약 조건을 정확히 파악하고,<br />
+실버~골드 수준의 백준 문제를 스스로 분석하여 해결 전략을 수립할 수 있다.</li>
+</ul>
+</li>
+<li><strong>설계: 효율적이고 확장 가능한 시스템 구조를 기획</strong>
+<ul>
+<li>시간 복잡도를 이해하고, 사용한 알고리즘과 구현의 시간 복잡도를 올바르게 평가할 수 있다.</li>
+</ul>
+</li>
+<li><strong>구현: 설계된 내용을 실제로 동작하는 코드로 작성</strong>
+<ul>
+<li>정렬, 정수론 등의 기초 알고리즘을 직접 구현하고, 재귀 함수와 백트래킹 문제를 올바르게 구현할 수 있다.</li>
+</ul>
+</li>
+<li><strong>품질: 버그 없는 안정적인 코드 및 테스트 작성</strong>
+<ul>
+<li>제약 조건의 엣지 케이스에 대한 예외 처리를 고려하여 코드를 작성할 수 있다.</li>
+</ul>
+</li>
+<li><strong>유지보수: 가독성이 좋고 수정이 용이한 코드 작성</strong>
+<ul>
+<li>함수 단위로 로직을 분리하고, 직관적으로 이해 가능한 네이밍을 사용한다.</li>
+</ul>
+</li>
+<li><strong>협업: 팀원과 소통하며 시너지를 내는 과정</strong>
+<ul>
+<li>데일리 스크럼으로 목표와 진행 상황을 공유하고, 매일 푼 과제를 공유/리뷰하며 지식을 나눈다.</li>
+</ul>
+</li>
+<li><strong>태도: 자기주도적인 학습과 과제에 대한 몰입(집요함)</strong>
+<ul>
+<li>문제를 풀고 넘어가는 게 아닌, 여러 번 반복하여 체화한다. 특히, 틀린 문제는 2번 이상 반복 풀이한다.</li>
+</ul>
+</li>
+<li><strong>비즈니스 이해: 서비스의 가치와 사용자 입장을 고려하는 시각</strong>
+<ul>
+<li>알고리즘 복잡도가 실제 서비스 성능(응답 시간, 메모리 사용)에 미치는 영향을 이해하고 설명할 수 있다.</li>
+</ul>
+</li>
+<li><strong>AI 활용: AI 도구를 활용하여 생산성을 극대화하는 능력</strong>
+<ul>
+<li>AI는 이론 공부와 풀이 피드백 용도로만 사용한다.</li>
+<li><code>[공부 - AI 활용] → [풀이 - AI 금지] → [1차 피드백 - AI 금지] → [2차 피드백 - AI 활용]</code></li>
+</ul>
+</li>
+<li><strong>학습 민첩성: 새로운 기술이나 개념을 빠르게 습득하는 능력</strong>
+<ul>
+<li>정수론과 백트래킹 관련 개념을 4일 내에 습득하고 설명할 수 있을 정도로 공부한다.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="wil-what-i-learned">WIL (What I Learned)</h2>
+<h3 id="mogpyo-1-jeongsuron-jaegwi-baegteuraeking-munjepuli-yeogryang-hwagbo">목표 1. 정수론/재귀/백트래킹 문제풀이 역량 확보</h3>
+<p>자신 없는 정수론/재귀/백트래킹 문제를 중급 난이도까지 풀 수 있는 이론 지식, 문제 풀이 능력을 가지기.</p>
+<h4 id="jeobgeun">접근</h4>
+<ol>
+<li>이번 주 과제 중 중급 난이도 이하의 모든 문제를 일요일까지 풀기. 제한시간 30분.</li>
+<li>못 푼 문제를 리스트업하고 해당 문제의 개념을 공부 후, 2번 이상 복습.</li>
+<li>비슷한 요구사항의 문제를 찾아 더 풀이하기.</li>
+</ol>
+<h4 id="gwajeong">과정</h4>
+<ul>
+<li><a rel="external" href="https://gist.github.com/YangSiJun528/29cca5b67540bbc5ad093466cc26c33c">백트래킹 문제의 대표적인 순열/조합 유형 구현 방법을 복습하기 위해 AI를 활용해 정리 자료를 생성</a></li>
+<li><a rel="external" href="https://gist.github.com/YangSiJun528/9a13d85d258baf912b10d411f0e22033">2026/03/09 - Recursion 특강 정리</a></li>
+<li><a rel="external" href="https://gist.github.com/YangSiJun528/5e2a7c120bcc1c2e8d4ef3d915cf8e0c">하노이의 탑 정리</a></li>
+<li>난이도 중 이하 모든 문제 2번 이상 반복 풀이</li>
+</ul>
+<h4 id="gyeolgwa">결과</h4>
+<p>정수론은 출제 빈도와 응용 범위를 고려해 우선순위를 낮게 두었고, 그만큼 아직 부족한 부분이 남아 있다. <del>확장 유클리드 호제법은 이해조차 못했다.</del></p>
+<p>하노이의 탑, 완전탐색, 순열/조합, N-Queen 등의 백트래킹/재귀 문제를 풀 수 있게 되었다.<br />
+반복 풀이를 통해 재귀/백트래킹의 공통 패턴과 구현 방식을 체득한 것이 이번 주차의 가장 큰 성과다.</p>
+<p>문제 조건 분석과 접근 방식 선택(base case 설정 등)은 아직 미숙하지만, 충분한 시간이 주어지면 구현 자체에서 실수하는 경우는 거의 없어졌다.</p>
+<h3 id="mogpyo-2-gwaje-gongyu-ribyureul-tonghan-tim-seongjang">목표 2. 과제 공유/리뷰를 통한 팀 성장</h3>
+<p>팀원들과 공유하여 더 빠른 성장을 돕고, 다른 관점의 풀이를 보며 함께 성장하기.</p>
+<h4 id="jeobgeun-1">접근</h4>
+<ol>
+<li>첫 스크럼에서 매일 푼 문제를 슬랙에 올리고 서로 리뷰하자고 제안했다.</li>
+<li>여러 유용한 자료를 찾거나 준비하여 팀에게 전달했다.
+<ul>
+<li><a rel="external" href="https://gist.github.com/YangSiJun528/dd3e23e99cec3675ae23b9df12556347">코테 준비 노트 (기존에 정리했던 것)</a></li>
+<li><a rel="external" href="https://gist.github.com/YangSiJun528/59d1ac76f435a494b77ad52a087ab053">학습 계획 (신규 정리)</a></li>
+<li><a rel="external" href="https://youtube.com/playlist?list=PLhQjrBD2T3817j24-GogXmWqO5Q5vYy0V&amp;si=9453M0M1LxzzM_w1">파이썬 + 프로그래밍 강의 추천 (링크)</a></li>
+</ul>
+</li>
+</ol>
+<h4 id="gwajeong-1">과정</h4>
+<p>매일 스크럼 시 슬랙을 통해 풀이 내역이 담긴 커밋 링크를 공유했다.</p>
+<p><a rel="external" href="https://github.com/YangSiJun528/SW-AI-W02-05-TEMPLATE/commits/main/?since=2026-03-06&amp;until=2026-03-12">2주차 커밋 내역 링크</a></p>
+<p>코어타임에 문제 풀이를 공유하고, 팀원과 헷갈리는 개념에 대해 대화를 나눴다.</p>
+<h4 id="gyeolgwa-1">결과</h4>
+<p>예상보다 각자의 알고리즘 문제 풀이에 많은 시간이 소요되었다.</p>
+<p>그로 인해 팀원 간 공유나 협력이 원활하지 않았다.</p>
+<p>다만 공유한 자료들은 팀 내에서 유용하게 활용되고 있는 것으로 보인다.</p>
+<hr />
+<h2 id="hoego">회고</h2>
+<h3 id="yeogryang-dalseongryul">역량 달성률</h3>
+<p>초기 목표를 얼마나 달성했는지를 기준으로 상/중/하로 구분.<br />
+단, 해당 주차와 관련이 없거나 평가가 어려운 경우 N/A로 표기.</p>
+<p>어느 정도 주관적인 판단이 포함될 수 있음.</p>
+<table><thead><tr><th>#</th><th>역량</th><th>달성률</th><th>설명</th></tr></thead><tbody>
+<tr><td>1</td><td>문제해결</td><td>중</td><td>골드 수준의 문제 분석 및 전략 수립은 아직 어려움.</td></tr>
+<tr><td>2</td><td>설계</td><td>상</td><td>대략적으로나마 시간 복잡도를 유추할 수 있음.</td></tr>
+<tr><td>3</td><td>구현</td><td>상</td><td>개념을 이해한 경우, 구현 자체에는 문제 없었음.</td></tr>
+<tr><td>4</td><td>품질</td><td>하</td><td>동일 문제를 반복 풀이하는 데 집중한 탓에 엣지케이스 판단 능력을 키우지 못했음.</td></tr>
+<tr><td>5</td><td>유지보수</td><td>N/A</td><td>2주차 내용과 관련성이 낮음.</td></tr>
+<tr><td>6</td><td>협업</td><td>하</td><td>예상보다 잘 되지 않음. (후기에서 후술함)</td></tr>
+<tr><td>7</td><td>태도</td><td>중</td><td>문제 공유나 협업 측면에서는 잘 수행했으나 전반적으로 기대에 미치지 못함.</td></tr>
+<tr><td>8</td><td>비즈니스 이해</td><td>N/A</td><td>2주차 내용과 관련성이 낮음.</td></tr>
+<tr><td>9</td><td>AI 활용</td><td>중</td><td>잘 활용했지만, 힌트를 받는 방식이 더 좋았음. 처음 의도와 달라짐.</td></tr>
+<tr><td>10</td><td>학습 민첩성</td><td>중</td><td>빠르게 학습하긴 했지만, 한 문제에 지나치게 시간을 소비하여 전체 진도가 느렸음.</td></tr>
+</tbody></table>
+<h3 id="hugi">후기</h3>
+<h4 id="ibeon-ju-hwaldonge-daehan-pyeongga">이번 주 활동에 대한 평가</h4>
+<p>전반적으로 높은 목표를 설계했다는 느낌을 받았다. 또 시간 관리도 부족하다고 느꼈다.</p>
+<p>협업도 예상보다 쉽지 않았다. 리뷰하기에는 본인 과제를 풀이하기에도 시간이 않지 않았다. 의도적으로 시간을 할당하는 등의 의식적인 노력이 필요할거 같음.</p>
+<p>나에게는 준비 없는 구두 설명이 어려웠다. 자료 공유 방식이 더 효과적이였던 것 같음.</p>
+<h4 id="daeum-jue-sidohae-bol-geos">다음 주에 시도해 볼 것</h4>
+<p>문제당 시간 제한을 두고, AI 해설을 적극 활용하여 더 많은 유형에 노출되는 방식으로 전환한다.<br />
+난이도를 올리기보다는 중급(실버~골드) 수준을 유지하면서 유형 폭을 넓히는 데 집중한다.</p>
+<p>팀 기여 방식은 구두 설명보다 자료 공유가 더 효율적이고 내 강점에도 맞으므로, 자료 공유를 더 적극적으로 한다.</p>
+<h4 id="wilyi-hyeongsige-daehan-hugi">WIL의 형식에 대한 후기</h4>
+<p>다른 사람들의 제출을 보니, 너무 핵심 역량 목표에 집중된 듯한 느낌을 받음.</p>
+<p>별개로 나누어서 해야 할거 같음. 힉심 역량 파트를 줄이고, WIL은 말 그대로 배운 것들의 리스트가 나와야 할 듯.</p>
+<hr />
+<h3 id="cuga-03-12-unyeongjin-titaim">추가 — 03/12 운영진 티타임</h3>
+<h4 id="q-a-haegsim-yeogryang-mogpyoyi-yimi">Q&amp;A: 핵심 역량 목표의 의미</h4>
+<p><strong>Q</strong>: 핵심 역량 10가지에 대해 목표를 세우게 되는데, 알고리즘 주차의 경우 유지보수나 비즈니스 이해와 직접적 관련이 없어 보인다. 10개를 모두 작성해야 하는가? 어떤 항목을 중심으로 써야 할까?</p>
+<p><strong>A: 이동석 코치님</strong></p>
+<p>10가지를 모두 작성할 필요는 없다. 특정 주차에는 상대적으로 덜 중요한 역량이 있을 수 있다.</p>
+<p>다만 모든 핵심 역량은 중요하므로 각 역량과의 연결점을 고민해보면 좋겠다.<br />
+여기서 배우는 것들은 실제 현장에서 필요한 역량이고, 어떤 식으로든 현실과 연결되는 부분이 있다.</p>
+<p><strong>A: 김현수 코치님</strong></p>
+<p>핵심 역량 목표를 도입한 배경은, 이전 기수들이 많은 활동을 했음에도 이력서에 잘 드러나지 않는 점이 아쉬웠기 때문이다.</p>
+<p>따라서 몇 가지 역량에 집중해서 계획을 세우고 발전 과정을 기록하여, 성과가 가시적으로 드러나도록 하려는 의도다.</p>
+<p>예를 들어, 알고리즘 주차를 완료했다고 해서 문제 해결 능력이 뛰어난 것은 아니다.
+하지만 알고리즘 주차에서 문제 해결을 위한 구체적 목표를 세우고 달성한 기록이 있다면, 문제 해결 능력을 어필할 수 있다. 이력서 활용뿐 아니라, 목표가 있으면 스스로의 성장에도 도움이 될 것이다.</p>
+<p>항상 전부 채울 필요는 없지만, 이런 의도를 이해해주면 좋겠다.</p>
+<h4 id="saenggag-haegsim-yeogryang-mogpyoreul-eoddeon-sigeuro-seweoya-halgga">생각: 핵심 역량 목표를 어떤 식으로 세워야 할까?</h4>
+<p>이 답변과 Week2 WIL 작성 시의 생각을 종합했을 때 다음과 같은 결론을 세웠다.</p>
+<ul>
+<li>최소 2~3개 이상의 핵심 역량 목표를 정한다.</li>
+<li>수치화하거나 이전 상태와 비교 가능한 형태로 목표를 설정한다.</li>
+<li>선택하는 역량은 한 영역에 치우치지 않고, 개인 역량과 협업 역량에서 각각 최소 1개 이상 포함한다.</li>
+</ul>
+<p><strong>수치화/비교 가능한 목표의 예:</strong></p>
+<ul>
+<li>저번 주차 미해결 골드 문제를 이번 주차에 30분 내 독립 풀이. 전/후 소요시간 기록.</li>
+<li>엣지케이스 체크리스트 도입, Week 02 대비 1차 제출 정답률 비교 기록.</li>
+<li>팀원 피드백 시간을 별도로 할당하여 N회 이상 실행. 팀 프로젝트 시 머지 컨플릭을 잘 해결하는 Skill.md 도입 등.</li>
+</ul>
+
+    </div>
+</article>
+
+<!-- For Utterances -->
+<section class="comments">
+    
+    <noscript>댓글을 보려면 JavaScript를 활성화해주세요.</noscript>
+
+    <script src="https://utteranc.es/client.js"
+            repo="yangsijun528/sijun-yang.com"
+            issue-term="pathname"
+            label="utterances-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+
+    <div class="comments-skeleton"></div>
+
+    <script>
+        const observer = new MutationObserver(_ => {
+            const utterances = document.querySelector('.utterances');
+            if (utterances) {
+                const height = utterances.offsetHeight;
+                if (height > 200) {
+                    document.querySelector('.comments').classList.add('comments-loaded');
+                    observer.disconnect();
+                }
+            }
+        });
+
+        observer.observe(document.querySelector('.comments'), {
+            childList: true, subtree: true, attributes: true, attributeFilter: ['style']
+        });
+    </script>
+</section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="width-wrapper">
+            <p>
+                Built with <a href="https://www.getzola.org/">Zola</a> -
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source Code</a>
+            </p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="/rss.xml">RSS</a></li>
+                    <li><a href="/sitemap.xml">Sitemap</a></li>
+                    <li><a href="/robots.txt">robots.txt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
