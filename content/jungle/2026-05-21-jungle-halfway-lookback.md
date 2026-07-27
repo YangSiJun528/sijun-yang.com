@@ -4,7 +4,7 @@ description = ""
 date = 2026-05-21
 
 [extra]
-page_style = "post"
+velog_url = "https://velog.io/@yangsijun528/백업-TODO-정글의-절반을-지나며"
 +++
 
 # TODO

@@ -4,7 +4,7 @@ description = "내가 얻어가고 싶은 것"
 date = 2026-03-06
 
 [extra]
-page_style = "post"
+velog_url = "https://velog.io/@yangsijun528/백업-정글-에세이-퇴사하고-정글에-온-이유"
 +++
 
 첫 번째 회사에서 약 1년 8개월의 일을 마무리하고 정글에 참여하게 되었다. 

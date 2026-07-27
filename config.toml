@@ -2,7 +2,7 @@
 base_url = "https://sijun-yang.com/"
 
 title = "Sijun Yang"
-description = "Sijun Yang의 블로그"
+description = "Sijun Yang의 개인 페이지"
 default_language = "ko"
 author = "Sijun Yang"
 
@@ -12,14 +12,13 @@ compile_sass = false
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
 
-generate_feeds = true
-feed_filenames = ["rss.xml"]
+generate_feeds = false
 
 # When set to "false", Sitemap.xml is not generated
-generate_sitemap = true
+generate_sitemap = false
 
 # When set to "false", robots.txt is not generated
-generate_robots_txt = true
+generate_robots_txt = false
 
 [markdown]
 # Whether to do syntax highlighting

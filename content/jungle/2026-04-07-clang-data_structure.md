@@ -4,7 +4,7 @@ description = "element와 data structure 메모리 관리, 비연속적 자료�
 date = 2026-04-07
 
 [extra]
-page_style = "post"
+velog_url = "https://velog.io/@yangsijun528/백업-C에서의-자료구조-라이브러리-구현-알아보기"
 +++
 
 항상 궁금했던 게, C에서는 data structures(자료구조들)를 메모리에서 어떻게 관리하는지임.

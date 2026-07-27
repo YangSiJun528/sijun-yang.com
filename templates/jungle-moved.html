@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <h1>{{ page.title }}</h1>
+    <p>이 글은 Velog로 이관했습니다.</p>
+    <p>
+        <a href="{{ page.extra.velog_url }}">Velog에서 이 글을 읽어주세요.</a>
+    </p>
+</article>
+{% endblock content %}

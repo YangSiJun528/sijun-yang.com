@@ -4,7 +4,7 @@ description = "C언어 관련 자잘한 정보들"
 date = 2026-04-06
 
 [extra]
-page_style = "post"
+velog_url = "https://velog.io/@yangsijun528/백업-Tsoding-유튜브의-C관련-내용-정리"
 +++
 
 C 자료구조 공부를 하려고 자료를 찾아보다가, 예전부터 이름만 알고 있던 Tsoding 영상을 몇 개 보게 됐다.

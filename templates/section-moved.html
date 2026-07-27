@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section aria-labelledby="moved-section-title">
+    <h1 id="moved-section-title">{{ section.title }}</h1>
+    {{ section.content | safe }}
+    <p>
+        관련 글은
+        <a href="{{ section.extra.velog_url }}">Velog에서 확인해주세요.</a>
+    </p>
+</section>
+{% endblock content %}

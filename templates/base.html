@@ -19,14 +19,12 @@
             <nav aria-label="Primary navigation links">
                 <ul>
                     <li><a href="/">About</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/jungle">Jungle</a></li>
+                    <li><a href="/portfolio">Portfolio</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    {# extra.page_style(필수임) 값을 읽어서 main 하위의 스타일을 특정 섹션이나 페이지에 맞게 커스텀할 수 있게 함 #}
-    <main class="{% if section %}{{ section.extra.page_style }}{% else %}{{ page.extra.page_style }}{% endif %}">
+    <main>
         <div class="width-wrapper">
             {% block content %} {% endblock content %}
         </div>
@@ -40,8 +38,6 @@
             </p>
             <nav aria-label="Footer links">
                 <ul>
-                    <li><a href="/rss.xml">RSS</a></li>
-                    <li><a href="/sitemap.xml">Sitemap</a></li>
                     <li><a href="/robots.txt">robots.txt</a></li>
                 </ul>
             </nav>
