@@ -2,10 +2,6 @@
 title = "[월간 기록] 시리즈 소개"
 description = ""
 date = 2025-12-28
-
-[extra]
-page_style = "post"
-series = "monthly-log"
 +++
 
 평소 관심 가는 여러 자료를 수집하고 학습하는데, 관심사가 자주 바뀌다 보니 시간이 지나면 흩어지거나 까먹곤 한다.

@@ -1,44 +1,84 @@
+{% if page %}
+    {% set current_content = page %}
+{% else %}
+    {% set current_content = section %}
+{% endif %}
+{% set is_legacy_korean = current_content.relative_path is starting_with(pat="blog/") or current_content.relative_path is starting_with(pat="jungle/") %}
+{% set content_lang = "ko" if is_legacy_korean else lang %}
+{% set home_nav = get_section(path="_index.md", lang=content_lang, metadata_only=true) %}
+{% set about_nav = get_section(path="about/_index.md", lang=content_lang, metadata_only=true) %}
+{% set resume_nav = get_section(path="resume/_index.md", lang=content_lang, metadata_only=true) %}
+{% set portfolio_nav = get_section(path="portfolio/_index.md", lang=content_lang, metadata_only=true) %}
 <!DOCTYPE html>
-<html lang="{{ config.default_language }}">
+<html lang="{{ content_lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {#
-        zola 규칙 상 section과 page을 구분하므로 공통 처리를 원하면 조건문이 필요
-        의도적으로 필수인 값(title, description 등)은 없으면 템플릿 빌드 단계에서 에러나게 작성
-    #}
-    <title>{% if page %}{{ page.title }} - {% elif section %}{{ section.title }} - {% endif %}{{ config.title }}</title>
-    <meta name="description" content="{% if page %}{{ page.description }}{% elif section %}{{ section.description }}{% endif %}">
+    <title>{{ current_content.title }} - {{ config.title }}</title>
+    <meta name="description" content="{% if current_content.description %}{{ current_content.description }}{% else %}{{ config.description }}{% endif %}">
     <meta name="author" content="{{ config.author }}">
-    <link rel="stylesheet" href="/modern-css-reset.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{{ current_url }}">
+    {% if not is_legacy_korean %}
+        {% for translation in current_content.translations %}
+        {% if translation.lang %}
+    <link rel="alternate" hreflang="{{ translation.lang }}" href="{{ translation.permalink }}">
+            {% if translation.lang == config.default_language %}
+    <link rel="alternate" hreflang="x-default" href="{{ translation.permalink }}">
+            {% endif %}
+        {% else %}
+    <link rel="alternate" hreflang="{{ config.default_language }}" href="{{ translation.permalink }}">
+    <link rel="alternate" hreflang="x-default" href="{{ translation.permalink }}">
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    <link rel="stylesheet" href="/modern-css-reset.css?h={{ get_hash(path='modern-css-reset.css', sha_type=256, base64=false) }}">
+    <link rel="stylesheet" href="/style.css?h={{ get_hash(path='style.css', sha_type=256, base64=false) }}">
 </head>
 <body>
-    <header>
-        <div class="width-wrapper">
-            <nav aria-label="Primary navigation links">
+    <header class="site-header">
+        <div class="width-wrapper site-header-inner">
+            <div class="site-brand{% if current_url == home_nav.permalink %} site-brand--home{% endif %}">
+                <a href="{{ home_nav.permalink }}"{% if current_url == home_nav.permalink %} aria-current="page"{% endif %}>sijun-yang</a>
+            </div>
+            <nav class="site-primary-nav" aria-label="Primary navigation">
                 <ul>
-                    <li><a href="/">About</a></li>
-                    <li><a href="/portfolio">Portfolio</a></li>
+                    <li><a href="{{ about_nav.permalink }}"{% if current_url == about_nav.permalink %} aria-current="page"{% endif %}>{{ about_nav.title }}</a></li>
+                    <li><a href="{{ resume_nav.permalink }}"{% if current_url == resume_nav.permalink %} aria-current="page"{% endif %}>{{ resume_nav.title }}</a></li>
+                    <li><a href="{{ portfolio_nav.permalink }}"{% if current_url == portfolio_nav.permalink %} aria-current="page"{% endif %}>{{ portfolio_nav.title }}</a></li>
                 </ul>
             </nav>
+            <div class="site-language">
+                <select aria-label="Language" onchange="window.location.assign(this.value)">
+                {% if not is_legacy_korean and current_content.translations | length > 0 %}
+                {% for translation in current_content.translations %}
+                    {% if translation.lang %}
+                    <option value="{{ translation.permalink }}" lang="{{ translation.lang }}"{% if translation.permalink == current_url %} selected{% endif %}>{{ translation.lang | upper }}</option>
+                    {% else %}
+                    <option value="{{ translation.permalink }}" lang="{{ config.default_language }}"{% if translation.permalink == current_url %} selected{% endif %}>{{ config.default_language | upper }}</option>
+                    {% endif %}
+                {% endfor %}
+                {% else %}
+                    <option value="{{ current_url }}" lang="{{ content_lang }}" selected>{{ content_lang | upper }}</option>
+                {% endif %}
+                </select>
+            </div>
         </div>
     </header>
     <main>
         <div class="width-wrapper">
-            {% block content %} {% endblock content %}
+            {% block content %}{% endblock content %}
         </div>
     </main>
 
     <footer>
         <div class="width-wrapper">
             <p>
-                Built with <a href="https://www.getzola.org/">Zola</a> -
-                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source Code</a>
+                Built with <a href="https://www.getzola.org/">Zola</a> ·
+                <a href="https://github.com/YangSiJun528/sijun-yang.com">Source code</a>
             </p>
             <nav aria-label="Footer links">
                 <ul>
-                    <li><a href="/robots.txt">robots.txt</a></li>
+                    <li><a href="{{ get_url(path='robots.txt') }}">robots.txt</a></li>
                 </ul>
             </nav>
         </div>

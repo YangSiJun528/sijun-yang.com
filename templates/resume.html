@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="resume">
+    <header class="resume-header">
+        <div class="resume-identity">
+            <img
+                class="resume-photo"
+                src="{{ get_url(path='resume/sijun-yang.jpg') }}"
+                alt="{{ section.extra.photo_alt }}"
+                width="497"
+                height="640"
+            >
+            <div>
+                <h1 class="main-title">{{ section.extra.name }}</h1>
+                <p class="resume-role">{{ section.extra.role }}</p>
+                <ul class="resume-contact" aria-label="{{ section.extra.contact_label }}">
+                    <li><strong>{{ section.extra.email_label }}:</strong> <a href="mailto:yangsijun5528@gmail.com">yangsijun5528@gmail.com</a></li>
+                    {# 실제 제출용 이력서에서는 실제 전화번호로 교체하고 tel: 링크를 추가할 것. #}
+                    <li><strong>{{ section.extra.phone_label }}:</strong> +82 10-XXXX-XXXX</li>
+                    <li><strong>{{ section.extra.github_label }}:</strong> <a href="https://github.com/YangSiJun528" rel="me">YangSiJun528</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    {{ section.content | safe }}
+</article>
+{% endblock content %}

@@ -1,6 +1,6 @@
 +++
 title = "Blog"
-description = "개발과 기술에 대한 글들"
+description = ""
 sort_by = "date"
 template = "section-moved.html"
 page_template = "post.html"

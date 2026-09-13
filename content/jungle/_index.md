@@ -1,6 +1,6 @@
 +++
 title = "Jungle"
-description = "크래프톤 정글 SW 12기 과정 기록"
+description = ""
 sort_by = "date"
 template = "section-moved.html"
 page_template = "jungle-moved.html"

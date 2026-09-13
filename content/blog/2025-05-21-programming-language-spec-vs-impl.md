@@ -1,10 +1,7 @@
 +++
 title = "Java 배열 인덱스 접근은 정말 O(1)인가?"
-description = "프로그래밍 언어의 명세와 구현은 다르다"
+description = ""
 date = 2025-05-21
-
-[extra]
-page_style = "post"
 +++
 
 누군가 개발 커뮤니티에 이런 질문을 올렸다.

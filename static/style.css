@@ -1,9 +1,11 @@
 :root {
+    scrollbar-gutter: stable both-edges;
+
     /* ===========================================
        Boilerplate attr
        =========================================== */
 
-    /* Size variables (for padding, margin, etc.) */
+    /* Spacing scale: 4px grid with larger steps for broader groupings */
     --size-xs: 0.25rem; /* 4px */
     --size-sm: 0.5rem; /* 8px */
     --size-md: 0.75rem; /* 12px */
@@ -15,37 +17,34 @@
     --size-5xl: 3rem; /* 48px */
     --size-6xl: 4rem; /* 64px */
 
-    /* Font-specific sizes */
+    /* Type scale: 16px body baseline with progressively larger steps */
     --font-size-xs: 0.75rem; /* 12px */
     --font-size-sm: 0.875rem; /* 14px */
     --font-size-md: 1rem; /* 16px */
     --font-size-lg: 1.125rem; /* 18px */
-    --font-size-xl: 1.3125rem; /* 21px */
+    --font-size-xl: 1.25rem; /* 20px */
     --font-size-2xl: 1.5rem; /* 24px */
-    --font-size-3xl: 2.625rem; /* 42px */
-    --font-size-4xl: 4rem; /* 64px */
+    --font-size-3xl: 2rem; /* 32px */
+    --font-size-4xl: 2.5rem; /* 40px */
 
-    /* Font weights */
-    --font-weight-light: 300;
+    /* Font weights: regular and bold only */
     --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
     --font-weight-bold: 700;
-    --font-weight-extrabold: 800;
-    --font-weight-black: 900;
+    --font-weight-semibold: var(--font-weight-bold); /* Compatibility alias */
 
-    /* Colors */
-    --color-primary: #4f6b8f;
-    --color-primary-activation: #3d5a80;
-    --color-primary-disabled: #a7bed4;
+    /* Colors: cool-tinted neutrals on a near-white background */
+    --color-primary: #465f7f;
+    --color-primary-activation: #384f6c;
+    --color-primary-disabled: #7d94aa;
 
-    --color-text: #1e293b;
-    --color-text-secondary: #475569;
-    --color-text-tertiary: #94a3b8;
-    --color-text-disabled: #cbd5e1;
+    --color-text: #25272a;
+    --color-text-secondary: #50555c;
+    --color-text-tertiary: #666b72;
+    --color-text-disabled: #89919b;
 
-    --color-background: #ffffff;
-    --color-border: #e2e8f0;
+    --color-background: #fdfdffff;
+    --color-border: #d5dae0;
+    --color-border-strong: #858a92;
 
 
     /* ===========================================
@@ -69,15 +68,16 @@
             "Segoe UI Symbol",
             "Noto Color Emoji";
 
-    @font-face {
-        font-family: "pretendard Fallback";
-        src:
-                local("Apple SD Gothic Neo"),
-                local("Noto Sans KR"),
-                local("Malgun Gothic"),
-                local("Segoe UI"),
-                local("Arial");
-    }
+}
+
+@font-face {
+    font-family: "pretendard Fallback";
+    src:
+            local("Apple SD Gothic Neo"),
+            local("Noto Sans KR"),
+            local("Malgun Gothic"),
+            local("Segoe UI"),
+            local("Arial");
 }
 
 
@@ -96,61 +96,75 @@ h5,
 h6 {
     font-weight: var(--font-weight-bold);
     line-height: 1.2;
-    margin-bottom: var(--size-md);
     color: var(--color-text);
 }
 
 h1 {
-    font-size: var(--font-size-2xl);
+    margin: var(--size-4xl) 0 var(--size-xl);
+    font-size: var(--font-size-3xl);
 }
 
 h2 {
-    font-size: var(--font-size-xl);
+    margin: var(--size-4xl) 0 var(--size-lg);
+    font-size: var(--font-size-2xl);
 }
 
 h3 {
-    font-size: var(--font-size-lg);
+    margin: var(--size-3xl) 0 var(--size-md);
+    font-size: var(--font-size-xl);
 }
 
 h4 {
-    font-size: var(--font-size-md);
+    margin: var(--size-2xl) 0 var(--size-sm);
+    font-size: var(--font-size-lg);
 }
 
 h5,
 h6 {
+    margin: var(--size-xl) 0 var(--size-sm);
     font-size: var(--font-size-md);
 }
 
 /* Paragraphs */
 p {
-    line-height: 1.618;
+    margin: var(--size-lg) 0;
     text-align: left;
     word-break: keep-all;
 }
 
 /* Links */
-a {
+a[href] {
     color: var(--color-primary);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--color-primary);
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
     transition: all 0.3s ease-in-out;
+    overflow-wrap: anywhere;
 }
 
-a:hover,
-a:focus {
+a[href]:hover {
     color: var(--color-primary-activation);
-    border-bottom-style: solid;
-    outline: none;
+    text-decoration-style: solid;
 }
 
 /* Lists */
 ul,
 ol {
-    line-height: 1.618;
+    margin: var(--size-lg) 0;
+    padding-left: var(--size-2xl);
 }
 
 li {
+    --list-line-height-reduction: 0.3em;
+
     list-style-position: outside;
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+li + li {
+    margin-top: calc(var(--size-xs) + var(--list-line-height-reduction));
 }
 
 /* Blockquote */
@@ -159,11 +173,10 @@ blockquote {
     border-left: 10px solid var(--color-border);
     background: rgba(148, 163, 184, 0.15);
     margin: var(--size-lg) 0;
-    line-height: 1.618;
+}
 
-    & p {
-        margin: 0;
-    }
+blockquote p {
+    margin: 0;
 }
 
 
@@ -186,7 +199,7 @@ b {
 }
 
 small {
-    font-size: var(--font-size-sm);
+    font-size: 0.625rem;
 }
 
 /* Code */
@@ -200,10 +213,11 @@ pre {
     overflow-x: auto;
     white-space: pre;
     border-radius: var(--size-xs);
-    code {
-        display: block;
-        padding: var(--size-2xl) var(--size-xl);
-    }
+}
+
+pre code {
+    display: block;
+    padding: var(--size-2xl) var(--size-xl);
 }
 
 /* Abbreviation */
@@ -225,7 +239,7 @@ table {
 th,
 td {
     padding: var(--size-xs) var(--size-xs);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-strong);
     text-align: left;
     vertical-align: top;
 
@@ -247,46 +261,101 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    background-color: var(--color-background);
     font-family: var(--font-sans);
+    line-height: 1.7;
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures;
     color: var(--color-text);
+}
+
+time,
+table {
+    font-variant-numeric: tabular-nums;
 }
 
 main {
     /* modern css reset에서 설정된 값이 있어서 flex 설정으로만 sticky footer 가능 */
     flex: 1 0 auto;
-    .main-title {
-        color: var(--color-primary);
-    }
+}
+
+main .main-title {
+    color: var(--color-primary);
 }
 
 /* 참고한 여러 사이트에서 최대 가로 길이 고정을 위해 쓰는 방식 */
 .width-wrapper {
-    max-width: var(--max-width);
+    max-width: calc(var(--max-width) + (var(--size-xl) * 2));
     width: 100%;
     margin: 0 auto;
     padding: 0 var(--size-xl);
 }
 
-header {
+.site-header {
     border-bottom: 1px solid var(--color-border);
     padding: var(--size-xl) 0;
+}
 
-    & nav {
-        & ul {
-            display: flex;
-            justify-content: flex-end;
-            gap: var(--size-2xl);
-            list-style: none;
-            margin: 0;
-            padding: 0;
+.site-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--size-xl);
+}
 
-            & li {
-                margin: 0;
-                padding: 0;
-                text-indent: 0;
-            }
-        }
-    }
+.site-brand,
+.site-language {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.site-brand {
+    font-weight: var(--font-weight-normal);
+    white-space: nowrap;
+}
+
+.site-brand--home {
+    font-weight: var(--font-weight-bold);
+}
+
+.site-header a,
+.site-header a:hover,
+.site-header a:focus {
+    border-bottom: none;
+    text-decoration: none;
+}
+
+.site-primary-nav {
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.site-primary-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: var(--size-2xl);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-primary-nav li {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+}
+
+.site-primary-nav a[aria-current="page"] {
+    font-weight: var(--font-weight-bold);
+}
+
+.site-language {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.site-language select {
+    border: 0;
 }
 
 footer {
@@ -294,53 +363,53 @@ footer {
     padding: var(--size-xl) 0;
     margin-top: var(--size-2xl);
     color: var(--color-text-secondary);
+}
 
-    & p {
-        margin: var(--size-xs) 0;
-        font-size: var(--font-size-sm);
-    }
+footer p {
+    margin: var(--size-xs) 0;
+    font-size: var(--font-size-sm);
+}
 
-    & nav {
-        margin-top: var(--size-sm);
+footer nav {
+    margin-top: var(--size-sm);
+}
 
-        & ul {
-            display: flex;
-            gap: var(--size-xl);
-            list-style: none;
-            margin: 0;
-            padding: 0;
+footer ul {
+    display: flex;
+    gap: var(--size-xl);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-            & li {
-                margin: 0;
-                text-indent: 0;
-                font-size: var(--font-size-xs);
-            }
-        }
-    }
+footer li {
+    margin: 0;
+    text-indent: 0;
+    font-size: var(--font-size-xs);
 }
 
 .comments {
     margin-top: var(--size-5xl);
     padding-top: var(--size-3xl);
     border-top: 1px solid var(--color-border);
+}
 
-    &.comments-loaded .comments-skeleton,
-    &:not(:has(> .utterances)) .comments-skeleton {
-        display: none;
-    }
+.comments.comments-loaded .comments-skeleton,
+.comments:not(:has(> .utterances)) .comments-skeleton {
+    display: none;
+}
 
-    .comments-skeleton {
-        height: 200px;
-        background: var(--color-border);
-        border-radius: var(--size-sm);
-        animation: comments-pulse 1.5s ease-in-out infinite;
-    }
+.comments .comments-skeleton {
+    height: 200px;
+    background: var(--color-border);
+    border-radius: var(--size-sm);
+    animation: comments-pulse 1.5s ease-in-out infinite;
+}
 
-    noscript {
-        display: block;
-        text-align: center;
-        padding: var(--size-xl);
-    }
+.comments noscript {
+    display: block;
+    text-align: center;
+    padding: var(--size-xl);
 }
 
 /* keyframes for .comments - @keyframes must root */
@@ -350,3 +419,246 @@ footer {
     100% { opacity: 0.5; }
 }
 
+/* ===========================================
+   Resume Page
+   =========================================== */
+
+.resume {
+    padding-top: var(--size-4xl);
+}
+
+.resume-header {
+    padding-bottom: var(--size-xl);
+}
+
+.resume .main-title {
+    margin: 0 0 var(--size-xs);
+}
+
+.resume-role {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+}
+
+.resume-identity {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--size-2xl);
+    align-items: center;
+}
+
+.resume-photo {
+    width: 6rem;
+    height: 6rem;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 50%;
+}
+
+.resume-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-xs) var(--size-lg);
+    margin: var(--size-sm) 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--font-size-sm);
+}
+
+.resume-contact li,
+.resume-contact li + li {
+    margin: 0;
+}
+
+.resume h2 {
+    margin: var(--size-3xl) 0 var(--size-xl);
+    padding-bottom: var(--size-sm);
+    border-bottom: 1px solid var(--color-border-strong);
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+}
+
+.two-column-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--size-3xl);
+}
+
+.resume-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--size-xl);
+    align-items: baseline;
+    min-width: 0;
+}
+
+.resume-row--compact {
+    column-gap: var(--size-md);
+}
+
+.resume-row h3 {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    color: var(--color-primary);
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+}
+
+.resume-main,
+.resume-meta {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.resume-row--compact .resume-main,
+.resume-row--compact .resume-meta {
+    line-height: 1.4;
+}
+
+.resume-main {
+    grid-column: 1;
+    min-width: 0;
+    color: var(--color-text);
+}
+
+.resume-meta {
+    grid-column: 2;
+    justify-self: end;
+    color: var(--color-text-secondary);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.resume-entry {
+    margin-top: var(--size-xl);
+}
+
+.resume-entry-content {
+    min-width: 0;
+    margin-top: var(--size-sm);
+}
+
+.resume .resume-entry-content > :first-child {
+    margin-top: 0;
+}
+
+.resume .resume-entry-content > :last-child {
+    margin-bottom: 0;
+}
+
+.resume .resume-entry-content p {
+    margin: var(--size-sm) 0;
+}
+
+.resume .resume-entry-content ul {
+    margin: var(--size-xs) 0;
+    padding-left: var(--size-xl);
+}
+
+.resume .resume-entry-content li + li {
+    margin-top: var(--list-line-height-reduction);
+}
+
+.resume-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+.resume-detail-list {
+    margin: var(--size-xs) 0 0;
+    padding-left: var(--size-xl);
+    font-size: var(--font-size-sm);
+}
+
+@media screen and (max-width: 42rem) {
+    .site-header-inner {
+        flex-wrap: wrap;
+        column-gap: var(--size-lg);
+        row-gap: var(--size-md);
+    }
+
+    .site-brand {
+        flex: 0 0 100%;
+    }
+
+    .site-primary-nav {
+        flex: 0 1 auto;
+    }
+
+    .site-primary-nav ul {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: var(--size-lg);
+    }
+
+    .site-language {
+        flex: 1 1 auto;
+    }
+
+    .resume {
+        padding-top: var(--size-3xl);
+    }
+
+    .resume-identity {
+        gap: var(--size-lg);
+    }
+
+    .resume-photo {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .resume-row--stack {
+        grid-template-columns: 1fr;
+        row-gap: var(--size-xs);
+    }
+
+    .two-column-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .resume-row--stack h3,
+    .resume-row--stack .resume-main,
+    .resume-row--stack .resume-meta {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .resume-row--stack .resume-meta {
+        justify-self: start;
+        text-align: left;
+    }
+
+}
+
+@media print {
+    body {
+        background-color: var(--color-background);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body > header,
+    body > footer {
+        display: none;
+    }
+
+    .resume h2,
+    .resume-row {
+        break-after: avoid;
+    }
+
+    .resume-row {
+        break-inside: avoid;
+    }
+
+    .resume-entry-content > :first-child {
+        break-before: avoid;
+    }
+
+}

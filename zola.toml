@@ -2,8 +2,8 @@
 base_url = "https://sijun-yang.com/"
 
 title = "Sijun Yang"
-description = "Sijun Yang의 개인 페이지"
-default_language = "ko"
+description = ""
+default_language = "en"
 author = "Sijun Yang"
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -19,6 +19,9 @@ generate_sitemap = false
 
 # When set to "false", robots.txt is not generated
 generate_robots_txt = false
+
+[languages.ko]
+title = "Sijun Yang"
 
 [markdown]
 # Whether to do syntax highlighting
@@ -44,8 +47,3 @@ bottom_footnotes = true
 
 [markdown.highlighting]
 theme = "one-light"
-
-[extra]
-# Put all your custom variables here
-author_email = "yangsijun5528@gmail.com"
-author_github_url = "https://github.com/YangSiJun528"

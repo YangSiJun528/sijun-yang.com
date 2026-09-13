@@ -1,6 +1,6 @@
 +++
 title = "정글 에세이: 퇴사하고 정글에 온 이유"
-description = "내가 얻어가고 싶은 것"
+description = ""
 date = 2026-03-06
 
 [extra]

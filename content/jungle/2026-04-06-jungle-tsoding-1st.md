@@ -1,6 +1,6 @@
 +++
 title = "Tsoding 유튜브의 C관련 내용 정리"
-description = "C언어 관련 자잘한 정보들"
+description = ""
 date = 2026-04-06
 
 [extra]

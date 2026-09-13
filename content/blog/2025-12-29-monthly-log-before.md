@@ -1,11 +1,7 @@
 +++
 title = "[월간 기록] 이전 자료 모음"
-description = "월간 기록 시작 전 모아둔 자료들"
+description = ""
 date = 2025-12-28
-
-[extra]
-page_style = "post"
-series = "monthly-log"
 +++
 
 월간 기록을 시작했는데, 이전에 정리한 자료 중에서도 좋은게 많다. 
@@ -14,7 +10,7 @@ series = "monthly-log"
 
 ## 수집
 
-{{ section_desc(desc="흥미롭거나 유용했던 자료들") }}
+{{<section_desc desc="흥미롭거나 유용했던 자료들" />}}
 
 ### [Interactive SICP JS](https://sourceacademy.org/sicpjs/index)
 
@@ -184,7 +180,7 @@ REST 아키텍처의 원래 의도를 설명하고, SPA 프레임워크 없이 h
 
 ## 작업
 
-{{ section_desc(desc="학습, 개발, 실험 등 직접 손댄 것들") }}
+{{<section_desc desc="학습, 개발, 실험 등 직접 손댄 것들" />}}
 
 ### 네트워크에서 MAC과 IP가 분리된 이유
 

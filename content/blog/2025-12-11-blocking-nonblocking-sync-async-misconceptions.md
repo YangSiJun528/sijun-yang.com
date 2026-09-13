@@ -1,10 +1,7 @@
 +++
 title = "동기/비동기, 블로킹/논블로킹 개념은 어디서부터 잘못되었나"
-description = "Blocking + Async는 존재하지 않는다"
+description = ""
 date = 2025-12-11
-
-[extra]
-page_style = "post"
 +++
 
 여러 개발 관련 글에서 Blocking/Non-blocking과 Sync/Async를 설명할 때면 항상 등장하는 2x2 매트릭스가 있다. 4개의 조합으로 나누어 설명하는 이 표를 한 번쯤은 보았을 것이다.

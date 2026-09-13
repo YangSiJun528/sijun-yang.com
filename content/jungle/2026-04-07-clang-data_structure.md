@@ -1,6 +1,6 @@
 +++
 title = "C에서의 자료구조 라이브러리 구현 알아보기"
-description = "element와 data structure 메모리 관리, 비연속적 자료구조"
+description = ""
 date = 2026-04-07
 
 [extra]
