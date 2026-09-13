@@ -15,7 +15,7 @@ photo_alt = "양시준 프로필 사진"
 
 ## 핵심 역량
 
-- Java/Kotlin, Spring, PostgreSQL을 활용한 백엔드 서비스 개발 및 AWS 클라우드 인프라 운영
+- Java/Kotlin, Spring Boot, PostgreSQL을 활용한 백엔드 서비스 개발 및 AWS 클라우드 인프라 운영
 - Codex와 Hermes를 활용한 AI 하네스 및 루프 엔지니어링
 - 로그와 지표를 통한 성능 분석 및 운영 문제 해결
 - SQLP와 실무 경험을 바탕으로 한 DB 설계 및 쿼리 튜닝
@@ -90,7 +90,7 @@ photo_alt = "양시준 프로필 사진"
 </li>
 <li>
 <div class="resume-row resume-row--stack">
-<span class="resume-main"><strong><a href="https://www.hellogsm.kr/">HelloGSM</a></strong></span>
+<span class="resume-main"><strong><a href="https://www.hellogsm.kr/">Hello, GSM</a></strong></span>
 <span class="resume-meta"><time datetime="2022-04">2022. 04.</time> – <time datetime="2023-11">2023. 11.</time></span>
 </div>
 <div class="resume-main">광주SW마이스터고 입학 지원 서비스</div>
@@ -112,6 +112,8 @@ photo_alt = "양시준 프로필 사진"
 
 ## 오픈소스
 
+총 15+ 오픈소스, 40+ 기여
+
 <ul class="resume-list">
 <li>
 <div class="resume-row resume-row--compact">
@@ -129,7 +131,6 @@ photo_alt = "양시준 프로필 사진"
 <span class="resume-meta"><time datetime="2026-07">2026. 07.</time> – 현재</span>
 </div>
 </li>
-<li>총 15+ 오픈소스, 40+ 기여</li>
 </ul>
 
 </div>
