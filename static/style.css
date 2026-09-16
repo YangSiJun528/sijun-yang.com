@@ -537,6 +537,21 @@ footer li {
     margin-top: var(--size-xl);
 }
 
+.resume-education-details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--size-sm);
+}
+
+.resume-education-details .resume-main {
+    white-space: nowrap;
+}
+
+.resume-education-details .resume-meta {
+    margin-left: auto;
+}
+
 .resume-entry-content {
     min-width: 0;
     margin-top: var(--size-sm);
@@ -661,4 +676,342 @@ footer li {
         break-before: avoid;
     }
 
+}
+
+/* The document inherits its typography and colors from the resume. */
+.portfolio {
+    padding-bottom: var(--size-4xl);
+    overflow-wrap: anywhere;
+}
+
+.portfolio-header,
+.portfolio-project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--size-xl);
+}
+
+.portfolio-caption,
+.portfolio figcaption {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.portfolio-project-header > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.portfolio-project-header :is(h2, h3) {
+    margin-top: 0;
+}
+
+.portfolio .portfolio-logo {
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+}
+
+.portfolio h3 {
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+    line-height: 1.4;
+}
+
+.portfolio-repository {
+    font-size: 0.75em;
+    font-weight: normal;
+}
+
+.portfolio-detail-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--size-md);
+    margin-bottom: var(--size-xl);
+    font-size: var(--font-size-sm);
+}
+
+.portfolio h4 {
+    font-size: var(--font-size-md);
+    line-height: 1.4;
+}
+
+.portfolio figure {
+    margin: var(--size-xl) 0;
+}
+
+.portfolio figure img {
+    width: 100%;
+    height: auto;
+}
+
+.portfolio .portfolio-figure-title {
+    margin: 0 0 var(--size-sm);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    break-after: avoid;
+}
+
+.portfolio figcaption {
+    margin-top: var(--size-sm);
+    line-height: 1.5;
+}
+
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--size-xl);
+    margin: var(--size-xl) 0;
+}
+
+.portfolio-gallery--stack {
+    display: block;
+}
+
+.portfolio-gallery--stack figure + figure {
+    margin-top: var(--size-xl);
+}
+
+.portfolio-gallery figure {
+    min-width: 0;
+    margin: 0;
+}
+
+.portfolio-gallery.portfolio-gallery--screens {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: var(--size-sm) var(--size-md);
+}
+
+.portfolio-gallery--screens figure {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+}
+
+.portfolio-sheet + .portfolio-sheet {
+    margin-top: var(--size-4xl);
+}
+
+.portfolio-project + .portfolio-project {
+    margin-top: var(--size-4xl);
+}
+
+.portfolio-step {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--size-xl);
+    align-items: start;
+}
+
+.portfolio-step {
+    margin-block: var(--size-xl);
+    align-items: center;
+}
+
+.portfolio-step--flow {
+    grid-template-columns: 2fr 3fr;
+}
+
+.portfolio-gallery--architecture {
+    grid-template-columns: 3fr 7fr;
+}
+
+.portfolio-step-copy > :first-child {
+    margin-top: 0;
+}
+
+.portfolio-sheet--service .portfolio-screenshot img {
+    width: auto;
+    max-width: 100%;
+}
+
+@media screen {
+    .portfolio-sheet--service .portfolio-screenshot img {
+        max-height: 48rem;
+    }
+}
+
+@media screen and (max-width: 42rem) {
+    .portfolio-header {
+        flex-wrap: wrap;
+    }
+
+    .portfolio-gallery,
+    .portfolio-step {
+        grid-template-columns: 1fr;
+    }
+}
+
+@page portfolio {
+    size: A4 portrait;
+    margin: 10mm;
+
+    @bottom-right {
+        content: counter(page);
+        color: #666b72;
+        font-size: 9pt;
+    }
+}
+
+@media print {
+    html:has(.portfolio) {
+        scrollbar-gutter: auto;
+    }
+
+    body:has(.portfolio) {
+        display: block;
+        min-height: 0;
+        background: white;
+        page: portfolio;
+    }
+
+    body:has(.portfolio) .width-wrapper {
+        max-width: none;
+        padding: 0;
+    }
+
+    .portfolio {
+        padding: 0;
+        font-size: 10pt;
+        line-height: 1.55;
+    }
+
+    .portfolio-detail-toolbar {
+        display: none;
+    }
+
+    .portfolio-header {
+        padding-bottom: 3mm;
+    }
+
+    .portfolio-header > div {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 4mm;
+        align-items: baseline;
+    }
+
+    .portfolio-header .main-title {
+        margin: 0;
+        font-size: 22pt;
+    }
+
+    .portfolio-header .resume-role {
+        margin: 0;
+        font-size: 10pt;
+    }
+
+    .portfolio-header .resume-contact {
+        grid-column: 1 / -1;
+        margin: 1mm 0 0;
+    }
+
+    .portfolio h2 {
+        margin: 4mm 0 2mm;
+        font-size: 14pt;
+    }
+
+    .portfolio h3 {
+        margin: 4mm 0 2mm;
+        font-size: 12pt;
+    }
+
+    .portfolio h4 {
+        margin: 3mm 0 2mm;
+        font-size: 10.5pt;
+    }
+
+    .portfolio p,
+    .portfolio ul,
+    .portfolio ol,
+    .portfolio figure,
+    .portfolio-gallery {
+        margin-block: 2mm;
+    }
+
+    .portfolio :is(figcaption, .portfolio-figure-title, .portfolio-caption, .resume-contact) {
+        font-size: 9pt;
+    }
+
+    .portfolio :is(h2, h3, h4),
+    .portfolio-project-header {
+        break-after: avoid;
+    }
+
+    .portfolio figure,
+    .portfolio-gallery,
+    .portfolio-project-header {
+        break-inside: avoid;
+    }
+
+    .portfolio p,
+    .portfolio li {
+        orphans: 3;
+        widows: 3;
+    }
+
+    .portfolio figure img {
+        max-height: 210mm;
+        object-fit: contain;
+    }
+
+    /* Page boundaries follow complete topics; content is never clipped to fit. */
+    .portfolio-sheet + .portfolio-sheet {
+        margin: 0;
+        break-before: page;
+    }
+
+    .portfolio-sheet > :first-child,
+    .portfolio-project-header :is(h2, h3) {
+        margin-top: 0;
+    }
+
+    .portfolio-project {
+        break-inside: avoid;
+    }
+
+    .portfolio-project + .portfolio-project {
+        margin-top: 5mm;
+    }
+
+    .portfolio-admin-screens figure + figure {
+        margin-top: 4mm;
+    }
+
+    .portfolio-step {
+        grid-template-columns: 3fr 2fr;
+        gap: 5mm;
+        margin-block: 3mm;
+        break-inside: avoid;
+    }
+
+    .portfolio-step--flow {
+        grid-template-columns: 2fr 3fr;
+        gap: 3mm;
+    }
+
+    .portfolio-step-copy > :first-child {
+        margin-top: 0;
+    }
+
+    .portfolio-sheet--chat {
+        font-size: 9.5pt;
+        line-height: 1.4;
+    }
+
+    .portfolio-sheet--chat .portfolio-case-conclusion {
+        columns: 2;
+        column-gap: 6mm;
+    }
+
+    .portfolio-project--jungle .portfolio-gallery--architecture {
+        margin: 0;
+        gap: 6mm;
+    }
 }

@@ -29,7 +29,7 @@ photo_alt = "양시준 프로필 사진"
 
 <p class="resume-meta">서울 강남</p>
 <p class="resume-main">Backend Developer</p>
-<p class="resume-meta"><time datetime="2024-07">2024. 07.</time> – <time datetime="2026-02">2026. 02.</time></p>
+<p class="resume-meta"><time datetime="2024-07">2024. 07.</time> - <time datetime="2026-02">2026. 02.</time></p>
 
 </div>
 <div class="resume-entry-content">
@@ -53,8 +53,11 @@ photo_alt = "양시준 프로필 사진"
 ### 크래프톤 정글
 
 <p class="resume-meta">경기도 용인</p>
-<p class="resume-main">SW-AI Lab 12기</p>
-<p class="resume-meta"><time datetime="2026-03">2026. 03.</time> – <time datetime="2026-07">2026. 07.</time></p>
+
+</div>
+<div class="resume-education-details">
+<p class="resume-main">SW-AI Lab 12기 &amp; 심화과정 1기</p>
+<p class="resume-meta"><time datetime="2026-03">2026. 03.</time> - 현재</p>
 
 </div>
 </div>
@@ -65,8 +68,11 @@ photo_alt = "양시준 프로필 사진"
 ### 광주소프트웨어마이스터고등학교
 
 <p class="resume-meta">전남광주</p>
+
+</div>
+<div class="resume-education-details">
 <p class="resume-main">소프트웨어개발과 5기</p>
-<p class="resume-meta"><time datetime="2021-03">2021. 03.</time> – <time datetime="2024-01">2024. 01.</time></p>
+<p class="resume-meta"><time datetime="2021-03">2021. 03.</time> - <time datetime="2024-01">2024. 01.</time></p>
 
 </div>
 </div>
@@ -77,21 +83,21 @@ photo_alt = "양시준 프로필 사진"
 <li>
 <div class="resume-row resume-row--stack">
 <span class="resume-main"><strong><a href="https://github.com/YangSiJun528/jungle-bell">Jungle Bell</a></strong></span>
-<span class="resume-meta"><time datetime="2026-03">2026. 03.</time> – 현재</span>
+<span class="resume-meta"><time datetime="2026-03">2026. 03.</time> - 현재</span>
 </div>
 <div class="resume-main">크래프톤 정글 생활 관리 데스크톱 앱</div>
 </li>
 <li>
 <div class="resume-row resume-row--stack">
 <span class="resume-main"><strong><a href="https://github.com/YangSiJun528/bracket-pair-guides">Bracket Pair Guides</a></strong></span>
-<span class="resume-meta"><time datetime="2026-02">2026. 02.</time> – 현재</span>
+<span class="resume-meta"><time datetime="2026-02">2026. 02.</time> - 현재</span>
 </div>
 <div class="resume-main">JetBrains IDE용 VSCode 스타일 Bracket Pair 플러그인</div>
 </li>
 <li>
 <div class="resume-row resume-row--stack">
 <span class="resume-main"><strong><a href="https://www.hellogsm.kr/">Hello, GSM</a></strong></span>
-<span class="resume-meta"><time datetime="2022-04">2022. 04.</time> – <time datetime="2023-11">2023. 11.</time></span>
+<span class="resume-meta"><time datetime="2022-04">2022. 04.</time> - <time datetime="2023-11">2023. 11.</time></span>
 </div>
 <div class="resume-main">광주SW마이스터고 입학 지원 서비스</div>
 </li>
@@ -118,7 +124,7 @@ photo_alt = "양시준 프로필 사진"
 <li>
 <div class="resume-row resume-row--compact">
 <span class="resume-main"><strong><a href="https://github.com/search?q=repo%3Aspring-io%2Finitializr+author%3AYangSiJun528&type=pullrequests">Spring Initializr</a></strong> (외부 기여자 2위)</span>
-<span class="resume-meta"><time datetime="2024-09">2024. 09.</time> – 현재</span>
+<span class="resume-meta"><time datetime="2024-09">2024. 09.</time> - 현재</span>
 </div>
 <ul class="resume-detail-list">
 <li>Kotlin JPA 엔티티를 위한 All-Open 설정 지원 (<a href="https://github.com/spring-io/initializr/pull/1576">#1576</a>)</li>
@@ -128,7 +134,7 @@ photo_alt = "양시준 프로필 사진"
 <li>
 <div class="resume-row resume-row--compact">
 <span class="resume-main"><strong><a href="https://github.com/search?q=repo%3ARustPython%2FRustPython+author%3AYangSiJun528&type=pullrequests">RustPython</a></strong> (2026 OSSCA 멘티)</span>
-<span class="resume-meta"><time datetime="2026-07">2026. 07.</time> – 현재</span>
+<span class="resume-meta"><time datetime="2026-07">2026. 07.</time> - 현재</span>
 </div>
 </li>
 </ul>

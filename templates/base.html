@@ -33,6 +33,7 @@
     {% endif %}
     <link rel="stylesheet" href="/modern-css-reset.css?h={{ get_hash(path='modern-css-reset.css', sha_type=256, base64=false) }}">
     <link rel="stylesheet" href="/style.css?h={{ get_hash(path='style.css', sha_type=256, base64=false) }}">
+    {% block extra_head %}{% endblock extra_head %}
 </head>
 <body>
     <header class="site-header">

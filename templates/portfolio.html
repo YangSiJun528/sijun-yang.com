@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="resume portfolio">
+    <header class="resume-header portfolio-header">
+        <div>
+            <h1 class="main-title">{{ section.extra.name }}</h1>
+            <p class="resume-role">{{ section.extra.role }}</p>
+            <ul class="resume-contact" aria-label="연락처">
+                <li><a href="mailto:yangsijun5528@gmail.com">yangsijun5528@gmail.com</a></li>
+                <li>010-XXXX-XXXX</li>
+                <li><a href="https://github.com/YangSiJun528" rel="me">GitHub</a></li>
+            </ul>
+        </div>
+    </header>
+    {{ section.content | safe }}
+</article>
+{% endblock content %}
