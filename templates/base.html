@@ -49,6 +49,9 @@
                 </ul>
             </nav>
             <div class="site-language">
+                {#
+                언어 전환 UI는 임시로 주석 처리하여 비활성화했습니다.
+                영어 페이지는 직접 링크로 접근할 수 있으며, UI를 다시 노출하려면 이 주석을 해제하세요.
                 <select aria-label="Language" onchange="window.location.assign(this.value)">
                 {% if not is_legacy_korean and current_content.translations | length > 0 %}
                 {% for translation in current_content.translations %}
@@ -62,6 +65,7 @@
                     <option value="{{ current_url }}" lang="{{ content_lang }}" selected>{{ content_lang | upper }}</option>
                 {% endif %}
                 </select>
+                #}
             </div>
         </div>
     </header>
