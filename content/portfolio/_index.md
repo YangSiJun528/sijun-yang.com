@@ -32,9 +32,9 @@ AI 도구를 적극적으로 활용하며, 결과를 검증하고 코드 품질�
 <img class="portfolio-profile-photo" src="/images/portfolio/sijun-yang-sky.png" alt="양시준 프로필 사진" width="1105" height="1423">
 <ul class="portfolio-profile-links" aria-label="연락처와 프로필 링크">
 <li>Email: <a href="mailto:yangsijun5528@gmail.com">yangsijun5528@gmail.com</a></li>
-<li>GitHub: <a href="https://github.com/YangSiJun528" rel="me">@YangSiJun528</a></li>
-<li>LinkedIn: <a href="https://www.linkedin.com/in/sijun-yang/" rel="me">sijun-yang</a></li>
-<li>Hackers' Pub: <a href="https://hackers.pub/@sijun_yang" rel="me">@sijun_yang</a></li>
+<li>GitHub: <a href="https://github.com/YangSiJun528" target="_blank" rel="me noopener">@YangSiJun528</a></li>
+<li>LinkedIn: <a href="https://www.linkedin.com/in/sijun-yang/" target="_blank" rel="me noopener">sijun-yang</a></li>
+<li>Hackers' Pub: <a href="https://hackers.pub/@sijun_yang" target="_blank" rel="me noopener">@sijun_yang</a></li>
 </ul>
 </div>
 </section>
@@ -53,7 +53,7 @@ AI 도구를 적극적으로 활용하며, 결과를 검증하고 코드 품질�
 
 ### IGOTIN - 본딧커뮤니티
 
-[LinkedIn](https://www.linkedin.com/company/igotin/posts/?feedView=all) \| [서비스 소개](@/portfolio/igotin.md)<br>
+[LinkedIn](https://www.linkedin.com/company/igotin/) \| [서비스 소개](@/portfolio/igotin.md)<br>
 백엔드 개발자<br>
 <span class="portfolio-caption">2024. 07. - 2026. 02.</span><br>
 Kotlin, Spring Boot, JPA, PostgreSQL, Redis Pub/Sub, AWS
@@ -216,7 +216,7 @@ API 서버를 배포해도 Live 서버를 재시작하지 않고, 클라이언�
 2023년부터 15개 이상의 오픈소스 프로젝트에 50회 이상 기여했습니다.<br>
 전체 내역은 [GitHub](https://github.com/YangSiJun528/my-oss-contributions)에서 볼 수 있습니다.
 
-### Spring Initializr <small class="portfolio-repository">(<a href="https://github.com/spring-io/initializr">github.com/spring-io/initializr</a>)</small>
+### Spring Initializr <small class="portfolio-repository">(<a href="https://github.com/spring-io/initializr" target="_blank" rel="noopener">github.com/spring-io/initializr</a>)</small>
 
 Spring 프로젝트의 기본 구조와 의존성, 빌드 설정을 생성하는 프로젝트 생성 도구입니다.
 
@@ -224,7 +224,7 @@ Spring 프로젝트의 기본 구조와 의존성, 빌드 설정을 생성하는
 - Kotlin JPA 엔티티를 위한 All-Open 설정 지원 ([#1576](https://github.com/spring-io/initializr/pull/1576), [관련 글](https://blog.jetbrains.com/idea/2026/01/how-to-avoid-common-pitfalls-with-jpa-and-kotlin/#:~:text=When%20creating%20a%20new%20Spring%20project%20using%20the%20New%20Project%20wizard%20in%20IntelliJ%20IDEA%20or%20via%20start%2Espring%2Eio%2C%20both%20plugins%20are%20automatically%20configured%20for%20you%2E))
 - 이 외에도 20회 이상 기여했으며, Spring 팀 외 기여자 중 2위를 기록했습니다.
 
-### RustPython <small class="portfolio-repository">(<a href="https://github.com/RustPython/RustPython">github.com/RustPython/RustPython</a>)</small>
+### RustPython <small class="portfolio-repository">(<a href="https://github.com/RustPython/RustPython" target="_blank" rel="noopener">github.com/RustPython/RustPython</a>)</small>
 
 순수 Rust로 구현된 Python 인터프리터 프로젝트입니다.
 
