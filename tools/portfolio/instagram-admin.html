@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instagram 업로드 관리 — 포트폴리오 예시</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root { color-scheme: light; --ink: #172544; --muted: #76839d; --line: #e4e9f1; --blue: #3155e7; --red: #e54855; }
+    body { margin: 0; width: 1584px; height: 993px; overflow: hidden; color: var(--ink); background: #f6f8fb; font: 17px/1.5 "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; -webkit-font-smoothing: antialiased; }
+    button, input { font: inherit; }
+    button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; height: 40px; padding: 0 13px; border: 1px solid #dce3ee; border-radius: 6px; color: #566583; background: #fff; white-space: nowrap; }
+    svg { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .symbols { position: absolute; width: 0; height: 0; }
+    .topbar { height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; background: #fff; border-bottom: 1px solid var(--line); }
+    .brand { display: flex; align-items: center; gap: 13px; font-size: 20px; font-weight: 700; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 6px; background: #142962; color: #fff; font: 700 25px Georgia, serif; }
+    .profile { display: flex; align-items: center; gap: 13px; color: var(--muted); }
+    .avatar { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #f1f4f8; }
+    .sidebar { position: absolute; top: 60px; bottom: 0; left: 0; width: 226px; padding: 23px 12px; border-right: 1px solid var(--line); background: #fff; }
+    .nav-label { margin: 0 14px 13px; color: var(--muted); font-size: 15px; font-weight: 600; }
+    .nav-item { height: 52px; display: flex; align-items: center; gap: 17px; padding: 0 15px; color: #687791; border-radius: 7px; }
+    .nav-item.active { color: var(--blue); background: #edf0ff; }
+    main { margin-left: 226px; padding: 16px 22px 22px 25px; }
+    .breadcrumb { margin: 0 0 4px; font-size: 14px; color: var(--muted); }
+    h1 { margin: 0 0 26px; font-size: 32px; line-height: 1.5; letter-spacing: -.8px; font-weight: 700; }
+    .panels { display: grid; grid-template-columns: 448px 1fr; gap: 18px; height: 790px; }
+    .panel { border: 1px solid #dfe6ef; border-radius: 9px; background: #fff; overflow: hidden; }
+    h2 { margin: 0; font-size: 24px; line-height: 1.5; font-weight: 700; letter-spacing: -.5px; }
+    .list-panel { display: flex; flex-direction: column; }
+    .list-head { padding: 16px 17px 14px; border-bottom: 1px solid var(--line); }
+    .search { display: flex; align-items: center; gap: 11px; height: 45px; margin-top: 15px; padding: 0 13px; color: var(--muted); border: 1px solid #dfe6ef; border-radius: 7px; }
+    .search input { border: 0; outline: 0; width: 100%; color: var(--ink); background: none; }
+    .search input::placeholder { color: var(--muted); opacity: 1; }
+    .job { position: relative; display: flex; align-items: center; gap: 16px; min-height: 90px; margin: 0 17px; border-bottom: 1px solid var(--line); }
+    .job.selected { margin: 0; padding: 0 17px; background: #f0f3ff; }
+    .job.selected::before { content: ""; position: absolute; top: 0; bottom: 0; left: 4px; width: 4px; border-radius: 2px; background: var(--blue); }
+    .job strong { display: block; font-size: 20px; }
+    .job-meta { color: var(--muted); font-size: 16px; margin-top: 1px; white-space: nowrap; }
+    .job .badge { margin-left: auto; }
+    .badge { display: inline-flex; align-items: center; justify-content: center; height: 30px; padding: 0 16px; border-radius: 18px; font-size: 15px; font-weight: 500; }
+    .success { color: #16844e; background: #e9f7ee; }
+    .failure { color: var(--red); background: #fff0f2; }
+    .thumb { position: relative; width: 67px; height: 65px; flex: none; display: grid; place-items: center; overflow: hidden; border-radius: 7px; }
+    .peach { background: #f9d9c5; } .sky { background: #d1e3f7; } .mint { background: #cde9dc; }
+    .shape { display: block; width: 36px; height: 34px; background: #657888; border-radius: 7px; transform: translateY(7px); }
+    .arch { border-radius: 23px 23px 5px 5px; height: 39px; }
+    .triangle { width: 0; height: 0; border-left: 21px solid transparent; border-right: 21px solid transparent; border-bottom: 39px solid #4d9e78; border-radius: 0; background: none; transform: none; }
+    .circle { width: 38px; height: 38px; border-radius: 50%; background: #e99b61; transform: none; }
+    .square { background: #72acd0; transform: none; }
+    .pagination { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; padding: 25px 0 43px; }
+    .pagination button { width: 34px; height: 34px; padding: 0; border: 0; }
+    .pagination .page-arrow { border: 1px solid var(--line); }
+    .pagination .current { background: #edf0ff; color: var(--blue); }
+    .detail { padding: 13px 17px 18px; }
+    .detail-head { display: flex; align-items: center; gap: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    .detail-head button { margin-left: auto; }
+    .metadata { display: grid; grid-template-columns: 1fr 1fr; padding: 20px 0 13px; }
+    .metadata dl { margin: 0; display: grid; grid-template-columns: 123px 1fr; row-gap: 10px; }
+    .metadata dl + dl { border-left: 1px solid var(--line); padding-left: 40px; }
+    dt { color: #5f6f8b; } dd { margin: 0; }
+    .content { display: flex; gap: 68px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 17px 0 19px; }
+    .content-label { color: #5f6f8b; padding-top: 3px; }
+    .previews { display: flex; gap: 13px; }
+    .previews .thumb { width: 89px; height: 94px; }
+    .previews .arch { width: 49px; height: 51px; }
+    .preview-label { position: absolute; bottom: 5px; left: 7px; color: #fff; background: #394650; padding: 1px 7px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .section-head { display: flex; align-items: center; justify-content: space-between; height: 57px; border-bottom: 1px solid var(--line); }
+    h3 { margin: 0; font-size: 20px; font-weight: 700; }
+    .actions { display: flex; gap: 10px; }
+    .actions button { font-size: 16px; }
+    .stop { color: var(--red); border-color: #ed9199; }
+    .retry { color: #fff; border-color: var(--blue); background: var(--blue); }
+    .result-row { display: grid; grid-template-columns: 145px 1fr; align-items: center; min-height: 49px; border-bottom: 1px solid var(--line); }
+    .result-row .badge { justify-self: start; }
+    .alert { display: flex; align-items: center; gap: 14px; height: 59px; margin: 4px 0 15px; padding: 0 17px; border: 1px solid #f7cbd0; border-radius: 7px; color: var(--red); background: #fff3f4; font-size: 19px; }
+    .alert svg { width: 26px; height: 26px; }
+    .log-title { border-bottom: 1px solid var(--line); padding-bottom: 7px; }
+    .logs { margin: 5px 0 0; font-size: 16px; color: #6d7c96; line-height: 24.5px; font-variant-numeric: tabular-nums; }
+    .log { display: grid; grid-template-columns: 115px 1fr; }
+    .log.error { color: var(--red); }
+    body.before .after-only { display: none; }
+  </style>
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true"><defs>
+    <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+    <symbol id="post" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+    <symbol id="instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M5.2 7A8 8 0 0 1 20 12M4 12a8 8 0 0 0 14.8 5"/></symbol>
+    <symbol id="stop" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="1"/></symbol>
+    <symbol id="alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v7M12 17v.1"/></symbol>
+    <symbol id="down" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="left" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></symbol>
+    <symbol id="right" viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></symbol>
+  </defs></svg>
+  <header class="topbar"><div class="brand"><span class="brand-mark">I</span>IGOTIN ADMIN</div><div class="profile"><span class="avatar"><svg><use href="#user"/></svg></span>관리자<svg><use href="#down"/></svg></div></header>
+  <aside class="sidebar"><p class="nav-label">관리</p><div class="nav-item"><svg><use href="#user"/></svg>사용자</div><div class="nav-item"><svg><use href="#post"/></svg>게시물</div><div class="nav-item active"><svg><use href="#instagram"/></svg>Instagram</div></aside>
+  <main>
+    <p class="breadcrumb">운영 / Instagram</p><h1>Instagram 업로드 관리</h1>
+    <div class="panels">
+      <section class="panel list-panel">
+        <div class="list-head"><h2>업로드 작업</h2><label class="search"><svg><use href="#search"/></svg><input aria-label="작업 검색" placeholder="작업 ID 또는 계정 검색" readonly></label></div>
+        <div id="jobs"></div>
+        <nav class="pagination" aria-label="페이지"><button class="page-arrow" aria-label="이전"><svg><use href="#left"/></svg></button><button class="current">1</button><button>2</button><button>3</button><button class="page-arrow" aria-label="다음"><svg><use href="#right"/></svg></button></nav>
+      </section>
+      <section class="panel detail">
+        <div class="detail-head"><h2>업로드 작업 #1041</h2><span class="badge failure">실패</span><button><svg><use href="#refresh"/></svg>새로고침</button></div>
+        <div class="metadata"><dl><dt>계정</dt><dd>@account_02</dd><dt>유형</dt><dd>스토리 · 게시물</dd></dl><dl><dt>요청 시간</dt><dd>오늘 09:18</dd><dt>종료 시간</dt><dd>오늘 09:20</dd></dl></div>
+        <div class="content"><span class="content-label">콘텐츠</span><div class="previews"><div class="thumb peach"><span class="shape arch"></span><span class="preview-label">STORY</span></div><div class="thumb sky"><span class="shape"></span><span class="preview-label">POST</span></div></div></div>
+        <div class="section-head"><h3>처리 결과</h3><div class="actions after-only"><button class="stop"><svg><use href="#stop"/></svg>작업 중단</button><button class="retry"><svg><use href="#refresh"/></svg>실패 지점부터 재시도</button></div></div>
+        <div class="result-row"><dt>최종 상태</dt><span class="badge failure">실패</span></div><div class="result-row"><dt>처리 종료</dt><span>오늘 09:20</span></div>
+        <div class="alert"><svg><use href="#alert"/></svg>업로드에 실패했습니다.</div>
+        <section class="after-only"><h3 class="log-title">처리 로그</h3><div class="logs">
+          <div class="log"><time>09:18:02</time><span>처리를 시작했습니다.</span></div>
+          <div class="log"><time>09:18:11</time><span>콘텐츠 2개를 확인했습니다.</span></div>
+          <div class="log"><time>09:18:40</time><span>스토리 업로드를 완료했습니다.</span></div>
+          <div class="log"><time>09:18:44</time><span>게시물 업로드를 진행합니다.</span></div>
+          <div class="log"><time>09:19:04</time><span>응답 대기 시간이 초과되어 재시도합니다 (1/3).</span></div>
+          <div class="log"><time>09:19:24</time><span>응답 대기 시간이 초과되어 재시도합니다 (2/3).</span></div>
+          <div class="log"><time>09:19:44</time><span>응답 대기 시간이 초과되어 재시도합니다 (3/3).</span></div>
+          <div class="log error"><time>09:20:04</time><span>게시물 업로드 응답을 20초 동안 받지 못해 실패로 종료했습니다.</span></div>
+        </div></section>
+      </section>
+    </div>
+  </main>
+  <script>
+    // Capture with ?view=before or ?view=after at 1584 × 993 and device scale factor 2.
+    document.body.classList.toggle('before', new URLSearchParams(location.search).get('view') === 'before');
+    const jobs = [
+      ['1042', '01', '오늘 10:42', 'peach', 'arch', true],
+      ['1041', '02', '오늘 09:18', 'sky', '', false],
+      ['1040', '03', '오늘 08:57', 'mint', 'triangle', true],
+      ['1039', '04', '오늘 08:31', 'peach', 'circle', false],
+      ['1038', '05', '어제 21:12', 'sky', 'square', true],
+      ['1037', '06', '어제 20:46', 'mint', 'triangle', true]
+    ];
+    document.getElementById('jobs').innerHTML = jobs.map(([id, account, time, color, shape, success]) => `<div class="job ${id === '1041' ? 'selected' : ''}"><div class="thumb ${color}"><span class="shape ${shape}"></span></div><div><strong>#${id}</strong><div class="job-meta">@account_${account} &nbsp;|&nbsp; ${time}</div></div><span class="badge ${success ? 'success' : 'failure'}">${success ? '성공' : '실패'}</span></div>`).join('');
+  </script>
+</body>
+</html>

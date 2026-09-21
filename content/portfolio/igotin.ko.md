@@ -1,5 +1,5 @@
 +++
-title = "IGOTIN · 서비스 소개"
+title = "IGOTIN 서비스 소개"
 slug = "igotin"
 template = "portfolio-detail.html"
 hidden = true
@@ -10,57 +10,66 @@ include_in_feeds = false
 return_anchor = "igotin"
 +++
 
-<section class="portfolio-sheet portfolio-sheet--service" id="igotin" aria-label="IGOTIN · Instagram 관리">
+<section class="portfolio-sheet portfolio-sheet--service" id="igotin" aria-label="IGOTIN Instagram 관리">
 
 <header class="portfolio-project-header">
+<img class="portfolio-logo" src="/images/portfolio/portfolio-igotin-logo.png" alt="IGOTIN 로고" width="225" height="225">
 <div>
 
 ## IGOTIN - 본딧커뮤니티
 
-IGOTIN은 북미 대학생과 입학 예정자가 같은 학교의 친구와 룸메이트를 찾고, 대학 생활 정보를 나누는 커뮤니티 서비스와 앱입니다.
+[랜딩 페이지로 가기](https://www.igotin.app/)
 
 </div>
-<img class="portfolio-logo" src="/images/portfolio/portfolio-igotin-logo.png" alt="IGOTIN 로고" width="225" height="225">
 </header>
 
 ### Instagram 관리
 
-학교별 Instagram 계정에 학생의 사진과 자기소개를 게시해, 같은 학교 학생들에게 자신을 소개할 수 있는 기능을 운영했습니다.
+학생이 제출한 사진과 자기소개를 학교별 Instagram 계정에 게시물과 스토리로 자동 업로드하는 기능입니다.
 
-재직 당시 IGOTIN은 500개 이상의 계정을 관리하며, 신청된 소개를 게시물과 스토리로 업로드하는 과정을 자동화해 운영했습니다. 당시 대부분의 사용자가 이 기능을 통해 유입됐습니다.
+재직 당시 IGOTIN은 500개 이상의 계정을 운영했으며, 많은 사용자가 이 기능을 통해 유입됐습니다.
 
 
 <figure class="portfolio-screenshot">
-<p class="portfolio-figure-title"><strong>Instagram 계정 예시</strong></p>
+<h6>Instagram 계정 예시</h6>
 <img src="/images/portfolio/igotin-instagram-account-example.png" alt="Instagram 계정에 게시된 학생 소개 예시" width="2912" height="1832">
 <figcaption>Instagram 계정에 게시된 학생 소개 예시</figcaption>
 </figure>
 
-#### 포스팅 예시
+###### 포스팅 예시
 
 <div class="portfolio-gallery portfolio-gallery--screens">
 
 <figure class="portfolio-screenshot">
-<p class="portfolio-figure-title"><strong>1. 학교 선택</strong></p>
+<h6>1. 학교 선택</h6>
 <img src="/images/portfolio/igotin-instagram-flow-1-school.png" alt="학교를 검색하고 Instagram 계정을 선택하는 화면" width="1554" height="2202">
 </figure>
 
 <figure class="portfolio-screenshot">
-<p class="portfolio-figure-title"><strong>2. 자기소개 작성</strong></p>
+<h6>2. 자기소개 작성</h6>
 <img src="/images/portfolio/igotin-instagram-flow-2-introduction.png" alt="사진, 자기소개와 Instagram 사용자 이름을 입력하는 화면" width="1594" height="2234">
 </figure>
 
 <figure class="portfolio-screenshot">
-<p class="portfolio-figure-title"><strong>3. 상세 정보 입력</strong></p>
+<h6>3. 상세 정보 입력</h6>
 <img src="/images/portfolio/igotin-instagram-flow-3-details.png" alt="이름, 연락처, 졸업 예정 연도와 합격 증빙을 입력하는 화면" width="1620" height="2222">
 </figure>
 
 <figure class="portfolio-screenshot">
-<p class="portfolio-figure-title"><strong>4. 미리보기 및 게시 신청</strong></p>
+<h6>4. 미리보기 및 게시 신청</h6>
 <img src="/images/portfolio/igotin-instagram-flow-4-preview.png" alt="Instagram 자기소개 게시 신청의 미리보기와 게시 신청 화면" width="1652" height="2268">
 </figure>
 
 </div>
+
+<h6 id="admin-ui">관리자 화면</h6>
+
+<figure class="portfolio-screenshot">
+<img src="/images/portfolio/portfolio-instagram-ui-after-v2.png" alt="Instagram 업로드 개선 후 단계별 상태와 오류 로그를 표시하는 관리자 화면 예시" width="1584" height="993">
+<figcaption><em>AI 생성 이미지, 회사의 자료를 사용하지 않았습니다.</em></figcaption>
+</figure>
+
+관리자 기능의 백엔드 개선 과정은 [포트폴리오 본문](@/portfolio/_index.ko.md#instagram-upload)에서 다루고 있습니다.
 
 </section>
 

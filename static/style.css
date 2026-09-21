@@ -771,13 +771,61 @@ footer li {
 
 }
 
-/* The document inherits its typography and colors from the resume. */
+/* Portfolio layout shares the global heading scale. */
 .portfolio {
+    --portfolio-section-gap: var(--size-6xl);
     padding-bottom: var(--size-4xl);
     overflow-wrap: anywhere;
 }
 
-.portfolio-header,
+.portfolio h2 {
+    margin: var(--portfolio-section-gap) 0 var(--size-2xl);
+}
+
+.portfolio-header {
+    padding-bottom: var(--size-2xl);
+}
+
+.portfolio-header .main-title {
+    color: var(--color-primary);
+}
+
+.portfolio-profile {
+    margin-block: var(--portfolio-section-gap);
+}
+
+.portfolio-profile-content {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    align-items: center;
+    gap: var(--size-3xl);
+}
+
+.portfolio-profile h2 {
+    margin-top: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.portfolio-profile-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.portfolio-profile-links li + li {
+    margin-top: var(--size-sm);
+}
+
+.portfolio-profile-photo {
+    width: 12rem;
+    height: 12rem;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 50%;
+    transform: scale(0.8);
+}
+
 .portfolio-project-header {
     display: flex;
     justify-content: space-between;
@@ -791,13 +839,24 @@ footer li {
     font-size: var(--font-size-sm);
 }
 
+.portfolio .portfolio-caption {
+    color: var(--color-text-tertiary);
+}
+
 .portfolio-project-header > div {
     flex: 1;
     min-width: 0;
 }
 
-.portfolio-project-header :is(h2, h3) {
-    margin-top: 0;
+.portfolio .portfolio-project-header :is(h2, h3) {
+    margin: 0 0 var(--size-xs);
+}
+
+.portfolio-overview .portfolio-project-header p {
+    margin: var(--size-xs) 0 0;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
 }
 
 .portfolio .portfolio-logo {
@@ -807,14 +866,8 @@ footer li {
     object-fit: contain;
 }
 
-.portfolio h3 {
-    color: var(--color-primary);
-    font-size: var(--font-size-lg);
-    line-height: 1.4;
-}
-
 .portfolio-repository {
-    font-size: 0.75em;
+    font-size: var(--font-size-sm);
     font-weight: normal;
 }
 
@@ -828,9 +881,22 @@ footer li {
     font-size: var(--font-size-sm);
 }
 
-.portfolio h4 {
-    font-size: var(--font-size-md);
-    line-height: 1.4;
+.portfolio-label {
+    margin: var(--size-3xl) 0 var(--size-md);
+    color: var(--color-text);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    break-after: avoid;
+}
+
+.portfolio-sheet--service h6 {
+    color: var(--color-text);
+    font-size: 1em;
+    break-after: avoid;
+}
+
+.portfolio-sheet--service figure > h6 {
+    margin-top: 0;
 }
 
 .portfolio figure {
@@ -840,6 +906,10 @@ footer li {
 .portfolio figure img {
     width: 100%;
     height: auto;
+}
+
+.portfolio .portfolio-diagram--compact {
+    max-width: 600px;
 }
 
 .portfolio .portfolio-figure-title {
@@ -861,6 +931,15 @@ footer li {
     margin: var(--size-xl) 0;
 }
 
+.portfolio-gallery--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.portfolio-gallery--diagrams a {
+    display: block;
+    cursor: zoom-in;
+}
+
 .portfolio-gallery--stack {
     display: block;
 }
@@ -872,6 +951,16 @@ footer li {
 .portfolio-gallery figure {
     min-width: 0;
     margin: 0;
+}
+
+.portfolio-admin-screens .portfolio-screenshot > a {
+    display: block;
+    cursor: zoom-in;
+}
+
+.portfolio-admin-screens img {
+    aspect-ratio: 8 / 5;
+    object-fit: contain;
 }
 
 .portfolio-gallery.portfolio-gallery--screens {
@@ -887,41 +976,53 @@ footer li {
     grid-row: span 2;
 }
 
+.portfolio > section + section,
 .portfolio-sheet + .portfolio-sheet {
-    margin-top: var(--size-4xl);
+    margin-top: var(--portfolio-section-gap);
 }
 
 .portfolio-project + .portfolio-project {
-    margin-top: var(--size-4xl);
+    margin-top: var(--size-5xl);
 }
 
-.portfolio-step {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--size-xl);
-    align-items: start;
-}
-
-.portfolio-step {
-    margin-block: var(--size-xl);
-    align-items: center;
-}
-
-.portfolio-step--flow {
-    grid-template-columns: 2fr 3fr;
+.portfolio-project :is(h4, h5, h6) {
+    color: var(--color-text);
 }
 
 .portfolio-gallery--architecture {
     grid-template-columns: 3fr 7fr;
 }
 
-.portfolio-step-copy > :first-child {
-    margin-top: 0;
-}
-
 .portfolio-sheet--service .portfolio-screenshot img {
     width: auto;
     max-width: 100%;
+}
+
+.portfolio-case-summary {
+    margin-bottom: var(--size-2xl);
+}
+
+.portfolio-case li {
+    line-height: 1.55;
+}
+
+.portfolio-case-part-title {
+    margin-block: var(--size-3xl) var(--size-lg);
+    color: inherit;
+    break-after: avoid;
+}
+
+.portfolio-case-part + .portfolio-case-part {
+    margin-top: var(--size-4xl);
+}
+
+.portfolio-case figure > a {
+    display: block;
+    cursor: zoom-in;
+}
+
+.portfolio-career .portfolio-case-figure {
+    margin-block: var(--size-3xl);
 }
 
 @media screen {
@@ -931,12 +1032,33 @@ footer li {
 }
 
 @media screen and (max-width: 42rem) {
-    .portfolio-header {
-        flex-wrap: wrap;
+    .portfolio {
+        --portfolio-section-gap: var(--size-5xl);
     }
 
-    .portfolio-gallery,
-    .portfolio-step {
+    .portfolio-profile-content {
+        grid-template-columns: 1fr;
+        gap: var(--size-2xl);
+    }
+
+    .portfolio-profile-photo {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .portfolio-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen {
+    .portfolio-overview {
+        --portfolio-section-gap: var(--size-5xl);
+    }
+}
+
+@media screen and (max-width: 62rem) {
+    .portfolio-overview .portfolio-gallery--diagrams {
         grid-template-columns: 1fr;
     }
 }
@@ -983,13 +1105,6 @@ footer li {
         padding-bottom: 3mm;
     }
 
-    .portfolio-header > div {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        column-gap: 4mm;
-        align-items: baseline;
-    }
-
     .portfolio-header .main-title {
         margin: 0;
         font-size: 22pt;
@@ -1000,9 +1115,19 @@ footer li {
         font-size: 10pt;
     }
 
-    .portfolio-header .resume-contact {
-        grid-column: 1 / -1;
-        margin: 1mm 0 0;
+    .portfolio-profile {
+        margin-block: 5mm;
+        break-inside: avoid;
+    }
+
+    .portfolio-profile-content {
+        grid-template-columns: 30mm minmax(0, 1fr);
+        gap: 6mm;
+    }
+
+    .portfolio-profile-photo {
+        width: 30mm;
+        height: 30mm;
     }
 
     .portfolio h2 {
@@ -1020,6 +1145,11 @@ footer li {
         font-size: 10.5pt;
     }
 
+    .portfolio .portfolio-label {
+        margin: 3mm 0 1.5mm;
+        font-size: 10pt;
+    }
+
     .portfolio p,
     .portfolio ul,
     .portfolio ol,
@@ -1028,7 +1158,8 @@ footer li {
         margin-block: 2mm;
     }
 
-    .portfolio :is(figcaption, .portfolio-figure-title, .portfolio-caption, .resume-contact) {
+    .portfolio :is(figcaption, .portfolio-figure-title, .portfolio-caption, .portfolio-repository, .resume-contact),
+    .portfolio-overview .portfolio-project-header p {
         font-size: 9pt;
     }
 
@@ -1043,6 +1174,10 @@ footer li {
         break-inside: avoid;
     }
 
+    .portfolio-gallery--diagrams {
+        break-inside: auto;
+    }
+
     .portfolio p,
     .portfolio li {
         orphans: 3;
@@ -1055,6 +1190,7 @@ footer li {
     }
 
     /* Page boundaries follow complete topics; content is never clipped to fit. */
+    .portfolio > section + section,
     .portfolio-sheet + .portfolio-sheet {
         margin: 0;
         break-before: page;
@@ -1077,30 +1213,21 @@ footer li {
         margin-top: 4mm;
     }
 
-    .portfolio-step {
-        grid-template-columns: 3fr 2fr;
-        gap: 5mm;
-        margin-block: 3mm;
-        break-inside: avoid;
-    }
-
-    .portfolio-step--flow {
-        grid-template-columns: 2fr 3fr;
-        gap: 3mm;
-    }
-
-    .portfolio-step-copy > :first-child {
-        margin-top: 0;
-    }
-
     .portfolio-sheet--chat {
         font-size: 9.5pt;
         line-height: 1.4;
     }
 
-    .portfolio-sheet--chat .portfolio-case-conclusion {
-        columns: 2;
-        column-gap: 6mm;
+    .portfolio-case-part-title {
+        font-size: 10.5pt;
+    }
+
+    .portfolio-career .portfolio-case-figure {
+        margin-block: 3mm;
+    }
+
+    .portfolio-case-part + .portfolio-case-part {
+        margin-top: 5mm;
     }
 
     .portfolio-project--jungle .portfolio-gallery--architecture {

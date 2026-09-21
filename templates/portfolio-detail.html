@@ -11,5 +11,6 @@
         <a href="{{ portfolio_index.permalink }}#{{ page.extra.return_anchor | default(value='igotin') }}">포트폴리오 본문으로 돌아가기</a>
     </div>
     {{ page.content | safe }}
+    <p><a href="{{ portfolio_index.permalink }}#{{ page.extra.return_anchor | default(value='igotin') }}">포트폴리오 본문으로 돌아가기</a></p>
 </article>
 {% endblock content %}
