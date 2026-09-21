@@ -19,8 +19,6 @@ return_anchor = "igotin"
 
 ## IGOTIN - 본딧커뮤니티
 
-[랜딩 페이지로 가기](https://www.igotin.app/)
-
 </div>
 </header>
 
@@ -32,7 +30,7 @@ return_anchor = "igotin"
 
 
 <figure class="portfolio-screenshot">
-<h6>Instagram 계정 예시</h6>
+<h6>Instagram 실제 계정 예시 (<a href="https://www.instagram.com/nyu2030__" target="_blank" rel="noopener noreferrer">@nyu2030__</a>, <a href="https://www.instagram.com/cornell2030__/" target="_blank" rel="noopener noreferrer">@cornell2030__</a>)</h6>
 <img src="/images/portfolio/igotin-instagram-account-example.png" alt="Instagram 계정에 게시된 학생 소개 예시" width="2912" height="1832">
 <figcaption>Instagram 계정에 게시된 학생 소개 예시</figcaption>
 </figure>

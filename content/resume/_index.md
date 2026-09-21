@@ -42,7 +42,7 @@ template = "resume.html"
 <div class="resume-entry-content">
 
 - 북미 대학생 커뮤니티 <a href="https://www.linkedin.com/company/igotin">IGOTIN</a>에서 Kotlin과 Spring Boot 기반 백엔드 애플리케이션을 개발하고 AWS 환경에서 운영했습니다.
-- Instagram 업로드 자동화의 운영 문제를 제기하고 개선안 설계부터 배포까지 주도했습니다. 단일 HTTP 요청에 묶인 업로드를 `db-scheduler` 기반 단계별 백그라운드 작업으로 분리하고 상태 추적과 재시도, 중단 등 작업 제어 기능을 구현했습니다.
+- Instagram 업로드 자동화의 운영 문제를 제기하고 개선안 설계부터 배포까지 주도했습니다. 단일 HTTP 요청에 묶인 업로드를 `db-scheduler` 기반 단계별 백그라운드 작업으로 분리하고 상태 추적과 재시도 등 작업 제어 기능을 구현했습니다.
 - API와 DB의 병목을 추적하는 성능 진단 체계를 구축했습니다. MDC와 AWS Athena 기반 로그 분석을 도입하고, 이를 활용해 특정 채널 글쓰기 API의 p95 응답시간을 3,150ms에서 495ms로 단축했습니다.
 - 채팅 기능 확장에 대응해 Firestore 의존을 걷어내고 Redis Pub/Sub과 WebSocket 기반의 독립 채팅 인프라로 전환했습니다.
 

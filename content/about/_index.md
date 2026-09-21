@@ -83,7 +83,7 @@ AI의 발전으로 그동안 쌓아온 구현 중심 역량의 가치가 낮아�
 
 - **[my-oss-contributions](https://github.com/YangSiJun528/my-oss-contributions)** (개인): 여러 오픈소스의 기여 내역을 자동으로 갱신해 주는 서비스
 - **[install.sijun-yang.com](https://github.com/YangSiJun528/install.sijun-yang.com)** (개인): 개인 프로젝트를 위한 리다이렉트 서비스, [Jungle Bell](https://github.com/YangSiJun528/jungle-bell)에 사용
-- **[YTAlertDiscord](https://github.com/YangSiJun528/YTAlertDiscord)** (개인): YouTube 새 영상을 자동 감지해 Discord로 알림을 보내는 GitHub Actions 워크플로우
+- **[YTAlertDiscord](https://github.com/YangSiJun528/YTAlertDiscord)** (개인): YouTube 새 영상을 자동 감지해 Discord로 알림을 보내는 GitHub Actions 워크플로
 
 ##### 프런트엔드 동작
 
