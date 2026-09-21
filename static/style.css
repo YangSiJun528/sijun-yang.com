@@ -449,6 +449,27 @@ footer li {
     padding-top: var(--size-4xl);
 }
 
+/* Keep the resume's compact typography separate from the portfolio. */
+.resume:not(.portfolio) :is(h1, h2, h3, .resume-main > strong) {
+    font-family: pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-weight: 800;
+}
+
+.resume:not(.portfolio) :is(h1, h2, h3) {
+    line-height: 1.2;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+.resume:not(.portfolio) h2 {
+    font-size: var(--font-size-xl);
+}
+
+.resume:not(.portfolio) .resume-row h3 {
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+}
+
 .resume-header {
     padding-bottom: var(--size-xl);
 }
@@ -461,6 +482,40 @@ footer li {
     margin: 0;
     color: var(--color-text-secondary);
     font-size: var(--font-size-lg);
+}
+
+.resume .resume-role {
+    font-size: 1.75rem;
+    line-height: 1.2;
+}
+
+.resume-header--compact {
+    padding-bottom: var(--size-sm);
+}
+
+.resume-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--size-xs) var(--size-md);
+}
+
+.resume-heading .main-title {
+    margin: 0;
+    font-size: var(--font-size-2xl);
+}
+
+.resume-heading .resume-role {
+    font-size: var(--font-size-lg);
+}
+
+.resume-summary-list {
+    margin: 0;
+    padding-left: var(--size-2xl);
+}
+
+.resume-summary-list > li + li {
+    margin-top: 2px;
 }
 
 .resume-identity {
@@ -498,8 +553,6 @@ footer li {
     margin: var(--size-3xl) 0 var(--size-xl);
     padding-bottom: var(--size-sm);
     border-bottom: 1px solid var(--color-border-strong);
-    color: var(--color-primary);
-    font-size: var(--font-size-xl);
 }
 
 .two-column-layout {
@@ -524,9 +577,6 @@ footer li {
     grid-column: 1;
     grid-row: 1;
     margin: 0;
-    color: var(--color-primary);
-    font-size: var(--font-size-md);
-    line-height: 1.5;
 }
 
 .resume-main,
@@ -605,6 +655,18 @@ footer li {
     list-style: none;
 }
 
+.resume h2:has(+ .resume-oss-summary) {
+    margin-bottom: var(--size-sm);
+}
+
+.resume-oss-summary {
+    margin: var(--size-sm) 0;
+}
+
+.resume-oss-summary + .resume-list {
+    margin-top: var(--size-sm);
+}
+
 .resume-detail-list {
     margin: var(--size-xs) 0 0;
     padding-left: var(--size-xl);
@@ -674,6 +736,15 @@ footer li {
 }
 
 @media print {
+    .resume:not(.portfolio) {
+        padding-top: var(--size-xl);
+    }
+
+    .resume:not(.portfolio) h2 {
+        margin-top: var(--size-xl);
+        margin-bottom: var(--size-md);
+    }
+
     body {
         background-color: var(--color-background);
         -webkit-print-color-adjust: exact;
