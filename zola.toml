@@ -3,7 +3,7 @@ base_url = "https://sijun-yang.com/"
 
 title = "Sijun Yang"
 description = ""
-default_language = "en"
+default_language = "ko"
 author = "Sijun Yang"
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -19,9 +19,6 @@ generate_sitemap = false
 
 # When set to "false", robots.txt is not generated
 generate_robots_txt = false
-
-[languages.ko]
-title = "Sijun Yang"
 
 [markdown]
 # Whether to do syntax highlighting

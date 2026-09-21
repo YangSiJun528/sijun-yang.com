@@ -1,5 +1,5 @@
 +++
-title = "Blog"
+title = "블로그"
 description = ""
 sort_by = "date"
 template = "section-moved.html"

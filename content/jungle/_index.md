@@ -1,5 +1,5 @@
 +++
-title = "Jungle"
+title = "정글"
 description = ""
 sort_by = "date"
 template = "section-moved.html"

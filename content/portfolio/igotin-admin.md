@@ -1,4 +1,5 @@
 +++
+aliases = ["/ko/portfolio/igotin-admin/"]
 title = "IGOTIN 관리자 화면 전후 비교"
 slug = "igotin-admin"
 template = "portfolio-detail.html"

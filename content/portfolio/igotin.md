@@ -1,4 +1,5 @@
 +++
+aliases = ["/ko/portfolio/igotin/"]
 title = "IGOTIN 서비스 소개"
 slug = "igotin"
 template = "portfolio-detail.html"
@@ -69,7 +70,7 @@ return_anchor = "igotin"
 <figcaption><em>AI 생성 이미지, 회사의 자료를 사용하지 않았습니다.</em></figcaption>
 </figure>
 
-관리자 기능의 백엔드 개선 과정은 [포트폴리오 본문](@/portfolio/_index.ko.md#instagram-upload)에서 다루고 있습니다.
+관리자 기능의 백엔드 개선 과정은 [포트폴리오 본문](@/portfolio/_index.md#instagram-upload)에서 다루고 있습니다.
 
 </section>
 

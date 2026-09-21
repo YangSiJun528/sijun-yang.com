@@ -5,7 +5,7 @@
 {% endblock extra_head %}
 
 {% block content %}
-{% set portfolio_index = get_section(path="portfolio/_index.md", lang=lang, metadata_only=true) %}
+{% set portfolio_index = get_section(path="portfolio/_index.md", metadata_only=true) %}
 <article class="resume portfolio portfolio-detail">
     <div class="portfolio-detail-toolbar">
         <a href="{{ portfolio_index.permalink }}#{{ page.extra.return_anchor | default(value='igotin') }}">포트폴리오 본문으로 돌아가기</a>
