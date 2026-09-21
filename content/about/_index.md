@@ -53,6 +53,7 @@ AI의 발전으로 그동안 쌓아온 구현 중심 역량의 가치가 낮아�
 ##### 웹 서비스
 
 - **[Hello, GSM](https://www.hellogsm.kr/)** (팀): 광주소프트웨어마이스터고등학교의 신입생 입학 지원 서비스. 초기 개발부터 백엔드 파트 리드로 참여
+- **[sijun-yang.com](https://github.com/YangSiJun528/sijun-yang.com)** (개인): Zola로 만든 개인 사이트. 소개, 이력서, 포트폴리오를 정리하고 GitHub Pages로 배포
 
 ##### 서버 라이브러리
 
