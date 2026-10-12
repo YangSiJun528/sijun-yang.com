@@ -245,9 +245,9 @@ Spring 프로젝트의 기본 구조와 의존성, 빌드 설정을 생성하는
 
 ### Jungle Bell
 
-[GitHub](https://github.com/YangSiJun528/jungle-bell) \| [Website](https://jungle-bell.sijun-yang.com/)<br>
+[GitHub](https://github.com/YangSiJun528/jungle-bell)<br>
 개인 프로젝트<br>
-<span class="portfolio-caption">2026. 03. - 현재</span><br>
+<span class="portfolio-caption">2026. 03. - 2026. 10.</span><br>
 Tauri, Rust, React, TypeScript, Oracle Cloud
 
 </div>
@@ -262,7 +262,7 @@ Jungle Bell은 크래프톤 정글에서 학습 시작/종료 확인을 놓치�
 직접 앱을 추천하고 설치와 사용을 안내하면서 사용자가 막히는 지점을 찾아 개선했습니다.
 
 - GitHub Releases에서 앱을 내려받는 방식이 익숙하지 않은 사용자를 위한 [설치 스크립트](https://github.com/YangSiJun528/jungle-bell#%EC%84%A4%EC%B9%98) 제공
-- 설치 방법을 혼동하는 사용자를 위한 별도 [설치 가이드](https://jungle-bell.sijun-yang.com/#/install) 작성
+- 설치 방법을 혼동하는 사용자를 위한 별도 설치 가이드 작성
 
 ##### 사용자 의견을 반영한 기능 확장
 

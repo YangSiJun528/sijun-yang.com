@@ -98,7 +98,7 @@ template = "resume.html"
 <li>
 <div class="resume-row resume-row--stack">
 <span class="resume-main"><strong><a href="https://github.com/YangSiJun528/jungle-bell" target="_blank" rel="noopener">Jungle Bell</a></strong></span>
-<span class="resume-meta"><time datetime="2026-03">2026. 03.</time> - 현재</span>
+<span class="resume-meta"><time datetime="2026-03">2026. 03.</time> - <time datetime="2026-10">2026. 10.</time></span>
 </div>
 <div class="resume-main">크래프톤 정글 생활 관리 데스크톱 앱</div>
 </li>
