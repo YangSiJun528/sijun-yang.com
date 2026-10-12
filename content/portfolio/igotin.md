@@ -65,7 +65,7 @@ return_anchor = "igotin"
 
 <figure class="portfolio-screenshot">
 <img src="/images/portfolio/portfolio-instagram-ui-after-v2.png" alt="Instagram 업로드 개선 후 단계별 상태와 오류 로그를 표시하는 관리자 화면 예시" width="1584" height="993">
-<figcaption><em>AI 생성 이미지, 회사의 자료를 사용하지 않았습니다.</em></figcaption>
+<figcaption><em>AI를 사용해 재구성한 예시 화면, 회사의 자료를 사용하지 않았습니다.</em></figcaption>
 </figure>
 
 관리자 기능의 백엔드 개선 과정은 [포트폴리오 본문](@/portfolio/_index.md#instagram-upload)에서 다루고 있습니다.

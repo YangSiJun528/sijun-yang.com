@@ -26,7 +26,7 @@ Instagram 계정 관리에 대해 궁금하다면 [IGOTIN 서비스 소개 페�
 <a href="/images/portfolio/portfolio-instagram-ui-before-v2.png" target="_blank" rel="noopener" aria-label="개선 전 예시 화면 원본 크기로 보기">
 <img src="/images/portfolio/portfolio-instagram-ui-before-v2.png" alt="Instagram 업로드 개선 전 관리자 화면 예시" width="1584" height="993">
 </a>
-<figcaption><em>HTML로 재구성한 예시 화면, 회사의 자료를 사용하지 않았습니다.</em><br>최종 성공/실패만 표시, 실패 지점과 원인 파악 불가</figcaption>
+<figcaption><em>AI를 사용해 재구성한 예시 화면, 회사의 자료를 사용하지 않았습니다.</em><br>최종 성공/실패만 표시, 실패 지점과 원인 파악 불가, 실패 복구 시 개발자와 운영팀의 수동 작업 필수</figcaption>
 </figure>
 
 <figure class="portfolio-screenshot">
@@ -34,7 +34,7 @@ Instagram 계정 관리에 대해 궁금하다면 [IGOTIN 서비스 소개 페�
 <a href="/images/portfolio/portfolio-instagram-ui-after-v2.png" target="_blank" rel="noopener" aria-label="개선 후 예시 화면 원본 크기로 보기">
 <img src="/images/portfolio/portfolio-instagram-ui-after-v2.png" alt="Instagram 업로드 개선 후 단계별 상태와 오류 로그를 표시하는 관리자 화면 예시" width="1584" height="993">
 </a>
-<figcaption><em>HTML로 재구성한 예시 화면, 회사의 자료를 사용하지 않았습니다.</em><br>단계별 상태와 오류 로그를 확인, 작업 재시도 가능</figcaption>
+<figcaption><em>AI를 사용해 재구성한 예시 화면, 회사의 자료를 사용하지 않았습니다.</em><br>단계별 상태와 오류 로그를 확인, 작업 재시도 가능</figcaption>
 </figure>
 
 </div>
