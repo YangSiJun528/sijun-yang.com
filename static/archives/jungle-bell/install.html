@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; frame-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Jungle Bell 설치 가이드 · 웹 아카이브</title>
+  <style>
+:root {
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f4f5f7;
+  background: #18212d;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
+p, h1 { margin: 0; }
+:focus-visible { outline: 3px solid #ffd78b; outline-offset: 4px; }
+.archive-header { flex: none; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 16px; padding: 12px 18px; border-top: 2px solid #e9b65e; }
+h1 { font-size: 14px; font-weight: 600; line-height: 1.6; }
+.archive-notice { color: #b8c4d3; font-size: 12px; line-height: 1.6; }
+.archive-stage { flex: 1; min-height: 0; position: relative; padding: 0 12px 12px; }
+iframe { width: 100%; height: 100%; display: block; background: #fff; border: 1px solid #637288; border-radius: 6px; color-scheme: light; }
+@media (max-width: 700px) {
+  .archive-header { padding: 10px 12px; }
+  h1 { font-size: 13px; }
+  .archive-stage { padding: 0 6px 6px; }
+}
+@media (max-height: 500px) {
+  body { height: auto; min-height: 100dvh; }
+  .archive-stage { flex: none; height: 75dvh; min-height: 240px; }
+}
+  </style>
+</head>
+<body>
+  <header class="archive-header">
+    <h1>서비스 운영 당시의 화면 아카이브</h1>
+    <p class="archive-notice" id="archive-notice">페이지 이동은 수행되지 않습니다.</p>
+  </header>
+  <main class="archive-stage" aria-label="보관된 설치 가이드">
+    <iframe id="archive-frame" src="./snapshots/install-ios.html" title="2026년 10월 12일 보관한 Jungle Bell 설치 가이드 — iPhone·iPad" sandbox="allow-same-origin" referrerpolicy="no-referrer" aria-describedby="archive-notice"></iframe>
+  </main>
+  <script>
+    const frame = document.querySelector('iframe');
+    let scrollTop = 0;
+    let restoreFocus = false;
+
+    frame.addEventListener('load', () => {
+      const doc = frame.contentDocument;
+      const tabs = [...doc.querySelectorAll('[role="tab"]')];
+      doc.scrollingElement.scrollTop = scrollTop;
+      if (restoreFocus) tabs.find(tab => tab.ariaSelected === 'true')?.focus({ preventScroll: true });
+
+      // Switch unchanged snapshots instead of running the archived React app.
+      const selectTab = tab => {
+        if (tab.ariaSelected === 'true') return;
+        scrollTop = doc.scrollingElement.scrollTop;
+        restoreFocus = true;
+        frame.title = `Jungle Bell 설치 가이드 보관본 — ${tab.textContent}`;
+        frame.src = `./snapshots/install-${tab.id.endsWith('-android') ? 'android' : 'ios'}.html`;
+      };
+      doc.addEventListener('click', event => {
+        event.preventDefault();
+        const tab = event.target.closest('[role="tab"]');
+        if (tab) selectTab(tab);
+      });
+      doc.addEventListener('keydown', event => {
+        if (!event.target.matches('[role="tab"]')) return;
+        const key = event.key;
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) return;
+        event.preventDefault();
+        selectTab(key === 'Home' ? tabs[0] : key === 'End' ? tabs[1] : tabs.find(tab => tab !== event.target));
+      });
+      for (const type of ['auxclick', 'submit']) doc.addEventListener(type, event => event.preventDefault());
+    });
+  </script>
+</body>
+</html>
