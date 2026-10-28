@@ -802,9 +802,8 @@ footer li {
 .portfolio-profile-photo {
     width: 12rem;
     height: 12rem;
-    object-fit: cover;
-    object-position: center 30%;
-    border-radius: 50%;
+    object-fit: contain;
+    object-position: center;
     transform: scale(0.8);
 }
 

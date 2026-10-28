@@ -29,7 +29,7 @@ AI 도구를 적극적으로 활용하며, 결과를 검증하고 코드 품질�
 <section class="portfolio-profile" id="profile" aria-labelledby="profile-heading">
 <h2 id="profile-heading">프로필</h2>
 <div class="portfolio-profile-content">
-<img class="portfolio-profile-photo" src="/images/portfolio/sijun-yang-sky.webp" alt="양시준 프로필 사진" width="576" height="742" decoding="async">
+<img class="portfolio-profile-photo" src="/images/portfolio/sijun-yang.webp" alt="양시준 프로필 사진" width="750" height="750" decoding="async">
 <ul class="portfolio-profile-links" aria-label="연락처와 프로필 링크">
 <li>Email: <a href="mailto:yangsijun5528@gmail.com">yangsijun5528@gmail.com</a></li>
 <li>GitHub: <a href="https://github.com/YangSiJun528" target="_blank" rel="me noopener">@YangSiJun528</a></li>
