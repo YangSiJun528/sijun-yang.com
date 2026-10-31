@@ -184,53 +184,6 @@ API별, 기간별 p50/p95/p99 처리 시간과 에러율을 비교하는 Athena 
 
 </section>
 
-<section class="portfolio-sheet portfolio-case portfolio-sheet--chat" id="chat" aria-label="IGOTIN - 채팅 기능 확장을 위한 독립 인프라 전환">
-
-#### 채팅 기능 확장을 위한 독립 인프라 전환
-
-<p class="portfolio-case-summary">채팅 데이터를 기존 PostgreSQL로 통합하고,<br>
-채팅 로직과 실시간 이벤트 전달을 별도 서버로 분리해 구조를 개선했습니다.</p>
-
-<figure class="portfolio-diagram portfolio-diagram--compact portfolio-case-figure">
-<a href="/images/portfolio/portfolio-chat-message-flow.png" target="_blank" rel="noopener" title="원본 크기로 보기">
-<img src="/images/portfolio/portfolio-chat-message-flow.png" alt="HTTP 메시지 요청을 API 서버와 PostgreSQL에서 처리하고 Redis Pub/Sub과 Live 서버를 거쳐 WebSocket으로 전달하는 채팅 구조. API 서버와 Live 서버의 배포 단위를 분리했다." width="2201" height="986">
-</a>
-<figcaption>개선 이후 채팅 메시지 처리와 이벤트 전달 흐름</figcaption>
-</figure>
-
-<h5 class="portfolio-label">배경과 문제</h5>
-
-기존에는 채팅 데이터는 Firestore에, 나머지 데이터는 PostgreSQL에 나뉘어 관리되고 있었습니다.  
-두 저장소를 함께 다뤄야 해 정합성 관리가 어렵고, 기능 추가나 변경 시 구현과 검증에 드는 부담이 컸습니다.
-
-<h5 class="portfolio-label">개선 과정</h5>
-
-먼저 Firestore의 채팅 데이터를 PostgreSQL로 옮기고, 메시지 저장과 조회 등 관련 로직을 API 서버로 통합했습니다.   
-WebFlux 기반 환경에서 쉽게 적용할 수 있는 SSE를 선택해, 단일 서버에서 실시간 이벤트를 전달했습니다.   
-
-하지만 단일 서버가 API 요청 처리와 SSE 연결 관리를 담당하며 배포마다 SSE 연결이 끊기는 문제가 반복됐습니다.   
-이후 실시간 이벤트를 다른 기능에도 확장하려는 요구가 생기면서, 채팅 로직과 이벤트 전달 기능의 책임 경계가 모호해졌습니다.   
-
-이에 채팅 로직과 실시간 이벤트 전달의 책임을 분리하기로 했습니다.
-
-기존 채팅 로직은 실행 환경만 옮겨 변경 범위를 줄이고, 실시간 이벤트 전달은 별도의 Live 서버로 분리했습니다.      
-Live 서버의 통신 방식은 유지보수, 기능 확장성을 고려해 WebSocket을 선택했습니다.
-
-Live 서버는 DB에 의존하지 않고 클라이언트의 WebSocket 연결과 채널 구독을 관리하며,   
-API 서버가 Redis Pub/Sub으로 발행한 이벤트를 구독 중인 클라이언트에 fan-out 하도록 구성했습니다.
-
-비용과 운영 복잡도를 고려해 Redis Pub/Sub을 사용하나,   
-이벤트가 유실되어도 HTTP API로 DB에 저장된 상태를 다시 조회할 수 있도록 했습니다.
-
-<h5 class="portfolio-label">결과</h5>
-
-채팅과 제품 데이터를 한 DB에서 조회하고 처리할 수 있게 됐습니다.    
-API 서버를 배포해도 Live 서버를 재시작하지 않고, 클라이언트의 WebSocket 연결을 유지할 수 있게 됐습니다.
-
-공통 이벤트 전달 구조를 적용해, 향후 다른 기능에도 실시간 이벤트를 제공할 수 있는 기반을 마련했습니다.
-
-</section>
-
 </section>
 
 <section class="portfolio-sheet" id="open-source" aria-label="오픈소스 기여">
