@@ -17,7 +17,7 @@ return_anchor = "igotin"
 <img class="portfolio-logo" src="/images/portfolio/portfolio-igotin-logo.png" alt="IGOTIN 로고" width="225" height="225">
 <div>
 
-## IGOTIN - 본딧커뮤니티
+## IGOTIN - (주)본딧커뮤니티코리아
 
 </div>
 </header>

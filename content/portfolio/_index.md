@@ -75,7 +75,7 @@ Airbridge는 앱과 웹의 광고 성과를 측정·분석하는 마케팅 성�
 <img class="portfolio-logo" src="/images/portfolio/portfolio-igotin-logo.png" alt="IGOTIN 로고" width="225" height="225">
 <div>
 
-### IGOTIN - 본딧커뮤니티
+### IGOTIN - (주)본딧커뮤니티코리아
 
 [LinkedIn](https://www.linkedin.com/company/igotin/) \| [서비스 소개](@/portfolio/igotin.md)<br>
 백엔드 개발자<br>
@@ -199,7 +199,7 @@ Spring 프로젝트의 기본 구조와 의존성, 빌드 설정을 생성하는
 
 - 프로젝트 설정 파일의 YAML 형식 지원 ([#1682](https://github.com/spring-io/initializr/pull/1682), [관련 글](https://bsky.app/profile/0.5ritter.de/post/3m4fon5ocu22n))
 - Kotlin JPA 엔티티를 위한 All-Open 설정 지원 ([#1576](https://github.com/spring-io/initializr/pull/1576), [관련 글](https://blog.jetbrains.com/idea/2026/01/how-to-avoid-common-pitfalls-with-jpa-and-kotlin/#:~:text=When%20creating%20a%20new%20Spring%20project%20using%20the%20New%20Project%20wizard%20in%20IntelliJ%20IDEA%20or%20via%20start%2Espring%2Eio%2C%20both%20plugins%20are%20automatically%20configured%20for%20you%2E))
-- 이 외에도 20회 이상 기여했으며, Spring 팀 외 기여자 중 2위를 기록했습니다.
+- 총 22개 커밋을 기여했으며, Spring 팀 외 기여자 중 커밋 수 기준 1위입니다.
 
 ### RustPython <small class="portfolio-repository">(<a href="https://github.com/RustPython/RustPython" target="_blank" rel="noopener">github.com/RustPython/RustPython</a>)</small>
 
@@ -272,7 +272,7 @@ Java, Kotlin, IntelliJ Platform SDK
 
 Bracket Pair Guides는 JetBrains IDE 플러그인으로, 커서가 위치한 스코프에 가로/세로선 시각적 가이드를 제공합니다.
 
-누적 다운로드 450회 이상, 평점 4.6점 이상을 기록했습니다.
+누적 다운로드 650회 이상, 평점 4.6점 이상을 기록했습니다.
 
 ##### 품질 검증을 통한 서비스 안정성 확보
 

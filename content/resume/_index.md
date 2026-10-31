@@ -49,7 +49,7 @@ template = "resume.html"
 <div class="resume-entry">
 <div class="resume-row resume-row--stack">
 
-### 본딧커뮤니티
+### (주)본딧커뮤니티코리아
 
 <p class="resume-meta">서울 강남</p>
 <p class="resume-main">Backend Developer</p>
@@ -67,11 +67,7 @@ template = "resume.html"
 
 ## 기술
 
-<ul class="resume-skills resume-summary-list">
-<li>Java, Kotlin, SQL, Python, TypeScript, Rust</li>
-<li>Spring Boot, JPA, PostgreSQL, Redis</li>
-<li>AWS, GitHub, JetBrains IDEs</li>
-</ul>
+Java, Kotlin, SQL, Spring Boot, JPA, PostgreSQL, AWS, GitHub
 
 <div class="two-column-layout">
 <div>
@@ -124,7 +120,7 @@ template = "resume.html"
 <span class="resume-meta"><time datetime="2026-02">2026. 02.</time> - 현재</span>
 </div>
 <div class="resume-main">JetBrains IDE용 VSCode 스타일 Bracket Pair 플러그인</div>
-<div class="resume-main">누적 다운로드 450회 이상</div>
+<div class="resume-main">누적 다운로드 650회 이상</div>
 </li>
 <li>
 <div class="resume-row resume-row--stack">
@@ -155,7 +151,7 @@ template = "resume.html"
 <ul class="resume-list">
 <li>
 <div class="resume-row resume-row--compact">
-<span class="resume-main"><strong><a href="https://github.com/search?q=repo%3Aspring-io%2Finitializr+author%3AYangSiJun528&type=pullrequests" target="_blank" rel="noopener">Spring Initializr</a></strong> (팀 외 기여 2위)</span>
+<span class="resume-main"><strong><a href="https://github.com/search?q=repo%3Aspring-io%2Finitializr+author%3AYangSiJun528&type=pullrequests" target="_blank" rel="noopener">Spring Initializr</a></strong><br>(Spring 팀 외 기여 1위)</span>
 <span class="resume-meta"><time datetime="2024-09">2024. 09.</time> - 현재</span>
 </div>
 <ul class="resume-detail-list">
