@@ -847,6 +847,10 @@ footer li {
     object-fit: contain;
 }
 
+.portfolio-logo--ab180 {
+    border-radius: var(--size-sm);
+}
+
 .portfolio-repository {
     font-size: var(--font-size-sm);
     font-weight: normal;
@@ -1175,6 +1179,11 @@ footer li {
     .portfolio-sheet + .portfolio-sheet {
         margin: 0;
         break-before: page;
+    }
+
+    .portfolio-sheet--current-role + .portfolio-sheet {
+        margin-top: 5mm;
+        break-before: auto;
     }
 
     .portfolio-sheet > :first-child,

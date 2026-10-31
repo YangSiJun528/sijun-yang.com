@@ -43,9 +43,33 @@ AI 도구를 적극적으로 활용하며, 결과를 검증하고 코드 품질�
 
 <section class="portfolio-career" id="career" aria-label="경력">
 
-<section class="portfolio-sheet portfolio-sheet--instagram" id="instagram" aria-label="IGOTIN - 경력 및 Instagram 업로드 운영의 개발자 의존도 해소">
+<section class="portfolio-sheet portfolio-sheet--current-role" id="ab180-current-role" aria-label="Airbridge - 에이비일팔공 현재 경력">
 
 ## 경력
+
+<header class="portfolio-project-header">
+<img class="portfolio-logo portfolio-logo--ab180" src="/images/portfolio/portfolio-ab180-logo.png" alt="AB180 로고" width="160" height="160">
+<div>
+
+### Airbridge - (주)에이비일팔공
+
+[LinkedIn](https://www.linkedin.com/company/airbridge-hq/) \| [Website](https://www.airbridge.io/)<br>
+Backend Engineer Intern (Foundation Squad)<br>
+<span class="portfolio-caption"><time datetime="2026-10">2026. 10.</time> - 현재</span><br>
+Kotlin, Spring Boot, MySQL, Apache Druid, Luft, Kubernetes, AWS
+
+</div>
+</header>
+
+Airbridge는 앱과 웹의 광고 성과를 측정·분석하는 마케팅 성과 분석 서비스입니다.
+
+<h4 class="portfolio-label">주요 기여</h4>
+
+- Airbridge 리포트 백엔드 개발 참여
+
+</section>
+
+<section class="portfolio-sheet portfolio-sheet--instagram" id="instagram" aria-label="IGOTIN - Instagram 업로드 운영의 개발자 의존도 해소">
 
 <header class="portfolio-project-header" id="igotin">
 <img class="portfolio-logo" src="/images/portfolio/portfolio-igotin-logo.png" alt="IGOTIN 로고" width="225" height="225">

@@ -32,6 +32,23 @@ template = "resume.html"
 <div class="resume-entry">
 <div class="resume-row resume-row--stack">
 
+### (주)에이비일팔공
+
+<p class="resume-meta">서울 강남</p>
+<p class="resume-main">Backend Engineer Intern (Foundation Squad)</p>
+<p class="resume-meta"><time datetime="2026-10">2026. 10.</time> - 현재</p>
+
+</div>
+<div class="resume-entry-content">
+
+- Airbridge 리포트 백엔드 개발에 참여하고 있습니다.
+
+</div>
+</div>
+
+<div class="resume-entry">
+<div class="resume-row resume-row--stack">
+
 ### 본딧커뮤니티
 
 <p class="resume-meta">서울 강남</p>
