@@ -69,6 +69,7 @@ AI의 발전으로 그동안 쌓아온 구현 중심 역량의 가치가 낮아�
 ##### 컴퓨터 시스템
 
 - **[Nand to Tetris](https://github.com/chijoon-study/B-major-study/wiki/Nand2Tetris-%EC%96%91%EC%8B%9C%EC%A4%80)** (학습): 논리 게이트부터 CPU, 가상 머신, 컴파일러, 운영체제까지 구현하며 컴퓨터의 동작 원리를 학습
+- **[CPython](https://github.com/python/cpython)** (기여): 메모리 누수 수정 및 문서 개선 ([#158100](https://github.com/python/cpython/pull/158100), [#154917](https://github.com/python/cpython/pull/154917))
 - **[RustPython](https://github.com/RustPython/RustPython)** (기여): Rust로 구현된 Python 인터프리터. OSSCA 26 멘티로 참여 ([#8262](https://github.com/RustPython/RustPython/pull/8262), [#8537](https://github.com/RustPython/RustPython/pull/8537), [#8730](https://github.com/RustPython/RustPython/pull/8730) 등)
 - **[Pintos](https://github.com/YangSiJun528/jungle_pintos_lab)** (정글 과제): 교육용 운영체제의 핵심 기능을 직접 구현
 - **[CHIP-8 에뮬레이터](https://github.com/YangSiJun528/c-chip-8)** (학습): C로 아주 간단한 가상 머신을 구현하기
@@ -93,6 +94,6 @@ AI의 발전으로 그동안 쌓아온 구현 중심 역량의 가치가 낮아�
 
 ##### 문서와 번역
 
+- **[missing-semester-kr](https://github.com/missing-semester-kr/missing-semester-kr.github.io)** (기여): MIT Missing Semester 강의 한국어판 최신화 및 번역 초안 ([#41](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/41), [#43](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/43), [#45](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/45))
 - **[rustlings-kr](https://github.com/eoncheole/rustlings-kr)** (기여): Rustlings의 한국어 번역 프로젝트의 최신화 기여 ([#3](https://github.com/eoncheole/rustlings-kr/pull/3))
-- **[CPython](https://github.com/python/cpython)** (문서 기여): [#154917](https://github.com/python/cpython/pull/154917)
 - **[Obsidian](https://github.com/obsidianmd/obsidian-translations)** (문서 기여): [#906](https://github.com/obsidianmd/obsidian-translations/pull/906)
