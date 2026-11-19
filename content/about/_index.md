@@ -94,6 +94,6 @@ AI의 발전으로 그동안 쌓아온 구현 중심 역량의 가치가 낮아�
 
 ##### 문서와 번역
 
-- **[missing-semester-kr](https://github.com/missing-semester-kr/missing-semester-kr.github.io)** (기여): MIT Missing Semester 강의 한국어판 최신화 및 번역 초안 ([#41](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/41), [#43](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/43), [#45](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/45))
+- **[missing-semester-kr](https://github.com/missing-semester-kr/missing-semester-kr.github.io)** (기여): MIT Missing Semester 강의 한국어판 최신화 및 번역 초안 ([#37](https://github.com/missing-semester-kr/missing-semester-kr.github.io/issues/37), [#41](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/41), [#43](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/43), [#45](https://github.com/missing-semester-kr/missing-semester-kr.github.io/pull/45))
 - **[rustlings-kr](https://github.com/eoncheole/rustlings-kr)** (기여): Rustlings의 한국어 번역 프로젝트의 최신화 기여 ([#3](https://github.com/eoncheole/rustlings-kr/pull/3))
 - **[Obsidian](https://github.com/obsidianmd/obsidian-translations)** (문서 기여): [#906](https://github.com/obsidianmd/obsidian-translations/pull/906)
