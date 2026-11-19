@@ -120,7 +120,7 @@ Java, Kotlin, SQL, Spring Boot, JPA, PostgreSQL, AWS, GitHub
 <span class="resume-meta"><time datetime="2026-02">2026. 02.</time> - 현재</span>
 </div>
 <div class="resume-main">JetBrains IDE용 VSCode 스타일 Bracket Pair 플러그인</div>
-<div class="resume-main">누적 다운로드 650회 이상</div>
+<div class="resume-main">누적 다운로드 750회 이상</div>
 </li>
 <li>
 <div class="resume-row resume-row--stack">
