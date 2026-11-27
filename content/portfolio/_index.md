@@ -205,7 +205,7 @@ Spring 프로젝트의 기본 구조와 의존성, 빌드 설정을 생성하는
 
 순수 Rust로 구현된 Python 인터프리터 프로젝트입니다.
 
-- 2026 오픈소스 컨트리뷰션 아카데미의 멘티로 참여
+- 오픈소스 컨트리뷰션 아카데미 멘티 활동 (2026. 07. - 2026. 11.)
 - 기여 내역: [#8262](https://github.com/RustPython/RustPython/pull/8262), [#8537](https://github.com/RustPython/RustPython/pull/8537), [#8730](https://github.com/RustPython/RustPython/pull/8730) 등
 
 </section>
@@ -322,7 +322,7 @@ Hello, GSM은 광주소프트웨어마이스터고등학교의 신입생 모집�
 ## 학력 및 교육
 
 <ul class="resume-list">
-<li><h5>크래프톤 정글</h5>SW-AI Lab 12기 &amp; 심화과정 1기 <span class="portfolio-caption"><time datetime="2026-03">2026. 03.</time> - 현재</span></li>
+<li><h5>크래프톤 정글</h5>SW-AI Lab 12기 <span class="portfolio-caption"><time datetime="2026-03">2026. 03.</time> - <time datetime="2026-10">2026. 10.</time></span></li>
 <li><h5>광주소프트웨어마이스터고등학교</h5>소프트웨어개발과 5기 <span class="portfolio-caption"><time datetime="2021-03">2021. 03.</time> - <time datetime="2024-01">2024. 01.</time></span></li>
 </ul>
 

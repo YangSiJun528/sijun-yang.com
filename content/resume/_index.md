@@ -83,8 +83,8 @@ Java, Kotlin, SQL, Spring Boot, JPA, PostgreSQL, AWS, GitHub
 
 </div>
 <div class="resume-education-details">
-<p class="resume-main">SW-AI Lab 12기 &amp; 심화과정 1기</p>
-<p class="resume-meta"><time datetime="2026-03">2026. 03.</time> - 현재</p>
+<p class="resume-main">SW-AI Lab 12기</p>
+<p class="resume-meta"><time datetime="2026-03">2026. 03.</time> - <time datetime="2026-10">2026. 10.</time></p>
 
 </div>
 </div>
@@ -117,7 +117,7 @@ Java, Kotlin, SQL, Spring Boot, JPA, PostgreSQL, AWS, GitHub
 <li>
 <div class="resume-row resume-row--stack">
 <span class="resume-main"><strong><a href="https://github.com/YangSiJun528/bracket-pair-guides" target="_blank" rel="noopener">Bracket Pair Guides</a></strong></span>
-<span class="resume-meta"><time datetime="2026-02">2026. 02.</time> - 현재</span>
+<span class="resume-meta"><time datetime="2026-08">2026. 08.</time> - 현재</span>
 </div>
 <div class="resume-main">JetBrains IDE용 VSCode 스타일 Bracket Pair 플러그인</div>
 <div class="resume-main">누적 다운로드 750회 이상</div>
@@ -161,9 +161,10 @@ Java, Kotlin, SQL, Spring Boot, JPA, PostgreSQL, AWS, GitHub
 </li>
 <li>
 <div class="resume-row resume-row--compact">
-<span class="resume-main"><strong><a href="https://github.com/search?q=repo%3ARustPython%2FRustPython+author%3AYangSiJun528&type=pullrequests" target="_blank" rel="noopener">RustPython</a></strong> (2026 OSSCA 멘티)</span>
+<span class="resume-main"><strong><a href="https://github.com/search?q=repo%3ARustPython%2FRustPython+author%3AYangSiJun528&type=pullrequests" target="_blank" rel="noopener">RustPython</a></strong></span>
 <span class="resume-meta"><time datetime="2026-07">2026. 07.</time> - 현재</span>
 </div>
+<div class="resume-main">OSSCA 멘티 활동 (<time datetime="2026-07">2026. 07.</time> - <time datetime="2026-11">2026. 11.</time>)</div>
 </li>
 </ul>
 
