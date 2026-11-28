@@ -1,0 +1,43 @@
+digraph AgentImpactWorkflow {
+  graph [
+    rankdir=LR,
+    bgcolor="white",
+    pad="0.25",
+    nodesep="0.35",
+    ranksep="0.4",
+    dpi=180,
+    splines=polyline
+  ];
+  node [
+    shape=box,
+    style="rounded,filled",
+    fontname="Apple SD Gothic Neo",
+    fontsize=16,
+    fontcolor="#273b53",
+    color="#9eafc3",
+    fillcolor="#f3f6fa",
+    penwidth=1.4,
+    margin="0.18,0.16"
+  ];
+  edge [
+    fontname="Apple SD Gothic Neo",
+    fontsize=12,
+    color="#70869f",
+    fontcolor="#546b84",
+    arrowsize=0.7,
+    penwidth=1.4
+  ];
+
+  plan [label="변경·조회 계획\n사람 승인"];
+  collect [label="로그·DB 조회\n묶음 처리·근거 저장"];
+  judge [label="변경별 영향 판정\n병렬 실행"];
+  verify [label="독립 재검증\n필요 근거 재조회"];
+  decision [label="팀 결정\n테크스펙 반영"];
+
+  plan -> collect -> judge -> verify -> decision;
+  verify -> collect [
+    label="저장된 근거 재사용 · 필요한 조회만 추가",
+    constraint=false,
+    style=dashed
+  ];
+}

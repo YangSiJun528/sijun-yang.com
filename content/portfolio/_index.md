@@ -56,16 +56,55 @@ AI 도구를 적극적으로 활용하며, 결과를 검증하고 코드 품질�
 [LinkedIn](https://www.linkedin.com/company/airbridge-hq/) \| [Website](https://www.airbridge.io/)<br>
 Backend Engineer Intern (Foundation Squad)<br>
 <span class="portfolio-caption"><time datetime="2026-10">2026. 10.</time> - 현재</span><br>
-Kotlin, Spring Boot, MySQL, Apache Druid, Luft, Kubernetes, AWS
+Kotlin, Spring Boot, MySQL, Snowflake, Luft, Kubernetes, AWS
 
 </div>
 </header>
 
-Airbridge는 앱과 웹의 광고 성과를 측정·분석하는 마케팅 성과 분석 서비스입니다.
+Airbridge는 웹과 앱의 광고 성과를 통합 측정하고, 사용자 행동을 분석하는 마케팅 솔루션입니다.
 
 <h4 class="portfolio-label">주요 기여</h4>
 
-- Airbridge 리포트 백엔드 개발 참여
+- AI 에이전트의 리포트 API 활용을 위한 검증 강화와 명세 정비
+- 코드 변경 후 자동 검증에 걸리는 시간을 31% 단축(중앙값 9분 40초 → 6분 40초)
+
+<section class="portfolio-case" aria-label="리포트 API의 하위호환 영향 조사 개선">
+
+#### 리포트 API의 하위호환 영향 조사 개선 {#report-api-impact}
+
+<p class="portfolio-case-summary">반복되는 하위호환 영향 조사와 검증을 돕는 개인용 에이전트 스킬을 개발했습니다.</p>
+
+<figure class="portfolio-diagram portfolio-case-figure">
+<a href="/images/portfolio/portfolio-ab180-agent-flow.png" target="_blank" rel="noopener" title="원본 크기로 보기">
+<img src="/images/portfolio/portfolio-ab180-agent-flow.png" alt="조회 계획을 승인한 뒤 로그와 DB에서 근거를 수집합니다. 변경별 영향을 병렬로 조사하고 별도 에이전트가 재검증합니다. 팀은 조사 결과를 바탕으로 결정하고 테크스펙에 반영합니다." width="2135" height="317" loading="lazy">
+</a>
+<figcaption>하위호환 영향 조사와 검증 흐름 (초안)</figcaption>
+</figure>
+
+<h5 class="portfolio-label">배경과 문제</h5>
+
+리포트 API를 자체 AI 에이전트에서 활용하고 MCP로 제공하기 위해 요청 검증을 강화했습니다. 이때 기존 요청에 미치는 영향도 확인해야 했습니다.
+변경마다 호출 경로와 운영 로그, 저장 데이터를 조사하는 데 많은 시간이 들었습니다.
+
+<h5 class="portfolio-label">개선 과정</h5>
+
+반복되는 조사 절차를 Claude Code 스킬로 정리하고, 조회 결과와 판단 근거를 저장해 재사용하도록 했습니다.
+
+여러 변경에서 필요한 검증 쿼리를 모아 처리하고, 독립적인 조사 작업은 병렬로 실행했습니다.
+판정 결과는 별도 에이전트가 다시 검증하고, 추가 확인이 필요한 근거만 재조회하도록 했습니다.
+
+<h5 class="portfolio-label">결과</h5>
+
+변경별 영향과 근거를 팀에 공유하고, 변경의 진행 여부와 구현 방식을 결정하는 데 활용했습니다.
+이후 결정 기록을 테크스펙에 반영했습니다.
+
+**수치와 사례 보강 예정**
+
+- 조사와 검증에 걸린 시간 [도입 전 ___ → 도입 후 ___]
+- 조회 횟수와 비용 [비교 기준 ___, 개선 결과 ___]
+- 재검증으로 판단을 수정한 사례 [___]
+
+</section>
 
 </section>
 

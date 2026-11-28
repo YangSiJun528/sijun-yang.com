@@ -41,7 +41,7 @@ template = "resume.html"
 </div>
 <div class="resume-entry-content">
 
-- Airbridge 리포트 백엔드 개발에 참여하고 있습니다.
+- AI 에이전트가 Airbridge 리포트 API를 활용할 수 있도록 요청 검증을 강화하고 오류 메시지와 API 명세를 개선했습니다.
 
 </div>
 </div>
